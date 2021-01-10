@@ -99,8 +99,7 @@ module.exports = {
       colors: {},
 
       fontFamily: {
-        body: ['Open Sans', 'Helvetica', 'sans-serif'],
-        display: ['Hind', 'Verdana', 'Arial', 'sans-serif']
+        body: ['Inter', 'Helvetica', 'sans-serif']
       },
       typography: theme => ({
         DEFAULT: {
