@@ -24,9 +24,9 @@ const menu: React.FC<Props> = ({ link, name, classes, target, rel, title }) => {
     }
   }
   return (
-    <li className={`inline-block mx-1 md:mx-3 ${classes?.join(' ')}`}>
+    <li className={`block mx-1 md:mx-3 ${classes?.join(' ')}`}>
       <Link
-        className="px-2 hover:underline lowercase"
+        className="px-2 py-4 hover:underline block"
         to={link}
         target={target ? target : ''}
         rel={formatRel(target, rel)}

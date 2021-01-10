@@ -41,6 +41,7 @@
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-source-wordpress-experimental": "6.2.0",
     "gatsby-transformer-sharp": "^2.6.0",
+    "hamburger-react": "^2.4.0",
     "html-react-parser": "^1.1.1",
     "hyvor-talk-react": "^1.0.3",
     "lodash": "^4.17.20",

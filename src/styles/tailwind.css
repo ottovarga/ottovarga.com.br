@@ -3,14 +3,13 @@
 @tailwind utilities;
 
 body {
-  @apply w-screen h-full overflow-x-hidden min-h-screen font-body;
+  @apply w-screen h-full overflow-x-hidden min-h-screen font-body transition-all;
   color: theme('colors.black');
   background: linear-gradient(
     to bottom,
     theme('colors.white') 80%,
     theme('colors.gray.200')
   );
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .dark body {

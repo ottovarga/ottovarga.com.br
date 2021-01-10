@@ -10,9 +10,9 @@ const SearchLink: React.FC = () => {
       <input
         placeholder="Buscar"
         type="text"
-        className="w-full outline-none py-2 px-2 text-xl rounded cursor-pointer border border-gray-400 dark:bg-transparent dark:text-white"
+        className="w-full outline-none py-2 pr-2 pl-12 text-xl cursor-pointer border-b border-gray-400 dark:bg-transparent dark:text-white"
       />
-      <SearchIcon className="absolute top-0 bottom-0 m-auto right-2 dark:text-gray-300 stroke-current" />
+      <SearchIcon className="absolute top-0 bottom-0 m-auto left-2 dark:text-gray-300 stroke-current" />
     </Link>
   )
 }
