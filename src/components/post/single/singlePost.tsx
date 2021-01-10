@@ -76,7 +76,7 @@ const singlePost: React.FC<SinglePostProps> = ({
     <>
       <article className="mb-8 md:mb-16" ref={contentSectionRef}>
         <div className="max-w-prose m-auto mb-12">
-          <h1 className="text-4xl font-display font-bold mb-4">{title}</h1>
+          <h1 className="text-4xl font-bold mb-4">{title}</h1>
           <PostMeta date={date} readingTime={readingTime} tags={tags} />
         </div>
         <div

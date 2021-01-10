@@ -15,7 +15,7 @@ const search: React.FC = () => {
         <div className="flex justify-center py-16 px-4">
           <div className="xl:w-4/5">
             <div className="flex justify-between mb-8 items-center">
-              <h1 className="text-3xl font-display font-bold">Buscar</h1>
+              <h1 className="text-3xl font-bold">Buscar</h1>
               <button
                 aria-label="Voltar para a página anterior"
                 className="text-gray-700 dark:text-gray-300 flex items-center"

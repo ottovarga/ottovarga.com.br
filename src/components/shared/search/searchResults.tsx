@@ -11,7 +11,7 @@ const searchResults: React.ComponentType<{ hit: Hit<BasicDoc> }> = ({
   return (
     <div key={objectID}>
       <Link to={`/${objectID}`}>
-        <h3 className="text-xl mb-1 font-display font-bold">
+        <h3 className="text-xl mb-1 font-bold">
           <Highlight hit={hit} attribute="title" tagName="b" />
         </h3>
         <p className="text-xs text-gray-500 mb-4">{date}</p>

@@ -14,7 +14,7 @@ const relatedPosts: React.FC<Props> = ({ posts }) => {
     <div className="flex flex-wrap justify-between">
       {posts.nodes.map(({ title, slug }) => (
         <Link
-          className="hover:underline font-display text-lg mb-2"
+          className="hover:underline text-lg mb-2"
           to={`/${slug}`}
           key={slug}
         >

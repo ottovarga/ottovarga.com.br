@@ -63,7 +63,7 @@ const post = ({ data, pageContext }) => {
           <div className="w-5/6">
             <div className="w-full lg:w-3/5 m-auto">
               <div className="mb-32">
-                <p className="text-2xl font-display font-bold mb-8">Autor</p>
+                <p className="text-2xl font-bold mb-8">Autor</p>
                 <Author
                   avatar={author.node.avatar.url}
                   firstName={author.node.firstName}
@@ -73,18 +73,14 @@ const post = ({ data, pageContext }) => {
               </div>
               {data.related.nodes.length > 0 && (
                 <div className="mb-24">
-                  <p className="text-2xl font-display font-bold mb-8">
-                    Relacionados
-                  </p>
+                  <p className="text-2xl font-bold mb-8">Relacionados</p>
                   <Related posts={data.related} />
                 </div>
               )}
               <div>
                 {!isSSR && (
                   <React.Suspense fallback={<div />}>
-                    <p className="text-2xl font-display font-bold mb-8">
-                      Comentários
-                    </p>
+                    <p className="text-2xl font-bold mb-8">Comentários</p>
                     <Comments id={slug} title={title} />
                   </React.Suspense>
                 )}

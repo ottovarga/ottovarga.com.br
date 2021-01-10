@@ -22,7 +22,7 @@ const author: React.FC<Props> = ({
         className="rounded-full mr-4 mb-4 md:mb-0"
       />
       <div>
-        <div className="text-xl font-display font-bold mb-3">
+        <div className="text-xl font-bold mb-3">
           {firstName} {lastName}
         </div>
         <div className="text-sm text-gray-700 dark:text-gray-300">

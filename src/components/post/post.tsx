@@ -37,7 +37,7 @@ const post: React.FC<Props> = ({
   return (
     <article className="mb-16">
       <Link to={url}>
-        <h2 className="text-2xl font-display font-bold mb-2">{title}</h2>
+        <h2 className="text-2xl font-bold mb-2">{title}</h2>
       </Link>
       <PostMeta date={date} readingTime={readingTime} tags={tags} />
       {image && (

@@ -8,7 +8,7 @@ const NotFoundPage = () => (
       <Seo title="Página não encontrada | Gustavo Rocha" />
       <div className="flex justify-center items-center mt-32 max-w-2xl mx-auto px-4">
         <div className="text-center">
-          <h1 className="text-5xl font-display font-bold mb-4">
+          <h1 className="text-5xl font-bold mb-4">
             404: Página não encontrada
           </h1>
           <p className="text-lg">

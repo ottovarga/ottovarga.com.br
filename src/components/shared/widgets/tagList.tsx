@@ -15,7 +15,7 @@ interface Props {
 const headline: React.FC<Props> = ({ tags }) => {
   return (
     <div>
-      <h3 className="text-3xl font-display mb-4">tags</h3>
+      <h3 className="text-3xl mb-4">tags</h3>
       <ul>
         {tags.map(({ node: { name, slug } }) => (
           <li key={slug} className="mb-2">

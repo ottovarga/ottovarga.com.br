@@ -18,7 +18,7 @@ const pagination = ({ pageContext, pathPrefix }) => {
           {previousPagePath && (
             <div className="inline-block">
               <Link to={previousPagePath} rel="prev">
-                <div className="font-display text-xl flex">
+                <div className="text-xl flex">
                   <Arrow
                     width={20}
                     className="transform rotate-180 mr-4 fill-current text-black"
@@ -31,7 +31,7 @@ const pagination = ({ pageContext, pathPrefix }) => {
           {nextPagePath && (
             <div className="inline-block">
               <Link to={nextPagePath} rel="next">
-                <div className="font-display text-xl flex">
+                <div className="text-xl flex">
                   próxima página{' '}
                   <Arrow
                     width={20}
