@@ -1,0 +1,19 @@
+[[redirects]]
+  from = "https://peaceful-shockley-75bf68.netlify.app"
+  to = "https://gustavo.wtf"
+  status = 301
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "no-referrer-when-downgrade"
+    X-Content-Type-Options = "nosniff"
+    Strict-Transport-Security = "max-age=31536000; preload"
+
+    #  Multi-value headers are expressed with multi-line strings
+    cache-control = '''
+    public
+    max-age=15778800,
+    must-revalidate'''

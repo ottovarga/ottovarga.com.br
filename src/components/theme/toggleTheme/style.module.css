@@ -1,0 +1,93 @@
+.dark-mode {
+  @apply opacity-50 relative flex items-center justify-center w-10 ml-2 rounded-md h-6;
+  @apply transition-opacity duration-300 ease-linear;
+  @apply outline-none !important;
+
+  @screen md {
+    @apply ml-8;
+  }
+}
+
+.dark-mode__inner {
+  @apply relative w-6 h-6 rounded-full;
+  @apply transform-gpu transition-all duration-500 ease-linear;
+}
+
+.moon .dark-mode__inner {
+  @apply border-2 border-black bg-black overflow-hidden;
+  @apply scale-100;
+}
+
+.sun .dark-mode__inner {
+  @apply border-4 border-white bg-white overflow-visible;
+  @apply scale-50;
+}
+
+.dark-mode__inner::before,
+.dark-mode__inner::after {
+  content: '';
+  @apply absolute;
+}
+
+.dark-mode__inner::before {
+  right: -9px;
+  top: -9px;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  transition: transform 0.45s ease;
+}
+
+.moon .dark-mode__inner::before {
+  border: 2px solid #000;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.sun .dark-mode__inner::before {
+  border: 2px solid #fff;
+  transform: translate(14px, -14px);
+  opacity: 0;
+}
+
+.dark-mode__inner::after {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transition: all 0.35s ease;
+}
+
+.moon .dark-mode__inner::after {
+  margin: -4px 0 0 -4px;
+  transform: scale(0);
+  box-shadow: 0 -23px 0 #000, 0 23px 0 #000, 23px 0 0 #000, -23px 0 0 #000,
+    15px 15px 0 #000, -15px 15px 0 #000, 15px -15px 0 #000, -15px -15px 0 #000;
+}
+
+.sun .dark-mode__inner::after {
+  margin: -4px 0px 0px -4px;
+  box-shadow: 0 -23px 0 #fff, 0 23px 0 #fff, 23px 0 0 #fff, -23px 0 0 #fff,
+    15px 15px 0 #fff, -15px 15px 0 #fff, 15px -15px 0 #fff, -15px -15px 0 #fff;
+  transform: scale(1);
+  transition: all 0.35s ease 0s;
+}
+
+.dark-mode__outer {
+  @apply absolute w-6 h-6 -top-2 -right-px rounded-full border-none;
+  transition: color 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.45s ease;
+}
+
+.moon .dark-mode__outer {
+  background: #fff;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.sun .dark-mode__outer {
+  background: #000;
+  transform: translate(14px, -14px);
+  opacity: 0;
+}

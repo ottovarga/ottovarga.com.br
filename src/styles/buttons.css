@@ -1,0 +1,19 @@
+.btn {
+  @apply inline-block py-3 px-4 font-bold text-base rounded;
+}
+
+.btn--big {
+  @apply text-xl;
+}
+
+.btn-small {
+  @apply text-sm;
+}
+
+.btn--primary {
+  @apply bg-purple-600 text-white;
+}
+
+.dark .btn--primary {
+  @apply bg-green-600;
+}

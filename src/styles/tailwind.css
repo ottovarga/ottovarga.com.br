@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply w-screen h-full overflow-x-hidden min-h-screen font-body;
+  color: theme('colors.black');
+  background: linear-gradient(
+    to bottom,
+    theme('colors.white') 80%,
+    theme('colors.gray.200')
+  );
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  color: theme('colors.white');
+  background: linear-gradient(
+    to bottom,
+    theme('colors.gray.900') 80%,
+    theme('colors.gray.800')
+  );
+}
+
+.breadcrumb__separator {
+  @apply text-sm !important;
+}
+
+nav .breadcrumb__list {
+  @apply items-baseline;
+}
