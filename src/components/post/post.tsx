@@ -4,6 +4,7 @@ import Img, { FluidObject } from 'gatsby-image'
 
 import PostMeta, { Tag } from '@components/post/postMeta'
 import formatExcerpt from '@utils/formatExcerpt'
+import Card from '@components/shared/card'
 
 interface Props {
   title: string
@@ -13,6 +14,7 @@ interface Props {
   date: string
   image?: FeaturedImage
   url: string
+  cardType: 'long' | 'short' | 'featured'
 }
 
 export type FeaturedImage = {
@@ -32,30 +34,58 @@ const post: React.FC<Props> = ({
   date,
   image,
   readingTime,
-  url
+  url,
+  cardType
 }) => {
   return (
-    <article className="mb-16">
-      <Link to={url}>
-        <h2 className="text-2xl font-bold mb-2">{title}</h2>
-      </Link>
-      <PostMeta date={date} readingTime={readingTime} tags={tags} />
-      {image && (
-        <Link to={url}>
-          <Img
-            className="mb-8 rounded shadow-lg dark:shadow-gray-300-lg transition-shadow"
-            alt={image?.altText}
-            fluid={image?.localFile.childImageSharp.thumb}
-            loading="lazy"
-          ></Img>
-        </Link>
-      )}
-
-      <div className="prose dark:prose-dark transition-colors">
-        <p>
-          {formatExcerpt(excerpt, 300)} <Link to={url}>Leia mais</Link>
-        </p>
-      </div>
+    <article
+      className={`${
+        cardType === 'long' || cardType === 'featured' ? 'col-span-3' : ''
+      }`}
+    >
+      <Card
+        type={cardType}
+        content={
+          <>
+            <Link to={url}>
+              <h2
+                className={`font-bold mb-6 ${
+                  cardType === 'featured' ? 'text-5xl' : 'text-3xl'
+                }`}
+              >
+                {title}
+              </h2>
+            </Link>
+            <div className="text-lg text-gray-700 dark:text-gray-300 flex-grow">
+              <p>{formatExcerpt(excerpt, 250)}</p>
+            </div>
+          </>
+        }
+        image={
+          image && (
+            <>
+              {
+                <Link to={url} className="block h-full w-full">
+                  <Img
+                    className="object-cover w-full h-full"
+                    alt={image?.altText}
+                    fluid={image?.localFile.childImageSharp.thumb}
+                    loading="lazy"
+                  ></Img>
+                </Link>
+              }
+            </>
+          )
+        }
+        meta={
+          <div className="flex justify-between">
+            <PostMeta date={date} />{' '}
+            <Link className="font-bold" to={url}>
+              Leia mais
+            </Link>
+          </div>
+        }
+      ></Card>
     </article>
   )
 }

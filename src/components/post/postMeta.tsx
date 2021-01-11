@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
 interface Props {
-  readingTime: number
+  readingTime?: number
   date: string
-  tags: Tag[]
+  tags?: Tag[]
 }
 
 export type Tag = {
@@ -23,20 +23,24 @@ const postMeta: React.FC<Props> = ({ readingTime, date, tags }) => {
   return (
     <div className="text-sm text-gray-600 dark:text-gray-300 transition-colors mb-4">
       <div className="mb-2">
-        tags:{' '}
-        {tags &&
-          tags.map(({ name, slug }, index, array) => (
-            <span key={slug}>
-              <Link className="hover:underline" to={`/tag/${slug}`}>
-                {name}
-              </Link>
-              {array.length - 1 > index && <span>{', '}</span>}
-            </span>
-          ))}
+        {tags && (
+          <>
+            tags:{' '}
+            {tags.map(({ name, slug }, index, array) => (
+              <span key={slug}>
+                <Link className="hover:underline" to={`/tag/${slug}`}>
+                  {name}
+                </Link>
+                {array.length - 1 > index && <span>{', '}</span>}
+              </span>
+            ))}
+          </>
+        )}
       </div>
       <div className="flex justify-between">
         <div>
-          {date} • {formatReadingTime(readingTime)}
+          {date}
+          {readingTime && ` • ${formatReadingTime(readingTime)}`}
         </div>
       </div>
     </div>

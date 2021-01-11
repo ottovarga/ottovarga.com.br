@@ -14,6 +14,7 @@ export const postFields = graphql`
     date(formatString: "D [de] MMMM [de] YYYY", locale: "pt")
     dateGmt
     modifiedGmt
+    isSticky
   }
 `
 export const postTags = graphql`

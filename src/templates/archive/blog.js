@@ -4,54 +4,45 @@ import { graphql } from 'gatsby'
 
 import Headline from '@components/shared/headline'
 import Post from '@components/post/post'
-import Sidebar from '@components/shared/sidebar'
-import SearchLink from '@/components/shared/search/searchLink'
-import TagList from '@components/shared/widgets/tagList'
 import Pagination from '@components/pagination'
 
 import Seo from '@components/infra/seo'
 
 const IndexPage = ({
-  data: { allPosts, allTags, postsByTag },
+  data: { allPosts, allTags, postsByTag, stickyPost },
   pageContext
 }) => {
   const posts = pageContext.tagSlug ? postsByTag.edges : allPosts.edges
-  const tags = allTags.edges
-
+  console.log(pageContext)
   return (
     <Layout>
       <Seo
         title={
           pageContext.tagName
-            ? `Artigos sobre ${pageContext.tagName} | Gustavo Rocha`
+            ? `Artigos sobre ${pageContext.tagName} | Vamos falar de SEO?`
             : ''
         }
       />
-      <div className="container my-12 md:my-24 px-4">
-        <div className="flex">
-          <div className="w-full lg:w-5/12">
-            <Headline
-              title={`${
-                pageContext.tagName
-                  ? 'artigos sobre ' + pageContext.tagName
-                  : 'Olá, eu sou o Gustavo!'
-              }`}
-              subtitle={`${
-                pageContext.tagName
-                  ? ''
-                  : 'Desenvolvimento de software, gestão, aprendizados e algumas experiências pessoais...'
-              }`}
-            />
-          </div>
+      <section className="bg-gray-100 dark:bg-gray-800">
+        <div className="container py-12 md:py-24 mb-8 px-4">
+          <Headline
+            title={`${
+              pageContext.tagName
+                ? 'artigos sobre ' + pageContext.tagName
+                : 'Olá, eu sou o Otto Varga!'
+            }`}
+            subtitle={`${pageContext.tagName ? '' : 'Vamos falar de SEO?'}`}
+            showImg
+          />
         </div>
-      </div>
+      </section>
 
-      <div className="container px-4">
-        <div className="flex flex-wrap justify-between">
-          <section className="max-w-prose">
-            {posts &&
-              posts.map(
-                ({
+      <div className="container px-4 mb-24">
+        <section className="grid grid-cols-3 gap-8">
+          {posts &&
+            posts.map(
+              (
+                {
                   node: {
                     title,
                     date,
@@ -60,11 +51,15 @@ const IndexPage = ({
                     uri,
                     readingTime: { minutes },
                     tags,
-                    featuredImage
+                    featuredImage,
+                    isSticky
                   }
-                }) => (
+                },
+                index
+              ) => (
+                <React.Fragment key={slug + index}>
                   <Post
-                    key={slug}
+                    cardType={index === 0 ? 'long' : 'short'}
                     title={title}
                     date={date}
                     excerpt={excerpt}
@@ -73,16 +68,25 @@ const IndexPage = ({
                     tags={tags.nodes}
                     image={featuredImage && featuredImage.node}
                   />
-                )
-              )}
-          </section>
-          <aside className="lg:w-1/4">
-            <Sidebar>
-              <SearchLink />
-              <TagList tags={tags} />
-            </Sidebar>
-          </aside>
-        </div>
+                  {index === 3 && pageContext.pageNumber === 0 && (
+                    <Post
+                      cardType="featured"
+                      title={stickyPost.title}
+                      date={stickyPost.date}
+                      excerpt={stickyPost.excerpt}
+                      url={stickyPost.uri}
+                      readingTime={stickyPost.minutes}
+                      tags={stickyPost.tags.nodes}
+                      image={
+                        stickyPost.featuredImage &&
+                        stickyPost.featuredImage.node
+                      }
+                    />
+                  )}
+                </React.Fragment>
+              )
+            )}
+        </section>
       </div>
       <Pagination pageContext={pageContext} />
     </Layout>
@@ -97,6 +101,7 @@ export const pageQuery = graphql`
       sort: { fields: date, order: DESC }
       limit: $limit
       skip: $skip
+      filter: { isSticky: { eq: false } }
     ) {
       edges {
         node {
@@ -105,6 +110,11 @@ export const pageQuery = graphql`
           ...FeaturedImage
         }
       }
+    }
+    stickyPost: wpPost(isSticky: { eq: true }) {
+      ...PostFields
+      ...PostTags
+      ...FeaturedImage
     }
     postsByTag: allWpPost(
       sort: { fields: date, order: DESC }
