@@ -9,7 +9,7 @@ interface Props {
   rest?: React.HTMLAttributes<HTMLDivElement>
 }
 
-const author: React.FC<Props> = ({
+const card: React.FC<Props> = ({
   className,
   content,
   image,
@@ -23,8 +23,8 @@ const author: React.FC<Props> = ({
     switch (type) {
       case 'long':
       case 'featured':
-        classes.push('items-stretch')
-        classes.push('justify-between')
+        classes.push('flex-col-reverse lg:flex-row lg:items-stretch')
+        classes.push('flex-col-reverse lg:flex-row lg:justify-between')
         break
       case 'short':
         image && classes.push('flex-col-reverse')
@@ -39,16 +39,16 @@ const author: React.FC<Props> = ({
 
     switch (type) {
       case 'long':
-        classes.push('px-8')
-        classes.push('py-10')
-        image && classes.push('w-3/5')
+        classes.push('px-8 lg:px-8')
+        classes.push('py-8 lg:py-10')
+        image && classes.push('w-full lg:w-3/5')
         break
       case 'short':
         classes.push('p-8')
         break
       case 'featured':
-        classes.push('w-6/12')
-        classes.push('p-20')
+        classes.push('lg:w-6/12')
+        classes.push('p-8 lg:p-20')
         classes.push('bg-gray-100')
         classes.push('dark:bg-gray-800')
         break
@@ -62,13 +62,13 @@ const author: React.FC<Props> = ({
 
     switch (type) {
       case 'long':
-        classes.push('w-2/5')
+        classes.push('w-full lg:w-2/5')
         break
       case 'short':
         classes.push('w-full')
         break
       case 'featured':
-        classes.push('w-6/12')
+        classes.push('w-full lg:w-6/12')
         break
     }
 
@@ -93,4 +93,4 @@ const author: React.FC<Props> = ({
   )
 }
 
-export default React.memo(author)
+export default React.memo(card)

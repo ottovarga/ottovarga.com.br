@@ -13,7 +13,7 @@ const IndexPage = ({
   pageContext
 }) => {
   const posts = pageContext.tagSlug ? postsByTag.edges : allPosts.edges
-  console.log(pageContext)
+
   return (
     <Layout>
       <Seo
@@ -38,7 +38,7 @@ const IndexPage = ({
       </section>
 
       <div className="container px-4 mb-24">
-        <section className="grid grid-cols-3 gap-8">
+        <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {posts &&
             posts.map(
               (

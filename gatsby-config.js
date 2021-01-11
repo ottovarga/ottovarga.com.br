@@ -137,18 +137,18 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
-        color: '#7C3AED',
+        color: '#374151',
         showSpinner: false
       }
     },
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'Gustavo Rocha',
-        short_name: 'Gustavo Rocha',
+        name: 'OV SEO',
+        short_name: 'OV SEO',
         start_url: '/',
-        background_color: '#7C3AED',
-        theme_color: '#7C3AED',
+        background_color: '#374151',
+        theme_color: '#374151',
         display: 'minimal-ui',
         icon: './src/assets/images/wtf-icon.png'
       }

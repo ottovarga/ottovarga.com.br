@@ -1,21 +1,12 @@
 module.exports = {
-  siteName: 'Gustavo Rocha',
-  title: 'In love with coding',
-  titleTemplate: '%s | Gustavo Rocha',
-  siteUrl: 'https://gustavo.wtf',
+  siteName: 'OV SEO',
+  title: 'Vamos falar de SEO?',
+  titleTemplate: '%s | OV SEO',
+  siteUrl: 'https://ottovarga.com.br',
   description:
-    'Aprendizados e experiências sobre desenvolvimento de software e gestão.',
+    'Bem-vindo ao meu Blog de SEO. Me chamo Otto Varga e vou compartilhar tudo sobre notícias, análises, dicas e tutorias de SEO. Vamos falar de SEO?',
   image: 'og_image.png',
-  twitterUsername: '@tavogus0',
-  author: 'Gustavo Rocha',
-  keywords: [
-    'desenvolvimento de sites',
-    'desenvolvimento de e-commerce',
-    'gestão de projeto',
-    'seo',
-    'wordpress',
-    'gatsby',
-    'reactjs',
-    'vuejs'
-  ]
+  twitterUsername: '@ottovarga',
+  author: 'Otto Varga',
+  keywords: ['seo']
 }

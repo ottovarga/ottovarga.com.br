@@ -40,7 +40,7 @@ const post: React.FC<Props> = ({
   return (
     <article
       className={`${
-        cardType === 'long' || cardType === 'featured' ? 'col-span-3' : ''
+        cardType === 'long' || cardType === 'featured' ? 'lg:col-span-3' : ''
       }`}
     >
       <Card
@@ -50,13 +50,15 @@ const post: React.FC<Props> = ({
             <Link to={url}>
               <h2
                 className={`font-bold mb-6 ${
-                  cardType === 'featured' ? 'text-5xl' : 'text-3xl'
+                  cardType === 'featured'
+                    ? 'text-2xl lg:text-5xl'
+                    : 'text-2xl lg:text-3xl'
                 }`}
               >
                 {title}
               </h2>
             </Link>
-            <div className="text-lg text-gray-700 dark:text-gray-300 flex-grow">
+            <div className="text-base lg:text-lg text-gray-700 dark:text-gray-300 flex-grow">
               <p>{excerpt && formatExcerpt(excerpt, 250)}</p>
             </div>
           </>

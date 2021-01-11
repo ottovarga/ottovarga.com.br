@@ -44,7 +44,7 @@ const post = ({ data, pageContext }) => {
         modified={modifiedGmt}
       />
       {featuredImage && featuredImage.node && (
-        <div className="w-full h-96 relative">
+        <div className="w-full h-48 lg:h-96 relative">
           <Img
             className="w-full h-full object-cover"
             fluid={featuredImage.node.localFile.childImageSharp.featured}
@@ -54,7 +54,7 @@ const post = ({ data, pageContext }) => {
       )}
 
       <div className="container px-4">
-        <div className="flex justify-center items-center flex-col mb-24">
+        <div className="mb-24">
           <ReadProgressBar
             attachTo={readRef}
             color="bg-purple-600 dark:bg-green-500"
@@ -62,7 +62,7 @@ const post = ({ data, pageContext }) => {
           />
 
           <div className="lg:w-5/6 mt-20 mb-16 px-4" ref={readRef}>
-            <div className="max-w-3xl mx-auto mb-4">
+            <div className="max-w-2xl mx-auto mb-4">
               <div className="ml-2">
                 <Breadcrumb
                   className="text-sm"

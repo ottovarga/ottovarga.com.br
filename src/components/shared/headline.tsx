@@ -29,16 +29,16 @@ const headline: React.FC<Props> = ({ title, subtitle, showImg }) => {
     }
   `)
   return (
-    <div className="flex justify-between items-center">
-      <div className="max-w-lg">
-        <h1 className="text-6xl font-bold mb-5">{title}</h1>
-        <div className="text-3xl text-gray-600 dark:text-gray-500">
+    <div className="flex flex-wrap justify-start lg:justify-around items-center">
+      <div className="w-full lg:max-w-lg mb-16 lg:mb-0">
+        <h1 className="text-3xl lg:text-6xl font-bold mb-5">{title}</h1>
+        <div className="text-xl lg:text-3xl text-gray-600 dark:text-gray-500">
           {subtitle}
         </div>
       </div>
       {showImg && (
         <div className="flex flex-col justify-center items-center">
-          <div className="w-44 mb-8">
+          <div className="w-36 lg:w-44 mb-8">
             <Img
               fluid={image.file.childImageSharp.fluid}
               loading="eager"
@@ -47,7 +47,7 @@ const headline: React.FC<Props> = ({ title, subtitle, showImg }) => {
               className="shadow-lg rounded-full"
             />
           </div>
-          <p className="text-xl text-gray-600 dark:text-gray-500 text-center">
+          <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-500 text-center">
             CEO e SEO Master na{' '}
             <a
               target="_blank"
