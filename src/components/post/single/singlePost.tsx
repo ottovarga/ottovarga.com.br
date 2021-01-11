@@ -21,6 +21,10 @@ export interface SinglePostProps {
   featuredImage?: FeaturedImage
   tags: Tag[]
   slug: string
+  author: {
+    firstName: string
+    lastName: string
+  }
 }
 
 const singlePost: React.FC<SinglePostProps> = ({
@@ -29,7 +33,8 @@ const singlePost: React.FC<SinglePostProps> = ({
   date,
   readingTime,
   tags,
-  featuredImage
+  featuredImage,
+  author
 }) => {
   const contentSectionRef = useRef<HTMLElement>(null)
 
@@ -75,10 +80,6 @@ const singlePost: React.FC<SinglePostProps> = ({
   return (
     <>
       <article className="mb-8 md:mb-16" ref={contentSectionRef}>
-        <div className="max-w-prose m-auto mb-12">
-          <h1 className="text-4xl font-bold mb-4">{title}</h1>
-          <PostMeta date={date} readingTime={readingTime} tags={tags} />
-        </div>
         <div
           className="mx-auto"
           id="ArticleFeaturedImage"
@@ -88,14 +89,21 @@ const singlePost: React.FC<SinglePostProps> = ({
         >
           {featuredImage && (
             <Img
-              className="mb-8 shadow-lg dark:shadow-gray-300-lg transition-shadow rounded"
+              className="mb-8"
               fluid={featuredImage?.localFile.childImageSharp.featured}
               alt={featuredImage?.altText}
             />
           )}
         </div>
         <div className="prose xl:prose-lg dark:prose-dark m-auto">
-          {parse(content, { replace: parseBlocks })}
+          <h1>{title}</h1>
+          <b>Escrito por {`${author.firstName} ${author.lastName}`}</b>
+          <PostMeta date={date} readingTime={readingTime} tags={tags} />
+
+          {parse(content, {
+            // @ts-ignore
+            replace: parseBlocks
+          })}
         </div>
         <Sharer
           className="flex flex-wrap lg:hidden items-center justify-end mt-12"

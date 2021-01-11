@@ -28,11 +28,11 @@ const IndexPage = ({
           <Headline
             title={`${
               pageContext.tagName
-                ? 'artigos sobre ' + pageContext.tagName
+                ? 'Artigos sobre ' + pageContext.tagName
                 : 'Olá, eu sou o Otto Varga!'
             }`}
             subtitle={`${pageContext.tagName ? '' : 'Vamos falar de SEO?'}`}
-            showImg
+            showImg={!pageContext.tagName}
           />
         </div>
       </section>
@@ -59,7 +59,11 @@ const IndexPage = ({
               ) => (
                 <React.Fragment key={slug + index}>
                   <Post
-                    cardType={index === 0 ? 'long' : 'short'}
+                    cardType={
+                      index === 0 && pageContext.pageNumber === 0
+                        ? 'long'
+                        : 'short'
+                    }
                     title={title}
                     date={date}
                     excerpt={excerpt}
@@ -68,21 +72,24 @@ const IndexPage = ({
                     tags={tags.nodes}
                     image={featuredImage && featuredImage.node}
                   />
-                  {index === 3 && pageContext.pageNumber === 0 && (
-                    <Post
-                      cardType="featured"
-                      title={stickyPost.title}
-                      date={stickyPost.date}
-                      excerpt={stickyPost.excerpt}
-                      url={stickyPost.uri}
-                      readingTime={stickyPost.minutes}
-                      tags={stickyPost.tags.nodes}
-                      image={
-                        stickyPost.featuredImage &&
-                        stickyPost.featuredImage.node
-                      }
-                    />
-                  )}
+                  {index === 3 &&
+                    !pageContext.tagSlug &&
+                    pageContext.pageNumber === 0 && (
+                      <Post
+                        cardType="featured"
+                        title={stickyPost.title}
+                        date={stickyPost.date}
+                        excerpt={stickyPost.excerpt}
+                        url={stickyPost.uri}
+                        readingTime={stickyPost.minutes}
+                        tags={stickyPost.tags.nodes}
+                        image={
+                          stickyPost.featuredImage &&
+                          stickyPost.featuredImage.node
+                        }
+                      />
+                      // eslint-disable-next-line indent
+                    )}
                 </React.Fragment>
               )
             )}

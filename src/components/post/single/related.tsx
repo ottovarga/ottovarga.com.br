@@ -1,25 +1,17 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import Post from '@components/post/post'
 
 import { SinglePostProps } from '@components/post/single/singlePost'
 
 interface Props {
-  posts: {
-    nodes: Array<SinglePostProps>
-  }
+  posts: any
 }
 
 const relatedPosts: React.FC<Props> = ({ posts }) => {
   return (
-    <div className="flex flex-wrap justify-between">
-      {posts.nodes.map(({ title, slug }) => (
-        <Link
-          className="hover:underline text-lg mb-2"
-          to={`/${slug}`}
-          key={slug}
-        >
-          {title}
-        </Link>
+    <div className="grid grid-cols-3 gap-8">
+      {posts.nodes.map(({ title, date, slug, uri }) => (
+        <Post key={slug} cardType="short" title={title} date={date} url={uri} />
       ))}
     </div>
   )

@@ -8,9 +8,9 @@ import Card from '@components/shared/card'
 
 interface Props {
   title: string
-  excerpt: string
-  tags: Tag[]
-  readingTime: number
+  excerpt?: string
+  tags?: Tag[]
+  readingTime?: number
   date: string
   image?: FeaturedImage
   url: string
@@ -57,7 +57,7 @@ const post: React.FC<Props> = ({
               </h2>
             </Link>
             <div className="text-lg text-gray-700 dark:text-gray-300 flex-grow">
-              <p>{formatExcerpt(excerpt, 250)}</p>
+              <p>{excerpt && formatExcerpt(excerpt, 250)}</p>
             </div>
           </>
         }

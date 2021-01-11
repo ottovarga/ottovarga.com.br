@@ -1,13 +1,13 @@
 import React, { useRef } from 'react'
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import ReadProgressBar from '@components/shared/readProgress'
 import Layout from '@components/layout'
 import SinglePost from '@components/post/single/singlePost'
-import Author from '@/components/post/single/author'
 import Related from '@/components/post/single/related'
-
 import Seo from '@components/infra/seo'
+import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 
 const Comments = React.lazy(() => import('@/components/post/single/comments'))
 const isSSR = typeof window === 'undefined'
@@ -27,6 +27,10 @@ const post = ({ data, pageContext }) => {
     seo
   } = data.post
 
+  const {
+    breadcrumb: { crumbs }
+  } = pageContext
+
   const readRef = useRef()
   return (
     <Layout>
@@ -39,8 +43,17 @@ const post = ({ data, pageContext }) => {
         date={dateGmt}
         modified={modifiedGmt}
       />
+      {featuredImage && featuredImage.node && (
+        <div className="w-full h-96 relative">
+          <Img
+            className="w-full h-full object-cover"
+            fluid={featuredImage.node.localFile.childImageSharp.featured}
+            alt={featuredImage.node.altText}
+          />
+        </div>
+      )}
 
-      <div className="container">
+      <div className="container px-4">
         <div className="flex justify-center items-center flex-col mb-24">
           <ReadProgressBar
             attachTo={readRef}
@@ -48,35 +61,35 @@ const post = ({ data, pageContext }) => {
             backgroundColor="transparent"
           />
 
-          <div className="lg:w-5/6 mt-24 mb-16 px-4" ref={readRef}>
+          <div className="lg:w-5/6 mt-20 mb-16 px-4" ref={readRef}>
+            <div className="max-w-3xl mx-auto mb-4">
+              <div className="ml-2">
+                <Breadcrumb
+                  className="text-sm"
+                  crumbs={crumbs}
+                  crumbLabel={title}
+                />
+              </div>
+            </div>
             <SinglePost
               title={title}
               content={content}
               date={date}
               readingTime={readingTime && readingTime.minutes}
               tags={tags && tags.nodes}
-              featuredImage={featuredImage && featuredImage.node}
+              author={author.node}
             />
 
             <hr className="border-t border-gray-300 dark:border-gray-500" />
           </div>
+          {data.related.nodes.length > 0 && (
+            <div className="mb-24">
+              <p className="text-2xl font-bold mb-8">Relacionados</p>
+              <Related posts={data.related} />
+            </div>
+          )}
           <div className="w-5/6">
             <div className="w-full lg:w-3/5 m-auto">
-              <div className="mb-32">
-                <p className="text-2xl font-bold mb-8">Autor</p>
-                <Author
-                  avatar={author.node.avatar.url}
-                  firstName={author.node.firstName}
-                  lastName={author.node.lastName}
-                  description={author.node.description}
-                />
-              </div>
-              {data.related.nodes.length > 0 && (
-                <div className="mb-24">
-                  <p className="text-2xl font-bold mb-8">Relacionados</p>
-                  <Related posts={data.related} />
-                </div>
-              )}
               <div>
                 {!isSSR && (
                   <React.Suspense fallback={<div />}>
@@ -113,6 +126,7 @@ export const pageQuery = graphql`
     ) {
       nodes {
         ...PostFields
+        ...FeaturedImage
       }
     }
   }
