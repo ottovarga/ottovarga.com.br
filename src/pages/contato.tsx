@@ -35,13 +35,13 @@ const contato: React.FC<Props> = ({ pageContext }) => {
       </div>
       <div className="container px-4 mb-32">
         <div className="flex flex-wrap justify-between">
-          <div className="lg:w-1/3">
+          <div className="lg:w-1/3 pr-4">
             <div className="prose xl:prose-lg mb-6 dark:prose-dark">
               <h2>Vamos falar de negócios?</h2>
             </div>
             <ContactForm />
           </div>
-          <div className="lg:w-2/3">
+          <div className="lg:w-2/3 pl-4">
             <div className="prose xl:prose-lg mb-6 dark:prose-dark">
               <h2>Vamos tomar um café?</h2>
             </div>
