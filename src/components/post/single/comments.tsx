@@ -35,11 +35,7 @@ const comments: React.FC<Props> = ({ id, title }) => {
 
   return (
     <>
-      <HyvorTalk.Embed
-        websiteId={0}
-        loadMode="scroll"
-        palette={context.theme === 'dark' ? darkPalette : lightPalette}
-      />
+      <HyvorTalk.Embed websiteId={2891} loadMode="scroll" />
     </>
   )
 }
