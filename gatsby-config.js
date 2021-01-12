@@ -51,7 +51,7 @@ module.exports = {
         path: path.join(__dirname, 'src/assets/images')
       }
     },
-    /* {
+    {
       resolve: 'gatsby-plugin-algolia',
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
@@ -60,7 +60,7 @@ module.exports = {
         indexName: process.env.ALGOLIA_INDEX_NAME,
         skipIndexing: process.env.NODE_ENV === 'development'
       }
-    }, */
+    },
     {
       resolve: 'gatsby-plugin-wordpress-preview',
       options: {

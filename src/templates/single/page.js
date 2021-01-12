@@ -48,12 +48,6 @@ const page = ({ data, pageContext, location }) => {
           <div className="prose xl:prose-lg dark:prose-dark mb-24">
             {parse(content, { replace: parseBlocks })}
           </div>
-          <aside className="lg:w-1/4">
-            <Sidebar>
-              <SearchLink />
-              <TagList tags={tags} />
-            </Sidebar>
-          </aside>
         </div>
       </div>
     </Layout>

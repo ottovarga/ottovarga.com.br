@@ -12,7 +12,10 @@ import SearchResults from '@components/shared/search/searchResults'
 
 import styles from './style.module.css'
 
-const searchClient = algoliasearch('DUMY', 'DUMY')
+const searchClient = algoliasearch(
+  'OTAWGRNR3I',
+  '0e4052ce98f42ca4171937d84cede94e'
+)
 
 const searchField = () => {
   return (
