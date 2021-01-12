@@ -14,7 +14,7 @@ import styles from './style.module.css'
 
 const searchClient = algoliasearch(
   'OTAWGRNR3I',
-  '0e4052ce98f42ca4171937d84cede94e'
+  '74b3a625f498c279f812a36353a86cb2'
 )
 
 const searchField = () => {
