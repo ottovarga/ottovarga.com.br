@@ -5,7 +5,7 @@ import Seo from '@components/infra/seo'
 const NotFoundPage = () => (
   <div>
     <Layout>
-      <Seo title="Página não encontrada | Gustavo Rocha" />
+      <Seo title="Página não encontrada | OV SEO" />
       <div className="flex justify-center items-center mt-32 max-w-2xl mx-auto px-4">
         <div className="text-center">
           <h1 className="text-5xl font-bold mb-4">
