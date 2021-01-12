@@ -11,9 +11,9 @@
 }
 
 .btn--primary {
-  @apply bg-purple-600 text-white;
+  @apply bg-gray-700 text-white;
 }
 
 .dark .btn--primary {
-  @apply bg-green-600;
+  @apply bg-gray-300 text-black;
 }

@@ -5,7 +5,7 @@ import axios from 'axios'
 const contactForm: React.FC = () => {
   const [isSuccessMessage, setIsSuccessMessage] = useState(false) // manage is success message state
   const [messageSent, setMessageSent] = useState(false) // manage sent message state
-  const siteUrl = 'https://admin.gustavo.lwtf'
+  const siteUrl = 'https://admin.ottovarga.com.br'
 
   const { handleChange, isSubmitting, values, handleSubmit } = useFormik({
     initialValues: {
@@ -33,7 +33,7 @@ const contactForm: React.FC = () => {
 
       axios({
         method: 'post',
-        url: `${siteUrl}/wp-json/contact-form-7/v1/contact-forms/13/feedback`,
+        url: `${siteUrl}/wp-json/contact-form-7/v1/contact-forms/30/feedback`,
         data: bodyFormData,
         headers: {
           'Content-Type': 'multipart/form-data'
