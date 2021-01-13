@@ -5,7 +5,7 @@ import gtagManagerPlugin from '@analytics/google-tag-manager'
 const analytics = Analytics({
   plugins: [
     gtagManagerPlugin({
-      containerId: 'GTM-TM8FGSJ'
+      containerId: 'GTM-TJC9XN5'
     })
   ]
 })
