@@ -43,7 +43,7 @@ const contato: React.FC<Props> = ({ pageContext }) => {
           </div>
           <div className="lg:w-2/5 pl-4">
             <div className="prose xl:prose-lg mb-6 dark:prose-dark">
-              <h2>Vamos tomar um café?</h2>
+              <h2>Vamos tomar um café quando a pademia acabar?</h2>
             </div>
             <iframe
               title="Mapa da onSERP"
