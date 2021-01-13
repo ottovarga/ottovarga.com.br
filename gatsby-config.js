@@ -150,7 +150,7 @@ module.exports = {
         background_color: '#374151',
         theme_color: '#374151',
         display: 'minimal-ui',
-        icon: './src/assets/images/wtf-icon.png'
+        icon: './src/assets/images/favicon-seo.png'
       }
     },
     'gatsby-plugin-offline'
