@@ -119,7 +119,7 @@ const createPages = async ({ graphql, actions }) => {
       items: posts.nodes,
       itemsPerPage: 10,
       pathPrefix: ({ pageNumber }) =>
-        pageNumber === 0 ? `/tag/${slug}` : `/tag/${slug}/page`,
+        pageNumber === 0 ? `/categoria/${slug}` : `/categoria/${slug}/page`,
       component: blogTemplate,
       context: {
         tagSlug: slug,

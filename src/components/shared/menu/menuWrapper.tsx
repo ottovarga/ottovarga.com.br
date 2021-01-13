@@ -69,17 +69,20 @@ const menuWrapper: React.FC = () => {
                 title,
                 target,
                 id
-              }) => (
-                <MenuItem
-                  key={id}
-                  link={path}
-                  name={label}
-                  classes={cssClasses}
-                  rel={linkRealationship}
-                  title={title}
-                  target={target}
-                />
-              )
+              }) => {
+                const formattedLink = path.replace('/tag').replace('/categoria')
+                return (
+                  <MenuItem
+                    key={id}
+                    link={formattedLink}
+                    name={label}
+                    classes={cssClasses}
+                    rel={linkRealationship}
+                    title={title}
+                    target={target}
+                  />
+                )
+              }
             )}
           </Menu>
         )}
