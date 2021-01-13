@@ -19,7 +19,7 @@ const searchClient = algoliasearch(
 
 const searchField = () => {
   return (
-    <InstantSearch searchClient={searchClient} indexName="blog">
+    <InstantSearch searchClient={searchClient} indexName="Blog Otto">
       <SearchBox
         // @ts-ignore
         className={styles.searchInput}
