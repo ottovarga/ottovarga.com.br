@@ -61,7 +61,7 @@ const post = ({ data, pageContext }) => {
             backgroundColor="transparent"
           />
 
-          <div className="lg:w-5/6 mt-20 mb-16 px-4" ref={readRef}>
+          <div className="lg:w-5/6 mt-20 mb-16 mx-auto px-4" ref={readRef}>
             <div className="max-w-2xl mx-auto mb-4">
               <div className="ml-2">
                 <Breadcrumb
@@ -88,7 +88,7 @@ const post = ({ data, pageContext }) => {
               <Related posts={data.related} />
             </div>
           )}
-          <div className="w-5/6">
+          <div className="px-4 lg:w-5/6 mx-auto">
             <div className="w-full lg:w-3/5 m-auto">
               <div>
                 {!isSSR && (
