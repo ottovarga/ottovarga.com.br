@@ -48,9 +48,10 @@ const contato: React.FC<Props> = ({ pageContext }) => {
             <iframe
               title="Mapa da onSERP"
               className="lazyload"
-              data-src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14702.144701820083!2d-43.1967135!3d-22.8935863!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfbadf598b9761f1a!2sonSERP%20Marketing%20-%20Ag%C3%AAncia%20de%20SEO%20e%20desenvolvimento%20de%20site%20e%20E-commerce!5e0!3m2!1spt-BR!2sbr!4v1610495507061!5m2!1spt-BR!2sbr"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14702.144701820083!2d-43.1967135!3d-22.8935863!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xfbadf598b9761f1a!2sonSERP%20Marketing%20-%20Ag%C3%AAncia%20de%20SEO%20e%20desenvolvimento%20de%20site%20e%20E-commerce!5e0!3m2!1spt-BR!2sbr!4v1610495507061!5m2!1spt-BR!2sbr"
               width="100%"
               height="250"
+              loading="lazy"
               style={{ border: 0 }}
               frameBorder="0"
               allowFullScreen={false}
