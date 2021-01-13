@@ -1,5 +1,5 @@
 {
   "redirects": [
-    { "source": "/o-que-e-seo/", "destination": "/", "statusCode": 301 },
+    { "source": "/o-que-e-seo/", "destination": "/", "statusCode": 301 }
      ]
 }
