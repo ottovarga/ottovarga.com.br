@@ -28,7 +28,7 @@ const postMeta: React.FC<Props> = ({ readingTime, date, tags }) => {
             categorias:{' '}
             {tags.map(({ name, slug }, index, array) => (
               <span key={slug}>
-                <Link className="hover:underline" to={`/tag/${slug}`}>
+                <Link className="hover:underline" to={`/categoria/${slug}`}>
                   {name}
                 </Link>
                 {array.length - 1 > index && <span>{', '}</span>}
