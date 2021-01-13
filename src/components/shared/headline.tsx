@@ -30,12 +30,12 @@ const headline: React.FC<Props> = ({ title, subtitle, showImg }) => {
   `)
   return (
     <div className="flex flex-wrap justify-start lg:justify-around items-center">
-      <div className="w-full lg:max-w-lg mb-16 lg:mb-0">
-        <h1 className="text-3xl lg:text-6xl font-bold mb-5">{title}</h1>
+      <h1 className="w-full lg:max-w-lg mb-16 lg:mb-0 text-center lg:text-left">
+        <div className="text-3xl lg:text-6xl font-bold mb-5">{title}</div>
         <div className="text-xl lg:text-3xl text-gray-600 dark:text-gray-500">
           {subtitle}
         </div>
-      </div>
+      </h1>
       {showImg && (
         <div className="flex flex-col justify-center items-center">
           <div className="w-36 lg:w-44 mb-8">
