@@ -57,7 +57,7 @@ const post = ({ data, pageContext }) => {
         <div className="mb-24">
           <ReadProgressBar
             attachTo={readRef}
-            color="bg-purple-600 dark:bg-green-500"
+            color="bg-gray-700 dark:bg-gray-300"
             backgroundColor="transparent"
           />
 
