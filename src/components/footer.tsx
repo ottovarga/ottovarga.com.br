@@ -43,6 +43,7 @@ const footer: React.FC = () => {
               href="https://instagram.com/ottovarga.88"
               rel="noopener noreferrer"
               target="_blank"
+              className="text-gray-600 dark:text-gray-400 hover:opacity-80 fill-current"
             >
               <InstagramIcon />
             </a>
@@ -50,6 +51,7 @@ const footer: React.FC = () => {
               href="https://www.linkedin.com/in/ottovarga/"
               rel="noopener noreferrer"
               target="_blank"
+              className="text-gray-600 dark:text-gray-400 hover:opacity-80 fill-current"
             >
               <Linkedin />
             </a>

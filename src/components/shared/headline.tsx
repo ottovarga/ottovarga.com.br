@@ -62,7 +62,7 @@ const headline: React.FC<Props> = ({ title, subtitle, showImg }) => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              className="font-bold hover:underline"
+              className="font-bold hover:underline hover:opacity-90"
               href="https://ecommercenapratica.com"
             >
               E-commerce Pro
