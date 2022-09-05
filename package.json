@@ -37,7 +37,6 @@
     "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sharp": "^2.12.0",
     "gatsby-plugin-typescript": "^2.9.0",
-    "gatsby-plugin-wordpress-preview": "^1.0.1",
     "gatsby-source-filesystem": "^2.5.0",
     "gatsby-source-wordpress-experimental": "6.2.0",
     "gatsby-transformer-sharp": "^2.6.0",
@@ -97,9 +96,9 @@
   "types": "./index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gustavo-a/gustavo.wtf"
+    "url": "https://github.com/ottovarga/ottovarga.com.br"
   },
   "bugs": {
-    "url": "https://github.com/gustavo-a/gustavo.wtf/issues"
+    "url": "https://github.com/ottovarga/ottovarga.com.br/issues"
   }
 }

@@ -62,14 +62,6 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-plugin-wordpress-preview',
-      options: {
-        graphqlEndpoint: process.env.WP_GRAPHQL_URL,
-        debug: true,
-        processMediaItems: false
-      }
-    },
-    {
       resolve: 'gatsby-source-wordpress-experimental',
       options: {
         url: process.env.WP_GRAPHQL_URL,
