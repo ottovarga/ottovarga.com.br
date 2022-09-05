@@ -26,15 +26,6 @@ const footer: React.FC = () => {
               >
                 Gatsby
               </a>
-              . Hospedado na{' '}
-              <a
-                href="https://vercel.com"
-                rel="noopener noreferrer"
-                target="_blank"
-                className="hover:underline"
-              >
-                Vercel
-              </a>
               .
             </p>
           </div>
