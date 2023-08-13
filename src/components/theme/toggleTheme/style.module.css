@@ -1,11 +1,7 @@
 .dark-mode {
-  @apply opacity-50 relative flex items-center justify-center w-10 ml-2 rounded-md h-6;
+  @apply opacity-50 relative flex items-center justify-center w-10 ml-2 md:ml-8 rounded-md h-6;
   @apply transition-opacity duration-300 ease-linear;
   @apply outline-none !important;
-
-  @screen md {
-    @apply ml-8;
-  }
 }
 
 .dark-mode__inner {

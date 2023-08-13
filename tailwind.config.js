@@ -53,7 +53,10 @@ function buildShadowPalette(theme) {
       if (
         typeof v === 'string' &&
         v !== 'transparent' &&
-        v !== 'currentColor'
+        v !== 'currentColor' &&
+        v !== 'inherit' &&
+        v !== 'initial' &&
+        v !== 'unset'
       ) {
         const { red, green, blue } = hexToRgb(v)
         acc[k] = makeShadow(k, `${red}, ${green}, ${blue}`)
@@ -78,7 +81,7 @@ function buildShadowPalette(theme) {
 }
 
 module.exports = {
-  purge: ['./src/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
   theme: {
     screens: {
@@ -96,7 +99,6 @@ module.exports = {
       container: {
         center: true
       },
-      colors: {},
 
       fontFamily: {
         body: ['Inter', 'Helvetica', 'sans-serif']

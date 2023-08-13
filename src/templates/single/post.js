@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 import ReadProgressBar from '@components/shared/readProgress'
 import Layout from '@components/layout'
@@ -8,10 +8,6 @@ import SinglePost from '@components/post/single/singlePost'
 import Related from '@/components/post/single/related'
 import Seo from '@components/infra/seo'
 import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
-
-const Comments = React.lazy(() => import('@/components/post/single/comments'))
-const isSSR = typeof window === 'undefined'
-
 const post = ({ data, pageContext }) => {
   const {
     title,
@@ -45,9 +41,9 @@ const post = ({ data, pageContext }) => {
       />
       {featuredImage && featuredImage.node && (
         <div className="w-full h-48 lg:h-96 relative">
-          <Img
+          <GatsbyImage
             className="w-full h-full object-cover"
-            fluid={featuredImage.node.localFile.childImageSharp.featured}
+            image={featuredImage.node.localFile.childImageSharp.featured}
             alt={featuredImage.node.altText}
           />
         </div>
@@ -88,18 +84,6 @@ const post = ({ data, pageContext }) => {
               <Related posts={data.related} />
             </div>
           )}
-          <div className="px-4 lg:w-5/6 mx-auto">
-            <div className="w-full lg:w-3/5 m-auto">
-              <div>
-                {!isSSR && (
-                  <React.Suspense fallback={<div />}>
-                    <p className="text-2xl font-bold mb-8">Comentários</p>
-                    <Comments id={slug} title={title} />
-                  </React.Suspense>
-                )}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </Layout>

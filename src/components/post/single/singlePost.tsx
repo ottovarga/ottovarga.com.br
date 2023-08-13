@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, useContext } from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import throttle from 'lodash/throttle'
 import parse from 'html-react-parser'
 
@@ -20,7 +20,7 @@ export interface SinglePostProps {
   readingTime: number
   featuredImage?: FeaturedImage
   tags: Tag[]
-  slug: string
+  slug?: string
   author: {
     firstName: string
     lastName: string
@@ -88,9 +88,9 @@ const singlePost: React.FC<SinglePostProps> = ({
           }}
         >
           {featuredImage && (
-            <Img
+            <GatsbyImage
               className="mb-8"
-              fluid={featuredImage?.localFile.childImageSharp.featured}
+              image={featuredImage?.localFile.childImageSharp.featured}
               alt={featuredImage?.altText}
             />
           )}
@@ -100,10 +100,12 @@ const singlePost: React.FC<SinglePostProps> = ({
           <b>Escrito por {`${author.firstName} ${author.lastName}`}</b>
           <PostMeta date={date} readingTime={readingTime} tags={tags} />
 
-          {parse(content, {
-            // @ts-ignore
-            replace: parseBlocks
-          })}
+          {content &&
+            content.length > 0 &&
+            parse(content, {
+              // @ts-ignore
+              replace: parseBlocks
+            })}
         </div>
         <Sharer
           className="flex flex-wrap lg:hidden items-center justify-end mt-12"

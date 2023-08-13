@@ -10,7 +10,7 @@ import {
 
 import SearchResults from '@components/shared/search/searchResults'
 
-import styles from './style.module.css'
+import * as styles from './style.module.css'
 
 const searchClient = algoliasearch(
   'OTAWGRNR3I',

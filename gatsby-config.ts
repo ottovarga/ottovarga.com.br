@@ -1,4 +1,4 @@
-const path = require('path')
+import path from 'path'
 
 require('dotenv').config({
   path: '.env'
@@ -8,23 +8,10 @@ const siteMetadata = require('./config/metadata')
 
 module.exports = {
   siteMetadata,
-  flags: { PRESERVE_WEBPACK_CACHE: true, FAST_DEV: true, LAZY_IMAGES: true },
+  graphqlTypegen: true,
   plugins: [
     'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-plugin-root-import',
-      options: {
-        '@': path.join(__dirname, 'src'),
-        '@components': path.join(__dirname, 'src/components'),
-        '@templates': path.join(__dirname, 'src/templates'),
-        '@infra': path.join(__dirname, 'src/infra'),
-        '@styles': path.join(__dirname, 'src/styles'),
-        '@svg': path.join(__dirname, 'src/assets/svg'),
-        '@utils': path.join(__dirname, 'src/utils'),
-        '@config': path.join(__dirname, 'config'),
-        '@root': path.join(__dirname)
-      }
-    },
+    'gatsby-plugin-tsconfig-paths',
     {
       resolve: 'gatsby-plugin-typescript',
       options: {
@@ -62,12 +49,22 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-wordpress-experimental',
+      resolve: 'gatsby-source-wordpress',
       options: {
         url: process.env.WP_GRAPHQL_URL,
+        schema: {
+          timeout: 3000000,
+          perPage: process.env.NODE_ENV === 'development' ? 10 : 20,
+          requestConcurrency: 10,
+          previewRequestConcurrency: 10
+        },
         type: {
           Post: {
-            limit: process.env.NODE_ENV === 'development' ? 50 : null
+            limit:
+              process.env.NODE_ENV === 'development' ||
+              process.env.SITE_DEBUG === 'true'
+                ? 50
+                : 100000
           }
         }
       }
@@ -118,14 +115,13 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
-        failOnError: false
+        failOn: 'none'
       }
     },
-    'gatsby-plugin-preload-link-crossorigin',
+    'gatsby-plugin-image',
     'gatsby-plugin-advanced-sitemap',
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-css-modules',
-    'gatsby-plugin-analytics',
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {

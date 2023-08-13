@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 
 import { ThemeContext } from '@components/theme/themeContext'
 
-import styles from './style.module.css'
+import * as styles from './style.module.css'
 
 const toggleTheme: React.FC = () => {
   const [icon, setIcon] = useState('moon')

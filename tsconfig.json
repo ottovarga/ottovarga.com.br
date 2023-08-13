@@ -1,21 +1,32 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "noImplicitAny": false,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "target": "esnext" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "lib": [
+      "dom",
+      "esnext"
+    ] /* Specify a set of bundled library declaration files that describe the target runtime environment. */,
+    "jsx": "preserve" /* Specify what JSX code is generated. */,
+    /* Modules */
+    "module": "esnext" /* Specify what module code is generated. */,
+    // "rootDir": "./",                                  /* Specify the root folder within your source files. */
+    "moduleResolution": "node" /* Specify how TypeScript looks up a file from a given module specifier. */,
+    "baseUrl": "." /* Specify the base directory to resolve non-relative module names. */,
+    "allowJs": true /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */,
+    "checkJs": true /* Enable error reporting in type-checked JavaScript files. */,
+
+    "noEmit": true /* Disable emitting files from a compilation. */,
+    "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */,
     "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react",
+    "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+
+    /* Type Checking */
+    "strict": false /* Enable all strict type-checking options. */,
+
+    /* Completeness */
+    "skipLibCheck": true /* Skip type checking all .d.ts files. */,
+    "importsNotUsedAsValues": "preserve",
+    "declaration": true,
+    "resolveJsonModule": true,
     "paths": {
       "@/*": ["src/*"],
       "@components/*": ["src/components/*"],
@@ -28,6 +39,15 @@
       "@root/*": ["/*"]
     }
   },
-  "include": ["src/**/*", "gatsby/**/*"],
+  "include": [
+    "./src/**/*",
+    "./src/gatsby-types.d.ts",
+    "_gatsby-node.ts",
+    "./gatsby-config.ts",
+    "./gatsby-browser.tsx",
+    "./plugins/**/*",
+    "./types/**/*",
+    "./**/*.ts"
+  ],
   "exclude": ["node_modules/**/*"]
 }

@@ -7,7 +7,7 @@ import {
   LogoJsonLd,
   BreadcrumbJsonLd
 } from 'gatsby-plugin-next-seo'
-import { GatsbyImageFixedProps, GatsbyImageFluidProps } from 'gatsby-image'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
 
 interface Props {
   title?: string
@@ -28,12 +28,12 @@ type Images = {
   altText: string
   localFile: {
     childImageSharp: {
-      thumb: GatsbyImageFluidProps
-      featured: GatsbyImageFluidProps
-      ogImage: GatsbyImageFixedProps
-      ogImageSquare: GatsbyImageFixedProps
-      ogImageFourXThree: GatsbyImageFixedProps
-      ogImageSixteenXNine: GatsbyImageFixedProps
+      thumb: IGatsbyImageData
+      featured: IGatsbyImageData
+      ogImage: IGatsbyImageData
+      ogImageSquare: IGatsbyImageData
+      ogImageFourXThree: IGatsbyImageData
+      ogImageSixteenXNine: IGatsbyImageData
     }
   }
 }

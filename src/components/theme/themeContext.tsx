@@ -10,7 +10,9 @@ export const ThemeContext = createContext<ThemeContextType>({
   toggleThemeMode: () => {}
 })
 
-const themeProvider: React.FC = ({ children }) => {
+const themeProvider: React.FC<{ children: React.ReactNode }> = ({
+  children
+}) => {
   const [theme, setTheme] = useState('light')
 
   useEffect(() => {

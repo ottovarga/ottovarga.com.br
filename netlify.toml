@@ -1,0 +1,8 @@
+[[plugins]]
+package = "@netlify/plugin-gatsby"
+
+[[redirects]]
+  from = "/o-que-e-seo/"
+  to = "/"
+  status = 301
+  force = true

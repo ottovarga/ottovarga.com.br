@@ -1,6 +1,9 @@
-const { each, filter } = require('lodash')
-const { resolve } = require('path')
-const { paginate } = require('gatsby-awesome-pagination')
+import { resolve } from 'path'
+import { paginate } from 'gatsby-awesome-pagination'
+
+import each from 'lodash/each'
+import filter from 'lodash/filter'
+
 function getOnlySimplePages(edges) {
   return filter(
     edges,

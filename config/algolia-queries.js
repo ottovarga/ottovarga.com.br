@@ -1,4 +1,4 @@
-const formatExcerpt = require('../src/utils/moduleFormatExcerpt')
+import { formatExcerpt } from '../src/utils/formatExcerpt'
 
 const pageQuery = `{
   posts: allWpPost(filter: {status: {eq: "publish"}}) {
@@ -41,4 +41,4 @@ const queries = [
   }
 ]
 
-module.exports = queries
+export default queries

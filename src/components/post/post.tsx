@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Img, { FluidObject } from 'gatsby-image'
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 import PostMeta, { Tag } from '@components/post/postMeta'
 import formatExcerpt from '@utils/formatExcerpt'
@@ -21,8 +21,8 @@ export type FeaturedImage = {
   altText: string
   localFile: {
     childImageSharp: {
-      thumb: FluidObject | FluidObject[]
-      featured: FluidObject | FluidObject[]
+      thumb: IGatsbyImageData
+      featured: IGatsbyImageData
     }
   }
 }
@@ -68,12 +68,12 @@ const post: React.FC<Props> = ({
             <>
               {
                 <Link to={url} className="block h-full w-full">
-                  <Img
+                  <GatsbyImage
                     className="object-cover w-full h-full"
                     alt={image?.altText}
-                    fluid={image?.localFile.childImageSharp.thumb}
+                    image={image?.localFile.childImageSharp.thumb}
                     loading="lazy"
-                  ></Img>
+                  ></GatsbyImage>
                 </Link>
               }
             </>

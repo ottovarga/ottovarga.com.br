@@ -16,12 +16,12 @@ const menuWrapper: React.FC = () => {
       document
         .querySelector('body')
         ?.classList.add('transform', 'translate-x-60', 'overflow-hidden')
-      menuWrapperRef.current?.classList.add('translate-x-0')
+      //menuWrapperRef.current?.classList.add('translate-x-0')
     } else {
       document
         .querySelector('body')
         ?.classList.remove('transform', 'translate-x-60', 'overflow-hidden')
-      menuWrapperRef.current?.classList.remove('translate-x-0')
+      //menuWrapperRef.current?.classList.remove('translate-x-0')
     }
   }, [isOpen])
 

@@ -6,6 +6,7 @@ import HandleOverlap from '@/components/post/handleOverlap'
 
 interface AsideProps {
   contentHeight: number
+  children: React.ReactNode
 }
 
 const postAside: React.FC<AsideProps> = ({ contentHeight, children }) => {
@@ -75,7 +76,7 @@ const postAside: React.FC<AsideProps> = ({ contentHeight, children }) => {
 
 export default postAside
 
-const AsideContainer: React.FC = ({ children }) => {
+const AsideContainer = ({ children }: { children: React.ReactNode }) => {
   return (
     <aside className="hidden lg:flex mx-auto max-w-screen-xl">{children}</aside>
   )

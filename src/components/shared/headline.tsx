@@ -1,6 +1,5 @@
 import React from 'react'
-import { useStaticQuery, graphql, StaticQuery } from 'gatsby'
-import Img, { FluidObject } from 'gatsby-image'
+import { StaticImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 interface Props {
   title?: string
@@ -11,23 +10,12 @@ interface Props {
 interface ImageQuery {
   file: {
     childImageSharp: {
-      fluid: FluidObject
+      fluid: IGatsbyImageData
     }
   }
 }
 
 const headline: React.FC<Props> = ({ title, subtitle, showImg }) => {
-  const image = useStaticQuery<ImageQuery>(graphql`
-    query AUTHOR_PICTURE {
-      file(relativePath: { eq: "otto-varga.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 180) {
-            ...GatsbyImageSharpFluid_noBase64
-          }
-        }
-      }
-    }
-  `)
   return (
     <div className="flex flex-wrap justify-start lg:justify-around items-center">
       <h1 className="w-full lg:max-w-lg mb-16 lg:mb-0 text-center lg:text-left">
@@ -39,11 +27,10 @@ const headline: React.FC<Props> = ({ title, subtitle, showImg }) => {
       {showImg && (
         <div className="flex flex-col justify-center items-center">
           <div className="w-36 lg:w-44 mb-8">
-            <Img
-              fluid={image.file.childImageSharp.fluid}
+            <StaticImage
+              src="../../assets/images/otto-varga.png"
               loading="eager"
               alt="Otto Varga"
-              fadeIn={true}
               className="shadow-lg rounded-full"
             />
           </div>

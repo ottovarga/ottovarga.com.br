@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import SearchIcon from '@svg/search.svg'
-import styles from './style.module.css'
+import * as styles from './style.module.css'
 
 const SearchLink: React.FC = () => {
   return (

@@ -35,24 +35,24 @@ export const featuredImage = graphql`
         altText
         localFile {
           childImageSharp {
-            thumb: fluid(maxWidth: 600) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-            featured: fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-            ogImage: fixed(width: 1200, height: 630) {
-              ...GatsbyImageSharpFixed_noBase64
-            }
-            ogImageSquare: fixed(width: 1000, height: 1000) {
-              ...GatsbyImageSharpFixed_noBase64
-            }
-            ogImageFourXThree: fixed(width: 1200, height: 900) {
-              ...GatsbyImageSharpFixed_noBase64
-            }
-            ogImageSixteenXNine: fixed(width: 1600, height: 900) {
-              ...GatsbyImageSharpFixed_noBase64
-            }
+            thumb: gatsbyImageData(layout: CONSTRAINED, width: 600)
+            featured: gatsbyImageData(layout: CONSTRAINED, width: 1000)
+            ogImage: gatsbyImageData(layout: FIXED, width: 1200, height: 630)
+            ogImageSquare: gatsbyImageData(
+              layout: FIXED
+              width: 1000
+              height: 1000
+            )
+            ogImageFourXThree: gatsbyImageData(
+              layout: FIXED
+              width: 1200
+              height: 900
+            )
+            ogImageSixteenXNine: gatsbyImageData(
+              layout: FIXED
+              width: 1600
+              height: 900
+            )
           }
         }
       }
