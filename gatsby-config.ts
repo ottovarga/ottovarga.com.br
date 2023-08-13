@@ -10,7 +10,6 @@ module.exports = {
   siteMetadata,
   graphqlTypegen: true,
   plugins: [
-    'gatsby-plugin-react-helmet',
     'gatsby-plugin-tsconfig-paths',
     {
       resolve: 'gatsby-plugin-typescript',
