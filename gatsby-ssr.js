@@ -1,6 +1,6 @@
-const React = require('react')
+import React from 'react'
 
-exports.onRenderBody = ({ setHeadComponents }) => {
+export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
   setHeadComponents([
     React.createElement('link', {
       key: 'preconnectFonts',
@@ -15,4 +15,8 @@ exports.onRenderBody = ({ setHeadComponents }) => {
       rel: 'stylesheet'
     })
   ])
+
+  setHtmlAttributes({
+    lang: 'pt-BR'
+  })
 }

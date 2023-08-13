@@ -82,12 +82,7 @@ module.exports = {
         }
       }
     },
-    {
-      resolve: 'gatsby-plugin-html-attributes',
-      options: {
-        lang: 'pt-BR'
-      }
-    },
+
     {
       resolve: 'gatsby-plugin-disqus',
       options: {
@@ -121,6 +116,7 @@ module.exports = {
     'gatsby-plugin-advanced-sitemap',
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-css-modules',
+    'gatsby-plugin-netlify',
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {
