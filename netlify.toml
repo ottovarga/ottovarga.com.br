@@ -6,3 +6,6 @@ package = "@netlify/plugin-gatsby"
   to = "/"
   status = 301
   force = true
+
+[functions]
+external_node_modules = ["jsdom", "@mozilla/readability", "rss-parser", "openai"]
