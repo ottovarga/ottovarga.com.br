@@ -34,12 +34,25 @@ export async function formatContent(text: string, url: string) {
 
     const openai = new OpenAIApi(configuration)
 
-    const openaiResponse = await openai.createChatCompletion({
+    let openaiResponse = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
       messages: [
         {
           role: 'user',
-          content: `Faça um breve resumo do seguinte conteúdo (até 100 palavras): ${article}`
+          content: `Traduza o seguinte texto para portugês: ${article}`
+        }
+      ],
+      temperature: 0.8
+    })
+
+    const translation = openaiResponse.data.choices[0].message.content
+
+    openaiResponse = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: [
+        {
+          role: 'user',
+          content: `Faça um breve resumo do seguinte conteúdo (até 100 palavras): ${translation}`
         }
       ],
       temperature: 0.8
@@ -55,28 +68,31 @@ export async function formatContent(text: string, url: string) {
 }
 
 export function postToSlack(feed: Feed[]) {
-  fetch(process.env.SLACK_WEBHOOK_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      text: formatFeed(feed)
+  formatFeed(feed).forEach(item => {
+    fetch(process.env.SLACK_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        text: item
+      })
     })
   })
 }
 
-function formatFeed(feed: Feed[]) {
+const formatFeed: (feed: Feed[]) => string[] = (feed: Feed[]) => {
   const flattened = feed.flat()
 
-  let finalString = ''
+  let finalStringArr = []
 
   flattened.forEach((content, index) => {
-    finalString += `Notícia ${index + 1}:\n`
-    finalString += `*${content.title}*\n${content.content}\n`
-    finalString += `${content.date}\n`
-    finalString += `Link: ${content.link}\n\n-----------\n\n`
+    finalStringArr[index] = ''
+    finalStringArr[index] += `Notícia ${index + 1}:\n`
+    finalStringArr[index] += `*${content.title}*\n${content.content}\n`
+    finalStringArr[index] += `${content.date}\n`
+    finalStringArr[index] += `Link: ${content.link}\n\n-----------\n\n`
   })
 
-  return finalString
+  return finalStringArr
 }
