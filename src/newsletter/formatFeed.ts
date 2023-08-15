@@ -42,7 +42,7 @@ export async function formatContent(text: string, url: string) {
           content: `Traduza o seguinte texto para portugês: ${article}`
         }
       ],
-      temperature: 0.8
+      temperature: 0
     })
 
     const translation = openaiResponse.data.choices[0].message.content
@@ -55,7 +55,7 @@ export async function formatContent(text: string, url: string) {
           content: `Faça um breve resumo do seguinte conteúdo (até 100 palavras): ${translation}`
         }
       ],
-      temperature: 0.8
+      temperature: 0.5
     })
 
     const content = openaiResponse.data.choices[0].message.content
@@ -67,9 +67,9 @@ export async function formatContent(text: string, url: string) {
   }
 }
 
-export function postToSlack(feed: Feed[]) {
-  formatFeed(feed).forEach(item => {
-    fetch(process.env.SLACK_WEBHOOK_URL, {
+export async function postToSlack(feed: Feed[]) {
+  for (const item of formatFeed(feed)) {
+    await fetch(process.env.SLACK_WEBHOOK_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ export function postToSlack(feed: Feed[]) {
         text: item
       })
     })
-  })
+  }
 }
 
 const formatFeed: (feed: Feed[]) => string[] = (feed: Feed[]) => {
