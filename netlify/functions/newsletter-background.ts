@@ -6,20 +6,15 @@ import type {
 
 import RSSParser from 'rss-parser'
 
-import { formatContent } from '@/newsletter/formatFeed'
-import { postToSlack } from '@/newsletter/postFeed'
+import {
+  formatContent,
+  formatTitle,
+  categorizePosts,
+  categoriesCondition
+} from '@/newsletter/formatFeed'
+import { postToSlack, FEEDS_URL } from '@/newsletter/postFeed'
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
-
-const FEEDS_URL = [
-  //'http://feeds.seroundtable.com/SearchEngineRoundtable1',
-  'https://moz.com/posts/rss/blog',
-  'https://feeds.feedburner.com/blogspot/amDG',
-  //'https://www.searchenginewatch.com/feed/',
-  //'https://www.semrush.com/blog/feed/',
-  //'https://searchengineland.com/feed',
-  'https://rss.searchenginejournal.com'
-]
 
 const handler: BackgroundHandler = function (
   _event: HandlerEvent,
@@ -39,10 +34,14 @@ const handler: BackgroundHandler = function (
               item.link
             )
 
+            const formattedTitle = await formatTitle(item.title)
+
+            const AICategories = await categorizePosts(item.content)
+
             return {
-              title: item.title,
+              title: formattedTitle,
               link: item.link,
-              categories: item.categories ? item.categories : '',
+              categories: AICategories,
               dateISO: item.isoDate,
               date: item.pubDate,
               content: formattedContent
@@ -53,6 +52,10 @@ const handler: BackgroundHandler = function (
         return (
           items
             .filter(item => item.title && item.link && item.content)
+            //filter categories
+            .filter(item => {
+              return categoriesCondition(item.categories)
+            })
             // get items from yesterday
             .filter(
               item =>

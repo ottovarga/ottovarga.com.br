@@ -3,6 +3,42 @@ import fetch from 'node-fetch'
 import { Configuration, OpenAIApi } from 'openai'
 import { Readability } from '@mozilla/readability'
 
+const GENERAL_TOPICS = [
+  // incluir
+  'SEO',
+  'Link Building',
+  'Content Marketing',
+  'Ecommerce SEO',
+  'SEO Software',
+  'Web Development',
+  'Google Analytics',
+  'Google Tag Manager',
+  'Content Strategy',
+
+  // excluir
+  'Ecommerce',
+  'Social Media',
+  'Product Design',
+  'Product Management',
+  'Product Strategy',
+  'Google Ads',
+  'Google AdWords',
+  'Google AdSense',
+  'Web Design'
+]
+
+const VALID_TOPICS = [
+  'SEO',
+  'Link Building',
+  'Content Marketing',
+  'Ecommerce SEO',
+  'SEO Software',
+  'Web Development',
+  'Google Analytics',
+  'Google Tag Manager',
+  'Content Strategy'
+]
+
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY
 })
@@ -12,7 +48,7 @@ const openai = new OpenAIApi(configuration)
 export type Feed = {
   title: string
   link: string
-  categories: string | string[]
+  categories: string[]
   date: string
   content: string
 }[]
@@ -62,8 +98,70 @@ export async function formatContent(text: string, url: string) {
 
     return content
   } catch (err) {
-    console.log(url, err)
+    console.log('Erro ao formatar conteúdo: ', url, err)
     return null
+  }
+}
+
+export async function formatTitle(title: string) {
+  try {
+    let openaiResponse = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo-16k',
+      messages: [
+        {
+          role: 'user',
+          content: `Traduza o seguinte texto para portugês: ${title}`
+        }
+      ],
+      temperature: 0
+    })
+
+    return openaiResponse.data.choices[0].message.content
+  } catch (err) {
+    console.log('Erro ao formatar título: ', title, err)
+    return title
+  }
+}
+
+export async function categorizePosts(postContent: string) {
+  try {
+    let openaiResponse = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo-16k',
+      messages: [
+        {
+          role: 'system',
+          content: 'You are a helpful assistant.'
+        },
+        {
+          role: 'user',
+          content: `Atribua multiplos tópicos como um array da lista de tópicos fornecida abaixo para o seguinte conteúdo:
+            Conteúdo: ${postContent}
+            Tópicos: ${GENERAL_TOPICS.join(', ')}
+            A resposta deve estar no formato 'topics = ['']'
+          `
+        }
+      ],
+      temperature: 0.8,
+      max_tokens: 150,
+      top_p: 1,
+      frequency_penalty: 0,
+      presence_penalty: 0.6
+    })
+
+    const response = JSON.stringify(
+      openaiResponse.data.choices[0].message.content
+    )
+    const topicsArr = response
+      .match(/\[([^[\]]*)\]/)[1]
+      .match(/'[^']*'/g)
+      .map(topic => topic.slice(1, -1))
+
+    const generatedTopics = topicsArr.map(str => str.toLowerCase())
+
+    return generatedTopics
+  } catch (err) {
+    console.log('Erro ao categorizar post: ', err)
+    return ['']
   }
 }
 
@@ -72,11 +170,20 @@ export const formatFeed: (feed: Feed) => string[] = (feed: Feed) => {
 
   feed.forEach((content, index) => {
     finalStringArr[index] = ''
-    finalStringArr[index] += `Notícia ${index + 1}:\n`
-    finalStringArr[index] += `*${content.title}*\n${content.content}\n`
-    finalStringArr[index] += `${content.date}\n`
-    finalStringArr[index] += `Link: ${content.link}\n\n-----------\n\n`
+    finalStringArr[index] += `Notícia ${index + 1}:\n\n`
+    finalStringArr[index] += `*${content.title}*\n${content.categories.join(
+      ', '
+    )}\n\n${content.content}\n`
+    finalStringArr[index] += `Data: ${content.date}\n`
+    finalStringArr[
+      index
+    ] += `Link da notícia completa: ${content.link}\n\n-----------\n\n`
   })
 
   return finalStringArr
+}
+
+export function categoriesCondition(categories: string[]) {
+  // return true if any item in categories array is equal any value in valid topics
+  return categories.some(category => VALID_TOPICS.includes(category))
 }
