@@ -7,6 +7,8 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY
 })
 
+const openai = new OpenAIApi(configuration)
+
 export type Feed = {
   title: string
   link: string
@@ -32,10 +34,8 @@ export async function formatContent(text: string, url: string) {
 
     const article = reader.parse().textContent.replace('\n\n', '\n')
 
-    const openai = new OpenAIApi(configuration)
-
     let openaiResponse = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-3.5-turbo-16k',
       messages: [
         {
           role: 'user',
@@ -48,7 +48,7 @@ export async function formatContent(text: string, url: string) {
     const translation = openaiResponse.data.choices[0].message.content
 
     openaiResponse = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo',
+      model: 'gpt-3.5-turbo-16k',
       messages: [
         {
           role: 'user',
@@ -67,26 +67,10 @@ export async function formatContent(text: string, url: string) {
   }
 }
 
-export async function postToSlack(feed: Feed[]) {
-  for (const item of formatFeed(feed)) {
-    await fetch(process.env.SLACK_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        text: item
-      })
-    })
-  }
-}
-
-const formatFeed: (feed: Feed[]) => string[] = (feed: Feed[]) => {
-  const flattened = feed.flat()
-
+export const formatFeed: (feed: Feed) => string[] = (feed: Feed) => {
   let finalStringArr = []
 
-  flattened.forEach((content, index) => {
+  feed.forEach((content, index) => {
     finalStringArr[index] = ''
     finalStringArr[index] += `Notícia ${index + 1}:\n`
     finalStringArr[index] += `*${content.title}*\n${content.content}\n`

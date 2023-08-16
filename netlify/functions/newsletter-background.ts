@@ -6,7 +6,10 @@ import type {
 
 import RSSParser from 'rss-parser'
 
-import { formatContent, postToSlack } from '@/newsletter/formatFeed'
+import { formatContent } from '@/newsletter/formatFeed'
+import { postToSlack } from '@/newsletter/postFeed'
+
+const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 
 const FEEDS_URL = [
   //'http://feeds.seroundtable.com/SearchEngineRoundtable1',
@@ -40,7 +43,8 @@ const handler: BackgroundHandler = function (
               title: item.title,
               link: item.link,
               categories: item.categories ? item.categories : '',
-              date: item.isoDate,
+              dateISO: item.isoDate,
+              date: item.pubDate,
               content: formattedContent
             }
           })
@@ -49,20 +53,22 @@ const handler: BackgroundHandler = function (
         return (
           items
             .filter(item => item.title && item.link && item.content)
-            // get items from five days ago
+            // get items from yesterday
             .filter(
               item =>
-                item.date >
-                new Date(Date.now() - 24 * 60 * 60 * 1000 * 5).toISOString()
+                item.dateISO >
+                new Date(Date.now() - DAY_IN_MILISECONDS).toISOString()
             )
         )
       })
     )
 
-    console.log(feeds)
+    const flatOrderedFeeds = feeds.flat().sort((a, b) => {
+      return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
+    })
 
     //post to slack
-    await postToSlack(feeds)
+    await postToSlack(flatOrderedFeeds)
   })()
 }
 
