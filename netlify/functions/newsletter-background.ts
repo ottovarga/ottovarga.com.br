@@ -38,14 +38,6 @@ const handler: BackgroundHandler = function (
 
             const AICategories = await categorizePosts(item.content)
 
-            console.log('url: ', item.link)
-            console.log('categories: ', AICategories)
-            console.log('title: ', formattedTitle)
-            console.log(
-              'content length: ',
-              formattedContent ? formattedContent.length : null
-            )
-
             return {
               title: formattedTitle,
               link: item.link,
@@ -77,6 +69,8 @@ const handler: BackgroundHandler = function (
     const flatOrderedFeeds = feeds.flat().sort((a, b) => {
       return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
     })
+
+    console.log(flatOrderedFeeds)
 
     //post to slack
     await postToSlack(flatOrderedFeeds)
