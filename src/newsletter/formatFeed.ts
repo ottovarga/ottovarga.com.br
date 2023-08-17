@@ -154,12 +154,10 @@ export async function categorizePosts(postContent: string) {
     const response = JSON.stringify(
       openaiResponse.data.choices[0].message.content
     )
-    const topicsArr = response
+    const generatedTopics = response
       .match(/\[([^[\]]*)\]/)[1]
       .match(/'[^']*'/g)
       .map(topic => topic.slice(1, -1))
-
-    const generatedTopics = topicsArr.map(str => str.toLowerCase())
 
     return generatedTopics
   } catch (err) {
