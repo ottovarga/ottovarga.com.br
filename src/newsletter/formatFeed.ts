@@ -161,9 +161,6 @@ export async function categorizePosts(postContent: string) {
 
     const generatedTopics = topicsArr.map(str => str.toLowerCase())
 
-    console.log('topics response: ', response)
-    console.log('generated topics: ', generatedTopics)
-
     return generatedTopics
   } catch (err) {
     console.log('Erro ao categorizar post: ', err)

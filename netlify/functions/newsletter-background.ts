@@ -38,6 +38,9 @@ const handler: BackgroundHandler = function (
 
             const AICategories = await categorizePosts(item.content)
 
+            console.log('url: ', item.link)
+            console.log('categories: ', AICategories)
+
             return {
               title: formattedTitle,
               link: item.link,
