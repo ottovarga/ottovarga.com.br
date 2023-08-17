@@ -72,6 +72,8 @@ const handler: BackgroundHandler = function (
 
     //post to slack
     await postToSlack(flatOrderedFeeds)
+
+    console.log('tarefa concluída')
   })()
 }
 
