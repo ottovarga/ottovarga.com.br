@@ -37,13 +37,13 @@ const contato: React.FC<Props> = ({ pageContext }) => {
         <div className="flex flex-wrap justify-between">
           <div className="lg:w-1/3 pr-4">
             <div className="prose xl:prose-lg mb-6 dark:prose-dark">
-              <h2>Vamos falar de negócios?</h2>
+              <h2>Quer falar comigo? Mande uma mensagem!</h2>
             </div>
             <ContactForm />
           </div>
           <div className="lg:w-2/5 pl-4">
             <div className="prose xl:prose-lg mb-6 dark:prose-dark">
-              <h2>Vamos tomar um café quando a pademia acabar?</h2>
+              <h2>Quando não estou em Home Office estou aqui:</h2>
             </div>
             <iframe
               title="Mapa da onSERP"
