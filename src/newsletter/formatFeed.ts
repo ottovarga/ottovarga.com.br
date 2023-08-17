@@ -144,7 +144,7 @@ export async function categorizePosts(postContent: string) {
           `
         }
       ],
-      temperature: 0.8,
+      temperature: 0.2,
       max_tokens: 150,
       top_p: 1,
       frequency_penalty: 0,
