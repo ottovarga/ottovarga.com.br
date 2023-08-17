@@ -43,7 +43,10 @@ const handler: BackgroundHandler = function (
               link: item.link,
               categories: AICategories,
               dateISO: item.isoDate,
-              date: item.pubDate,
+              date: new Date(item.isoDate).toLocaleString('pt-BR', {
+                timeZone: 'America/Sao_Paulo',
+                dateStyle: 'medium'
+              }),
               content: formattedContent
             }
           })
@@ -64,7 +67,9 @@ const handler: BackgroundHandler = function (
             .filter(
               item =>
                 item.dateISO >
-                new Date(Date.now() - DAY_IN_MILISECONDS).toISOString()
+                new Date(
+                  new Date().setHours(0, 0, 0, 0) - DAY_IN_MILISECONDS
+                ).toISOString()
             )
         )
       })

@@ -25,16 +25,6 @@ export async function postToSlack(feed: Feed) {
       })
     })
 
-    await fetch(process.env.SLACK_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        text: `Fontes: ${FEEDS_URL.join(', ')}`
-      })
-    })
-
     for (const item of formatFeed(feed)) {
       await fetch(process.env.SLACK_WEBHOOK_URL, {
         method: 'POST',
@@ -46,6 +36,16 @@ export async function postToSlack(feed: Feed) {
         })
       })
     }
+
+    await fetch(process.env.SLACK_WEBHOOK_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        text: `Fontes: ${FEEDS_URL.join(', ')}`
+      })
+    })
 
     await fetch(process.env.SLACK_WEBHOOK_URL, {
       method: 'POST',
