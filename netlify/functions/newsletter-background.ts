@@ -51,9 +51,13 @@ const handler: BackgroundHandler = function (
 
         return (
           items
-            //.filter(item => item.title && item.link && item.content)
+            .filter(item => item.title && item.link && item.content)
             //filter categories
             .filter(item => {
+              console.log(
+                'filtro categorias: ',
+                categoriesCondition(item.categories)
+              )
               return categoriesCondition(item.categories)
             })
             // get items from yesterday
