@@ -14,6 +14,7 @@ const GENERAL_TOPICS = [
   'Google Analytics',
   'Google Tag Manager',
   'Content Strategy',
+  'AI',
 
   // excluir
   'Ecommerce',
@@ -36,7 +37,8 @@ const VALID_TOPICS = [
   'Web Development',
   'Google Analytics',
   'Google Tag Manager',
-  'Content Strategy'
+  'Content Strategy',
+  'AI'
 ]
 
 const configuration = new Configuration({
@@ -144,7 +146,7 @@ export async function categorizePosts(postContent: string) {
           `
         }
       ],
-      temperature: 0.2,
+      temperature: 0.1,
       max_tokens: 150,
       top_p: 1,
       frequency_penalty: 0,

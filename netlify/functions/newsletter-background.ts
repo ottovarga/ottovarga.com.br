@@ -79,8 +79,6 @@ const handler: BackgroundHandler = function (
       return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
     })
 
-    console.log(flatOrderedFeeds)
-
     //post to slack
     await postToSlack(flatOrderedFeeds)
 
