@@ -61,7 +61,7 @@ const handler: BackgroundHandler = function (
                 'filtro categorias: ',
                 categoriesCondition(item.categories)
               )
-              return categoriesCondition(item.categories)
+              return true //categoriesCondition(item.categories)
             })
             // get items from yesterday
             .filter(

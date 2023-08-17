@@ -172,9 +172,9 @@ export const formatFeed: (feed: Feed) => string[] = (feed: Feed) => {
   feed.forEach((content, index) => {
     finalStringArr[index] = ''
     finalStringArr[index] += `Notícia ${index + 1}:\n\n`
-    finalStringArr[index] += `*${content.title}*\n${content.categories.join(
-      ', '
-    )}\n\n${content.content}\n`
+    finalStringArr[index] += `*${
+      content.title
+    }*\nCategorias: ${content.categories.join(', ')}\n\n${content.content}\n`
     finalStringArr[index] += `Data: ${content.date}\n`
     finalStringArr[
       index
