@@ -51,7 +51,7 @@ const handler: BackgroundHandler = function (
 
         return (
           items
-            .filter(item => item.title && item.link && item.content)
+            //.filter(item => item.title && item.link && item.content)
             //filter categories
             .filter(item => {
               return categoriesCondition(item.categories)
