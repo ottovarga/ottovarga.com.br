@@ -88,7 +88,10 @@ export async function formatContent(text: string, url: string) {
       messages: [
         {
           role: 'user',
-          content: `Faça um breve resumo do seguinte conteúdo (até 100 palavras): ${translation}`
+          content: `Faça um breve resumo do seguinte conteúdo (até 100 palavras): ${translation.substring(
+            0,
+            15999
+          )}`
         }
       ],
       temperature: 0.5

@@ -5,8 +5,8 @@ export const FEEDS_URL = [
   'https://moz.com/posts/rss/blog',
   'https://feeds.feedburner.com/blogspot/amDG',
   //'https://www.searchenginewatch.com/feed/',
-  'https://www.semrush.com/blog/feed/',
-  //'https://searchengineland.com/feed',
+  //'https://www.semrush.com/blog/feed/',
+  'https://searchengineland.com/feed',
   'https://rss.searchenginejournal.com'
 ]
 
@@ -54,8 +54,8 @@ export async function postToSlack(feed: Feed) {
       },
       body: JSON.stringify({
         text: `--------------------------------------------------------------------------------
-                ------------------------------- FIM DO FEED -------------------------------
-                --------------------------------------------------------------------------------`
+ ------------------------------- FIM DO FEED -------------------------------
+ --------------------------------------------------------------------------------`
       })
     })
   } catch (err) {
