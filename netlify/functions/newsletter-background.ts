@@ -40,6 +40,8 @@ const handler: BackgroundHandler = function (
 
             console.log('url: ', item.link)
             console.log('categories: ', AICategories)
+            console.log('title: ', formattedTitle)
+            console.log('content length: ', formattedContent.length)
 
             return {
               title: formattedTitle,
