@@ -28,7 +28,7 @@ const handler: BackgroundHandler = function (
         const feed = await parser.parseURL(url)
 
         const items = await Promise.all(
-          feed.items.slice(1, 5).map(async item => {
+          feed.items.map(async item => {
             const formattedContent = await formatContent(
               item.contentSnippet ? item.contentSnippet : item.content,
               item.link
