@@ -77,7 +77,8 @@ export async function formatContent(text: string, url: string) {
       messages: [
         {
           role: 'user',
-          content: `Traduza o seguinte texto para portugês: ${article}`
+          content: `Traduza o seguinte texto para portugês: ${article.substring(0,15999
+          )}`
         }
       ],
       temperature: 0
@@ -90,7 +91,7 @@ export async function formatContent(text: string, url: string) {
       messages: [
         {
           role: 'user',
-          content: `Faça um breve resumo do seguinte conteúdo (até 100 palavras): ${translation.substring(
+          content: `Resuma o conteúdo considerando as seguintes informações: O conteúdo resumido deverá ter tom jornalístico e propósito informacional e deverá ter no máximo 80 palavras. Conteúdo: ${translation.substring(
             0,
             15999
           )}`
