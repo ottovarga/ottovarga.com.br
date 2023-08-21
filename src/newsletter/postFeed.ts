@@ -7,6 +7,8 @@ export const FEEDS_URL = [
   'https://www.searchenginewatch.com/feed/',
   'https://www.semrush.com/blog/feed/',
   'https://searchengineland.com/feed',
+  'https://ahrefs.com/blog/feed/',
+  'https://www.screamingfrog.co.uk/feed/',
   'https://rss.searchenginejournal.com'
 ]
 
