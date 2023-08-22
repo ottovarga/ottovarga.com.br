@@ -28,7 +28,7 @@ const headline: React.FC<Props> = ({ title, subtitle, showImg }) => {
         <div className="flex flex-col justify-center items-center">
           <div className="w-36 lg:w-44 mb-8">
             <StaticImage
-              src="../../assets/images/otto-varga.png"
+              src="../../assets/images/otto-varga-pb.png"
               loading="eager"
               alt="Otto Varga"
               className="shadow-lg rounded-full"
