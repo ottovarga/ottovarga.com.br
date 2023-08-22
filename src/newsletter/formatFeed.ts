@@ -52,6 +52,8 @@ export type Feed = {
   link: string
   categories: string[]
   date: string
+  dateISO: string
+  feedName: string
   content: string
 }[]
 
@@ -77,7 +79,9 @@ export async function formatContent(text: string, url: string) {
       messages: [
         {
           role: 'user',
-          content: `Traduza o seguinte texto para portugês: ${article.substring(0,15999
+          content: `Traduza o seguinte texto para portugês: ${article.substring(
+            0,
+            15999
           )}`
         }
       ],
@@ -178,7 +182,8 @@ export const formatFeed: (feed: Feed) => string[] = (feed: Feed) => {
     finalStringArr[index] += `Data: ${content.date}\n`
     finalStringArr[index] += `*${
       content.title
-    }*\nCategorias: ${content.categories.join(', ')}\n\n${content.content}\n`
+    }*\nCategorias: ${content.categories.join(', ')}\n\n${content.content}\n\n`
+    finalStringArr[index] += `Via @${content.feedName}\n\n`
     finalStringArr[
       index
     ] += `Link da notícia completa: ${content.link}\n\n-----------\n\n`

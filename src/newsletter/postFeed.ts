@@ -1,15 +1,21 @@
 import { formatFeed, Feed } from '@/newsletter/formatFeed'
 
 export const FEEDS_URL = [
-  'http://feeds.seroundtable.com/SearchEngineRoundtable1',
-  'https://moz.com/posts/rss/blog',
-  'https://feeds.feedburner.com/blogspot/amDG',
-  'https://www.searchenginewatch.com/feed/',
-  'https://www.semrush.com/blog/feed/',
-  'https://searchengineland.com/feed',
-  'https://ahrefs.com/blog/feed/',
-  'https://www.screamingfrog.co.uk/feed/',
-  'https://rss.searchenginejournal.com'
+  {
+    name: 'SeRoundTable',
+    url: 'http://feeds.seroundtable.com/SearchEngineRoundtable1'
+  },
+  { name: 'Moz', url: 'https://moz.com/posts/rss/blog' },
+  {
+    name: 'GoogleSearchCentralBlog',
+    url: 'https://feeds.feedburner.com/blogspot/amDG'
+  },
+  { name: 'SearchEngineWatch', url: 'https://www.searchenginewatch.com/feed/' },
+  { name: 'Semrush', url: 'https://www.semrush.com/blog/feed/' },
+  { name: 'SearchEngineLand', url: 'https://www.searchengineland.com/feed/' },
+  { name: 'Ahrefs', url: 'https://ahrefs.com/blog/feed/' },
+  { name: 'ScreamingFrog', url: 'https://www.screamingfrog.co.uk/feed/' },
+  { name: 'SearchEngineJournal', url: 'https://rss.searchenginejournal.com' }
 ]
 
 export async function postToSlack(feed: Feed) {
@@ -45,7 +51,7 @@ export async function postToSlack(feed: Feed) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        text: `Fontes: ${FEEDS_URL.join(', ')}`
+        text: `Fontes: ${FEEDS_URL.map(feed => feed.url).join(', ')}`
       })
     })
 

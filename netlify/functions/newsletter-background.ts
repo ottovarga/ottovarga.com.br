@@ -24,8 +24,8 @@ const handler: BackgroundHandler = function (
     let parser = new RSSParser()
 
     const feeds = await Promise.all(
-      FEEDS_URL.map(async url => {
-        const feed = await parser.parseURL(url)
+      FEEDS_URL.map(async feedObj => {
+        const feed = await parser.parseURL(feedObj.url)
 
         const items = await Promise.all(
           feed.items.map(async item => {
@@ -47,6 +47,7 @@ const handler: BackgroundHandler = function (
                 timeZone: 'America/Sao_Paulo',
                 dateStyle: 'medium'
               }),
+              feedName: feedObj.name,
               content: formattedContent
             }
           })
