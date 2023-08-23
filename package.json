@@ -51,6 +51,7 @@
     "openai": "^3.3.0",
     "postcss": "^8.2.9",
     "react": "^18.2.0",
+    "react-collapsed": "^4.0.4",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-helmet-async": "^1.3.0",
@@ -92,6 +93,7 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build --log-pages",
+    "build:debug": "cross-env NODE_ENV=production SITE_DEBUG=true gatsby build --log-pages --verbose",
     "build:netlify": "cross-env DEBUG=true SITE_DEBUG=true netlify build --context production",
     "dev": "cross-env NODE_ENV=development gatsby develop",
     "dev:netlify": "cross-env DEBUG=true SITE_DEBUG=true netlify dev --context production",

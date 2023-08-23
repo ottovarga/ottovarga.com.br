@@ -93,3 +93,31 @@ figcaption {
 .wp-embed-aspect-1-2 .wp-block-embed__wrapper::before {
   padding-top: 200%; /* 2 / 1 * 100 */
 }
+
+.navigation-toc {
+  @apply overflow-hidden;
+}
+
+.navigation-toc nav {
+  @apply overflow-hidden;
+}
+
+.navigation-toc nav li {
+  @apply m-0 list-decimal list-inside text-sm leading-relaxed;
+}
+
+.navigation-toc nav li::before {
+  @apply hidden;
+}
+
+.navigation-toc nav li a {
+  @apply text-sm;
+}
+
+.navigation-toc nav & > ul > li {
+  @apply p-0;
+}
+
+.toggle-toc {
+  @apply absolute right-4 top-4;
+}
