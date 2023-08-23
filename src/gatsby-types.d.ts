@@ -169,29 +169,29 @@ type DirectoryConnection = {
 
 
 type DirectoryConnection_distinctArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
 };
 
 
 type DirectoryConnection_groupArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type DirectoryConnection_maxArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
 };
 
 
 type DirectoryConnection_minArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
 };
 
 
 type DirectoryConnection_sumArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
 };
 
 type DirectoryEdge = {
@@ -200,43 +200,131 @@ type DirectoryEdge = {
   readonly previous: Maybe<Directory>;
 };
 
-type DirectoryFieldSelector = {
-  readonly absolutePath: InputMaybe<FieldSelectorEnum>;
-  readonly accessTime: InputMaybe<FieldSelectorEnum>;
-  readonly atime: InputMaybe<FieldSelectorEnum>;
-  readonly atimeMs: InputMaybe<FieldSelectorEnum>;
-  readonly base: InputMaybe<FieldSelectorEnum>;
-  readonly birthTime: InputMaybe<FieldSelectorEnum>;
-  readonly birthtime: InputMaybe<FieldSelectorEnum>;
-  readonly birthtimeMs: InputMaybe<FieldSelectorEnum>;
-  readonly changeTime: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly ctime: InputMaybe<FieldSelectorEnum>;
-  readonly ctimeMs: InputMaybe<FieldSelectorEnum>;
-  readonly dev: InputMaybe<FieldSelectorEnum>;
-  readonly dir: InputMaybe<FieldSelectorEnum>;
-  readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly extension: InputMaybe<FieldSelectorEnum>;
-  readonly gid: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly ino: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly mode: InputMaybe<FieldSelectorEnum>;
-  readonly modifiedTime: InputMaybe<FieldSelectorEnum>;
-  readonly mtime: InputMaybe<FieldSelectorEnum>;
-  readonly mtimeMs: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nlink: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly prettySize: InputMaybe<FieldSelectorEnum>;
-  readonly rdev: InputMaybe<FieldSelectorEnum>;
-  readonly relativeDirectory: InputMaybe<FieldSelectorEnum>;
-  readonly relativePath: InputMaybe<FieldSelectorEnum>;
-  readonly root: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly sourceInstanceName: InputMaybe<FieldSelectorEnum>;
-  readonly uid: InputMaybe<FieldSelectorEnum>;
-};
+type DirectoryFieldsEnum =
+  | 'absolutePath'
+  | 'accessTime'
+  | 'atime'
+  | 'atimeMs'
+  | 'base'
+  | 'birthTime'
+  | 'birthtime'
+  | 'birthtimeMs'
+  | 'changeTime'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'ctime'
+  | 'ctimeMs'
+  | 'dev'
+  | 'dir'
+  | 'ext'
+  | 'extension'
+  | 'gid'
+  | 'id'
+  | 'ino'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'mode'
+  | 'modifiedTime'
+  | 'mtime'
+  | 'mtimeMs'
+  | 'name'
+  | 'nlink'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'prettySize'
+  | 'rdev'
+  | 'relativeDirectory'
+  | 'relativePath'
+  | 'root'
+  | 'size'
+  | 'sourceInstanceName'
+  | 'uid';
 
 type DirectoryFilterInput = {
   readonly absolutePath: InputMaybe<StringQueryOperatorInput>;
@@ -292,67 +380,34 @@ type DirectoryGroupConnection = {
 
 
 type DirectoryGroupConnection_distinctArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
 };
 
 
 type DirectoryGroupConnection_groupArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type DirectoryGroupConnection_maxArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
 };
 
 
 type DirectoryGroupConnection_minArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
 };
 
 
 type DirectoryGroupConnection_sumArgs = {
-  field: DirectoryFieldSelector;
+  field: DirectoryFieldsEnum;
 };
 
 type DirectorySortInput = {
-  readonly absolutePath: InputMaybe<SortOrderEnum>;
-  readonly accessTime: InputMaybe<SortOrderEnum>;
-  readonly atime: InputMaybe<SortOrderEnum>;
-  readonly atimeMs: InputMaybe<SortOrderEnum>;
-  readonly base: InputMaybe<SortOrderEnum>;
-  readonly birthTime: InputMaybe<SortOrderEnum>;
-  readonly birthtime: InputMaybe<SortOrderEnum>;
-  readonly birthtimeMs: InputMaybe<SortOrderEnum>;
-  readonly changeTime: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly ctime: InputMaybe<SortOrderEnum>;
-  readonly ctimeMs: InputMaybe<SortOrderEnum>;
-  readonly dev: InputMaybe<SortOrderEnum>;
-  readonly dir: InputMaybe<SortOrderEnum>;
-  readonly ext: InputMaybe<SortOrderEnum>;
-  readonly extension: InputMaybe<SortOrderEnum>;
-  readonly gid: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly ino: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly mode: InputMaybe<SortOrderEnum>;
-  readonly modifiedTime: InputMaybe<SortOrderEnum>;
-  readonly mtime: InputMaybe<SortOrderEnum>;
-  readonly mtimeMs: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nlink: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly prettySize: InputMaybe<SortOrderEnum>;
-  readonly rdev: InputMaybe<SortOrderEnum>;
-  readonly relativeDirectory: InputMaybe<SortOrderEnum>;
-  readonly relativePath: InputMaybe<SortOrderEnum>;
-  readonly root: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly sourceInstanceName: InputMaybe<SortOrderEnum>;
-  readonly uid: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<DirectoryFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type DuotoneGradient = {
@@ -360,9 +415,6 @@ type DuotoneGradient = {
   readonly opacity: InputMaybe<Scalars['Int']>;
   readonly shadow: Scalars['String'];
 };
-
-type FieldSelectorEnum =
-  | 'SELECT';
 
 type File = Node & {
   readonly absolutePath: Scalars['String'];
@@ -483,29 +535,29 @@ type FileConnection = {
 
 
 type FileConnection_distinctArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
 };
 
 
 type FileConnection_groupArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type FileConnection_maxArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
 };
 
 
 type FileConnection_minArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
 };
 
 
 type FileConnection_sumArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
 };
 
 type FileEdge = {
@@ -514,49 +566,282 @@ type FileEdge = {
   readonly previous: Maybe<File>;
 };
 
-type FileFieldSelector = {
-  readonly absolutePath: InputMaybe<FieldSelectorEnum>;
-  readonly accessTime: InputMaybe<FieldSelectorEnum>;
-  readonly atime: InputMaybe<FieldSelectorEnum>;
-  readonly atimeMs: InputMaybe<FieldSelectorEnum>;
-  readonly base: InputMaybe<FieldSelectorEnum>;
-  readonly birthTime: InputMaybe<FieldSelectorEnum>;
-  readonly birthtime: InputMaybe<FieldSelectorEnum>;
-  readonly birthtimeMs: InputMaybe<FieldSelectorEnum>;
-  readonly blksize: InputMaybe<FieldSelectorEnum>;
-  readonly blocks: InputMaybe<FieldSelectorEnum>;
-  readonly changeTime: InputMaybe<FieldSelectorEnum>;
-  readonly childImageSharp: InputMaybe<ImageSharpFieldSelector>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly childrenImageSharp: InputMaybe<ImageSharpFieldSelector>;
-  readonly ctime: InputMaybe<FieldSelectorEnum>;
-  readonly ctimeMs: InputMaybe<FieldSelectorEnum>;
-  readonly dev: InputMaybe<FieldSelectorEnum>;
-  readonly dir: InputMaybe<FieldSelectorEnum>;
-  readonly ext: InputMaybe<FieldSelectorEnum>;
-  readonly extension: InputMaybe<FieldSelectorEnum>;
-  readonly gid: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly ino: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly mode: InputMaybe<FieldSelectorEnum>;
-  readonly modifiedTime: InputMaybe<FieldSelectorEnum>;
-  readonly mtime: InputMaybe<FieldSelectorEnum>;
-  readonly mtimeMs: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nlink: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly prettySize: InputMaybe<FieldSelectorEnum>;
-  readonly publicURL: InputMaybe<FieldSelectorEnum>;
-  readonly rdev: InputMaybe<FieldSelectorEnum>;
-  readonly relativeDirectory: InputMaybe<FieldSelectorEnum>;
-  readonly relativePath: InputMaybe<FieldSelectorEnum>;
-  readonly root: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly sourceInstanceName: InputMaybe<FieldSelectorEnum>;
-  readonly uid: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
+type FileFieldsEnum =
+  | 'absolutePath'
+  | 'accessTime'
+  | 'atime'
+  | 'atimeMs'
+  | 'base'
+  | 'birthTime'
+  | 'birthtime'
+  | 'birthtimeMs'
+  | 'blksize'
+  | 'blocks'
+  | 'changeTime'
+  | 'childImageSharp.children'
+  | 'childImageSharp.children.children'
+  | 'childImageSharp.children.children.children'
+  | 'childImageSharp.children.children.id'
+  | 'childImageSharp.children.id'
+  | 'childImageSharp.children.internal.content'
+  | 'childImageSharp.children.internal.contentDigest'
+  | 'childImageSharp.children.internal.contentFilePath'
+  | 'childImageSharp.children.internal.description'
+  | 'childImageSharp.children.internal.fieldOwners'
+  | 'childImageSharp.children.internal.ignoreType'
+  | 'childImageSharp.children.internal.mediaType'
+  | 'childImageSharp.children.internal.owner'
+  | 'childImageSharp.children.internal.type'
+  | 'childImageSharp.children.parent.children'
+  | 'childImageSharp.children.parent.id'
+  | 'childImageSharp.fixed.aspectRatio'
+  | 'childImageSharp.fixed.base64'
+  | 'childImageSharp.fixed.height'
+  | 'childImageSharp.fixed.originalName'
+  | 'childImageSharp.fixed.src'
+  | 'childImageSharp.fixed.srcSet'
+  | 'childImageSharp.fixed.srcSetWebp'
+  | 'childImageSharp.fixed.srcWebp'
+  | 'childImageSharp.fixed.tracedSVG'
+  | 'childImageSharp.fixed.width'
+  | 'childImageSharp.fluid.aspectRatio'
+  | 'childImageSharp.fluid.base64'
+  | 'childImageSharp.fluid.originalImg'
+  | 'childImageSharp.fluid.originalName'
+  | 'childImageSharp.fluid.presentationHeight'
+  | 'childImageSharp.fluid.presentationWidth'
+  | 'childImageSharp.fluid.sizes'
+  | 'childImageSharp.fluid.src'
+  | 'childImageSharp.fluid.srcSet'
+  | 'childImageSharp.fluid.srcSetWebp'
+  | 'childImageSharp.fluid.srcWebp'
+  | 'childImageSharp.fluid.tracedSVG'
+  | 'childImageSharp.gatsbyImageData'
+  | 'childImageSharp.id'
+  | 'childImageSharp.internal.content'
+  | 'childImageSharp.internal.contentDigest'
+  | 'childImageSharp.internal.contentFilePath'
+  | 'childImageSharp.internal.description'
+  | 'childImageSharp.internal.fieldOwners'
+  | 'childImageSharp.internal.ignoreType'
+  | 'childImageSharp.internal.mediaType'
+  | 'childImageSharp.internal.owner'
+  | 'childImageSharp.internal.type'
+  | 'childImageSharp.original.height'
+  | 'childImageSharp.original.src'
+  | 'childImageSharp.original.width'
+  | 'childImageSharp.parent.children'
+  | 'childImageSharp.parent.children.children'
+  | 'childImageSharp.parent.children.id'
+  | 'childImageSharp.parent.id'
+  | 'childImageSharp.parent.internal.content'
+  | 'childImageSharp.parent.internal.contentDigest'
+  | 'childImageSharp.parent.internal.contentFilePath'
+  | 'childImageSharp.parent.internal.description'
+  | 'childImageSharp.parent.internal.fieldOwners'
+  | 'childImageSharp.parent.internal.ignoreType'
+  | 'childImageSharp.parent.internal.mediaType'
+  | 'childImageSharp.parent.internal.owner'
+  | 'childImageSharp.parent.internal.type'
+  | 'childImageSharp.parent.parent.children'
+  | 'childImageSharp.parent.parent.id'
+  | 'childImageSharp.resize.aspectRatio'
+  | 'childImageSharp.resize.height'
+  | 'childImageSharp.resize.originalName'
+  | 'childImageSharp.resize.src'
+  | 'childImageSharp.resize.tracedSVG'
+  | 'childImageSharp.resize.width'
+  | 'children'
+  | 'childrenImageSharp'
+  | 'childrenImageSharp.children'
+  | 'childrenImageSharp.children.children'
+  | 'childrenImageSharp.children.children.children'
+  | 'childrenImageSharp.children.children.id'
+  | 'childrenImageSharp.children.id'
+  | 'childrenImageSharp.children.internal.content'
+  | 'childrenImageSharp.children.internal.contentDigest'
+  | 'childrenImageSharp.children.internal.contentFilePath'
+  | 'childrenImageSharp.children.internal.description'
+  | 'childrenImageSharp.children.internal.fieldOwners'
+  | 'childrenImageSharp.children.internal.ignoreType'
+  | 'childrenImageSharp.children.internal.mediaType'
+  | 'childrenImageSharp.children.internal.owner'
+  | 'childrenImageSharp.children.internal.type'
+  | 'childrenImageSharp.children.parent.children'
+  | 'childrenImageSharp.children.parent.id'
+  | 'childrenImageSharp.fixed.aspectRatio'
+  | 'childrenImageSharp.fixed.base64'
+  | 'childrenImageSharp.fixed.height'
+  | 'childrenImageSharp.fixed.originalName'
+  | 'childrenImageSharp.fixed.src'
+  | 'childrenImageSharp.fixed.srcSet'
+  | 'childrenImageSharp.fixed.srcSetWebp'
+  | 'childrenImageSharp.fixed.srcWebp'
+  | 'childrenImageSharp.fixed.tracedSVG'
+  | 'childrenImageSharp.fixed.width'
+  | 'childrenImageSharp.fluid.aspectRatio'
+  | 'childrenImageSharp.fluid.base64'
+  | 'childrenImageSharp.fluid.originalImg'
+  | 'childrenImageSharp.fluid.originalName'
+  | 'childrenImageSharp.fluid.presentationHeight'
+  | 'childrenImageSharp.fluid.presentationWidth'
+  | 'childrenImageSharp.fluid.sizes'
+  | 'childrenImageSharp.fluid.src'
+  | 'childrenImageSharp.fluid.srcSet'
+  | 'childrenImageSharp.fluid.srcSetWebp'
+  | 'childrenImageSharp.fluid.srcWebp'
+  | 'childrenImageSharp.fluid.tracedSVG'
+  | 'childrenImageSharp.gatsbyImageData'
+  | 'childrenImageSharp.id'
+  | 'childrenImageSharp.internal.content'
+  | 'childrenImageSharp.internal.contentDigest'
+  | 'childrenImageSharp.internal.contentFilePath'
+  | 'childrenImageSharp.internal.description'
+  | 'childrenImageSharp.internal.fieldOwners'
+  | 'childrenImageSharp.internal.ignoreType'
+  | 'childrenImageSharp.internal.mediaType'
+  | 'childrenImageSharp.internal.owner'
+  | 'childrenImageSharp.internal.type'
+  | 'childrenImageSharp.original.height'
+  | 'childrenImageSharp.original.src'
+  | 'childrenImageSharp.original.width'
+  | 'childrenImageSharp.parent.children'
+  | 'childrenImageSharp.parent.children.children'
+  | 'childrenImageSharp.parent.children.id'
+  | 'childrenImageSharp.parent.id'
+  | 'childrenImageSharp.parent.internal.content'
+  | 'childrenImageSharp.parent.internal.contentDigest'
+  | 'childrenImageSharp.parent.internal.contentFilePath'
+  | 'childrenImageSharp.parent.internal.description'
+  | 'childrenImageSharp.parent.internal.fieldOwners'
+  | 'childrenImageSharp.parent.internal.ignoreType'
+  | 'childrenImageSharp.parent.internal.mediaType'
+  | 'childrenImageSharp.parent.internal.owner'
+  | 'childrenImageSharp.parent.internal.type'
+  | 'childrenImageSharp.parent.parent.children'
+  | 'childrenImageSharp.parent.parent.id'
+  | 'childrenImageSharp.resize.aspectRatio'
+  | 'childrenImageSharp.resize.height'
+  | 'childrenImageSharp.resize.originalName'
+  | 'childrenImageSharp.resize.src'
+  | 'childrenImageSharp.resize.tracedSVG'
+  | 'childrenImageSharp.resize.width'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'ctime'
+  | 'ctimeMs'
+  | 'dev'
+  | 'dir'
+  | 'ext'
+  | 'extension'
+  | 'gid'
+  | 'id'
+  | 'ino'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'mode'
+  | 'modifiedTime'
+  | 'mtime'
+  | 'mtimeMs'
+  | 'name'
+  | 'nlink'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'prettySize'
+  | 'publicURL'
+  | 'rdev'
+  | 'relativeDirectory'
+  | 'relativePath'
+  | 'root'
+  | 'size'
+  | 'sourceInstanceName'
+  | 'uid'
+  | 'url';
 
 type FileFilterInput = {
   readonly absolutePath: InputMaybe<StringQueryOperatorInput>;
@@ -618,73 +903,34 @@ type FileGroupConnection = {
 
 
 type FileGroupConnection_distinctArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
 };
 
 
 type FileGroupConnection_groupArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type FileGroupConnection_maxArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
 };
 
 
 type FileGroupConnection_minArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
 };
 
 
 type FileGroupConnection_sumArgs = {
-  field: FileFieldSelector;
+  field: FileFieldsEnum;
 };
 
 type FileSortInput = {
-  readonly absolutePath: InputMaybe<SortOrderEnum>;
-  readonly accessTime: InputMaybe<SortOrderEnum>;
-  readonly atime: InputMaybe<SortOrderEnum>;
-  readonly atimeMs: InputMaybe<SortOrderEnum>;
-  readonly base: InputMaybe<SortOrderEnum>;
-  readonly birthTime: InputMaybe<SortOrderEnum>;
-  readonly birthtime: InputMaybe<SortOrderEnum>;
-  readonly birthtimeMs: InputMaybe<SortOrderEnum>;
-  readonly blksize: InputMaybe<SortOrderEnum>;
-  readonly blocks: InputMaybe<SortOrderEnum>;
-  readonly changeTime: InputMaybe<SortOrderEnum>;
-  readonly childImageSharp: InputMaybe<ImageSharpSortInput>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly childrenImageSharp: InputMaybe<ImageSharpSortInput>;
-  readonly ctime: InputMaybe<SortOrderEnum>;
-  readonly ctimeMs: InputMaybe<SortOrderEnum>;
-  readonly dev: InputMaybe<SortOrderEnum>;
-  readonly dir: InputMaybe<SortOrderEnum>;
-  readonly ext: InputMaybe<SortOrderEnum>;
-  readonly extension: InputMaybe<SortOrderEnum>;
-  readonly gid: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly ino: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly mode: InputMaybe<SortOrderEnum>;
-  readonly modifiedTime: InputMaybe<SortOrderEnum>;
-  readonly mtime: InputMaybe<SortOrderEnum>;
-  readonly mtimeMs: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nlink: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly prettySize: InputMaybe<SortOrderEnum>;
-  readonly publicURL: InputMaybe<SortOrderEnum>;
-  readonly rdev: InputMaybe<SortOrderEnum>;
-  readonly relativeDirectory: InputMaybe<SortOrderEnum>;
-  readonly relativePath: InputMaybe<SortOrderEnum>;
-  readonly root: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly sourceInstanceName: InputMaybe<SortOrderEnum>;
-  readonly uid: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<FileFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type FloatQueryOperatorInput = {
@@ -889,29 +1135,29 @@ type ImageSharpConnection = {
 
 
 type ImageSharpConnection_distinctArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
 };
 
 
 type ImageSharpConnection_groupArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type ImageSharpConnection_maxArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
 };
 
 
 type ImageSharpConnection_minArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
 };
 
 
 type ImageSharpConnection_sumArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
 };
 
 type ImageSharpEdge = {
@@ -920,17 +1166,132 @@ type ImageSharpEdge = {
   readonly previous: Maybe<ImageSharp>;
 };
 
-type ImageSharpFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly fixed: InputMaybe<ImageSharpFixedFieldSelector>;
-  readonly fluid: InputMaybe<ImageSharpFluidFieldSelector>;
-  readonly gatsbyImageData: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly original: InputMaybe<ImageSharpOriginalFieldSelector>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly resize: InputMaybe<ImageSharpResizeFieldSelector>;
-};
+type ImageSharpFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'fixed.aspectRatio'
+  | 'fixed.base64'
+  | 'fixed.height'
+  | 'fixed.originalName'
+  | 'fixed.src'
+  | 'fixed.srcSet'
+  | 'fixed.srcSetWebp'
+  | 'fixed.srcWebp'
+  | 'fixed.tracedSVG'
+  | 'fixed.width'
+  | 'fluid.aspectRatio'
+  | 'fluid.base64'
+  | 'fluid.originalImg'
+  | 'fluid.originalName'
+  | 'fluid.presentationHeight'
+  | 'fluid.presentationWidth'
+  | 'fluid.sizes'
+  | 'fluid.src'
+  | 'fluid.srcSet'
+  | 'fluid.srcSetWebp'
+  | 'fluid.srcWebp'
+  | 'fluid.tracedSVG'
+  | 'gatsbyImageData'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'original.height'
+  | 'original.src'
+  | 'original.width'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'resize.aspectRatio'
+  | 'resize.height'
+  | 'resize.originalName'
+  | 'resize.src'
+  | 'resize.tracedSVG'
+  | 'resize.width';
 
 type ImageSharpFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -961,19 +1322,6 @@ type ImageSharpFixed = {
   readonly width: Scalars['Float'];
 };
 
-type ImageSharpFixedFieldSelector = {
-  readonly aspectRatio: InputMaybe<FieldSelectorEnum>;
-  readonly base64: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly originalName: InputMaybe<FieldSelectorEnum>;
-  readonly src: InputMaybe<FieldSelectorEnum>;
-  readonly srcSet: InputMaybe<FieldSelectorEnum>;
-  readonly srcSetWebp: InputMaybe<FieldSelectorEnum>;
-  readonly srcWebp: InputMaybe<FieldSelectorEnum>;
-  readonly tracedSVG: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
 type ImageSharpFixedFilterInput = {
   readonly aspectRatio: InputMaybe<FloatQueryOperatorInput>;
   readonly base64: InputMaybe<StringQueryOperatorInput>;
@@ -985,19 +1333,6 @@ type ImageSharpFixedFilterInput = {
   readonly srcWebp: InputMaybe<StringQueryOperatorInput>;
   readonly tracedSVG: InputMaybe<StringQueryOperatorInput>;
   readonly width: InputMaybe<FloatQueryOperatorInput>;
-};
-
-type ImageSharpFixedSortInput = {
-  readonly aspectRatio: InputMaybe<SortOrderEnum>;
-  readonly base64: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly originalName: InputMaybe<SortOrderEnum>;
-  readonly src: InputMaybe<SortOrderEnum>;
-  readonly srcSet: InputMaybe<SortOrderEnum>;
-  readonly srcSetWebp: InputMaybe<SortOrderEnum>;
-  readonly srcWebp: InputMaybe<SortOrderEnum>;
-  readonly tracedSVG: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
 };
 
 type ImageSharpFluid = {
@@ -1015,21 +1350,6 @@ type ImageSharpFluid = {
   readonly tracedSVG: Maybe<Scalars['String']>;
 };
 
-type ImageSharpFluidFieldSelector = {
-  readonly aspectRatio: InputMaybe<FieldSelectorEnum>;
-  readonly base64: InputMaybe<FieldSelectorEnum>;
-  readonly originalImg: InputMaybe<FieldSelectorEnum>;
-  readonly originalName: InputMaybe<FieldSelectorEnum>;
-  readonly presentationHeight: InputMaybe<FieldSelectorEnum>;
-  readonly presentationWidth: InputMaybe<FieldSelectorEnum>;
-  readonly sizes: InputMaybe<FieldSelectorEnum>;
-  readonly src: InputMaybe<FieldSelectorEnum>;
-  readonly srcSet: InputMaybe<FieldSelectorEnum>;
-  readonly srcSetWebp: InputMaybe<FieldSelectorEnum>;
-  readonly srcWebp: InputMaybe<FieldSelectorEnum>;
-  readonly tracedSVG: InputMaybe<FieldSelectorEnum>;
-};
-
 type ImageSharpFluidFilterInput = {
   readonly aspectRatio: InputMaybe<FloatQueryOperatorInput>;
   readonly base64: InputMaybe<StringQueryOperatorInput>;
@@ -1043,21 +1363,6 @@ type ImageSharpFluidFilterInput = {
   readonly srcSetWebp: InputMaybe<StringQueryOperatorInput>;
   readonly srcWebp: InputMaybe<StringQueryOperatorInput>;
   readonly tracedSVG: InputMaybe<StringQueryOperatorInput>;
-};
-
-type ImageSharpFluidSortInput = {
-  readonly aspectRatio: InputMaybe<SortOrderEnum>;
-  readonly base64: InputMaybe<SortOrderEnum>;
-  readonly originalImg: InputMaybe<SortOrderEnum>;
-  readonly originalName: InputMaybe<SortOrderEnum>;
-  readonly presentationHeight: InputMaybe<SortOrderEnum>;
-  readonly presentationWidth: InputMaybe<SortOrderEnum>;
-  readonly sizes: InputMaybe<SortOrderEnum>;
-  readonly src: InputMaybe<SortOrderEnum>;
-  readonly srcSet: InputMaybe<SortOrderEnum>;
-  readonly srcSetWebp: InputMaybe<SortOrderEnum>;
-  readonly srcWebp: InputMaybe<SortOrderEnum>;
-  readonly tracedSVG: InputMaybe<SortOrderEnum>;
 };
 
 type ImageSharpGroupConnection = {
@@ -1076,29 +1381,29 @@ type ImageSharpGroupConnection = {
 
 
 type ImageSharpGroupConnection_distinctArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
 };
 
 
 type ImageSharpGroupConnection_groupArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type ImageSharpGroupConnection_maxArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
 };
 
 
 type ImageSharpGroupConnection_minArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
 };
 
 
 type ImageSharpGroupConnection_sumArgs = {
-  field: ImageSharpFieldSelector;
+  field: ImageSharpFieldsEnum;
 };
 
 type ImageSharpOriginal = {
@@ -1107,22 +1412,10 @@ type ImageSharpOriginal = {
   readonly width: Maybe<Scalars['Float']>;
 };
 
-type ImageSharpOriginalFieldSelector = {
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly src: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
 type ImageSharpOriginalFilterInput = {
   readonly height: InputMaybe<FloatQueryOperatorInput>;
   readonly src: InputMaybe<StringQueryOperatorInput>;
   readonly width: InputMaybe<FloatQueryOperatorInput>;
-};
-
-type ImageSharpOriginalSortInput = {
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly src: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
 };
 
 type ImageSharpResize = {
@@ -1134,15 +1427,6 @@ type ImageSharpResize = {
   readonly width: Maybe<Scalars['Int']>;
 };
 
-type ImageSharpResizeFieldSelector = {
-  readonly aspectRatio: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly originalName: InputMaybe<FieldSelectorEnum>;
-  readonly src: InputMaybe<FieldSelectorEnum>;
-  readonly tracedSVG: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
 type ImageSharpResizeFilterInput = {
   readonly aspectRatio: InputMaybe<FloatQueryOperatorInput>;
   readonly height: InputMaybe<IntQueryOperatorInput>;
@@ -1152,25 +1436,9 @@ type ImageSharpResizeFilterInput = {
   readonly width: InputMaybe<IntQueryOperatorInput>;
 };
 
-type ImageSharpResizeSortInput = {
-  readonly aspectRatio: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly originalName: InputMaybe<SortOrderEnum>;
-  readonly src: InputMaybe<SortOrderEnum>;
-  readonly tracedSVG: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
-};
-
 type ImageSharpSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly fixed: InputMaybe<ImageSharpFixedSortInput>;
-  readonly fluid: InputMaybe<ImageSharpFluidSortInput>;
-  readonly gatsbyImageData: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly original: InputMaybe<ImageSharpOriginalSortInput>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly resize: InputMaybe<ImageSharpResizeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<ImageSharpFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type IntQueryOperatorInput = {
@@ -1196,18 +1464,6 @@ type Internal = {
   readonly type: Scalars['String'];
 };
 
-type InternalFieldSelector = {
-  readonly content: InputMaybe<FieldSelectorEnum>;
-  readonly contentDigest: InputMaybe<FieldSelectorEnum>;
-  readonly contentFilePath: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly fieldOwners: InputMaybe<FieldSelectorEnum>;
-  readonly ignoreType: InputMaybe<FieldSelectorEnum>;
-  readonly mediaType: InputMaybe<FieldSelectorEnum>;
-  readonly owner: InputMaybe<FieldSelectorEnum>;
-  readonly type: InputMaybe<FieldSelectorEnum>;
-};
-
 type InternalFilterInput = {
   readonly content: InputMaybe<StringQueryOperatorInput>;
   readonly contentDigest: InputMaybe<StringQueryOperatorInput>;
@@ -1218,18 +1474,6 @@ type InternalFilterInput = {
   readonly mediaType: InputMaybe<StringQueryOperatorInput>;
   readonly owner: InputMaybe<StringQueryOperatorInput>;
   readonly type: InputMaybe<StringQueryOperatorInput>;
-};
-
-type InternalSortInput = {
-  readonly content: InputMaybe<SortOrderEnum>;
-  readonly contentDigest: InputMaybe<SortOrderEnum>;
-  readonly contentFilePath: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly fieldOwners: InputMaybe<SortOrderEnum>;
-  readonly ignoreType: InputMaybe<SortOrderEnum>;
-  readonly mediaType: InputMaybe<SortOrderEnum>;
-  readonly owner: InputMaybe<SortOrderEnum>;
-  readonly type: InputMaybe<SortOrderEnum>;
 };
 
 type JPGOptions = {
@@ -1254,13 +1498,6 @@ type Node = {
   readonly parent: Maybe<Node>;
 };
 
-type NodeFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
-
 type NodeFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
@@ -1270,13 +1507,6 @@ type NodeFilterInput = {
 
 type NodeFilterListInput = {
   readonly elemMatch: InputMaybe<NodeFilterInput>;
-};
-
-type NodeSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly parent: InputMaybe<NodeSortInput>;
 };
 
 type PNGOptions = {
@@ -1404,7 +1634,7 @@ type Query_allDirectoryArgs = {
   filter: InputMaybe<DirectoryFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<DirectorySortInput>>>;
+  sort: InputMaybe<DirectorySortInput>;
 };
 
 
@@ -1412,7 +1642,7 @@ type Query_allFileArgs = {
   filter: InputMaybe<FileFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<FileSortInput>>>;
+  sort: InputMaybe<FileSortInput>;
 };
 
 
@@ -1420,7 +1650,7 @@ type Query_allImageSharpArgs = {
   filter: InputMaybe<ImageSharpFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<ImageSharpSortInput>>>;
+  sort: InputMaybe<ImageSharpSortInput>;
 };
 
 
@@ -1428,7 +1658,7 @@ type Query_allSiteArgs = {
   filter: InputMaybe<SiteFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<SiteSortInput>>>;
+  sort: InputMaybe<SiteSortInput>;
 };
 
 
@@ -1436,7 +1666,7 @@ type Query_allSiteBuildMetadataArgs = {
   filter: InputMaybe<SiteBuildMetadataFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<SiteBuildMetadataSortInput>>>;
+  sort: InputMaybe<SiteBuildMetadataSortInput>;
 };
 
 
@@ -1444,7 +1674,7 @@ type Query_allSiteFunctionArgs = {
   filter: InputMaybe<SiteFunctionFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<SiteFunctionSortInput>>>;
+  sort: InputMaybe<SiteFunctionSortInput>;
 };
 
 
@@ -1452,7 +1682,7 @@ type Query_allSitePageArgs = {
   filter: InputMaybe<SitePageFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<SitePageSortInput>>>;
+  sort: InputMaybe<SitePageSortInput>;
 };
 
 
@@ -1460,7 +1690,7 @@ type Query_allSitePluginArgs = {
   filter: InputMaybe<SitePluginFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<SitePluginSortInput>>>;
+  sort: InputMaybe<SitePluginSortInput>;
 };
 
 
@@ -1468,7 +1698,7 @@ type Query_allWpArgs = {
   filter: InputMaybe<WpFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpSortInput>>>;
+  sort: InputMaybe<WpSortInput>;
 };
 
 
@@ -1476,7 +1706,7 @@ type Query_allWpCategoryArgs = {
   filter: InputMaybe<WpCategoryFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpCategorySortInput>>>;
+  sort: InputMaybe<WpCategorySortInput>;
 };
 
 
@@ -1484,7 +1714,7 @@ type Query_allWpCommentArgs = {
   filter: InputMaybe<WpCommentFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpCommentSortInput>>>;
+  sort: InputMaybe<WpCommentSortInput>;
 };
 
 
@@ -1492,7 +1722,7 @@ type Query_allWpCommentAuthorArgs = {
   filter: InputMaybe<WpCommentAuthorFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpCommentAuthorSortInput>>>;
+  sort: InputMaybe<WpCommentAuthorSortInput>;
 };
 
 
@@ -1500,7 +1730,7 @@ type Query_allWpCommenterArgs = {
   filter: InputMaybe<WpCommenterFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpCommenterSortInput>>>;
+  sort: InputMaybe<WpCommenterSortInput>;
 };
 
 
@@ -1508,7 +1738,7 @@ type Query_allWpContentNodeArgs = {
   filter: InputMaybe<WpContentNodeFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpContentNodeSortInput>>>;
+  sort: InputMaybe<WpContentNodeSortInput>;
 };
 
 
@@ -1516,7 +1746,7 @@ type Query_allWpContentTypeArgs = {
   filter: InputMaybe<WpContentTypeFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpContentTypeSortInput>>>;
+  sort: InputMaybe<WpContentTypeSortInput>;
 };
 
 
@@ -1524,7 +1754,7 @@ type Query_allWpHierarchicalContentNodeArgs = {
   filter: InputMaybe<WpHierarchicalContentNodeFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpHierarchicalContentNodeSortInput>>>;
+  sort: InputMaybe<WpHierarchicalContentNodeSortInput>;
 };
 
 
@@ -1532,7 +1762,7 @@ type Query_allWpHierarchicalNodeArgs = {
   filter: InputMaybe<WpHierarchicalNodeFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpHierarchicalNodeSortInput>>>;
+  sort: InputMaybe<WpHierarchicalNodeSortInput>;
 };
 
 
@@ -1540,7 +1770,7 @@ type Query_allWpHierarchicalTermNodeArgs = {
   filter: InputMaybe<WpHierarchicalTermNodeFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpHierarchicalTermNodeSortInput>>>;
+  sort: InputMaybe<WpHierarchicalTermNodeSortInput>;
 };
 
 
@@ -1548,7 +1778,7 @@ type Query_allWpMediaItemArgs = {
   filter: InputMaybe<WpMediaItemFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpMediaItemSortInput>>>;
+  sort: InputMaybe<WpMediaItemSortInput>;
 };
 
 
@@ -1556,7 +1786,7 @@ type Query_allWpMenuArgs = {
   filter: InputMaybe<WpMenuFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpMenuSortInput>>>;
+  sort: InputMaybe<WpMenuSortInput>;
 };
 
 
@@ -1564,7 +1794,7 @@ type Query_allWpMenuItemArgs = {
   filter: InputMaybe<WpMenuItemFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpMenuItemSortInput>>>;
+  sort: InputMaybe<WpMenuItemSortInput>;
 };
 
 
@@ -1572,7 +1802,7 @@ type Query_allWpMenuItemLinkableArgs = {
   filter: InputMaybe<WpMenuItemLinkableFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpMenuItemLinkableSortInput>>>;
+  sort: InputMaybe<WpMenuItemLinkableSortInput>;
 };
 
 
@@ -1580,7 +1810,7 @@ type Query_allWpNodeWithAuthorArgs = {
   filter: InputMaybe<WpNodeWithAuthorFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithAuthorSortInput>>>;
+  sort: InputMaybe<WpNodeWithAuthorSortInput>;
 };
 
 
@@ -1588,7 +1818,7 @@ type Query_allWpNodeWithCommentsArgs = {
   filter: InputMaybe<WpNodeWithCommentsFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithCommentsSortInput>>>;
+  sort: InputMaybe<WpNodeWithCommentsSortInput>;
 };
 
 
@@ -1596,7 +1826,7 @@ type Query_allWpNodeWithContentEditorArgs = {
   filter: InputMaybe<WpNodeWithContentEditorFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithContentEditorSortInput>>>;
+  sort: InputMaybe<WpNodeWithContentEditorSortInput>;
 };
 
 
@@ -1604,7 +1834,7 @@ type Query_allWpNodeWithExcerptArgs = {
   filter: InputMaybe<WpNodeWithExcerptFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithExcerptSortInput>>>;
+  sort: InputMaybe<WpNodeWithExcerptSortInput>;
 };
 
 
@@ -1612,7 +1842,7 @@ type Query_allWpNodeWithFeaturedImageArgs = {
   filter: InputMaybe<WpNodeWithFeaturedImageFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithFeaturedImageSortInput>>>;
+  sort: InputMaybe<WpNodeWithFeaturedImageSortInput>;
 };
 
 
@@ -1620,7 +1850,7 @@ type Query_allWpNodeWithPageAttributesArgs = {
   filter: InputMaybe<WpNodeWithPageAttributesFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithPageAttributesSortInput>>>;
+  sort: InputMaybe<WpNodeWithPageAttributesSortInput>;
 };
 
 
@@ -1628,7 +1858,7 @@ type Query_allWpNodeWithRevisionsArgs = {
   filter: InputMaybe<WpNodeWithRevisionsFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithRevisionsSortInput>>>;
+  sort: InputMaybe<WpNodeWithRevisionsSortInput>;
 };
 
 
@@ -1636,7 +1866,7 @@ type Query_allWpNodeWithTemplateArgs = {
   filter: InputMaybe<WpNodeWithTemplateFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithTemplateSortInput>>>;
+  sort: InputMaybe<WpNodeWithTemplateSortInput>;
 };
 
 
@@ -1644,7 +1874,7 @@ type Query_allWpNodeWithTitleArgs = {
   filter: InputMaybe<WpNodeWithTitleFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithTitleSortInput>>>;
+  sort: InputMaybe<WpNodeWithTitleSortInput>;
 };
 
 
@@ -1652,7 +1882,7 @@ type Query_allWpNodeWithTrackbacksArgs = {
   filter: InputMaybe<WpNodeWithTrackbacksFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithTrackbacksSortInput>>>;
+  sort: InputMaybe<WpNodeWithTrackbacksSortInput>;
 };
 
 
@@ -1660,7 +1890,7 @@ type Query_allWpPageArgs = {
   filter: InputMaybe<WpPageFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpPageSortInput>>>;
+  sort: InputMaybe<WpPageSortInput>;
 };
 
 
@@ -1668,7 +1898,7 @@ type Query_allWpPostArgs = {
   filter: InputMaybe<WpPostFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpPostSortInput>>>;
+  sort: InputMaybe<WpPostSortInput>;
 };
 
 
@@ -1676,7 +1906,7 @@ type Query_allWpPostFormatArgs = {
   filter: InputMaybe<WpPostFormatFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpPostFormatSortInput>>>;
+  sort: InputMaybe<WpPostFormatSortInput>;
 };
 
 
@@ -1684,7 +1914,7 @@ type Query_allWpTagArgs = {
   filter: InputMaybe<WpTagFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpTagSortInput>>>;
+  sort: InputMaybe<WpTagSortInput>;
 };
 
 
@@ -1692,7 +1922,7 @@ type Query_allWpTaxonomyArgs = {
   filter: InputMaybe<WpTaxonomyFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpTaxonomySortInput>>>;
+  sort: InputMaybe<WpTaxonomySortInput>;
 };
 
 
@@ -1700,7 +1930,7 @@ type Query_allWpTermNodeArgs = {
   filter: InputMaybe<WpTermNodeFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpTermNodeSortInput>>>;
+  sort: InputMaybe<WpTermNodeSortInput>;
 };
 
 
@@ -1708,7 +1938,7 @@ type Query_allWpUniformResourceIdentifiableArgs = {
   filter: InputMaybe<WpUniformResourceIdentifiableFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpUniformResourceIdentifiableSortInput>>>;
+  sort: InputMaybe<WpUniformResourceIdentifiableSortInput>;
 };
 
 
@@ -1716,7 +1946,7 @@ type Query_allWpUserArgs = {
   filter: InputMaybe<WpUserFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpUserSortInput>>>;
+  sort: InputMaybe<WpUserSortInput>;
 };
 
 
@@ -1724,7 +1954,7 @@ type Query_allWpUserRoleArgs = {
   filter: InputMaybe<WpUserRoleFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<ReadonlyArray<InputMaybe<WpUserRoleSortInput>>>;
+  sort: InputMaybe<WpUserRoleSortInput>;
 };
 
 
@@ -2592,7 +2822,6 @@ type Query_wpUserArgs = {
   registeredDate: InputMaybe<StringQueryOperatorInput>;
   roles: InputMaybe<WpUserToUserRoleConnectionTypeFilterInput>;
   seo: InputMaybe<WpSEOUserFilterInput>;
-  shouldShowAdminToolbar: InputMaybe<BooleanQueryOperatorInput>;
   slug: InputMaybe<StringQueryOperatorInput>;
   uri: InputMaybe<StringQueryOperatorInput>;
   url: InputMaybe<StringQueryOperatorInput>;
@@ -2702,22 +2931,10 @@ type RemoteFileResize = {
   readonly width: Maybe<Scalars['Int']>;
 };
 
-type RemoteFileResizeFieldSelector = {
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly src: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
 type RemoteFileResizeFilterInput = {
   readonly height: InputMaybe<IntQueryOperatorInput>;
   readonly src: InputMaybe<StringQueryOperatorInput>;
   readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type RemoteFileResizeSortInput = {
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly src: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
 };
 
 type Site = Node & {
@@ -2774,29 +2991,29 @@ type SiteBuildMetadataConnection = {
 
 
 type SiteBuildMetadataConnection_distinctArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
 };
 
 
 type SiteBuildMetadataConnection_groupArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SiteBuildMetadataConnection_maxArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
 };
 
 
 type SiteBuildMetadataConnection_minArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
 };
 
 
 type SiteBuildMetadataConnection_sumArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
 };
 
 type SiteBuildMetadataEdge = {
@@ -2805,13 +3022,101 @@ type SiteBuildMetadataEdge = {
   readonly previous: Maybe<SiteBuildMetadata>;
 };
 
-type SiteBuildMetadataFieldSelector = {
-  readonly buildTime: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
+type SiteBuildMetadataFieldsEnum =
+  | 'buildTime'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type SiteBuildMetadataFilterInput = {
   readonly buildTime: InputMaybe<DateQueryOperatorInput>;
@@ -2837,37 +3142,34 @@ type SiteBuildMetadataGroupConnection = {
 
 
 type SiteBuildMetadataGroupConnection_distinctArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
 };
 
 
 type SiteBuildMetadataGroupConnection_groupArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SiteBuildMetadataGroupConnection_maxArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
 };
 
 
 type SiteBuildMetadataGroupConnection_minArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
 };
 
 
 type SiteBuildMetadataGroupConnection_sumArgs = {
-  field: SiteBuildMetadataFieldSelector;
+  field: SiteBuildMetadataFieldsEnum;
 };
 
 type SiteBuildMetadataSortInput = {
-  readonly buildTime: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly parent: InputMaybe<NodeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<SiteBuildMetadataFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type SiteConnection = {
@@ -2884,29 +3186,29 @@ type SiteConnection = {
 
 
 type SiteConnection_distinctArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
 };
 
 
 type SiteConnection_groupArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SiteConnection_maxArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
 };
 
 
 type SiteConnection_minArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
 };
 
 
 type SiteConnection_sumArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
 };
 
 type SiteEdge = {
@@ -2915,21 +3217,118 @@ type SiteEdge = {
   readonly previous: Maybe<Site>;
 };
 
-type SiteFieldSelector = {
-  readonly buildTime: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly graphqlTypegen: InputMaybe<SiteGraphqlTypegenFieldSelector>;
-  readonly host: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly jsxRuntime: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly pathPrefix: InputMaybe<FieldSelectorEnum>;
-  readonly polyfill: InputMaybe<FieldSelectorEnum>;
-  readonly port: InputMaybe<FieldSelectorEnum>;
-  readonly siteMetadata: InputMaybe<SiteSiteMetadataFieldSelector>;
-  readonly trailingSlash: InputMaybe<FieldSelectorEnum>;
-};
+type SiteFieldsEnum =
+  | 'buildTime'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'graphqlTypegen.generateOnBuild'
+  | 'graphqlTypegen.typesOutputPath'
+  | 'host'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'jsxRuntime'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'pathPrefix'
+  | 'polyfill'
+  | 'port'
+  | 'siteMetadata.author'
+  | 'siteMetadata.description'
+  | 'siteMetadata.image'
+  | 'siteMetadata.keywords'
+  | 'siteMetadata.siteName'
+  | 'siteMetadata.siteUrl'
+  | 'siteMetadata.title'
+  | 'siteMetadata.titleTemplate'
+  | 'siteMetadata.twitterUsername'
+  | 'trailingSlash';
 
 type SiteFilterInput = {
   readonly buildTime: InputMaybe<DateQueryOperatorInput>;
@@ -2975,29 +3374,29 @@ type SiteFunctionConnection = {
 
 
 type SiteFunctionConnection_distinctArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
 };
 
 
 type SiteFunctionConnection_groupArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SiteFunctionConnection_maxArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
 };
 
 
 type SiteFunctionConnection_minArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
 };
 
 
 type SiteFunctionConnection_sumArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
 };
 
 type SiteFunctionEdge = {
@@ -3006,19 +3405,107 @@ type SiteFunctionEdge = {
   readonly previous: Maybe<SiteFunction>;
 };
 
-type SiteFunctionFieldSelector = {
-  readonly absoluteCompiledFilePath: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly functionRoute: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly matchPath: InputMaybe<FieldSelectorEnum>;
-  readonly originalAbsoluteFilePath: InputMaybe<FieldSelectorEnum>;
-  readonly originalRelativeFilePath: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly pluginName: InputMaybe<FieldSelectorEnum>;
-  readonly relativeCompiledFilePath: InputMaybe<FieldSelectorEnum>;
-};
+type SiteFunctionFieldsEnum =
+  | 'absoluteCompiledFilePath'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'functionRoute'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'matchPath'
+  | 'originalAbsoluteFilePath'
+  | 'originalRelativeFilePath'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'pluginName'
+  | 'relativeCompiledFilePath';
 
 type SiteFunctionFilterInput = {
   readonly absoluteCompiledFilePath: InputMaybe<StringQueryOperatorInput>;
@@ -3050,67 +3537,44 @@ type SiteFunctionGroupConnection = {
 
 
 type SiteFunctionGroupConnection_distinctArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
 };
 
 
 type SiteFunctionGroupConnection_groupArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SiteFunctionGroupConnection_maxArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
 };
 
 
 type SiteFunctionGroupConnection_minArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
 };
 
 
 type SiteFunctionGroupConnection_sumArgs = {
-  field: SiteFunctionFieldSelector;
+  field: SiteFunctionFieldsEnum;
 };
 
 type SiteFunctionSortInput = {
-  readonly absoluteCompiledFilePath: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly functionRoute: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly matchPath: InputMaybe<SortOrderEnum>;
-  readonly originalAbsoluteFilePath: InputMaybe<SortOrderEnum>;
-  readonly originalRelativeFilePath: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly pluginName: InputMaybe<SortOrderEnum>;
-  readonly relativeCompiledFilePath: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<SiteFunctionFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type SiteGraphqlTypegen = {
-  readonly documentSearchPaths: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly generateOnBuild: Maybe<Scalars['Boolean']>;
   readonly typesOutputPath: Maybe<Scalars['String']>;
 };
 
-type SiteGraphqlTypegenFieldSelector = {
-  readonly documentSearchPaths: InputMaybe<FieldSelectorEnum>;
-  readonly generateOnBuild: InputMaybe<FieldSelectorEnum>;
-  readonly typesOutputPath: InputMaybe<FieldSelectorEnum>;
-};
-
 type SiteGraphqlTypegenFilterInput = {
-  readonly documentSearchPaths: InputMaybe<StringQueryOperatorInput>;
   readonly generateOnBuild: InputMaybe<BooleanQueryOperatorInput>;
   readonly typesOutputPath: InputMaybe<StringQueryOperatorInput>;
-};
-
-type SiteGraphqlTypegenSortInput = {
-  readonly documentSearchPaths: InputMaybe<SortOrderEnum>;
-  readonly generateOnBuild: InputMaybe<SortOrderEnum>;
-  readonly typesOutputPath: InputMaybe<SortOrderEnum>;
 };
 
 type SiteGroupConnection = {
@@ -3129,29 +3593,29 @@ type SiteGroupConnection = {
 
 
 type SiteGroupConnection_distinctArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
 };
 
 
 type SiteGroupConnection_groupArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SiteGroupConnection_maxArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
 };
 
 
 type SiteGroupConnection_minArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
 };
 
 
 type SiteGroupConnection_sumArgs = {
-  field: SiteFieldSelector;
+  field: SiteFieldsEnum;
 };
 
 type SitePage = Node & {
@@ -3182,29 +3646,29 @@ type SitePageConnection = {
 
 
 type SitePageConnection_distinctArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
 };
 
 
 type SitePageConnection_groupArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SitePageConnection_maxArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
 };
 
 
 type SitePageConnection_minArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
 };
 
 
 type SitePageConnection_sumArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
 };
 
 type SitePageEdge = {
@@ -3213,19 +3677,156 @@ type SitePageEdge = {
   readonly previous: Maybe<SitePage>;
 };
 
-type SitePageFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly component: InputMaybe<FieldSelectorEnum>;
-  readonly componentChunkName: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly internalComponentName: InputMaybe<FieldSelectorEnum>;
-  readonly matchPath: InputMaybe<FieldSelectorEnum>;
-  readonly pageContext: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly path: InputMaybe<FieldSelectorEnum>;
-  readonly pluginCreator: InputMaybe<SitePluginFieldSelector>;
-};
+type SitePageFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'component'
+  | 'componentChunkName'
+  | 'id'
+  | 'internalComponentName'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'matchPath'
+  | 'pageContext'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'path'
+  | 'pluginCreator.browserAPIs'
+  | 'pluginCreator.children'
+  | 'pluginCreator.children.children'
+  | 'pluginCreator.children.children.children'
+  | 'pluginCreator.children.children.id'
+  | 'pluginCreator.children.id'
+  | 'pluginCreator.children.internal.content'
+  | 'pluginCreator.children.internal.contentDigest'
+  | 'pluginCreator.children.internal.contentFilePath'
+  | 'pluginCreator.children.internal.description'
+  | 'pluginCreator.children.internal.fieldOwners'
+  | 'pluginCreator.children.internal.ignoreType'
+  | 'pluginCreator.children.internal.mediaType'
+  | 'pluginCreator.children.internal.owner'
+  | 'pluginCreator.children.internal.type'
+  | 'pluginCreator.children.parent.children'
+  | 'pluginCreator.children.parent.id'
+  | 'pluginCreator.id'
+  | 'pluginCreator.internal.content'
+  | 'pluginCreator.internal.contentDigest'
+  | 'pluginCreator.internal.contentFilePath'
+  | 'pluginCreator.internal.description'
+  | 'pluginCreator.internal.fieldOwners'
+  | 'pluginCreator.internal.ignoreType'
+  | 'pluginCreator.internal.mediaType'
+  | 'pluginCreator.internal.owner'
+  | 'pluginCreator.internal.type'
+  | 'pluginCreator.name'
+  | 'pluginCreator.nodeAPIs'
+  | 'pluginCreator.packageJson'
+  | 'pluginCreator.parent.children'
+  | 'pluginCreator.parent.children.children'
+  | 'pluginCreator.parent.children.id'
+  | 'pluginCreator.parent.id'
+  | 'pluginCreator.parent.internal.content'
+  | 'pluginCreator.parent.internal.contentDigest'
+  | 'pluginCreator.parent.internal.contentFilePath'
+  | 'pluginCreator.parent.internal.description'
+  | 'pluginCreator.parent.internal.fieldOwners'
+  | 'pluginCreator.parent.internal.ignoreType'
+  | 'pluginCreator.parent.internal.mediaType'
+  | 'pluginCreator.parent.internal.owner'
+  | 'pluginCreator.parent.internal.type'
+  | 'pluginCreator.parent.parent.children'
+  | 'pluginCreator.parent.parent.id'
+  | 'pluginCreator.pluginFilepath'
+  | 'pluginCreator.pluginOptions'
+  | 'pluginCreator.resolve'
+  | 'pluginCreator.ssrAPIs'
+  | 'pluginCreator.version';
 
 type SitePageFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -3257,43 +3858,34 @@ type SitePageGroupConnection = {
 
 
 type SitePageGroupConnection_distinctArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
 };
 
 
 type SitePageGroupConnection_groupArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SitePageGroupConnection_maxArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
 };
 
 
 type SitePageGroupConnection_minArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
 };
 
 
 type SitePageGroupConnection_sumArgs = {
-  field: SitePageFieldSelector;
+  field: SitePageFieldsEnum;
 };
 
 type SitePageSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly component: InputMaybe<SortOrderEnum>;
-  readonly componentChunkName: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly internalComponentName: InputMaybe<SortOrderEnum>;
-  readonly matchPath: InputMaybe<SortOrderEnum>;
-  readonly pageContext: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly path: InputMaybe<SortOrderEnum>;
-  readonly pluginCreator: InputMaybe<SitePluginSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<SitePageFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type SitePlugin = Node & {
@@ -3326,29 +3918,29 @@ type SitePluginConnection = {
 
 
 type SitePluginConnection_distinctArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
 };
 
 
 type SitePluginConnection_groupArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SitePluginConnection_maxArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
 };
 
 
 type SitePluginConnection_minArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
 };
 
 
 type SitePluginConnection_sumArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
 };
 
 type SitePluginEdge = {
@@ -3357,21 +3949,109 @@ type SitePluginEdge = {
   readonly previous: Maybe<SitePlugin>;
 };
 
-type SitePluginFieldSelector = {
-  readonly browserAPIs: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeAPIs: InputMaybe<FieldSelectorEnum>;
-  readonly packageJson: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly pluginFilepath: InputMaybe<FieldSelectorEnum>;
-  readonly pluginOptions: InputMaybe<FieldSelectorEnum>;
-  readonly resolve: InputMaybe<FieldSelectorEnum>;
-  readonly ssrAPIs: InputMaybe<FieldSelectorEnum>;
-  readonly version: InputMaybe<FieldSelectorEnum>;
-};
+type SitePluginFieldsEnum =
+  | 'browserAPIs'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'name'
+  | 'nodeAPIs'
+  | 'packageJson'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'pluginFilepath'
+  | 'pluginOptions'
+  | 'resolve'
+  | 'ssrAPIs'
+  | 'version';
 
 type SitePluginFilterInput = {
   readonly browserAPIs: InputMaybe<StringQueryOperatorInput>;
@@ -3405,45 +4085,34 @@ type SitePluginGroupConnection = {
 
 
 type SitePluginGroupConnection_distinctArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
 };
 
 
 type SitePluginGroupConnection_groupArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type SitePluginGroupConnection_maxArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
 };
 
 
 type SitePluginGroupConnection_minArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
 };
 
 
 type SitePluginGroupConnection_sumArgs = {
-  field: SitePluginFieldSelector;
+  field: SitePluginFieldsEnum;
 };
 
 type SitePluginSortInput = {
-  readonly browserAPIs: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeAPIs: InputMaybe<SortOrderEnum>;
-  readonly packageJson: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly pluginFilepath: InputMaybe<SortOrderEnum>;
-  readonly pluginOptions: InputMaybe<SortOrderEnum>;
-  readonly resolve: InputMaybe<SortOrderEnum>;
-  readonly ssrAPIs: InputMaybe<SortOrderEnum>;
-  readonly version: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<SitePluginFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type SiteSiteMetadata = {
@@ -3458,18 +4127,6 @@ type SiteSiteMetadata = {
   readonly twitterUsername: Maybe<Scalars['String']>;
 };
 
-type SiteSiteMetadataFieldSelector = {
-  readonly author: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly image: InputMaybe<FieldSelectorEnum>;
-  readonly keywords: InputMaybe<FieldSelectorEnum>;
-  readonly siteName: InputMaybe<FieldSelectorEnum>;
-  readonly siteUrl: InputMaybe<FieldSelectorEnum>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-  readonly titleTemplate: InputMaybe<FieldSelectorEnum>;
-  readonly twitterUsername: InputMaybe<FieldSelectorEnum>;
-};
-
 type SiteSiteMetadataFilterInput = {
   readonly author: InputMaybe<StringQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
@@ -3482,32 +4139,9 @@ type SiteSiteMetadataFilterInput = {
   readonly twitterUsername: InputMaybe<StringQueryOperatorInput>;
 };
 
-type SiteSiteMetadataSortInput = {
-  readonly author: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly image: InputMaybe<SortOrderEnum>;
-  readonly keywords: InputMaybe<SortOrderEnum>;
-  readonly siteName: InputMaybe<SortOrderEnum>;
-  readonly siteUrl: InputMaybe<SortOrderEnum>;
-  readonly title: InputMaybe<SortOrderEnum>;
-  readonly titleTemplate: InputMaybe<SortOrderEnum>;
-  readonly twitterUsername: InputMaybe<SortOrderEnum>;
-};
-
 type SiteSortInput = {
-  readonly buildTime: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly graphqlTypegen: InputMaybe<SiteGraphqlTypegenSortInput>;
-  readonly host: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly jsxRuntime: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly pathPrefix: InputMaybe<SortOrderEnum>;
-  readonly polyfill: InputMaybe<SortOrderEnum>;
-  readonly port: InputMaybe<SortOrderEnum>;
-  readonly siteMetadata: InputMaybe<SiteSiteMetadataSortInput>;
-  readonly trailingSlash: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<SiteFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type SortOrderEnum =
@@ -3587,19 +4221,6 @@ type WpAvatar = {
   readonly width: Maybe<Scalars['Int']>;
 };
 
-type WpAvatarFieldSelector = {
-  readonly default: InputMaybe<FieldSelectorEnum>;
-  readonly extraAttr: InputMaybe<FieldSelectorEnum>;
-  readonly forceDefault: InputMaybe<FieldSelectorEnum>;
-  readonly foundAvatar: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly rating: InputMaybe<FieldSelectorEnum>;
-  readonly scheme: InputMaybe<FieldSelectorEnum>;
-  readonly size: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpAvatarFilterInput = {
   readonly default: InputMaybe<StringQueryOperatorInput>;
   readonly extraAttr: InputMaybe<StringQueryOperatorInput>;
@@ -3611,19 +4232,6 @@ type WpAvatarFilterInput = {
   readonly size: InputMaybe<IntQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
   readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type WpAvatarSortInput = {
-  readonly default: InputMaybe<SortOrderEnum>;
-  readonly extraAttr: InputMaybe<SortOrderEnum>;
-  readonly forceDefault: InputMaybe<SortOrderEnum>;
-  readonly foundAvatar: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly rating: InputMaybe<SortOrderEnum>;
-  readonly scheme: InputMaybe<SortOrderEnum>;
-  readonly size: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
 };
 
 /** The category type */
@@ -3691,54 +4299,29 @@ type WpCategoryConnection = {
 
 
 type WpCategoryConnection_distinctArgs = {
-  field: WpCategoryFieldSelector;
+  field: WpCategoryFieldsEnum;
 };
 
 
 type WpCategoryConnection_groupArgs = {
-  field: WpCategoryFieldSelector;
+  field: WpCategoryFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpCategoryConnection_maxArgs = {
-  field: WpCategoryFieldSelector;
+  field: WpCategoryFieldsEnum;
 };
 
 
 type WpCategoryConnection_minArgs = {
-  field: WpCategoryFieldSelector;
+  field: WpCategoryFieldsEnum;
 };
 
 
 type WpCategoryConnection_sumArgs = {
-  field: WpCategoryFieldSelector;
-};
-
-type WpCategoryConnectionEdgeType = {
-  /** The connected category Node */
-  readonly node: WpCategory;
-};
-
-type WpCategoryConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpCategoryConnectionType = {
-  /** A list of connected category Nodes */
-  readonly nodes: ReadonlyArray<WpCategory>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpCategoryConnectionPageInfoType;
+  field: WpCategoryFieldsEnum;
 };
 
 type WpCategoryEdge = {
@@ -3747,34 +4330,722 @@ type WpCategoryEdge = {
   readonly previous: Maybe<WpCategory>;
 };
 
-type WpCategoryFieldSelector = {
-  readonly ancestors: InputMaybe<WpCategoryToAncestorsCategoryConnectionTypeFieldSelector>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly contentNodes: InputMaybe<WpCategoryToContentNodeConnectionTypeFieldSelector>;
-  readonly count: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly parentDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly parentId: InputMaybe<FieldSelectorEnum>;
-  readonly posts: InputMaybe<WpCategoryToPostConnectionTypeFieldSelector>;
-  readonly seo: InputMaybe<WpTaxonomySEOFieldSelector>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly taxonomy: InputMaybe<WpCategoryToTaxonomyConnectionEdgeTypeFieldSelector>;
-  readonly taxonomyName: InputMaybe<FieldSelectorEnum>;
-  readonly termGroupId: InputMaybe<FieldSelectorEnum>;
-  readonly termTaxonomyId: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-  readonly wpChildren: InputMaybe<WpCategoryToCategoryConnectionTypeFieldSelector>;
-  readonly wpParent: InputMaybe<WpCategoryToParentCategoryConnectionEdgeTypeFieldSelector>;
-};
+type WpCategoryFieldsEnum =
+  | 'ancestors.nodes'
+  | 'ancestors.nodes.ancestors.nodes'
+  | 'ancestors.nodes.children'
+  | 'ancestors.nodes.children.children'
+  | 'ancestors.nodes.children.id'
+  | 'ancestors.nodes.contentNodes.nodes'
+  | 'ancestors.nodes.count'
+  | 'ancestors.nodes.databaseId'
+  | 'ancestors.nodes.description'
+  | 'ancestors.nodes.id'
+  | 'ancestors.nodes.internal.content'
+  | 'ancestors.nodes.internal.contentDigest'
+  | 'ancestors.nodes.internal.contentFilePath'
+  | 'ancestors.nodes.internal.description'
+  | 'ancestors.nodes.internal.fieldOwners'
+  | 'ancestors.nodes.internal.ignoreType'
+  | 'ancestors.nodes.internal.mediaType'
+  | 'ancestors.nodes.internal.owner'
+  | 'ancestors.nodes.internal.type'
+  | 'ancestors.nodes.isContentNode'
+  | 'ancestors.nodes.isTermNode'
+  | 'ancestors.nodes.link'
+  | 'ancestors.nodes.name'
+  | 'ancestors.nodes.nodeType'
+  | 'ancestors.nodes.parentDatabaseId'
+  | 'ancestors.nodes.parentId'
+  | 'ancestors.nodes.parent.children'
+  | 'ancestors.nodes.parent.id'
+  | 'ancestors.nodes.posts.nodes'
+  | 'ancestors.nodes.seo.breadcrumbs'
+  | 'ancestors.nodes.seo.canonical'
+  | 'ancestors.nodes.seo.cornerstone'
+  | 'ancestors.nodes.seo.focuskw'
+  | 'ancestors.nodes.seo.fullHead'
+  | 'ancestors.nodes.seo.metaDesc'
+  | 'ancestors.nodes.seo.metaKeywords'
+  | 'ancestors.nodes.seo.metaRobotsNofollow'
+  | 'ancestors.nodes.seo.metaRobotsNoindex'
+  | 'ancestors.nodes.seo.opengraphAuthor'
+  | 'ancestors.nodes.seo.opengraphDescription'
+  | 'ancestors.nodes.seo.opengraphModifiedTime'
+  | 'ancestors.nodes.seo.opengraphPublishedTime'
+  | 'ancestors.nodes.seo.opengraphPublisher'
+  | 'ancestors.nodes.seo.opengraphSiteName'
+  | 'ancestors.nodes.seo.opengraphTitle'
+  | 'ancestors.nodes.seo.opengraphType'
+  | 'ancestors.nodes.seo.opengraphUrl'
+  | 'ancestors.nodes.seo.title'
+  | 'ancestors.nodes.seo.twitterDescription'
+  | 'ancestors.nodes.seo.twitterTitle'
+  | 'ancestors.nodes.slug'
+  | 'ancestors.nodes.taxonomyName'
+  | 'ancestors.nodes.termGroupId'
+  | 'ancestors.nodes.termTaxonomyId'
+  | 'ancestors.nodes.uri'
+  | 'ancestors.nodes.wpChildren.nodes'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'contentNodes.nodes'
+  | 'contentNodes.nodes.children'
+  | 'contentNodes.nodes.children.children'
+  | 'contentNodes.nodes.children.id'
+  | 'contentNodes.nodes.contentTypeName'
+  | 'contentNodes.nodes.databaseId'
+  | 'contentNodes.nodes.date'
+  | 'contentNodes.nodes.dateGmt'
+  | 'contentNodes.nodes.desiredSlug'
+  | 'contentNodes.nodes.enclosure'
+  | 'contentNodes.nodes.guid'
+  | 'contentNodes.nodes.id'
+  | 'contentNodes.nodes.internal.content'
+  | 'contentNodes.nodes.internal.contentDigest'
+  | 'contentNodes.nodes.internal.contentFilePath'
+  | 'contentNodes.nodes.internal.description'
+  | 'contentNodes.nodes.internal.fieldOwners'
+  | 'contentNodes.nodes.internal.ignoreType'
+  | 'contentNodes.nodes.internal.mediaType'
+  | 'contentNodes.nodes.internal.owner'
+  | 'contentNodes.nodes.internal.type'
+  | 'contentNodes.nodes.isContentNode'
+  | 'contentNodes.nodes.isTermNode'
+  | 'contentNodes.nodes.link'
+  | 'contentNodes.nodes.modified'
+  | 'contentNodes.nodes.modifiedGmt'
+  | 'contentNodes.nodes.nodeType'
+  | 'contentNodes.nodes.parent.children'
+  | 'contentNodes.nodes.parent.id'
+  | 'contentNodes.nodes.seo.breadcrumbs'
+  | 'contentNodes.nodes.seo.canonical'
+  | 'contentNodes.nodes.seo.cornerstone'
+  | 'contentNodes.nodes.seo.focuskw'
+  | 'contentNodes.nodes.seo.fullHead'
+  | 'contentNodes.nodes.seo.metaDesc'
+  | 'contentNodes.nodes.seo.metaKeywords'
+  | 'contentNodes.nodes.seo.metaRobotsNofollow'
+  | 'contentNodes.nodes.seo.metaRobotsNoindex'
+  | 'contentNodes.nodes.seo.opengraphAuthor'
+  | 'contentNodes.nodes.seo.opengraphDescription'
+  | 'contentNodes.nodes.seo.opengraphModifiedTime'
+  | 'contentNodes.nodes.seo.opengraphPublishedTime'
+  | 'contentNodes.nodes.seo.opengraphPublisher'
+  | 'contentNodes.nodes.seo.opengraphSiteName'
+  | 'contentNodes.nodes.seo.opengraphTitle'
+  | 'contentNodes.nodes.seo.opengraphType'
+  | 'contentNodes.nodes.seo.opengraphUrl'
+  | 'contentNodes.nodes.seo.readingTime'
+  | 'contentNodes.nodes.seo.title'
+  | 'contentNodes.nodes.seo.twitterDescription'
+  | 'contentNodes.nodes.seo.twitterTitle'
+  | 'contentNodes.nodes.slug'
+  | 'contentNodes.nodes.status'
+  | 'contentNodes.nodes.template.templateName'
+  | 'contentNodes.nodes.uri'
+  | 'count'
+  | 'databaseId'
+  | 'description'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'link'
+  | 'name'
+  | 'nodeType'
+  | 'parentDatabaseId'
+  | 'parentId'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'posts.nodes'
+  | 'posts.nodes.acfSampleField.fieldGroupName'
+  | 'posts.nodes.acfSampleField.test'
+  | 'posts.nodes.authorDatabaseId'
+  | 'posts.nodes.authorId'
+  | 'posts.nodes.categories.nodes'
+  | 'posts.nodes.children'
+  | 'posts.nodes.children.children'
+  | 'posts.nodes.children.id'
+  | 'posts.nodes.commentCount'
+  | 'posts.nodes.commentStatus'
+  | 'posts.nodes.comments.nodes'
+  | 'posts.nodes.content'
+  | 'posts.nodes.contentTypeName'
+  | 'posts.nodes.databaseId'
+  | 'posts.nodes.date'
+  | 'posts.nodes.dateGmt'
+  | 'posts.nodes.desiredSlug'
+  | 'posts.nodes.enclosure'
+  | 'posts.nodes.excerpt'
+  | 'posts.nodes.featuredImageDatabaseId'
+  | 'posts.nodes.featuredImageId'
+  | 'posts.nodes.guid'
+  | 'posts.nodes.id'
+  | 'posts.nodes.internal.content'
+  | 'posts.nodes.internal.contentDigest'
+  | 'posts.nodes.internal.contentFilePath'
+  | 'posts.nodes.internal.description'
+  | 'posts.nodes.internal.fieldOwners'
+  | 'posts.nodes.internal.ignoreType'
+  | 'posts.nodes.internal.mediaType'
+  | 'posts.nodes.internal.owner'
+  | 'posts.nodes.internal.type'
+  | 'posts.nodes.isContentNode'
+  | 'posts.nodes.isRevision'
+  | 'posts.nodes.isSticky'
+  | 'posts.nodes.isTermNode'
+  | 'posts.nodes.link'
+  | 'posts.nodes.modified'
+  | 'posts.nodes.modifiedGmt'
+  | 'posts.nodes.nodeType'
+  | 'posts.nodes.parent.children'
+  | 'posts.nodes.parent.id'
+  | 'posts.nodes.pingStatus'
+  | 'posts.nodes.pinged'
+  | 'posts.nodes.postFormats.nodes'
+  | 'posts.nodes.seo.breadcrumbs'
+  | 'posts.nodes.seo.canonical'
+  | 'posts.nodes.seo.cornerstone'
+  | 'posts.nodes.seo.focuskw'
+  | 'posts.nodes.seo.fullHead'
+  | 'posts.nodes.seo.metaDesc'
+  | 'posts.nodes.seo.metaKeywords'
+  | 'posts.nodes.seo.metaRobotsNofollow'
+  | 'posts.nodes.seo.metaRobotsNoindex'
+  | 'posts.nodes.seo.opengraphAuthor'
+  | 'posts.nodes.seo.opengraphDescription'
+  | 'posts.nodes.seo.opengraphModifiedTime'
+  | 'posts.nodes.seo.opengraphPublishedTime'
+  | 'posts.nodes.seo.opengraphPublisher'
+  | 'posts.nodes.seo.opengraphSiteName'
+  | 'posts.nodes.seo.opengraphTitle'
+  | 'posts.nodes.seo.opengraphType'
+  | 'posts.nodes.seo.opengraphUrl'
+  | 'posts.nodes.seo.readingTime'
+  | 'posts.nodes.seo.title'
+  | 'posts.nodes.seo.twitterDescription'
+  | 'posts.nodes.seo.twitterTitle'
+  | 'posts.nodes.slug'
+  | 'posts.nodes.status'
+  | 'posts.nodes.tags.nodes'
+  | 'posts.nodes.template.templateName'
+  | 'posts.nodes.terms.nodes'
+  | 'posts.nodes.title'
+  | 'posts.nodes.toPing'
+  | 'posts.nodes.uri'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'slug'
+  | 'taxonomyName'
+  | 'taxonomy.node.archivePath'
+  | 'taxonomy.node.children'
+  | 'taxonomy.node.children.children'
+  | 'taxonomy.node.children.id'
+  | 'taxonomy.node.connectedContentTypes.nodes'
+  | 'taxonomy.node.description'
+  | 'taxonomy.node.graphqlPluralName'
+  | 'taxonomy.node.graphqlSingleName'
+  | 'taxonomy.node.hierarchical'
+  | 'taxonomy.node.id'
+  | 'taxonomy.node.internal.content'
+  | 'taxonomy.node.internal.contentDigest'
+  | 'taxonomy.node.internal.contentFilePath'
+  | 'taxonomy.node.internal.description'
+  | 'taxonomy.node.internal.fieldOwners'
+  | 'taxonomy.node.internal.ignoreType'
+  | 'taxonomy.node.internal.mediaType'
+  | 'taxonomy.node.internal.owner'
+  | 'taxonomy.node.internal.type'
+  | 'taxonomy.node.label'
+  | 'taxonomy.node.name'
+  | 'taxonomy.node.nodeType'
+  | 'taxonomy.node.parent.children'
+  | 'taxonomy.node.parent.id'
+  | 'taxonomy.node.public'
+  | 'taxonomy.node.restBase'
+  | 'taxonomy.node.restControllerClass'
+  | 'taxonomy.node.showCloud'
+  | 'taxonomy.node.showInAdminColumn'
+  | 'taxonomy.node.showInGraphql'
+  | 'taxonomy.node.showInMenu'
+  | 'taxonomy.node.showInNavMenus'
+  | 'taxonomy.node.showInQuickEdit'
+  | 'taxonomy.node.showInRest'
+  | 'taxonomy.node.showUi'
+  | 'termGroupId'
+  | 'termTaxonomyId'
+  | 'uri'
+  | 'wpChildren.nodes'
+  | 'wpChildren.nodes.ancestors.nodes'
+  | 'wpChildren.nodes.children'
+  | 'wpChildren.nodes.children.children'
+  | 'wpChildren.nodes.children.id'
+  | 'wpChildren.nodes.contentNodes.nodes'
+  | 'wpChildren.nodes.count'
+  | 'wpChildren.nodes.databaseId'
+  | 'wpChildren.nodes.description'
+  | 'wpChildren.nodes.id'
+  | 'wpChildren.nodes.internal.content'
+  | 'wpChildren.nodes.internal.contentDigest'
+  | 'wpChildren.nodes.internal.contentFilePath'
+  | 'wpChildren.nodes.internal.description'
+  | 'wpChildren.nodes.internal.fieldOwners'
+  | 'wpChildren.nodes.internal.ignoreType'
+  | 'wpChildren.nodes.internal.mediaType'
+  | 'wpChildren.nodes.internal.owner'
+  | 'wpChildren.nodes.internal.type'
+  | 'wpChildren.nodes.isContentNode'
+  | 'wpChildren.nodes.isTermNode'
+  | 'wpChildren.nodes.link'
+  | 'wpChildren.nodes.name'
+  | 'wpChildren.nodes.nodeType'
+  | 'wpChildren.nodes.parentDatabaseId'
+  | 'wpChildren.nodes.parentId'
+  | 'wpChildren.nodes.parent.children'
+  | 'wpChildren.nodes.parent.id'
+  | 'wpChildren.nodes.posts.nodes'
+  | 'wpChildren.nodes.seo.breadcrumbs'
+  | 'wpChildren.nodes.seo.canonical'
+  | 'wpChildren.nodes.seo.cornerstone'
+  | 'wpChildren.nodes.seo.focuskw'
+  | 'wpChildren.nodes.seo.fullHead'
+  | 'wpChildren.nodes.seo.metaDesc'
+  | 'wpChildren.nodes.seo.metaKeywords'
+  | 'wpChildren.nodes.seo.metaRobotsNofollow'
+  | 'wpChildren.nodes.seo.metaRobotsNoindex'
+  | 'wpChildren.nodes.seo.opengraphAuthor'
+  | 'wpChildren.nodes.seo.opengraphDescription'
+  | 'wpChildren.nodes.seo.opengraphModifiedTime'
+  | 'wpChildren.nodes.seo.opengraphPublishedTime'
+  | 'wpChildren.nodes.seo.opengraphPublisher'
+  | 'wpChildren.nodes.seo.opengraphSiteName'
+  | 'wpChildren.nodes.seo.opengraphTitle'
+  | 'wpChildren.nodes.seo.opengraphType'
+  | 'wpChildren.nodes.seo.opengraphUrl'
+  | 'wpChildren.nodes.seo.title'
+  | 'wpChildren.nodes.seo.twitterDescription'
+  | 'wpChildren.nodes.seo.twitterTitle'
+  | 'wpChildren.nodes.slug'
+  | 'wpChildren.nodes.taxonomyName'
+  | 'wpChildren.nodes.termGroupId'
+  | 'wpChildren.nodes.termTaxonomyId'
+  | 'wpChildren.nodes.uri'
+  | 'wpChildren.nodes.wpChildren.nodes'
+  | 'wpParent.node.ancestors.nodes'
+  | 'wpParent.node.children'
+  | 'wpParent.node.children.children'
+  | 'wpParent.node.children.id'
+  | 'wpParent.node.contentNodes.nodes'
+  | 'wpParent.node.count'
+  | 'wpParent.node.databaseId'
+  | 'wpParent.node.description'
+  | 'wpParent.node.id'
+  | 'wpParent.node.internal.content'
+  | 'wpParent.node.internal.contentDigest'
+  | 'wpParent.node.internal.contentFilePath'
+  | 'wpParent.node.internal.description'
+  | 'wpParent.node.internal.fieldOwners'
+  | 'wpParent.node.internal.ignoreType'
+  | 'wpParent.node.internal.mediaType'
+  | 'wpParent.node.internal.owner'
+  | 'wpParent.node.internal.type'
+  | 'wpParent.node.isContentNode'
+  | 'wpParent.node.isTermNode'
+  | 'wpParent.node.link'
+  | 'wpParent.node.name'
+  | 'wpParent.node.nodeType'
+  | 'wpParent.node.parentDatabaseId'
+  | 'wpParent.node.parentId'
+  | 'wpParent.node.parent.children'
+  | 'wpParent.node.parent.id'
+  | 'wpParent.node.posts.nodes'
+  | 'wpParent.node.seo.breadcrumbs'
+  | 'wpParent.node.seo.canonical'
+  | 'wpParent.node.seo.cornerstone'
+  | 'wpParent.node.seo.focuskw'
+  | 'wpParent.node.seo.fullHead'
+  | 'wpParent.node.seo.metaDesc'
+  | 'wpParent.node.seo.metaKeywords'
+  | 'wpParent.node.seo.metaRobotsNofollow'
+  | 'wpParent.node.seo.metaRobotsNoindex'
+  | 'wpParent.node.seo.opengraphAuthor'
+  | 'wpParent.node.seo.opengraphDescription'
+  | 'wpParent.node.seo.opengraphModifiedTime'
+  | 'wpParent.node.seo.opengraphPublishedTime'
+  | 'wpParent.node.seo.opengraphPublisher'
+  | 'wpParent.node.seo.opengraphSiteName'
+  | 'wpParent.node.seo.opengraphTitle'
+  | 'wpParent.node.seo.opengraphType'
+  | 'wpParent.node.seo.opengraphUrl'
+  | 'wpParent.node.seo.title'
+  | 'wpParent.node.seo.twitterDescription'
+  | 'wpParent.node.seo.twitterTitle'
+  | 'wpParent.node.slug'
+  | 'wpParent.node.taxonomyName'
+  | 'wpParent.node.termGroupId'
+  | 'wpParent.node.termTaxonomyId'
+  | 'wpParent.node.uri'
+  | 'wpParent.node.wpChildren.nodes';
 
 type WpCategoryFilterInput = {
   readonly ancestors: InputMaybe<WpCategoryToAncestorsCategoryConnectionTypeFilterInput>;
@@ -3825,320 +5096,84 @@ type WpCategoryGroupConnection = {
 
 
 type WpCategoryGroupConnection_distinctArgs = {
-  field: WpCategoryFieldSelector;
+  field: WpCategoryFieldsEnum;
 };
 
 
 type WpCategoryGroupConnection_groupArgs = {
-  field: WpCategoryFieldSelector;
+  field: WpCategoryFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpCategoryGroupConnection_maxArgs = {
-  field: WpCategoryFieldSelector;
+  field: WpCategoryFieldsEnum;
 };
 
 
 type WpCategoryGroupConnection_minArgs = {
-  field: WpCategoryFieldSelector;
+  field: WpCategoryFieldsEnum;
 };
 
 
 type WpCategoryGroupConnection_sumArgs = {
-  field: WpCategoryFieldSelector;
+  field: WpCategoryFieldsEnum;
 };
 
 type WpCategorySortInput = {
-  readonly ancestors: InputMaybe<WpCategoryToAncestorsCategoryConnectionTypeSortInput>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly contentNodes: InputMaybe<WpCategoryToContentNodeConnectionTypeSortInput>;
-  readonly count: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly parentDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly parentId: InputMaybe<SortOrderEnum>;
-  readonly posts: InputMaybe<WpCategoryToPostConnectionTypeSortInput>;
-  readonly seo: InputMaybe<WpTaxonomySEOSortInput>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly taxonomy: InputMaybe<WpCategoryToTaxonomyConnectionEdgeTypeSortInput>;
-  readonly taxonomyName: InputMaybe<SortOrderEnum>;
-  readonly termGroupId: InputMaybe<SortOrderEnum>;
-  readonly termTaxonomyId: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-  readonly wpChildren: InputMaybe<WpCategoryToCategoryConnectionTypeSortInput>;
-  readonly wpParent: InputMaybe<WpCategoryToParentCategoryConnectionEdgeTypeSortInput>;
-};
-
-/** Page Info on the &quot;CategoryToAncestorsCategoryConnection&quot; */
-type WpCategoryToAncestorsCategoryConnectionPageInfoType = WpCategoryConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpCategoryToAncestorsCategoryConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpCategoryToAncestorsCategoryConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpCategoryToAncestorsCategoryConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpCategoryFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the Category type and the category type */
-type WpCategoryToAncestorsCategoryConnectionType = WpCategoryConnectionType & WpConnectionType & {
+type WpCategoryToAncestorsCategoryConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpCategory>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpCategoryToAncestorsCategoryConnectionPageInfoType;
-};
-
-type WpCategoryToAncestorsCategoryConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpCategoryFieldSelector>;
-  readonly pageInfo: InputMaybe<WpCategoryToAncestorsCategoryConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpCategoryToAncestorsCategoryConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCategoryFilterListInput>;
-  readonly pageInfo: InputMaybe<WpCategoryToAncestorsCategoryConnectionPageInfoTypeFilterInput>;
-};
-
-type WpCategoryToAncestorsCategoryConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpCategorySortInput>;
-  readonly pageInfo: InputMaybe<WpCategoryToAncestorsCategoryConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;CategoryToCategoryConnection&quot; */
-type WpCategoryToCategoryConnectionPageInfoType = WpCategoryConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpCategoryToCategoryConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpCategoryToCategoryConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpCategoryToCategoryConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the Category type and the category type */
-type WpCategoryToCategoryConnectionType = WpCategoryConnectionType & WpConnectionType & {
+type WpCategoryToCategoryConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpCategory>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpCategoryToCategoryConnectionPageInfoType;
-};
-
-type WpCategoryToCategoryConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpCategoryFieldSelector>;
-  readonly pageInfo: InputMaybe<WpCategoryToCategoryConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpCategoryToCategoryConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCategoryFilterListInput>;
-  readonly pageInfo: InputMaybe<WpCategoryToCategoryConnectionPageInfoTypeFilterInput>;
-};
-
-type WpCategoryToCategoryConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpCategorySortInput>;
-  readonly pageInfo: InputMaybe<WpCategoryToCategoryConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;CategoryToContentNodeConnection&quot; */
-type WpCategoryToContentNodeConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpCategoryToContentNodeConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpCategoryToContentNodeConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpCategoryToContentNodeConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the Category type and the ContentNode type */
-type WpCategoryToContentNodeConnectionType = WpConnectionType & WpContentNodeConnectionType & {
+type WpCategoryToContentNodeConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpCategoryToContentNodeConnectionPageInfoType;
-};
-
-type WpCategoryToContentNodeConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpContentNodeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpCategoryToContentNodeConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpCategoryToContentNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpCategoryToContentNodeConnectionPageInfoTypeFilterInput>;
-};
-
-type WpCategoryToContentNodeConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpContentNodeSortInput>;
-  readonly pageInfo: InputMaybe<WpCategoryToContentNodeConnectionPageInfoTypeSortInput>;
 };
 
 /** Connection between the Category type and the category type */
-type WpCategoryToParentCategoryConnectionEdgeType = WpCategoryConnectionEdgeType & WpEdgeType & WpOneToOneConnectionType & {
+type WpCategoryToParentCategoryConnectionEdgeType = WpEdgeType & WpOneToOneConnectionType & {
   /** The node of the connection, without the edges */
   readonly node: WpCategory;
-};
-
-type WpCategoryToParentCategoryConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpCategoryFieldSelector>;
 };
 
 type WpCategoryToParentCategoryConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpCategoryFilterInput>;
 };
 
-type WpCategoryToParentCategoryConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpCategorySortInput>;
-};
-
-/** Page Info on the &quot;CategoryToPostConnection&quot; */
-type WpCategoryToPostConnectionPageInfoType = WpPageInfoType & WpPostConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpCategoryToPostConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpCategoryToPostConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpCategoryToPostConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
-};
-
 /** Connection between the Category type and the post type */
-type WpCategoryToPostConnectionType = WpConnectionType & WpPostConnectionType & {
+type WpCategoryToPostConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPost>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpCategoryToPostConnectionPageInfoType;
-};
-
-type WpCategoryToPostConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpPostFieldSelector>;
-  readonly pageInfo: InputMaybe<WpCategoryToPostConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpCategoryToPostConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFilterListInput>;
-  readonly pageInfo: InputMaybe<WpCategoryToPostConnectionPageInfoTypeFilterInput>;
-};
-
-type WpCategoryToPostConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpPostSortInput>;
-  readonly pageInfo: InputMaybe<WpCategoryToPostConnectionPageInfoTypeSortInput>;
 };
 
 /** Connection between the Category type and the Taxonomy type */
@@ -4147,16 +5182,8 @@ type WpCategoryToTaxonomyConnectionEdgeType = WpEdgeType & WpOneToOneConnectionT
   readonly node: WpTaxonomy;
 };
 
-type WpCategoryToTaxonomyConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpTaxonomyFieldSelector>;
-};
-
 type WpCategoryToTaxonomyConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpTaxonomyFilterInput>;
-};
-
-type WpCategoryToTaxonomyConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpTaxonomySortInput>;
 };
 
 /** A Comment object */
@@ -4249,29 +5276,29 @@ type WpCommentAuthorConnection = {
 
 
 type WpCommentAuthorConnection_distinctArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
 };
 
 
 type WpCommentAuthorConnection_groupArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpCommentAuthorConnection_maxArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
 };
 
 
 type WpCommentAuthorConnection_minArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
 };
 
 
 type WpCommentAuthorConnection_sumArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
 };
 
 type WpCommentAuthorEdge = {
@@ -4280,18 +5307,115 @@ type WpCommentAuthorEdge = {
   readonly previous: Maybe<WpCommentAuthor>;
 };
 
-type WpCommentAuthorFieldSelector = {
-  readonly avatar: InputMaybe<WpAvatarFieldSelector>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly email: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
+type WpCommentAuthorFieldsEnum =
+  | 'avatar.default'
+  | 'avatar.extraAttr'
+  | 'avatar.forceDefault'
+  | 'avatar.foundAvatar'
+  | 'avatar.height'
+  | 'avatar.rating'
+  | 'avatar.scheme'
+  | 'avatar.size'
+  | 'avatar.url'
+  | 'avatar.width'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'databaseId'
+  | 'email'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'name'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'url';
 
 type WpCommentAuthorFilterInput = {
   readonly avatar: InputMaybe<WpAvatarFilterInput>;
@@ -4322,42 +5446,34 @@ type WpCommentAuthorGroupConnection = {
 
 
 type WpCommentAuthorGroupConnection_distinctArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
 };
 
 
 type WpCommentAuthorGroupConnection_groupArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpCommentAuthorGroupConnection_maxArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
 };
 
 
 type WpCommentAuthorGroupConnection_minArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
 };
 
 
 type WpCommentAuthorGroupConnection_sumArgs = {
-  field: WpCommentAuthorFieldSelector;
+  field: WpCommentAuthorFieldsEnum;
 };
 
 type WpCommentAuthorSortInput = {
-  readonly avatar: InputMaybe<WpAvatarSortInput>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly email: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly url: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpCommentAuthorFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpCommentConnection = {
@@ -4374,54 +5490,39 @@ type WpCommentConnection = {
 
 
 type WpCommentConnection_distinctArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
 };
 
 
 type WpCommentConnection_groupArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpCommentConnection_maxArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
 };
 
 
 type WpCommentConnection_minArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
 };
 
 
 type WpCommentConnection_sumArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
 };
 
 type WpCommentConnectionEdgeType = {
-  /** The connected Comment Node */
-  readonly node: WpComment;
-};
-
-type WpCommentConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+  /** The connected node */
+  readonly node: WpNode;
 };
 
 type WpCommentConnectionType = {
   /** A list of connected Comment Nodes */
   readonly nodes: ReadonlyArray<WpComment>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpCommentConnectionPageInfoType;
 };
 
 type WpCommentEdge = {
@@ -4430,28 +5531,253 @@ type WpCommentEdge = {
   readonly previous: Maybe<WpComment>;
 };
 
-type WpCommentFieldSelector = {
-  readonly agent: InputMaybe<FieldSelectorEnum>;
-  readonly author: InputMaybe<WpCommentToCommenterConnectionEdgeTypeFieldSelector>;
-  readonly authorIp: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly commentedOn: InputMaybe<WpCommentToContentNodeConnectionEdgeTypeFieldSelector>;
-  readonly content: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly date: InputMaybe<FieldSelectorEnum>;
-  readonly dateGmt: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly karma: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly parentDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly parentId: InputMaybe<FieldSelectorEnum>;
-  readonly replies: InputMaybe<WpCommentToCommentConnectionTypeFieldSelector>;
-  readonly status: InputMaybe<FieldSelectorEnum>;
-  readonly type: InputMaybe<FieldSelectorEnum>;
-  readonly wpParent: InputMaybe<WpCommentToParentCommentConnectionEdgeTypeFieldSelector>;
-};
+type WpCommentFieldsEnum =
+  | 'agent'
+  | 'authorIp'
+  | 'author.node.avatar.default'
+  | 'author.node.avatar.extraAttr'
+  | 'author.node.avatar.forceDefault'
+  | 'author.node.avatar.foundAvatar'
+  | 'author.node.avatar.height'
+  | 'author.node.avatar.rating'
+  | 'author.node.avatar.scheme'
+  | 'author.node.avatar.size'
+  | 'author.node.avatar.url'
+  | 'author.node.avatar.width'
+  | 'author.node.children'
+  | 'author.node.children.children'
+  | 'author.node.children.id'
+  | 'author.node.databaseId'
+  | 'author.node.email'
+  | 'author.node.id'
+  | 'author.node.internal.content'
+  | 'author.node.internal.contentDigest'
+  | 'author.node.internal.contentFilePath'
+  | 'author.node.internal.description'
+  | 'author.node.internal.fieldOwners'
+  | 'author.node.internal.ignoreType'
+  | 'author.node.internal.mediaType'
+  | 'author.node.internal.owner'
+  | 'author.node.internal.type'
+  | 'author.node.name'
+  | 'author.node.nodeType'
+  | 'author.node.parent.children'
+  | 'author.node.parent.id'
+  | 'author.node.url'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'commentedOn.node.children'
+  | 'commentedOn.node.children.children'
+  | 'commentedOn.node.children.id'
+  | 'commentedOn.node.contentTypeName'
+  | 'commentedOn.node.databaseId'
+  | 'commentedOn.node.date'
+  | 'commentedOn.node.dateGmt'
+  | 'commentedOn.node.desiredSlug'
+  | 'commentedOn.node.enclosure'
+  | 'commentedOn.node.guid'
+  | 'commentedOn.node.id'
+  | 'commentedOn.node.internal.content'
+  | 'commentedOn.node.internal.contentDigest'
+  | 'commentedOn.node.internal.contentFilePath'
+  | 'commentedOn.node.internal.description'
+  | 'commentedOn.node.internal.fieldOwners'
+  | 'commentedOn.node.internal.ignoreType'
+  | 'commentedOn.node.internal.mediaType'
+  | 'commentedOn.node.internal.owner'
+  | 'commentedOn.node.internal.type'
+  | 'commentedOn.node.isContentNode'
+  | 'commentedOn.node.isTermNode'
+  | 'commentedOn.node.link'
+  | 'commentedOn.node.modified'
+  | 'commentedOn.node.modifiedGmt'
+  | 'commentedOn.node.nodeType'
+  | 'commentedOn.node.parent.children'
+  | 'commentedOn.node.parent.id'
+  | 'commentedOn.node.seo.breadcrumbs'
+  | 'commentedOn.node.seo.canonical'
+  | 'commentedOn.node.seo.cornerstone'
+  | 'commentedOn.node.seo.focuskw'
+  | 'commentedOn.node.seo.fullHead'
+  | 'commentedOn.node.seo.metaDesc'
+  | 'commentedOn.node.seo.metaKeywords'
+  | 'commentedOn.node.seo.metaRobotsNofollow'
+  | 'commentedOn.node.seo.metaRobotsNoindex'
+  | 'commentedOn.node.seo.opengraphAuthor'
+  | 'commentedOn.node.seo.opengraphDescription'
+  | 'commentedOn.node.seo.opengraphModifiedTime'
+  | 'commentedOn.node.seo.opengraphPublishedTime'
+  | 'commentedOn.node.seo.opengraphPublisher'
+  | 'commentedOn.node.seo.opengraphSiteName'
+  | 'commentedOn.node.seo.opengraphTitle'
+  | 'commentedOn.node.seo.opengraphType'
+  | 'commentedOn.node.seo.opengraphUrl'
+  | 'commentedOn.node.seo.readingTime'
+  | 'commentedOn.node.seo.title'
+  | 'commentedOn.node.seo.twitterDescription'
+  | 'commentedOn.node.seo.twitterTitle'
+  | 'commentedOn.node.slug'
+  | 'commentedOn.node.status'
+  | 'commentedOn.node.template.templateName'
+  | 'commentedOn.node.uri'
+  | 'content'
+  | 'databaseId'
+  | 'date'
+  | 'dateGmt'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'karma'
+  | 'nodeType'
+  | 'parentDatabaseId'
+  | 'parentId'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'replies.nodes'
+  | 'replies.nodes.agent'
+  | 'replies.nodes.authorIp'
+  | 'replies.nodes.children'
+  | 'replies.nodes.children.children'
+  | 'replies.nodes.children.id'
+  | 'replies.nodes.content'
+  | 'replies.nodes.databaseId'
+  | 'replies.nodes.date'
+  | 'replies.nodes.dateGmt'
+  | 'replies.nodes.id'
+  | 'replies.nodes.internal.content'
+  | 'replies.nodes.internal.contentDigest'
+  | 'replies.nodes.internal.contentFilePath'
+  | 'replies.nodes.internal.description'
+  | 'replies.nodes.internal.fieldOwners'
+  | 'replies.nodes.internal.ignoreType'
+  | 'replies.nodes.internal.mediaType'
+  | 'replies.nodes.internal.owner'
+  | 'replies.nodes.internal.type'
+  | 'replies.nodes.karma'
+  | 'replies.nodes.nodeType'
+  | 'replies.nodes.parentDatabaseId'
+  | 'replies.nodes.parentId'
+  | 'replies.nodes.parent.children'
+  | 'replies.nodes.parent.id'
+  | 'replies.nodes.replies.nodes'
+  | 'replies.nodes.status'
+  | 'replies.nodes.type'
+  | 'status'
+  | 'type'
+  | 'wpParent.node.agent'
+  | 'wpParent.node.authorIp'
+  | 'wpParent.node.children'
+  | 'wpParent.node.children.children'
+  | 'wpParent.node.children.id'
+  | 'wpParent.node.content'
+  | 'wpParent.node.databaseId'
+  | 'wpParent.node.date'
+  | 'wpParent.node.dateGmt'
+  | 'wpParent.node.id'
+  | 'wpParent.node.internal.content'
+  | 'wpParent.node.internal.contentDigest'
+  | 'wpParent.node.internal.contentFilePath'
+  | 'wpParent.node.internal.description'
+  | 'wpParent.node.internal.fieldOwners'
+  | 'wpParent.node.internal.ignoreType'
+  | 'wpParent.node.internal.mediaType'
+  | 'wpParent.node.internal.owner'
+  | 'wpParent.node.internal.type'
+  | 'wpParent.node.karma'
+  | 'wpParent.node.nodeType'
+  | 'wpParent.node.parentDatabaseId'
+  | 'wpParent.node.parentId'
+  | 'wpParent.node.parent.children'
+  | 'wpParent.node.parent.id'
+  | 'wpParent.node.replies.nodes'
+  | 'wpParent.node.status'
+  | 'wpParent.node.type';
 
 type WpCommentFilterInput = {
   readonly agent: InputMaybe<StringQueryOperatorInput>;
@@ -4496,52 +5822,34 @@ type WpCommentGroupConnection = {
 
 
 type WpCommentGroupConnection_distinctArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
 };
 
 
 type WpCommentGroupConnection_groupArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpCommentGroupConnection_maxArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
 };
 
 
 type WpCommentGroupConnection_minArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
 };
 
 
 type WpCommentGroupConnection_sumArgs = {
-  field: WpCommentFieldSelector;
+  field: WpCommentFieldsEnum;
 };
 
 type WpCommentSortInput = {
-  readonly agent: InputMaybe<SortOrderEnum>;
-  readonly author: InputMaybe<WpCommentToCommenterConnectionEdgeTypeSortInput>;
-  readonly authorIp: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly commentedOn: InputMaybe<WpCommentToContentNodeConnectionEdgeTypeSortInput>;
-  readonly content: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly date: InputMaybe<SortOrderEnum>;
-  readonly dateGmt: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly karma: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly parentDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly parentId: InputMaybe<SortOrderEnum>;
-  readonly replies: InputMaybe<WpCommentToCommentConnectionTypeSortInput>;
-  readonly status: InputMaybe<SortOrderEnum>;
-  readonly type: InputMaybe<SortOrderEnum>;
-  readonly wpParent: InputMaybe<WpCommentToParentCommentConnectionEdgeTypeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpCommentFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** The status of the comment object. */
@@ -4558,83 +5866,24 @@ type WpCommentStatusEnumQueryOperatorInput = {
   readonly nin: InputMaybe<ReadonlyArray<InputMaybe<WpCommentStatusEnum>>>;
 };
 
-/** Page Info on the &quot;CommentToCommentConnection&quot; */
-type WpCommentToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpCommentToCommentConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpCommentToCommentConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpCommentToCommentConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
-};
-
 /** Connection between the Comment type and the Comment type */
 type WpCommentToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpCommentToCommentConnectionPageInfoType;
-};
-
-type WpCommentToCommentConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpCommentFieldSelector>;
-  readonly pageInfo: InputMaybe<WpCommentToCommentConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpCommentToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
-  readonly pageInfo: InputMaybe<WpCommentToCommentConnectionPageInfoTypeFilterInput>;
-};
-
-type WpCommentToCommentConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpCommentSortInput>;
-  readonly pageInfo: InputMaybe<WpCommentToCommentConnectionPageInfoTypeSortInput>;
 };
 
 /** Connection between the Comment type and the Commenter type */
-type WpCommentToCommenterConnectionEdgeType = WpCommenterConnectionEdgeType & WpEdgeType & WpOneToOneConnectionType & {
+type WpCommentToCommenterConnectionEdgeType = WpEdgeType & WpOneToOneConnectionType & {
   /** The node of the connection, without the edges */
   readonly node: WpCommenter;
 };
 
-type WpCommentToCommenterConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpCommenterFieldSelector>;
-};
-
 type WpCommentToCommenterConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpCommenterFilterInput>;
-};
-
-type WpCommentToCommenterConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpCommenterSortInput>;
 };
 
 /** Connection between the Comment type and the ContentNode type */
@@ -4643,16 +5892,8 @@ type WpCommentToContentNodeConnectionEdgeType = WpContentNodeConnectionEdgeType 
   readonly node: WpContentNode;
 };
 
-type WpCommentToContentNodeConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpContentNodeFieldSelector>;
-};
-
 type WpCommentToContentNodeConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpContentNodeFilterInput>;
-};
-
-type WpCommentToContentNodeConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpContentNodeSortInput>;
 };
 
 /** Connection between the Comment type and the Comment type */
@@ -4661,16 +5902,8 @@ type WpCommentToParentCommentConnectionEdgeType = WpCommentConnectionEdgeType & 
   readonly node: WpComment;
 };
 
-type WpCommentToParentCommentConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpCommentFieldSelector>;
-};
-
 type WpCommentToParentCommentConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpCommentFilterInput>;
-};
-
-type WpCommentToParentCommentConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpCommentSortInput>;
 };
 
 type WpCommenter = {
@@ -4705,34 +5938,29 @@ type WpCommenterConnection = {
 
 
 type WpCommenterConnection_distinctArgs = {
-  field: WpCommenterFieldSelector;
+  field: WpCommenterFieldsEnum;
 };
 
 
 type WpCommenterConnection_groupArgs = {
-  field: WpCommenterFieldSelector;
+  field: WpCommenterFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpCommenterConnection_maxArgs = {
-  field: WpCommenterFieldSelector;
+  field: WpCommenterFieldsEnum;
 };
 
 
 type WpCommenterConnection_minArgs = {
-  field: WpCommenterFieldSelector;
+  field: WpCommenterFieldsEnum;
 };
 
 
 type WpCommenterConnection_sumArgs = {
-  field: WpCommenterFieldSelector;
-};
-
-type WpCommenterConnectionEdgeType = {
-  /** The connected Commenter Node */
-  readonly node: WpCommenter;
+  field: WpCommenterFieldsEnum;
 };
 
 type WpCommenterEdge = {
@@ -4741,18 +5969,115 @@ type WpCommenterEdge = {
   readonly previous: Maybe<WpCommenter>;
 };
 
-type WpCommenterFieldSelector = {
-  readonly avatar: InputMaybe<WpAvatarFieldSelector>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly email: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
+type WpCommenterFieldsEnum =
+  | 'avatar.default'
+  | 'avatar.extraAttr'
+  | 'avatar.forceDefault'
+  | 'avatar.foundAvatar'
+  | 'avatar.height'
+  | 'avatar.rating'
+  | 'avatar.scheme'
+  | 'avatar.size'
+  | 'avatar.url'
+  | 'avatar.width'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'databaseId'
+  | 'email'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'name'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'url';
 
 type WpCommenterFilterInput = {
   readonly avatar: InputMaybe<WpAvatarFilterInput>;
@@ -4783,42 +6108,34 @@ type WpCommenterGroupConnection = {
 
 
 type WpCommenterGroupConnection_distinctArgs = {
-  field: WpCommenterFieldSelector;
+  field: WpCommenterFieldsEnum;
 };
 
 
 type WpCommenterGroupConnection_groupArgs = {
-  field: WpCommenterFieldSelector;
+  field: WpCommenterFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpCommenterGroupConnection_maxArgs = {
-  field: WpCommenterFieldSelector;
+  field: WpCommenterFieldsEnum;
 };
 
 
 type WpCommenterGroupConnection_minArgs = {
-  field: WpCommenterFieldSelector;
+  field: WpCommenterFieldsEnum;
 };
 
 
 type WpCommenterGroupConnection_sumArgs = {
-  field: WpCommenterFieldSelector;
+  field: WpCommenterFieldsEnum;
 };
 
 type WpCommenterSortInput = {
-  readonly avatar: InputMaybe<WpAvatarSortInput>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly email: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly url: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpCommenterFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpConnection = {
@@ -4835,36 +6152,34 @@ type WpConnection = {
 
 
 type WpConnection_distinctArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
 };
 
 
 type WpConnection_groupArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpConnection_maxArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
 };
 
 
 type WpConnection_minArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
 };
 
 
 type WpConnection_sumArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
 };
 
 type WpConnectionType = {
   /** A list of connected nodes */
   readonly nodes: ReadonlyArray<WpNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPageInfoType;
 };
 
 type WpContentNode = {
@@ -4959,54 +6274,39 @@ type WpContentNodeConnection = {
 
 
 type WpContentNodeConnection_distinctArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
 };
 
 
 type WpContentNodeConnection_groupArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpContentNodeConnection_maxArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
 };
 
 
 type WpContentNodeConnection_minArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
 };
 
 
 type WpContentNodeConnection_sumArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
 };
 
 type WpContentNodeConnectionEdgeType = {
-  /** The connected ContentNode Node */
-  readonly node: WpContentNode;
-};
-
-type WpContentNodeConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+  /** The connected node */
+  readonly node: WpNode;
 };
 
 type WpContentNodeConnectionType = {
-  /** A list of connected ContentNode Nodes */
+  /** A list of connected Content Nodes */
   readonly nodes: ReadonlyArray<WpContentNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpContentNodeConnectionPageInfoType;
 };
 
 type WpContentNodeEdge = {
@@ -5015,32 +6315,527 @@ type WpContentNodeEdge = {
   readonly previous: Maybe<WpContentNode>;
 };
 
-type WpContentNodeFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFieldSelector>;
-  readonly contentTypeName: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly date: InputMaybe<FieldSelectorEnum>;
-  readonly dateGmt: InputMaybe<FieldSelectorEnum>;
-  readonly desiredSlug: InputMaybe<FieldSelectorEnum>;
-  readonly enclosure: InputMaybe<FieldSelectorEnum>;
-  readonly guid: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFieldSelector>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly modified: InputMaybe<FieldSelectorEnum>;
-  readonly modifiedGmt: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly seo: InputMaybe<WpPostTypeSEOFieldSelector>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly status: InputMaybe<FieldSelectorEnum>;
-  readonly template: InputMaybe<WpContentTemplateFieldSelector>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-};
+type WpContentNodeFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'contentTypeName'
+  | 'contentType.node.archivePath'
+  | 'contentType.node.canExport'
+  | 'contentType.node.children'
+  | 'contentType.node.children.children'
+  | 'contentType.node.children.id'
+  | 'contentType.node.connectedTaxonomies.nodes'
+  | 'contentType.node.contentNodes.nodes'
+  | 'contentType.node.deleteWithUser'
+  | 'contentType.node.description'
+  | 'contentType.node.excludeFromSearch'
+  | 'contentType.node.graphqlPluralName'
+  | 'contentType.node.graphqlSingleName'
+  | 'contentType.node.hasArchive'
+  | 'contentType.node.hierarchical'
+  | 'contentType.node.id'
+  | 'contentType.node.internal.content'
+  | 'contentType.node.internal.contentDigest'
+  | 'contentType.node.internal.contentFilePath'
+  | 'contentType.node.internal.description'
+  | 'contentType.node.internal.fieldOwners'
+  | 'contentType.node.internal.ignoreType'
+  | 'contentType.node.internal.mediaType'
+  | 'contentType.node.internal.owner'
+  | 'contentType.node.internal.type'
+  | 'contentType.node.isContentNode'
+  | 'contentType.node.isFrontPage'
+  | 'contentType.node.isPostsPage'
+  | 'contentType.node.isTermNode'
+  | 'contentType.node.label'
+  | 'contentType.node.labels.addNew'
+  | 'contentType.node.labels.addNewItem'
+  | 'contentType.node.labels.allItems'
+  | 'contentType.node.labels.archives'
+  | 'contentType.node.labels.attributes'
+  | 'contentType.node.labels.editItem'
+  | 'contentType.node.labels.featuredImage'
+  | 'contentType.node.labels.filterItemsList'
+  | 'contentType.node.labels.insertIntoItem'
+  | 'contentType.node.labels.itemsList'
+  | 'contentType.node.labels.itemsListNavigation'
+  | 'contentType.node.labels.menuName'
+  | 'contentType.node.labels.name'
+  | 'contentType.node.labels.newItem'
+  | 'contentType.node.labels.notFound'
+  | 'contentType.node.labels.notFoundInTrash'
+  | 'contentType.node.labels.parentItemColon'
+  | 'contentType.node.labels.removeFeaturedImage'
+  | 'contentType.node.labels.searchItems'
+  | 'contentType.node.labels.setFeaturedImage'
+  | 'contentType.node.labels.singularName'
+  | 'contentType.node.labels.uploadedToThisItem'
+  | 'contentType.node.labels.useFeaturedImage'
+  | 'contentType.node.labels.viewItem'
+  | 'contentType.node.labels.viewItems'
+  | 'contentType.node.menuIcon'
+  | 'contentType.node.menuPosition'
+  | 'contentType.node.name'
+  | 'contentType.node.nodeType'
+  | 'contentType.node.parent.children'
+  | 'contentType.node.parent.id'
+  | 'contentType.node.public'
+  | 'contentType.node.publiclyQueryable'
+  | 'contentType.node.restBase'
+  | 'contentType.node.restControllerClass'
+  | 'contentType.node.showInAdminBar'
+  | 'contentType.node.showInGraphql'
+  | 'contentType.node.showInMenu'
+  | 'contentType.node.showInNavMenus'
+  | 'contentType.node.showInRest'
+  | 'contentType.node.showUi'
+  | 'contentType.node.uri'
+  | 'databaseId'
+  | 'date'
+  | 'dateGmt'
+  | 'desiredSlug'
+  | 'enclosure'
+  | 'guid'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'lastEditedBy.node.avatar.default'
+  | 'lastEditedBy.node.avatar.extraAttr'
+  | 'lastEditedBy.node.avatar.forceDefault'
+  | 'lastEditedBy.node.avatar.foundAvatar'
+  | 'lastEditedBy.node.avatar.height'
+  | 'lastEditedBy.node.avatar.rating'
+  | 'lastEditedBy.node.avatar.scheme'
+  | 'lastEditedBy.node.avatar.size'
+  | 'lastEditedBy.node.avatar.url'
+  | 'lastEditedBy.node.avatar.width'
+  | 'lastEditedBy.node.capKey'
+  | 'lastEditedBy.node.capabilities'
+  | 'lastEditedBy.node.children'
+  | 'lastEditedBy.node.children.children'
+  | 'lastEditedBy.node.children.id'
+  | 'lastEditedBy.node.comments.nodes'
+  | 'lastEditedBy.node.databaseId'
+  | 'lastEditedBy.node.description'
+  | 'lastEditedBy.node.email'
+  | 'lastEditedBy.node.extraCapabilities'
+  | 'lastEditedBy.node.firstName'
+  | 'lastEditedBy.node.id'
+  | 'lastEditedBy.node.internal.content'
+  | 'lastEditedBy.node.internal.contentDigest'
+  | 'lastEditedBy.node.internal.contentFilePath'
+  | 'lastEditedBy.node.internal.description'
+  | 'lastEditedBy.node.internal.fieldOwners'
+  | 'lastEditedBy.node.internal.ignoreType'
+  | 'lastEditedBy.node.internal.mediaType'
+  | 'lastEditedBy.node.internal.owner'
+  | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isTermNode'
+  | 'lastEditedBy.node.lastName'
+  | 'lastEditedBy.node.locale'
+  | 'lastEditedBy.node.name'
+  | 'lastEditedBy.node.nicename'
+  | 'lastEditedBy.node.nickname'
+  | 'lastEditedBy.node.nodeType'
+  | 'lastEditedBy.node.pages.nodes'
+  | 'lastEditedBy.node.parent.children'
+  | 'lastEditedBy.node.parent.id'
+  | 'lastEditedBy.node.posts.nodes'
+  | 'lastEditedBy.node.registeredDate'
+  | 'lastEditedBy.node.roles.nodes'
+  | 'lastEditedBy.node.seo.breadcrumbTitle'
+  | 'lastEditedBy.node.seo.canonical'
+  | 'lastEditedBy.node.seo.fullHead'
+  | 'lastEditedBy.node.seo.language'
+  | 'lastEditedBy.node.seo.metaDesc'
+  | 'lastEditedBy.node.seo.metaRobotsNofollow'
+  | 'lastEditedBy.node.seo.metaRobotsNoindex'
+  | 'lastEditedBy.node.seo.opengraphDescription'
+  | 'lastEditedBy.node.seo.opengraphTitle'
+  | 'lastEditedBy.node.seo.region'
+  | 'lastEditedBy.node.seo.title'
+  | 'lastEditedBy.node.seo.twitterDescription'
+  | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.slug'
+  | 'lastEditedBy.node.uri'
+  | 'lastEditedBy.node.url'
+  | 'lastEditedBy.node.username'
+  | 'link'
+  | 'modified'
+  | 'modifiedGmt'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.readingTime'
+  | 'seo.schema.articleType'
+  | 'seo.schema.pageType'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'slug'
+  | 'status'
+  | 'template.templateName'
+  | 'uri';
 
 type WpContentNodeFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -5089,56 +6884,34 @@ type WpContentNodeGroupConnection = {
 
 
 type WpContentNodeGroupConnection_distinctArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
 };
 
 
 type WpContentNodeGroupConnection_groupArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpContentNodeGroupConnection_maxArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
 };
 
 
 type WpContentNodeGroupConnection_minArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
 };
 
 
 type WpContentNodeGroupConnection_sumArgs = {
-  field: WpContentNodeFieldSelector;
+  field: WpContentNodeFieldsEnum;
 };
 
 type WpContentNodeSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeSortInput>;
-  readonly contentTypeName: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly date: InputMaybe<SortOrderEnum>;
-  readonly dateGmt: InputMaybe<SortOrderEnum>;
-  readonly desiredSlug: InputMaybe<SortOrderEnum>;
-  readonly enclosure: InputMaybe<SortOrderEnum>;
-  readonly guid: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeSortInput>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly modified: InputMaybe<SortOrderEnum>;
-  readonly modifiedGmt: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly seo: InputMaybe<WpPostTypeSEOSortInput>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly status: InputMaybe<SortOrderEnum>;
-  readonly template: InputMaybe<WpContentTemplateSortInput>;
-  readonly uri: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpContentNodeFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the ContentNode type and the ContentType type */
@@ -5147,16 +6920,8 @@ type WpContentNodeToContentTypeConnectionEdgeType = WpContentTypeConnectionEdgeT
   readonly node: WpContentType;
 };
 
-type WpContentNodeToContentTypeConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpContentTypeFieldSelector>;
-};
-
 type WpContentNodeToContentTypeConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpContentTypeFilterInput>;
-};
-
-type WpContentNodeToContentTypeConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpContentTypeSortInput>;
 };
 
 /** Connection between the ContentNode type and the User type */
@@ -5165,16 +6930,8 @@ type WpContentNodeToEditLastConnectionEdgeType = WpEdgeType & WpOneToOneConnecti
   readonly node: WpUser;
 };
 
-type WpContentNodeToEditLastConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpUserFieldSelector>;
-};
-
 type WpContentNodeToEditLastConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpUserFilterInput>;
-};
-
-type WpContentNodeToEditLastConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpUserSortInput>;
 };
 
 /** Connection between the ContentNode type and the User type */
@@ -5190,16 +6947,8 @@ type WpContentTemplate = {
   readonly templateName: Maybe<Scalars['String']>;
 };
 
-type WpContentTemplateFieldSelector = {
-  readonly templateName: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpContentTemplateFilterInput = {
   readonly templateName: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpContentTemplateSortInput = {
-  readonly templateName: InputMaybe<SortOrderEnum>;
 };
 
 /** An Post Type object */
@@ -5287,54 +7036,39 @@ type WpContentTypeConnection = {
 
 
 type WpContentTypeConnection_distinctArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
 };
 
 
 type WpContentTypeConnection_groupArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpContentTypeConnection_maxArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
 };
 
 
 type WpContentTypeConnection_minArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
 };
 
 
 type WpContentTypeConnection_sumArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
 };
 
 type WpContentTypeConnectionEdgeType = {
-  /** The connected ContentType Node */
-  readonly node: WpContentType;
-};
-
-type WpContentTypeConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+  /** The connected node */
+  readonly node: WpNode;
 };
 
 type WpContentTypeConnectionType = {
-  /** A list of connected ContentType Nodes */
+  /** A list of connected Content Type Nodes */
   readonly nodes: ReadonlyArray<WpContentType>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpContentTypeConnectionPageInfoType;
 };
 
 type WpContentTypeEdge = {
@@ -5343,44 +7077,245 @@ type WpContentTypeEdge = {
   readonly previous: Maybe<WpContentType>;
 };
 
-type WpContentTypeFieldSelector = {
-  readonly archivePath: InputMaybe<FieldSelectorEnum>;
-  readonly canExport: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly connectedTaxonomies: InputMaybe<WpContentTypeToTaxonomyConnectionTypeFieldSelector>;
-  readonly contentNodes: InputMaybe<WpContentTypeToContentNodeConnectionTypeFieldSelector>;
-  readonly deleteWithUser: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly excludeFromSearch: InputMaybe<FieldSelectorEnum>;
-  readonly graphqlPluralName: InputMaybe<FieldSelectorEnum>;
-  readonly graphqlSingleName: InputMaybe<FieldSelectorEnum>;
-  readonly hasArchive: InputMaybe<FieldSelectorEnum>;
-  readonly hierarchical: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
-  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly label: InputMaybe<FieldSelectorEnum>;
-  readonly labels: InputMaybe<WpPostTypeLabelDetailsFieldSelector>;
-  readonly menuIcon: InputMaybe<FieldSelectorEnum>;
-  readonly menuPosition: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly public: InputMaybe<FieldSelectorEnum>;
-  readonly publiclyQueryable: InputMaybe<FieldSelectorEnum>;
-  readonly restBase: InputMaybe<FieldSelectorEnum>;
-  readonly restControllerClass: InputMaybe<FieldSelectorEnum>;
-  readonly showInAdminBar: InputMaybe<FieldSelectorEnum>;
-  readonly showInGraphql: InputMaybe<FieldSelectorEnum>;
-  readonly showInMenu: InputMaybe<FieldSelectorEnum>;
-  readonly showInNavMenus: InputMaybe<FieldSelectorEnum>;
-  readonly showInRest: InputMaybe<FieldSelectorEnum>;
-  readonly showUi: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-};
+type WpContentTypeFieldsEnum =
+  | 'archivePath'
+  | 'canExport'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'connectedTaxonomies.nodes'
+  | 'connectedTaxonomies.nodes.archivePath'
+  | 'connectedTaxonomies.nodes.children'
+  | 'connectedTaxonomies.nodes.children.children'
+  | 'connectedTaxonomies.nodes.children.id'
+  | 'connectedTaxonomies.nodes.connectedContentTypes.nodes'
+  | 'connectedTaxonomies.nodes.description'
+  | 'connectedTaxonomies.nodes.graphqlPluralName'
+  | 'connectedTaxonomies.nodes.graphqlSingleName'
+  | 'connectedTaxonomies.nodes.hierarchical'
+  | 'connectedTaxonomies.nodes.id'
+  | 'connectedTaxonomies.nodes.internal.content'
+  | 'connectedTaxonomies.nodes.internal.contentDigest'
+  | 'connectedTaxonomies.nodes.internal.contentFilePath'
+  | 'connectedTaxonomies.nodes.internal.description'
+  | 'connectedTaxonomies.nodes.internal.fieldOwners'
+  | 'connectedTaxonomies.nodes.internal.ignoreType'
+  | 'connectedTaxonomies.nodes.internal.mediaType'
+  | 'connectedTaxonomies.nodes.internal.owner'
+  | 'connectedTaxonomies.nodes.internal.type'
+  | 'connectedTaxonomies.nodes.label'
+  | 'connectedTaxonomies.nodes.name'
+  | 'connectedTaxonomies.nodes.nodeType'
+  | 'connectedTaxonomies.nodes.parent.children'
+  | 'connectedTaxonomies.nodes.parent.id'
+  | 'connectedTaxonomies.nodes.public'
+  | 'connectedTaxonomies.nodes.restBase'
+  | 'connectedTaxonomies.nodes.restControllerClass'
+  | 'connectedTaxonomies.nodes.showCloud'
+  | 'connectedTaxonomies.nodes.showInAdminColumn'
+  | 'connectedTaxonomies.nodes.showInGraphql'
+  | 'connectedTaxonomies.nodes.showInMenu'
+  | 'connectedTaxonomies.nodes.showInNavMenus'
+  | 'connectedTaxonomies.nodes.showInQuickEdit'
+  | 'connectedTaxonomies.nodes.showInRest'
+  | 'connectedTaxonomies.nodes.showUi'
+  | 'contentNodes.nodes'
+  | 'contentNodes.nodes.children'
+  | 'contentNodes.nodes.children.children'
+  | 'contentNodes.nodes.children.id'
+  | 'contentNodes.nodes.contentTypeName'
+  | 'contentNodes.nodes.databaseId'
+  | 'contentNodes.nodes.date'
+  | 'contentNodes.nodes.dateGmt'
+  | 'contentNodes.nodes.desiredSlug'
+  | 'contentNodes.nodes.enclosure'
+  | 'contentNodes.nodes.guid'
+  | 'contentNodes.nodes.id'
+  | 'contentNodes.nodes.internal.content'
+  | 'contentNodes.nodes.internal.contentDigest'
+  | 'contentNodes.nodes.internal.contentFilePath'
+  | 'contentNodes.nodes.internal.description'
+  | 'contentNodes.nodes.internal.fieldOwners'
+  | 'contentNodes.nodes.internal.ignoreType'
+  | 'contentNodes.nodes.internal.mediaType'
+  | 'contentNodes.nodes.internal.owner'
+  | 'contentNodes.nodes.internal.type'
+  | 'contentNodes.nodes.isContentNode'
+  | 'contentNodes.nodes.isTermNode'
+  | 'contentNodes.nodes.link'
+  | 'contentNodes.nodes.modified'
+  | 'contentNodes.nodes.modifiedGmt'
+  | 'contentNodes.nodes.nodeType'
+  | 'contentNodes.nodes.parent.children'
+  | 'contentNodes.nodes.parent.id'
+  | 'contentNodes.nodes.seo.breadcrumbs'
+  | 'contentNodes.nodes.seo.canonical'
+  | 'contentNodes.nodes.seo.cornerstone'
+  | 'contentNodes.nodes.seo.focuskw'
+  | 'contentNodes.nodes.seo.fullHead'
+  | 'contentNodes.nodes.seo.metaDesc'
+  | 'contentNodes.nodes.seo.metaKeywords'
+  | 'contentNodes.nodes.seo.metaRobotsNofollow'
+  | 'contentNodes.nodes.seo.metaRobotsNoindex'
+  | 'contentNodes.nodes.seo.opengraphAuthor'
+  | 'contentNodes.nodes.seo.opengraphDescription'
+  | 'contentNodes.nodes.seo.opengraphModifiedTime'
+  | 'contentNodes.nodes.seo.opengraphPublishedTime'
+  | 'contentNodes.nodes.seo.opengraphPublisher'
+  | 'contentNodes.nodes.seo.opengraphSiteName'
+  | 'contentNodes.nodes.seo.opengraphTitle'
+  | 'contentNodes.nodes.seo.opengraphType'
+  | 'contentNodes.nodes.seo.opengraphUrl'
+  | 'contentNodes.nodes.seo.readingTime'
+  | 'contentNodes.nodes.seo.title'
+  | 'contentNodes.nodes.seo.twitterDescription'
+  | 'contentNodes.nodes.seo.twitterTitle'
+  | 'contentNodes.nodes.slug'
+  | 'contentNodes.nodes.status'
+  | 'contentNodes.nodes.template.templateName'
+  | 'contentNodes.nodes.uri'
+  | 'deleteWithUser'
+  | 'description'
+  | 'excludeFromSearch'
+  | 'graphqlPluralName'
+  | 'graphqlSingleName'
+  | 'hasArchive'
+  | 'hierarchical'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
+  | 'isTermNode'
+  | 'label'
+  | 'labels.addNew'
+  | 'labels.addNewItem'
+  | 'labels.allItems'
+  | 'labels.archives'
+  | 'labels.attributes'
+  | 'labels.editItem'
+  | 'labels.featuredImage'
+  | 'labels.filterItemsList'
+  | 'labels.insertIntoItem'
+  | 'labels.itemsList'
+  | 'labels.itemsListNavigation'
+  | 'labels.menuName'
+  | 'labels.name'
+  | 'labels.newItem'
+  | 'labels.notFound'
+  | 'labels.notFoundInTrash'
+  | 'labels.parentItemColon'
+  | 'labels.removeFeaturedImage'
+  | 'labels.searchItems'
+  | 'labels.setFeaturedImage'
+  | 'labels.singularName'
+  | 'labels.uploadedToThisItem'
+  | 'labels.useFeaturedImage'
+  | 'labels.viewItem'
+  | 'labels.viewItems'
+  | 'menuIcon'
+  | 'menuPosition'
+  | 'name'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'public'
+  | 'publiclyQueryable'
+  | 'restBase'
+  | 'restControllerClass'
+  | 'showInAdminBar'
+  | 'showInGraphql'
+  | 'showInMenu'
+  | 'showInNavMenus'
+  | 'showInRest'
+  | 'showUi'
+  | 'uri';
 
 type WpContentTypeFilterInput = {
   readonly archivePath: InputMaybe<StringQueryOperatorInput>;
@@ -5441,190 +7376,54 @@ type WpContentTypeGroupConnection = {
 
 
 type WpContentTypeGroupConnection_distinctArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
 };
 
 
 type WpContentTypeGroupConnection_groupArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpContentTypeGroupConnection_maxArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
 };
 
 
 type WpContentTypeGroupConnection_minArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
 };
 
 
 type WpContentTypeGroupConnection_sumArgs = {
-  field: WpContentTypeFieldSelector;
+  field: WpContentTypeFieldsEnum;
 };
 
 type WpContentTypeSortInput = {
-  readonly archivePath: InputMaybe<SortOrderEnum>;
-  readonly canExport: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly connectedTaxonomies: InputMaybe<WpContentTypeToTaxonomyConnectionTypeSortInput>;
-  readonly contentNodes: InputMaybe<WpContentTypeToContentNodeConnectionTypeSortInput>;
-  readonly deleteWithUser: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly excludeFromSearch: InputMaybe<SortOrderEnum>;
-  readonly graphqlPluralName: InputMaybe<SortOrderEnum>;
-  readonly graphqlSingleName: InputMaybe<SortOrderEnum>;
-  readonly hasArchive: InputMaybe<SortOrderEnum>;
-  readonly hierarchical: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isFrontPage: InputMaybe<SortOrderEnum>;
-  readonly isPostsPage: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly label: InputMaybe<SortOrderEnum>;
-  readonly labels: InputMaybe<WpPostTypeLabelDetailsSortInput>;
-  readonly menuIcon: InputMaybe<SortOrderEnum>;
-  readonly menuPosition: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly public: InputMaybe<SortOrderEnum>;
-  readonly publiclyQueryable: InputMaybe<SortOrderEnum>;
-  readonly restBase: InputMaybe<SortOrderEnum>;
-  readonly restControllerClass: InputMaybe<SortOrderEnum>;
-  readonly showInAdminBar: InputMaybe<SortOrderEnum>;
-  readonly showInGraphql: InputMaybe<SortOrderEnum>;
-  readonly showInMenu: InputMaybe<SortOrderEnum>;
-  readonly showInNavMenus: InputMaybe<SortOrderEnum>;
-  readonly showInRest: InputMaybe<SortOrderEnum>;
-  readonly showUi: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-};
-
-/** Page Info on the &quot;ContentTypeToContentNodeConnection&quot; */
-type WpContentTypeToContentNodeConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpContentTypeToContentNodeConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpContentTypeToContentNodeConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpContentTypeToContentNodeConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpContentTypeFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the ContentType type and the ContentNode type */
 type WpContentTypeToContentNodeConnectionType = WpConnectionType & WpContentNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpContentTypeToContentNodeConnectionPageInfoType;
-};
-
-type WpContentTypeToContentNodeConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpContentNodeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpContentTypeToContentNodeConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpContentTypeToContentNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpContentTypeToContentNodeConnectionPageInfoTypeFilterInput>;
-};
-
-type WpContentTypeToContentNodeConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpContentNodeSortInput>;
-  readonly pageInfo: InputMaybe<WpContentTypeToContentNodeConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;ContentTypeToTaxonomyConnection&quot; */
-type WpContentTypeToTaxonomyConnectionPageInfoType = WpPageInfoType & WpTaxonomyConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpContentTypeToTaxonomyConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpContentTypeToTaxonomyConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpContentTypeToTaxonomyConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the ContentType type and the Taxonomy type */
 type WpContentTypeToTaxonomyConnectionType = WpConnectionType & WpTaxonomyConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpTaxonomy>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpContentTypeToTaxonomyConnectionPageInfoType;
-};
-
-type WpContentTypeToTaxonomyConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpTaxonomyFieldSelector>;
-  readonly pageInfo: InputMaybe<WpContentTypeToTaxonomyConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpContentTypeToTaxonomyConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpTaxonomyFilterListInput>;
-  readonly pageInfo: InputMaybe<WpContentTypeToTaxonomyConnectionPageInfoTypeFilterInput>;
-};
-
-type WpContentTypeToTaxonomyConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpTaxonomySortInput>;
-  readonly pageInfo: InputMaybe<WpContentTypeToTaxonomyConnectionPageInfoTypeSortInput>;
 };
 
 type WpDatabaseIdentifier = {
@@ -5646,19 +7445,9 @@ type WpDiscussionSettings = {
   readonly defaultPingStatus: Maybe<Scalars['String']>;
 };
 
-type WpDiscussionSettingsFieldSelector = {
-  readonly defaultCommentStatus: InputMaybe<FieldSelectorEnum>;
-  readonly defaultPingStatus: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpDiscussionSettingsFilterInput = {
   readonly defaultCommentStatus: InputMaybe<StringQueryOperatorInput>;
   readonly defaultPingStatus: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpDiscussionSettingsSortInput = {
-  readonly defaultCommentStatus: InputMaybe<SortOrderEnum>;
-  readonly defaultPingStatus: InputMaybe<SortOrderEnum>;
 };
 
 type WpEdge = {
@@ -5672,22 +7461,634 @@ type WpEdgeType = {
   readonly node: WpNode;
 };
 
-type WpFieldSelector = {
-  readonly allSettings: InputMaybe<WpSettingsFieldSelector>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly discussionSettings: InputMaybe<WpDiscussionSettingsFieldSelector>;
-  readonly generalSettings: InputMaybe<WpGeneralSettingsFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly readingSettings: InputMaybe<WpReadingSettingsFieldSelector>;
-  readonly schemaMd5: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOConfigFieldSelector>;
-  readonly viewer: InputMaybe<WpUserFieldSelector>;
-  readonly wpGatsby: InputMaybe<WpWPGatsbyFieldSelector>;
-  readonly writingSettings: InputMaybe<WpWritingSettingsFieldSelector>;
-};
+type WpFieldsEnum =
+  | 'allSettings.discussionSettingsDefaultCommentStatus'
+  | 'allSettings.discussionSettingsDefaultPingStatus'
+  | 'allSettings.generalSettingsDateFormat'
+  | 'allSettings.generalSettingsDescription'
+  | 'allSettings.generalSettingsEmail'
+  | 'allSettings.generalSettingsLanguage'
+  | 'allSettings.generalSettingsStartOfWeek'
+  | 'allSettings.generalSettingsTimeFormat'
+  | 'allSettings.generalSettingsTimezone'
+  | 'allSettings.generalSettingsTitle'
+  | 'allSettings.generalSettingsUrl'
+  | 'allSettings.readingSettingsPageForPosts'
+  | 'allSettings.readingSettingsPageOnFront'
+  | 'allSettings.readingSettingsPostsPerPage'
+  | 'allSettings.readingSettingsShowOnFront'
+  | 'allSettings.writingSettingsDefaultCategory'
+  | 'allSettings.writingSettingsDefaultPostFormat'
+  | 'allSettings.writingSettingsUseSmilies'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'discussionSettings.defaultCommentStatus'
+  | 'discussionSettings.defaultPingStatus'
+  | 'generalSettings.dateFormat'
+  | 'generalSettings.description'
+  | 'generalSettings.email'
+  | 'generalSettings.language'
+  | 'generalSettings.startOfWeek'
+  | 'generalSettings.timeFormat'
+  | 'generalSettings.timezone'
+  | 'generalSettings.title'
+  | 'generalSettings.url'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'readingSettings.pageForPosts'
+  | 'readingSettings.pageOnFront'
+  | 'readingSettings.postsPerPage'
+  | 'readingSettings.showOnFront'
+  | 'schemaMd5'
+  | 'seo.breadcrumbs.archivePrefix'
+  | 'seo.breadcrumbs.boldLast'
+  | 'seo.breadcrumbs.enabled'
+  | 'seo.breadcrumbs.homeText'
+  | 'seo.breadcrumbs.notFoundText'
+  | 'seo.breadcrumbs.prefix'
+  | 'seo.breadcrumbs.searchPrefix'
+  | 'seo.breadcrumbs.separator'
+  | 'seo.breadcrumbs.showBlogPage'
+  | 'seo.contentTypes.actionMonitorAction.metaDesc'
+  | 'seo.contentTypes.actionMonitorAction.metaRobotsNoindex'
+  | 'seo.contentTypes.actionMonitorAction.schemaType'
+  | 'seo.contentTypes.actionMonitorAction.title'
+  | 'seo.contentTypes.mediaItem.metaDesc'
+  | 'seo.contentTypes.mediaItem.metaRobotsNoindex'
+  | 'seo.contentTypes.mediaItem.schemaType'
+  | 'seo.contentTypes.mediaItem.title'
+  | 'seo.contentTypes.page.metaDesc'
+  | 'seo.contentTypes.page.metaRobotsNoindex'
+  | 'seo.contentTypes.page.schemaType'
+  | 'seo.contentTypes.page.title'
+  | 'seo.contentTypes.post.metaDesc'
+  | 'seo.contentTypes.post.metaRobotsNoindex'
+  | 'seo.contentTypes.post.schemaType'
+  | 'seo.contentTypes.post.title'
+  | 'seo.meta.author.description'
+  | 'seo.meta.author.title'
+  | 'seo.meta.config.separator'
+  | 'seo.meta.date'
+  | 'seo.meta.homepage.description'
+  | 'seo.meta.homepage.title'
+  | 'seo.meta.notFound.breadcrumb'
+  | 'seo.meta.notFound.title'
+  | 'seo.openGraph.defaultImage.altText'
+  | 'seo.openGraph.defaultImage.authorDatabaseId'
+  | 'seo.openGraph.defaultImage.authorId'
+  | 'seo.openGraph.defaultImage.caption'
+  | 'seo.openGraph.defaultImage.children'
+  | 'seo.openGraph.defaultImage.commentCount'
+  | 'seo.openGraph.defaultImage.commentStatus'
+  | 'seo.openGraph.defaultImage.contentTypeName'
+  | 'seo.openGraph.defaultImage.databaseId'
+  | 'seo.openGraph.defaultImage.date'
+  | 'seo.openGraph.defaultImage.dateGmt'
+  | 'seo.openGraph.defaultImage.description'
+  | 'seo.openGraph.defaultImage.desiredSlug'
+  | 'seo.openGraph.defaultImage.enclosure'
+  | 'seo.openGraph.defaultImage.fileSize'
+  | 'seo.openGraph.defaultImage.filename'
+  | 'seo.openGraph.defaultImage.filesize'
+  | 'seo.openGraph.defaultImage.gatsbyImage'
+  | 'seo.openGraph.defaultImage.guid'
+  | 'seo.openGraph.defaultImage.height'
+  | 'seo.openGraph.defaultImage.id'
+  | 'seo.openGraph.defaultImage.isContentNode'
+  | 'seo.openGraph.defaultImage.isTermNode'
+  | 'seo.openGraph.defaultImage.link'
+  | 'seo.openGraph.defaultImage.mediaItemUrl'
+  | 'seo.openGraph.defaultImage.mediaType'
+  | 'seo.openGraph.defaultImage.mimeType'
+  | 'seo.openGraph.defaultImage.modified'
+  | 'seo.openGraph.defaultImage.modifiedGmt'
+  | 'seo.openGraph.defaultImage.nodeType'
+  | 'seo.openGraph.defaultImage.parentDatabaseId'
+  | 'seo.openGraph.defaultImage.parentId'
+  | 'seo.openGraph.defaultImage.publicUrl'
+  | 'seo.openGraph.defaultImage.sizes'
+  | 'seo.openGraph.defaultImage.slug'
+  | 'seo.openGraph.defaultImage.sourceUrl'
+  | 'seo.openGraph.defaultImage.srcSet'
+  | 'seo.openGraph.defaultImage.status'
+  | 'seo.openGraph.defaultImage.title'
+  | 'seo.openGraph.defaultImage.uri'
+  | 'seo.openGraph.defaultImage.width'
+  | 'seo.openGraph.frontPage.description'
+  | 'seo.openGraph.frontPage.title'
+  | 'seo.redirects'
+  | 'seo.redirects.format'
+  | 'seo.redirects.origin'
+  | 'seo.redirects.target'
+  | 'seo.redirects.type'
+  | 'seo.schema.companyLogo.altText'
+  | 'seo.schema.companyLogo.authorDatabaseId'
+  | 'seo.schema.companyLogo.authorId'
+  | 'seo.schema.companyLogo.caption'
+  | 'seo.schema.companyLogo.children'
+  | 'seo.schema.companyLogo.commentCount'
+  | 'seo.schema.companyLogo.commentStatus'
+  | 'seo.schema.companyLogo.contentTypeName'
+  | 'seo.schema.companyLogo.databaseId'
+  | 'seo.schema.companyLogo.date'
+  | 'seo.schema.companyLogo.dateGmt'
+  | 'seo.schema.companyLogo.description'
+  | 'seo.schema.companyLogo.desiredSlug'
+  | 'seo.schema.companyLogo.enclosure'
+  | 'seo.schema.companyLogo.fileSize'
+  | 'seo.schema.companyLogo.filename'
+  | 'seo.schema.companyLogo.filesize'
+  | 'seo.schema.companyLogo.gatsbyImage'
+  | 'seo.schema.companyLogo.guid'
+  | 'seo.schema.companyLogo.height'
+  | 'seo.schema.companyLogo.id'
+  | 'seo.schema.companyLogo.isContentNode'
+  | 'seo.schema.companyLogo.isTermNode'
+  | 'seo.schema.companyLogo.link'
+  | 'seo.schema.companyLogo.mediaItemUrl'
+  | 'seo.schema.companyLogo.mediaType'
+  | 'seo.schema.companyLogo.mimeType'
+  | 'seo.schema.companyLogo.modified'
+  | 'seo.schema.companyLogo.modifiedGmt'
+  | 'seo.schema.companyLogo.nodeType'
+  | 'seo.schema.companyLogo.parentDatabaseId'
+  | 'seo.schema.companyLogo.parentId'
+  | 'seo.schema.companyLogo.publicUrl'
+  | 'seo.schema.companyLogo.sizes'
+  | 'seo.schema.companyLogo.slug'
+  | 'seo.schema.companyLogo.sourceUrl'
+  | 'seo.schema.companyLogo.srcSet'
+  | 'seo.schema.companyLogo.status'
+  | 'seo.schema.companyLogo.title'
+  | 'seo.schema.companyLogo.uri'
+  | 'seo.schema.companyLogo.width'
+  | 'seo.schema.companyName'
+  | 'seo.schema.companyOrPerson'
+  | 'seo.schema.homeUrl'
+  | 'seo.schema.inLanguage'
+  | 'seo.schema.logo.altText'
+  | 'seo.schema.logo.authorDatabaseId'
+  | 'seo.schema.logo.authorId'
+  | 'seo.schema.logo.caption'
+  | 'seo.schema.logo.children'
+  | 'seo.schema.logo.commentCount'
+  | 'seo.schema.logo.commentStatus'
+  | 'seo.schema.logo.contentTypeName'
+  | 'seo.schema.logo.databaseId'
+  | 'seo.schema.logo.date'
+  | 'seo.schema.logo.dateGmt'
+  | 'seo.schema.logo.description'
+  | 'seo.schema.logo.desiredSlug'
+  | 'seo.schema.logo.enclosure'
+  | 'seo.schema.logo.fileSize'
+  | 'seo.schema.logo.filename'
+  | 'seo.schema.logo.filesize'
+  | 'seo.schema.logo.gatsbyImage'
+  | 'seo.schema.logo.guid'
+  | 'seo.schema.logo.height'
+  | 'seo.schema.logo.id'
+  | 'seo.schema.logo.isContentNode'
+  | 'seo.schema.logo.isTermNode'
+  | 'seo.schema.logo.link'
+  | 'seo.schema.logo.mediaItemUrl'
+  | 'seo.schema.logo.mediaType'
+  | 'seo.schema.logo.mimeType'
+  | 'seo.schema.logo.modified'
+  | 'seo.schema.logo.modifiedGmt'
+  | 'seo.schema.logo.nodeType'
+  | 'seo.schema.logo.parentDatabaseId'
+  | 'seo.schema.logo.parentId'
+  | 'seo.schema.logo.publicUrl'
+  | 'seo.schema.logo.sizes'
+  | 'seo.schema.logo.slug'
+  | 'seo.schema.logo.sourceUrl'
+  | 'seo.schema.logo.srcSet'
+  | 'seo.schema.logo.status'
+  | 'seo.schema.logo.title'
+  | 'seo.schema.logo.uri'
+  | 'seo.schema.logo.width'
+  | 'seo.schema.personLogo.altText'
+  | 'seo.schema.personLogo.authorDatabaseId'
+  | 'seo.schema.personLogo.authorId'
+  | 'seo.schema.personLogo.caption'
+  | 'seo.schema.personLogo.children'
+  | 'seo.schema.personLogo.commentCount'
+  | 'seo.schema.personLogo.commentStatus'
+  | 'seo.schema.personLogo.contentTypeName'
+  | 'seo.schema.personLogo.databaseId'
+  | 'seo.schema.personLogo.date'
+  | 'seo.schema.personLogo.dateGmt'
+  | 'seo.schema.personLogo.description'
+  | 'seo.schema.personLogo.desiredSlug'
+  | 'seo.schema.personLogo.enclosure'
+  | 'seo.schema.personLogo.fileSize'
+  | 'seo.schema.personLogo.filename'
+  | 'seo.schema.personLogo.filesize'
+  | 'seo.schema.personLogo.gatsbyImage'
+  | 'seo.schema.personLogo.guid'
+  | 'seo.schema.personLogo.height'
+  | 'seo.schema.personLogo.id'
+  | 'seo.schema.personLogo.isContentNode'
+  | 'seo.schema.personLogo.isTermNode'
+  | 'seo.schema.personLogo.link'
+  | 'seo.schema.personLogo.mediaItemUrl'
+  | 'seo.schema.personLogo.mediaType'
+  | 'seo.schema.personLogo.mimeType'
+  | 'seo.schema.personLogo.modified'
+  | 'seo.schema.personLogo.modifiedGmt'
+  | 'seo.schema.personLogo.nodeType'
+  | 'seo.schema.personLogo.parentDatabaseId'
+  | 'seo.schema.personLogo.parentId'
+  | 'seo.schema.personLogo.publicUrl'
+  | 'seo.schema.personLogo.sizes'
+  | 'seo.schema.personLogo.slug'
+  | 'seo.schema.personLogo.sourceUrl'
+  | 'seo.schema.personLogo.srcSet'
+  | 'seo.schema.personLogo.status'
+  | 'seo.schema.personLogo.title'
+  | 'seo.schema.personLogo.uri'
+  | 'seo.schema.personLogo.width'
+  | 'seo.schema.personName'
+  | 'seo.schema.siteName'
+  | 'seo.schema.siteUrl'
+  | 'seo.schema.wordpressSiteName'
+  | 'seo.social.facebook.url'
+  | 'seo.social.instagram.url'
+  | 'seo.social.linkedIn.url'
+  | 'seo.social.mySpace.url'
+  | 'seo.social.otherSocials'
+  | 'seo.social.pinterest.metaTag'
+  | 'seo.social.pinterest.url'
+  | 'seo.social.twitter.cardType'
+  | 'seo.social.twitter.username'
+  | 'seo.social.wikipedia.url'
+  | 'seo.social.youTube.url'
+  | 'seo.webmaster.baiduVerify'
+  | 'seo.webmaster.googleVerify'
+  | 'seo.webmaster.msVerify'
+  | 'seo.webmaster.yandexVerify'
+  | 'viewer.avatar.default'
+  | 'viewer.avatar.extraAttr'
+  | 'viewer.avatar.forceDefault'
+  | 'viewer.avatar.foundAvatar'
+  | 'viewer.avatar.height'
+  | 'viewer.avatar.rating'
+  | 'viewer.avatar.scheme'
+  | 'viewer.avatar.size'
+  | 'viewer.avatar.url'
+  | 'viewer.avatar.width'
+  | 'viewer.capKey'
+  | 'viewer.capabilities'
+  | 'viewer.children'
+  | 'viewer.children.children'
+  | 'viewer.children.children.children'
+  | 'viewer.children.children.id'
+  | 'viewer.children.id'
+  | 'viewer.children.internal.content'
+  | 'viewer.children.internal.contentDigest'
+  | 'viewer.children.internal.contentFilePath'
+  | 'viewer.children.internal.description'
+  | 'viewer.children.internal.fieldOwners'
+  | 'viewer.children.internal.ignoreType'
+  | 'viewer.children.internal.mediaType'
+  | 'viewer.children.internal.owner'
+  | 'viewer.children.internal.type'
+  | 'viewer.children.parent.children'
+  | 'viewer.children.parent.id'
+  | 'viewer.comments.nodes'
+  | 'viewer.comments.nodes.agent'
+  | 'viewer.comments.nodes.authorIp'
+  | 'viewer.comments.nodes.children'
+  | 'viewer.comments.nodes.content'
+  | 'viewer.comments.nodes.databaseId'
+  | 'viewer.comments.nodes.date'
+  | 'viewer.comments.nodes.dateGmt'
+  | 'viewer.comments.nodes.id'
+  | 'viewer.comments.nodes.karma'
+  | 'viewer.comments.nodes.nodeType'
+  | 'viewer.comments.nodes.parentDatabaseId'
+  | 'viewer.comments.nodes.parentId'
+  | 'viewer.comments.nodes.status'
+  | 'viewer.comments.nodes.type'
+  | 'viewer.databaseId'
+  | 'viewer.description'
+  | 'viewer.email'
+  | 'viewer.extraCapabilities'
+  | 'viewer.firstName'
+  | 'viewer.id'
+  | 'viewer.internal.content'
+  | 'viewer.internal.contentDigest'
+  | 'viewer.internal.contentFilePath'
+  | 'viewer.internal.description'
+  | 'viewer.internal.fieldOwners'
+  | 'viewer.internal.ignoreType'
+  | 'viewer.internal.mediaType'
+  | 'viewer.internal.owner'
+  | 'viewer.internal.type'
+  | 'viewer.isContentNode'
+  | 'viewer.isTermNode'
+  | 'viewer.lastName'
+  | 'viewer.locale'
+  | 'viewer.name'
+  | 'viewer.nicename'
+  | 'viewer.nickname'
+  | 'viewer.nodeType'
+  | 'viewer.pages.nodes'
+  | 'viewer.pages.nodes.authorDatabaseId'
+  | 'viewer.pages.nodes.authorId'
+  | 'viewer.pages.nodes.children'
+  | 'viewer.pages.nodes.commentCount'
+  | 'viewer.pages.nodes.commentStatus'
+  | 'viewer.pages.nodes.content'
+  | 'viewer.pages.nodes.contentTypeName'
+  | 'viewer.pages.nodes.databaseId'
+  | 'viewer.pages.nodes.date'
+  | 'viewer.pages.nodes.dateGmt'
+  | 'viewer.pages.nodes.desiredSlug'
+  | 'viewer.pages.nodes.enclosure'
+  | 'viewer.pages.nodes.featuredImageDatabaseId'
+  | 'viewer.pages.nodes.featuredImageId'
+  | 'viewer.pages.nodes.guid'
+  | 'viewer.pages.nodes.id'
+  | 'viewer.pages.nodes.isContentNode'
+  | 'viewer.pages.nodes.isFrontPage'
+  | 'viewer.pages.nodes.isPostsPage'
+  | 'viewer.pages.nodes.isPrivacyPage'
+  | 'viewer.pages.nodes.isRevision'
+  | 'viewer.pages.nodes.isTermNode'
+  | 'viewer.pages.nodes.link'
+  | 'viewer.pages.nodes.menuOrder'
+  | 'viewer.pages.nodes.modified'
+  | 'viewer.pages.nodes.modifiedGmt'
+  | 'viewer.pages.nodes.nodeType'
+  | 'viewer.pages.nodes.parentDatabaseId'
+  | 'viewer.pages.nodes.parentId'
+  | 'viewer.pages.nodes.slug'
+  | 'viewer.pages.nodes.status'
+  | 'viewer.pages.nodes.title'
+  | 'viewer.pages.nodes.uri'
+  | 'viewer.parent.children'
+  | 'viewer.parent.children.children'
+  | 'viewer.parent.children.id'
+  | 'viewer.parent.id'
+  | 'viewer.parent.internal.content'
+  | 'viewer.parent.internal.contentDigest'
+  | 'viewer.parent.internal.contentFilePath'
+  | 'viewer.parent.internal.description'
+  | 'viewer.parent.internal.fieldOwners'
+  | 'viewer.parent.internal.ignoreType'
+  | 'viewer.parent.internal.mediaType'
+  | 'viewer.parent.internal.owner'
+  | 'viewer.parent.internal.type'
+  | 'viewer.parent.parent.children'
+  | 'viewer.parent.parent.id'
+  | 'viewer.posts.nodes'
+  | 'viewer.posts.nodes.authorDatabaseId'
+  | 'viewer.posts.nodes.authorId'
+  | 'viewer.posts.nodes.children'
+  | 'viewer.posts.nodes.commentCount'
+  | 'viewer.posts.nodes.commentStatus'
+  | 'viewer.posts.nodes.content'
+  | 'viewer.posts.nodes.contentTypeName'
+  | 'viewer.posts.nodes.databaseId'
+  | 'viewer.posts.nodes.date'
+  | 'viewer.posts.nodes.dateGmt'
+  | 'viewer.posts.nodes.desiredSlug'
+  | 'viewer.posts.nodes.enclosure'
+  | 'viewer.posts.nodes.excerpt'
+  | 'viewer.posts.nodes.featuredImageDatabaseId'
+  | 'viewer.posts.nodes.featuredImageId'
+  | 'viewer.posts.nodes.guid'
+  | 'viewer.posts.nodes.id'
+  | 'viewer.posts.nodes.isContentNode'
+  | 'viewer.posts.nodes.isRevision'
+  | 'viewer.posts.nodes.isSticky'
+  | 'viewer.posts.nodes.isTermNode'
+  | 'viewer.posts.nodes.link'
+  | 'viewer.posts.nodes.modified'
+  | 'viewer.posts.nodes.modifiedGmt'
+  | 'viewer.posts.nodes.nodeType'
+  | 'viewer.posts.nodes.pingStatus'
+  | 'viewer.posts.nodes.pinged'
+  | 'viewer.posts.nodes.slug'
+  | 'viewer.posts.nodes.status'
+  | 'viewer.posts.nodes.title'
+  | 'viewer.posts.nodes.toPing'
+  | 'viewer.posts.nodes.uri'
+  | 'viewer.registeredDate'
+  | 'viewer.roles.nodes'
+  | 'viewer.roles.nodes.capabilities'
+  | 'viewer.roles.nodes.children'
+  | 'viewer.roles.nodes.displayName'
+  | 'viewer.roles.nodes.id'
+  | 'viewer.roles.nodes.name'
+  | 'viewer.roles.nodes.nodeType'
+  | 'viewer.seo.breadcrumbTitle'
+  | 'viewer.seo.canonical'
+  | 'viewer.seo.fullHead'
+  | 'viewer.seo.language'
+  | 'viewer.seo.metaDesc'
+  | 'viewer.seo.metaRobotsNofollow'
+  | 'viewer.seo.metaRobotsNoindex'
+  | 'viewer.seo.opengraphDescription'
+  | 'viewer.seo.opengraphImage.altText'
+  | 'viewer.seo.opengraphImage.authorDatabaseId'
+  | 'viewer.seo.opengraphImage.authorId'
+  | 'viewer.seo.opengraphImage.caption'
+  | 'viewer.seo.opengraphImage.children'
+  | 'viewer.seo.opengraphImage.commentCount'
+  | 'viewer.seo.opengraphImage.commentStatus'
+  | 'viewer.seo.opengraphImage.contentTypeName'
+  | 'viewer.seo.opengraphImage.databaseId'
+  | 'viewer.seo.opengraphImage.date'
+  | 'viewer.seo.opengraphImage.dateGmt'
+  | 'viewer.seo.opengraphImage.description'
+  | 'viewer.seo.opengraphImage.desiredSlug'
+  | 'viewer.seo.opengraphImage.enclosure'
+  | 'viewer.seo.opengraphImage.fileSize'
+  | 'viewer.seo.opengraphImage.filename'
+  | 'viewer.seo.opengraphImage.filesize'
+  | 'viewer.seo.opengraphImage.gatsbyImage'
+  | 'viewer.seo.opengraphImage.guid'
+  | 'viewer.seo.opengraphImage.height'
+  | 'viewer.seo.opengraphImage.id'
+  | 'viewer.seo.opengraphImage.isContentNode'
+  | 'viewer.seo.opengraphImage.isTermNode'
+  | 'viewer.seo.opengraphImage.link'
+  | 'viewer.seo.opengraphImage.mediaItemUrl'
+  | 'viewer.seo.opengraphImage.mediaType'
+  | 'viewer.seo.opengraphImage.mimeType'
+  | 'viewer.seo.opengraphImage.modified'
+  | 'viewer.seo.opengraphImage.modifiedGmt'
+  | 'viewer.seo.opengraphImage.nodeType'
+  | 'viewer.seo.opengraphImage.parentDatabaseId'
+  | 'viewer.seo.opengraphImage.parentId'
+  | 'viewer.seo.opengraphImage.publicUrl'
+  | 'viewer.seo.opengraphImage.sizes'
+  | 'viewer.seo.opengraphImage.slug'
+  | 'viewer.seo.opengraphImage.sourceUrl'
+  | 'viewer.seo.opengraphImage.srcSet'
+  | 'viewer.seo.opengraphImage.status'
+  | 'viewer.seo.opengraphImage.title'
+  | 'viewer.seo.opengraphImage.uri'
+  | 'viewer.seo.opengraphImage.width'
+  | 'viewer.seo.opengraphTitle'
+  | 'viewer.seo.region'
+  | 'viewer.seo.schema.articleType'
+  | 'viewer.seo.schema.pageType'
+  | 'viewer.seo.schema.raw'
+  | 'viewer.seo.social.facebook'
+  | 'viewer.seo.social.instagram'
+  | 'viewer.seo.social.linkedIn'
+  | 'viewer.seo.social.mySpace'
+  | 'viewer.seo.social.pinterest'
+  | 'viewer.seo.social.soundCloud'
+  | 'viewer.seo.social.twitter'
+  | 'viewer.seo.social.wikipedia'
+  | 'viewer.seo.social.youTube'
+  | 'viewer.seo.title'
+  | 'viewer.seo.twitterDescription'
+  | 'viewer.seo.twitterImage.altText'
+  | 'viewer.seo.twitterImage.authorDatabaseId'
+  | 'viewer.seo.twitterImage.authorId'
+  | 'viewer.seo.twitterImage.caption'
+  | 'viewer.seo.twitterImage.children'
+  | 'viewer.seo.twitterImage.commentCount'
+  | 'viewer.seo.twitterImage.commentStatus'
+  | 'viewer.seo.twitterImage.contentTypeName'
+  | 'viewer.seo.twitterImage.databaseId'
+  | 'viewer.seo.twitterImage.date'
+  | 'viewer.seo.twitterImage.dateGmt'
+  | 'viewer.seo.twitterImage.description'
+  | 'viewer.seo.twitterImage.desiredSlug'
+  | 'viewer.seo.twitterImage.enclosure'
+  | 'viewer.seo.twitterImage.fileSize'
+  | 'viewer.seo.twitterImage.filename'
+  | 'viewer.seo.twitterImage.filesize'
+  | 'viewer.seo.twitterImage.gatsbyImage'
+  | 'viewer.seo.twitterImage.guid'
+  | 'viewer.seo.twitterImage.height'
+  | 'viewer.seo.twitterImage.id'
+  | 'viewer.seo.twitterImage.isContentNode'
+  | 'viewer.seo.twitterImage.isTermNode'
+  | 'viewer.seo.twitterImage.link'
+  | 'viewer.seo.twitterImage.mediaItemUrl'
+  | 'viewer.seo.twitterImage.mediaType'
+  | 'viewer.seo.twitterImage.mimeType'
+  | 'viewer.seo.twitterImage.modified'
+  | 'viewer.seo.twitterImage.modifiedGmt'
+  | 'viewer.seo.twitterImage.nodeType'
+  | 'viewer.seo.twitterImage.parentDatabaseId'
+  | 'viewer.seo.twitterImage.parentId'
+  | 'viewer.seo.twitterImage.publicUrl'
+  | 'viewer.seo.twitterImage.sizes'
+  | 'viewer.seo.twitterImage.slug'
+  | 'viewer.seo.twitterImage.sourceUrl'
+  | 'viewer.seo.twitterImage.srcSet'
+  | 'viewer.seo.twitterImage.status'
+  | 'viewer.seo.twitterImage.title'
+  | 'viewer.seo.twitterImage.uri'
+  | 'viewer.seo.twitterImage.width'
+  | 'viewer.seo.twitterTitle'
+  | 'viewer.slug'
+  | 'viewer.uri'
+  | 'viewer.url'
+  | 'viewer.username'
+  | 'wpGatsby.arePrettyPermalinksEnabled'
+  | 'wpGatsby.isPreviewFrontendOnline'
+  | 'writingSettings.defaultCategory'
+  | 'writingSettings.defaultPostFormat'
+  | 'writingSettings.useSmilies';
 
 type WpFilterInput = {
   readonly allSettings: InputMaybe<WpSettingsFilterInput>;
@@ -5728,18 +8129,6 @@ type WpGeneralSettings = {
   readonly url: Maybe<Scalars['String']>;
 };
 
-type WpGeneralSettingsFieldSelector = {
-  readonly dateFormat: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly email: InputMaybe<FieldSelectorEnum>;
-  readonly language: InputMaybe<FieldSelectorEnum>;
-  readonly startOfWeek: InputMaybe<FieldSelectorEnum>;
-  readonly timeFormat: InputMaybe<FieldSelectorEnum>;
-  readonly timezone: InputMaybe<FieldSelectorEnum>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpGeneralSettingsFilterInput = {
   readonly dateFormat: InputMaybe<StringQueryOperatorInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
@@ -5750,18 +8139,6 @@ type WpGeneralSettingsFilterInput = {
   readonly timezone: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpGeneralSettingsSortInput = {
-  readonly dateFormat: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly email: InputMaybe<SortOrderEnum>;
-  readonly language: InputMaybe<SortOrderEnum>;
-  readonly startOfWeek: InputMaybe<SortOrderEnum>;
-  readonly timeFormat: InputMaybe<SortOrderEnum>;
-  readonly timezone: InputMaybe<SortOrderEnum>;
-  readonly title: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
 };
 
 type WpGroupConnection = {
@@ -5780,29 +8157,29 @@ type WpGroupConnection = {
 
 
 type WpGroupConnection_distinctArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
 };
 
 
 type WpGroupConnection_groupArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpGroupConnection_maxArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
 };
 
 
 type WpGroupConnection_minArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
 };
 
 
 type WpGroupConnection_sumArgs = {
-  field: WpFieldSelector;
+  field: WpFieldsEnum;
 };
 
 type WpHierarchicalContentNode = {
@@ -5907,29 +8284,29 @@ type WpHierarchicalContentNodeConnection = {
 
 
 type WpHierarchicalContentNodeConnection_distinctArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
 };
 
 
 type WpHierarchicalContentNodeConnection_groupArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpHierarchicalContentNodeConnection_maxArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
 };
 
 
 type WpHierarchicalContentNodeConnection_minArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
 };
 
 
 type WpHierarchicalContentNodeConnection_sumArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
 };
 
 type WpHierarchicalContentNodeEdge = {
@@ -5938,37 +8315,693 @@ type WpHierarchicalContentNodeEdge = {
   readonly previous: Maybe<WpHierarchicalContentNode>;
 };
 
-type WpHierarchicalContentNodeFieldSelector = {
-  readonly ancestors: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeFieldSelector>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFieldSelector>;
-  readonly contentTypeName: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly date: InputMaybe<FieldSelectorEnum>;
-  readonly dateGmt: InputMaybe<FieldSelectorEnum>;
-  readonly desiredSlug: InputMaybe<FieldSelectorEnum>;
-  readonly enclosure: InputMaybe<FieldSelectorEnum>;
-  readonly guid: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFieldSelector>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly modified: InputMaybe<FieldSelectorEnum>;
-  readonly modifiedGmt: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly parentDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly parentId: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpPostTypeSEOFieldSelector>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly status: InputMaybe<FieldSelectorEnum>;
-  readonly template: InputMaybe<WpContentTemplateFieldSelector>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-  readonly wpChildren: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeFieldSelector>;
-  readonly wpParent: InputMaybe<WpHierarchicalContentNodeToParentContentNodeConnectionEdgeTypeFieldSelector>;
-};
+type WpHierarchicalContentNodeFieldsEnum =
+  | 'ancestors.nodes'
+  | 'ancestors.nodes.children'
+  | 'ancestors.nodes.children.children'
+  | 'ancestors.nodes.children.id'
+  | 'ancestors.nodes.contentTypeName'
+  | 'ancestors.nodes.databaseId'
+  | 'ancestors.nodes.date'
+  | 'ancestors.nodes.dateGmt'
+  | 'ancestors.nodes.desiredSlug'
+  | 'ancestors.nodes.enclosure'
+  | 'ancestors.nodes.guid'
+  | 'ancestors.nodes.id'
+  | 'ancestors.nodes.internal.content'
+  | 'ancestors.nodes.internal.contentDigest'
+  | 'ancestors.nodes.internal.contentFilePath'
+  | 'ancestors.nodes.internal.description'
+  | 'ancestors.nodes.internal.fieldOwners'
+  | 'ancestors.nodes.internal.ignoreType'
+  | 'ancestors.nodes.internal.mediaType'
+  | 'ancestors.nodes.internal.owner'
+  | 'ancestors.nodes.internal.type'
+  | 'ancestors.nodes.isContentNode'
+  | 'ancestors.nodes.isTermNode'
+  | 'ancestors.nodes.link'
+  | 'ancestors.nodes.modified'
+  | 'ancestors.nodes.modifiedGmt'
+  | 'ancestors.nodes.nodeType'
+  | 'ancestors.nodes.parent.children'
+  | 'ancestors.nodes.parent.id'
+  | 'ancestors.nodes.seo.breadcrumbs'
+  | 'ancestors.nodes.seo.canonical'
+  | 'ancestors.nodes.seo.cornerstone'
+  | 'ancestors.nodes.seo.focuskw'
+  | 'ancestors.nodes.seo.fullHead'
+  | 'ancestors.nodes.seo.metaDesc'
+  | 'ancestors.nodes.seo.metaKeywords'
+  | 'ancestors.nodes.seo.metaRobotsNofollow'
+  | 'ancestors.nodes.seo.metaRobotsNoindex'
+  | 'ancestors.nodes.seo.opengraphAuthor'
+  | 'ancestors.nodes.seo.opengraphDescription'
+  | 'ancestors.nodes.seo.opengraphModifiedTime'
+  | 'ancestors.nodes.seo.opengraphPublishedTime'
+  | 'ancestors.nodes.seo.opengraphPublisher'
+  | 'ancestors.nodes.seo.opengraphSiteName'
+  | 'ancestors.nodes.seo.opengraphTitle'
+  | 'ancestors.nodes.seo.opengraphType'
+  | 'ancestors.nodes.seo.opengraphUrl'
+  | 'ancestors.nodes.seo.readingTime'
+  | 'ancestors.nodes.seo.title'
+  | 'ancestors.nodes.seo.twitterDescription'
+  | 'ancestors.nodes.seo.twitterTitle'
+  | 'ancestors.nodes.slug'
+  | 'ancestors.nodes.status'
+  | 'ancestors.nodes.template.templateName'
+  | 'ancestors.nodes.uri'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'contentTypeName'
+  | 'contentType.node.archivePath'
+  | 'contentType.node.canExport'
+  | 'contentType.node.children'
+  | 'contentType.node.children.children'
+  | 'contentType.node.children.id'
+  | 'contentType.node.connectedTaxonomies.nodes'
+  | 'contentType.node.contentNodes.nodes'
+  | 'contentType.node.deleteWithUser'
+  | 'contentType.node.description'
+  | 'contentType.node.excludeFromSearch'
+  | 'contentType.node.graphqlPluralName'
+  | 'contentType.node.graphqlSingleName'
+  | 'contentType.node.hasArchive'
+  | 'contentType.node.hierarchical'
+  | 'contentType.node.id'
+  | 'contentType.node.internal.content'
+  | 'contentType.node.internal.contentDigest'
+  | 'contentType.node.internal.contentFilePath'
+  | 'contentType.node.internal.description'
+  | 'contentType.node.internal.fieldOwners'
+  | 'contentType.node.internal.ignoreType'
+  | 'contentType.node.internal.mediaType'
+  | 'contentType.node.internal.owner'
+  | 'contentType.node.internal.type'
+  | 'contentType.node.isContentNode'
+  | 'contentType.node.isFrontPage'
+  | 'contentType.node.isPostsPage'
+  | 'contentType.node.isTermNode'
+  | 'contentType.node.label'
+  | 'contentType.node.labels.addNew'
+  | 'contentType.node.labels.addNewItem'
+  | 'contentType.node.labels.allItems'
+  | 'contentType.node.labels.archives'
+  | 'contentType.node.labels.attributes'
+  | 'contentType.node.labels.editItem'
+  | 'contentType.node.labels.featuredImage'
+  | 'contentType.node.labels.filterItemsList'
+  | 'contentType.node.labels.insertIntoItem'
+  | 'contentType.node.labels.itemsList'
+  | 'contentType.node.labels.itemsListNavigation'
+  | 'contentType.node.labels.menuName'
+  | 'contentType.node.labels.name'
+  | 'contentType.node.labels.newItem'
+  | 'contentType.node.labels.notFound'
+  | 'contentType.node.labels.notFoundInTrash'
+  | 'contentType.node.labels.parentItemColon'
+  | 'contentType.node.labels.removeFeaturedImage'
+  | 'contentType.node.labels.searchItems'
+  | 'contentType.node.labels.setFeaturedImage'
+  | 'contentType.node.labels.singularName'
+  | 'contentType.node.labels.uploadedToThisItem'
+  | 'contentType.node.labels.useFeaturedImage'
+  | 'contentType.node.labels.viewItem'
+  | 'contentType.node.labels.viewItems'
+  | 'contentType.node.menuIcon'
+  | 'contentType.node.menuPosition'
+  | 'contentType.node.name'
+  | 'contentType.node.nodeType'
+  | 'contentType.node.parent.children'
+  | 'contentType.node.parent.id'
+  | 'contentType.node.public'
+  | 'contentType.node.publiclyQueryable'
+  | 'contentType.node.restBase'
+  | 'contentType.node.restControllerClass'
+  | 'contentType.node.showInAdminBar'
+  | 'contentType.node.showInGraphql'
+  | 'contentType.node.showInMenu'
+  | 'contentType.node.showInNavMenus'
+  | 'contentType.node.showInRest'
+  | 'contentType.node.showUi'
+  | 'contentType.node.uri'
+  | 'databaseId'
+  | 'date'
+  | 'dateGmt'
+  | 'desiredSlug'
+  | 'enclosure'
+  | 'guid'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'lastEditedBy.node.avatar.default'
+  | 'lastEditedBy.node.avatar.extraAttr'
+  | 'lastEditedBy.node.avatar.forceDefault'
+  | 'lastEditedBy.node.avatar.foundAvatar'
+  | 'lastEditedBy.node.avatar.height'
+  | 'lastEditedBy.node.avatar.rating'
+  | 'lastEditedBy.node.avatar.scheme'
+  | 'lastEditedBy.node.avatar.size'
+  | 'lastEditedBy.node.avatar.url'
+  | 'lastEditedBy.node.avatar.width'
+  | 'lastEditedBy.node.capKey'
+  | 'lastEditedBy.node.capabilities'
+  | 'lastEditedBy.node.children'
+  | 'lastEditedBy.node.children.children'
+  | 'lastEditedBy.node.children.id'
+  | 'lastEditedBy.node.comments.nodes'
+  | 'lastEditedBy.node.databaseId'
+  | 'lastEditedBy.node.description'
+  | 'lastEditedBy.node.email'
+  | 'lastEditedBy.node.extraCapabilities'
+  | 'lastEditedBy.node.firstName'
+  | 'lastEditedBy.node.id'
+  | 'lastEditedBy.node.internal.content'
+  | 'lastEditedBy.node.internal.contentDigest'
+  | 'lastEditedBy.node.internal.contentFilePath'
+  | 'lastEditedBy.node.internal.description'
+  | 'lastEditedBy.node.internal.fieldOwners'
+  | 'lastEditedBy.node.internal.ignoreType'
+  | 'lastEditedBy.node.internal.mediaType'
+  | 'lastEditedBy.node.internal.owner'
+  | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isTermNode'
+  | 'lastEditedBy.node.lastName'
+  | 'lastEditedBy.node.locale'
+  | 'lastEditedBy.node.name'
+  | 'lastEditedBy.node.nicename'
+  | 'lastEditedBy.node.nickname'
+  | 'lastEditedBy.node.nodeType'
+  | 'lastEditedBy.node.pages.nodes'
+  | 'lastEditedBy.node.parent.children'
+  | 'lastEditedBy.node.parent.id'
+  | 'lastEditedBy.node.posts.nodes'
+  | 'lastEditedBy.node.registeredDate'
+  | 'lastEditedBy.node.roles.nodes'
+  | 'lastEditedBy.node.seo.breadcrumbTitle'
+  | 'lastEditedBy.node.seo.canonical'
+  | 'lastEditedBy.node.seo.fullHead'
+  | 'lastEditedBy.node.seo.language'
+  | 'lastEditedBy.node.seo.metaDesc'
+  | 'lastEditedBy.node.seo.metaRobotsNofollow'
+  | 'lastEditedBy.node.seo.metaRobotsNoindex'
+  | 'lastEditedBy.node.seo.opengraphDescription'
+  | 'lastEditedBy.node.seo.opengraphTitle'
+  | 'lastEditedBy.node.seo.region'
+  | 'lastEditedBy.node.seo.title'
+  | 'lastEditedBy.node.seo.twitterDescription'
+  | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.slug'
+  | 'lastEditedBy.node.uri'
+  | 'lastEditedBy.node.url'
+  | 'lastEditedBy.node.username'
+  | 'link'
+  | 'modified'
+  | 'modifiedGmt'
+  | 'nodeType'
+  | 'parentDatabaseId'
+  | 'parentId'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.readingTime'
+  | 'seo.schema.articleType'
+  | 'seo.schema.pageType'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'slug'
+  | 'status'
+  | 'template.templateName'
+  | 'uri'
+  | 'wpChildren.nodes'
+  | 'wpChildren.nodes.children'
+  | 'wpChildren.nodes.children.children'
+  | 'wpChildren.nodes.children.id'
+  | 'wpChildren.nodes.contentTypeName'
+  | 'wpChildren.nodes.databaseId'
+  | 'wpChildren.nodes.date'
+  | 'wpChildren.nodes.dateGmt'
+  | 'wpChildren.nodes.desiredSlug'
+  | 'wpChildren.nodes.enclosure'
+  | 'wpChildren.nodes.guid'
+  | 'wpChildren.nodes.id'
+  | 'wpChildren.nodes.internal.content'
+  | 'wpChildren.nodes.internal.contentDigest'
+  | 'wpChildren.nodes.internal.contentFilePath'
+  | 'wpChildren.nodes.internal.description'
+  | 'wpChildren.nodes.internal.fieldOwners'
+  | 'wpChildren.nodes.internal.ignoreType'
+  | 'wpChildren.nodes.internal.mediaType'
+  | 'wpChildren.nodes.internal.owner'
+  | 'wpChildren.nodes.internal.type'
+  | 'wpChildren.nodes.isContentNode'
+  | 'wpChildren.nodes.isTermNode'
+  | 'wpChildren.nodes.link'
+  | 'wpChildren.nodes.modified'
+  | 'wpChildren.nodes.modifiedGmt'
+  | 'wpChildren.nodes.nodeType'
+  | 'wpChildren.nodes.parent.children'
+  | 'wpChildren.nodes.parent.id'
+  | 'wpChildren.nodes.seo.breadcrumbs'
+  | 'wpChildren.nodes.seo.canonical'
+  | 'wpChildren.nodes.seo.cornerstone'
+  | 'wpChildren.nodes.seo.focuskw'
+  | 'wpChildren.nodes.seo.fullHead'
+  | 'wpChildren.nodes.seo.metaDesc'
+  | 'wpChildren.nodes.seo.metaKeywords'
+  | 'wpChildren.nodes.seo.metaRobotsNofollow'
+  | 'wpChildren.nodes.seo.metaRobotsNoindex'
+  | 'wpChildren.nodes.seo.opengraphAuthor'
+  | 'wpChildren.nodes.seo.opengraphDescription'
+  | 'wpChildren.nodes.seo.opengraphModifiedTime'
+  | 'wpChildren.nodes.seo.opengraphPublishedTime'
+  | 'wpChildren.nodes.seo.opengraphPublisher'
+  | 'wpChildren.nodes.seo.opengraphSiteName'
+  | 'wpChildren.nodes.seo.opengraphTitle'
+  | 'wpChildren.nodes.seo.opengraphType'
+  | 'wpChildren.nodes.seo.opengraphUrl'
+  | 'wpChildren.nodes.seo.readingTime'
+  | 'wpChildren.nodes.seo.title'
+  | 'wpChildren.nodes.seo.twitterDescription'
+  | 'wpChildren.nodes.seo.twitterTitle'
+  | 'wpChildren.nodes.slug'
+  | 'wpChildren.nodes.status'
+  | 'wpChildren.nodes.template.templateName'
+  | 'wpChildren.nodes.uri'
+  | 'wpParent.node.children'
+  | 'wpParent.node.children.children'
+  | 'wpParent.node.children.id'
+  | 'wpParent.node.contentTypeName'
+  | 'wpParent.node.databaseId'
+  | 'wpParent.node.date'
+  | 'wpParent.node.dateGmt'
+  | 'wpParent.node.desiredSlug'
+  | 'wpParent.node.enclosure'
+  | 'wpParent.node.guid'
+  | 'wpParent.node.id'
+  | 'wpParent.node.internal.content'
+  | 'wpParent.node.internal.contentDigest'
+  | 'wpParent.node.internal.contentFilePath'
+  | 'wpParent.node.internal.description'
+  | 'wpParent.node.internal.fieldOwners'
+  | 'wpParent.node.internal.ignoreType'
+  | 'wpParent.node.internal.mediaType'
+  | 'wpParent.node.internal.owner'
+  | 'wpParent.node.internal.type'
+  | 'wpParent.node.isContentNode'
+  | 'wpParent.node.isTermNode'
+  | 'wpParent.node.link'
+  | 'wpParent.node.modified'
+  | 'wpParent.node.modifiedGmt'
+  | 'wpParent.node.nodeType'
+  | 'wpParent.node.parent.children'
+  | 'wpParent.node.parent.id'
+  | 'wpParent.node.seo.breadcrumbs'
+  | 'wpParent.node.seo.canonical'
+  | 'wpParent.node.seo.cornerstone'
+  | 'wpParent.node.seo.focuskw'
+  | 'wpParent.node.seo.fullHead'
+  | 'wpParent.node.seo.metaDesc'
+  | 'wpParent.node.seo.metaKeywords'
+  | 'wpParent.node.seo.metaRobotsNofollow'
+  | 'wpParent.node.seo.metaRobotsNoindex'
+  | 'wpParent.node.seo.opengraphAuthor'
+  | 'wpParent.node.seo.opengraphDescription'
+  | 'wpParent.node.seo.opengraphModifiedTime'
+  | 'wpParent.node.seo.opengraphPublishedTime'
+  | 'wpParent.node.seo.opengraphPublisher'
+  | 'wpParent.node.seo.opengraphSiteName'
+  | 'wpParent.node.seo.opengraphTitle'
+  | 'wpParent.node.seo.opengraphType'
+  | 'wpParent.node.seo.opengraphUrl'
+  | 'wpParent.node.seo.readingTime'
+  | 'wpParent.node.seo.title'
+  | 'wpParent.node.seo.twitterDescription'
+  | 'wpParent.node.seo.twitterTitle'
+  | 'wpParent.node.slug'
+  | 'wpParent.node.status'
+  | 'wpParent.node.template.templateName'
+  | 'wpParent.node.uri';
 
 type WpHierarchicalContentNodeFilterInput = {
   readonly ancestors: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeFilterInput>;
@@ -6018,183 +9051,54 @@ type WpHierarchicalContentNodeGroupConnection = {
 
 
 type WpHierarchicalContentNodeGroupConnection_distinctArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
 };
 
 
 type WpHierarchicalContentNodeGroupConnection_groupArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpHierarchicalContentNodeGroupConnection_maxArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
 };
 
 
 type WpHierarchicalContentNodeGroupConnection_minArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
 };
 
 
 type WpHierarchicalContentNodeGroupConnection_sumArgs = {
-  field: WpHierarchicalContentNodeFieldSelector;
+  field: WpHierarchicalContentNodeFieldsEnum;
 };
 
 type WpHierarchicalContentNodeSortInput = {
-  readonly ancestors: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeSortInput>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeSortInput>;
-  readonly contentTypeName: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly date: InputMaybe<SortOrderEnum>;
-  readonly dateGmt: InputMaybe<SortOrderEnum>;
-  readonly desiredSlug: InputMaybe<SortOrderEnum>;
-  readonly enclosure: InputMaybe<SortOrderEnum>;
-  readonly guid: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeSortInput>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly modified: InputMaybe<SortOrderEnum>;
-  readonly modifiedGmt: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly parentDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly parentId: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpPostTypeSEOSortInput>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly status: InputMaybe<SortOrderEnum>;
-  readonly template: InputMaybe<WpContentTemplateSortInput>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-  readonly wpChildren: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeSortInput>;
-  readonly wpParent: InputMaybe<WpHierarchicalContentNodeToParentContentNodeConnectionEdgeTypeSortInput>;
-};
-
-/** Page Info on the &quot;HierarchicalContentNodeToContentNodeAncestorsConnection&quot; */
-type WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpHierarchicalContentNodeFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the HierarchicalContentNode type and the ContentNode type */
 type WpHierarchicalContentNodeToContentNodeAncestorsConnectionType = WpConnectionType & WpContentNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoType;
-};
-
-type WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpContentNodeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoTypeFilterInput>;
-};
-
-type WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpContentNodeSortInput>;
-  readonly pageInfo: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;HierarchicalContentNodeToContentNodeChildrenConnection&quot; */
-type WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the HierarchicalContentNode type and the ContentNode type */
 type WpHierarchicalContentNodeToContentNodeChildrenConnectionType = WpConnectionType & WpContentNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoType;
-};
-
-type WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpContentNodeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoTypeFilterInput>;
-};
-
-type WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpContentNodeSortInput>;
-  readonly pageInfo: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoTypeSortInput>;
 };
 
 /** Connection between the HierarchicalContentNode type and the ContentNode type */
@@ -6203,16 +9107,8 @@ type WpHierarchicalContentNodeToParentContentNodeConnectionEdgeType = WpContentN
   readonly node: WpContentNode;
 };
 
-type WpHierarchicalContentNodeToParentContentNodeConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpContentNodeFieldSelector>;
-};
-
 type WpHierarchicalContentNodeToParentContentNodeConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpContentNodeFilterInput>;
-};
-
-type WpHierarchicalContentNodeToParentContentNodeConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpContentNodeSortInput>;
 };
 
 type WpHierarchicalNode = {
@@ -6243,29 +9139,29 @@ type WpHierarchicalNodeConnection = {
 
 
 type WpHierarchicalNodeConnection_distinctArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
 };
 
 
 type WpHierarchicalNodeConnection_groupArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpHierarchicalNodeConnection_maxArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
 };
 
 
 type WpHierarchicalNodeConnection_minArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
 };
 
 
 type WpHierarchicalNodeConnection_sumArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
 };
 
 type WpHierarchicalNodeEdge = {
@@ -6274,16 +9170,104 @@ type WpHierarchicalNodeEdge = {
   readonly previous: Maybe<WpHierarchicalNode>;
 };
 
-type WpHierarchicalNodeFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly parentDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly parentId: InputMaybe<FieldSelectorEnum>;
-};
+type WpHierarchicalNodeFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'databaseId'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parentDatabaseId'
+  | 'parentId'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type WpHierarchicalNodeFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -6312,40 +9296,34 @@ type WpHierarchicalNodeGroupConnection = {
 
 
 type WpHierarchicalNodeGroupConnection_distinctArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
 };
 
 
 type WpHierarchicalNodeGroupConnection_groupArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpHierarchicalNodeGroupConnection_maxArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
 };
 
 
 type WpHierarchicalNodeGroupConnection_minArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
 };
 
 
 type WpHierarchicalNodeGroupConnection_sumArgs = {
-  field: WpHierarchicalNodeFieldSelector;
+  field: WpHierarchicalNodeFieldsEnum;
 };
 
 type WpHierarchicalNodeSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly parentDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly parentId: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpHierarchicalNodeFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpHierarchicalTermNode = {
@@ -6398,29 +9376,29 @@ type WpHierarchicalTermNodeConnection = {
 
 
 type WpHierarchicalTermNodeConnection_distinctArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
 };
 
 
 type WpHierarchicalTermNodeConnection_groupArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpHierarchicalTermNodeConnection_maxArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
 };
 
 
 type WpHierarchicalTermNodeConnection_minArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
 };
 
 
 type WpHierarchicalTermNodeConnection_sumArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
 };
 
 type WpHierarchicalTermNodeEdge = {
@@ -6429,27 +9407,115 @@ type WpHierarchicalTermNodeEdge = {
   readonly previous: Maybe<WpHierarchicalTermNode>;
 };
 
-type WpHierarchicalTermNodeFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly count: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly parentDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly parentId: InputMaybe<FieldSelectorEnum>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly taxonomyName: InputMaybe<FieldSelectorEnum>;
-  readonly termGroupId: InputMaybe<FieldSelectorEnum>;
-  readonly termTaxonomyId: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-};
+type WpHierarchicalTermNodeFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'count'
+  | 'databaseId'
+  | 'description'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'link'
+  | 'name'
+  | 'nodeType'
+  | 'parentDatabaseId'
+  | 'parentId'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'slug'
+  | 'taxonomyName'
+  | 'termGroupId'
+  | 'termTaxonomyId'
+  | 'uri';
 
 type WpHierarchicalTermNodeFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -6489,51 +9555,34 @@ type WpHierarchicalTermNodeGroupConnection = {
 
 
 type WpHierarchicalTermNodeGroupConnection_distinctArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
 };
 
 
 type WpHierarchicalTermNodeGroupConnection_groupArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpHierarchicalTermNodeGroupConnection_maxArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
 };
 
 
 type WpHierarchicalTermNodeGroupConnection_minArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
 };
 
 
 type WpHierarchicalTermNodeGroupConnection_sumArgs = {
-  field: WpHierarchicalTermNodeFieldSelector;
+  field: WpHierarchicalTermNodeFieldsEnum;
 };
 
 type WpHierarchicalTermNodeSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly count: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly parentDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly parentId: InputMaybe<SortOrderEnum>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly taxonomyName: InputMaybe<SortOrderEnum>;
-  readonly termGroupId: InputMaybe<SortOrderEnum>;
-  readonly termTaxonomyId: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpHierarchicalTermNodeFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** File details for a Media Item */
@@ -6550,28 +9599,12 @@ type WpMediaDetails = {
   readonly width: Maybe<Scalars['Int']>;
 };
 
-type WpMediaDetailsFieldSelector = {
-  readonly file: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly meta: InputMaybe<WpMediaItemMetaFieldSelector>;
-  readonly sizes: InputMaybe<WpMediaSizeFieldSelector>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpMediaDetailsFilterInput = {
   readonly file: InputMaybe<StringQueryOperatorInput>;
   readonly height: InputMaybe<IntQueryOperatorInput>;
   readonly meta: InputMaybe<WpMediaItemMetaFilterInput>;
   readonly sizes: InputMaybe<WpMediaSizeFilterListInput>;
   readonly width: InputMaybe<IntQueryOperatorInput>;
-};
-
-type WpMediaDetailsSortInput = {
-  readonly file: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly meta: InputMaybe<WpMediaItemMetaSortInput>;
-  readonly sizes: InputMaybe<WpMediaSizeSortInput>;
-  readonly width: InputMaybe<SortOrderEnum>;
 };
 
 /** The mediaItem type */
@@ -6755,54 +9788,29 @@ type WpMediaItemConnection = {
 
 
 type WpMediaItemConnection_distinctArgs = {
-  field: WpMediaItemFieldSelector;
+  field: WpMediaItemFieldsEnum;
 };
 
 
 type WpMediaItemConnection_groupArgs = {
-  field: WpMediaItemFieldSelector;
+  field: WpMediaItemFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpMediaItemConnection_maxArgs = {
-  field: WpMediaItemFieldSelector;
+  field: WpMediaItemFieldsEnum;
 };
 
 
 type WpMediaItemConnection_minArgs = {
-  field: WpMediaItemFieldSelector;
+  field: WpMediaItemFieldsEnum;
 };
 
 
 type WpMediaItemConnection_sumArgs = {
-  field: WpMediaItemFieldSelector;
-};
-
-type WpMediaItemConnectionEdgeType = {
-  /** The connected mediaItem Node */
-  readonly node: WpMediaItem;
-};
-
-type WpMediaItemConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpMediaItemConnectionType = {
-  /** A list of connected mediaItem Nodes */
-  readonly nodes: ReadonlyArray<WpMediaItem>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpMediaItemConnectionPageInfoType;
+  field: WpMediaItemFieldsEnum;
 };
 
 type WpMediaItemEdge = {
@@ -6811,63 +9819,1002 @@ type WpMediaItemEdge = {
   readonly previous: Maybe<WpMediaItem>;
 };
 
-type WpMediaItemFieldSelector = {
-  readonly altText: InputMaybe<FieldSelectorEnum>;
-  readonly ancestors: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeFieldSelector>;
-  readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeFieldSelector>;
-  readonly authorDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly authorId: InputMaybe<FieldSelectorEnum>;
-  readonly caption: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly commentCount: InputMaybe<FieldSelectorEnum>;
-  readonly commentStatus: InputMaybe<FieldSelectorEnum>;
-  readonly comments: InputMaybe<WpMediaItemToCommentConnectionTypeFieldSelector>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFieldSelector>;
-  readonly contentTypeName: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly date: InputMaybe<FieldSelectorEnum>;
-  readonly dateGmt: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly desiredSlug: InputMaybe<FieldSelectorEnum>;
-  readonly enclosure: InputMaybe<FieldSelectorEnum>;
-  readonly fileSize: InputMaybe<FieldSelectorEnum>;
-  readonly filename: InputMaybe<FieldSelectorEnum>;
-  readonly filesize: InputMaybe<FieldSelectorEnum>;
-  readonly gatsbyImage: InputMaybe<FieldSelectorEnum>;
-  readonly guid: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFieldSelector>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly localFile: InputMaybe<FileFieldSelector>;
-  readonly mediaDetails: InputMaybe<WpMediaDetailsFieldSelector>;
-  readonly mediaItemUrl: InputMaybe<FieldSelectorEnum>;
-  readonly mediaType: InputMaybe<FieldSelectorEnum>;
-  readonly mimeType: InputMaybe<FieldSelectorEnum>;
-  readonly modified: InputMaybe<FieldSelectorEnum>;
-  readonly modifiedGmt: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly parentDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly parentId: InputMaybe<FieldSelectorEnum>;
-  readonly publicUrl: InputMaybe<FieldSelectorEnum>;
-  readonly resize: InputMaybe<RemoteFileResizeFieldSelector>;
-  readonly seo: InputMaybe<WpPostTypeSEOFieldSelector>;
-  readonly sizes: InputMaybe<FieldSelectorEnum>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly sourceUrl: InputMaybe<FieldSelectorEnum>;
-  readonly srcSet: InputMaybe<FieldSelectorEnum>;
-  readonly status: InputMaybe<FieldSelectorEnum>;
-  readonly template: InputMaybe<WpContentTemplateFieldSelector>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-  readonly wpChildren: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeFieldSelector>;
-  readonly wpParent: InputMaybe<WpHierarchicalContentNodeToParentContentNodeConnectionEdgeTypeFieldSelector>;
-};
+type WpMediaItemFieldsEnum =
+  | 'altText'
+  | 'ancestors.nodes'
+  | 'ancestors.nodes.children'
+  | 'ancestors.nodes.children.children'
+  | 'ancestors.nodes.children.id'
+  | 'ancestors.nodes.contentTypeName'
+  | 'ancestors.nodes.databaseId'
+  | 'ancestors.nodes.date'
+  | 'ancestors.nodes.dateGmt'
+  | 'ancestors.nodes.desiredSlug'
+  | 'ancestors.nodes.enclosure'
+  | 'ancestors.nodes.guid'
+  | 'ancestors.nodes.id'
+  | 'ancestors.nodes.internal.content'
+  | 'ancestors.nodes.internal.contentDigest'
+  | 'ancestors.nodes.internal.contentFilePath'
+  | 'ancestors.nodes.internal.description'
+  | 'ancestors.nodes.internal.fieldOwners'
+  | 'ancestors.nodes.internal.ignoreType'
+  | 'ancestors.nodes.internal.mediaType'
+  | 'ancestors.nodes.internal.owner'
+  | 'ancestors.nodes.internal.type'
+  | 'ancestors.nodes.isContentNode'
+  | 'ancestors.nodes.isTermNode'
+  | 'ancestors.nodes.link'
+  | 'ancestors.nodes.modified'
+  | 'ancestors.nodes.modifiedGmt'
+  | 'ancestors.nodes.nodeType'
+  | 'ancestors.nodes.parent.children'
+  | 'ancestors.nodes.parent.id'
+  | 'ancestors.nodes.seo.breadcrumbs'
+  | 'ancestors.nodes.seo.canonical'
+  | 'ancestors.nodes.seo.cornerstone'
+  | 'ancestors.nodes.seo.focuskw'
+  | 'ancestors.nodes.seo.fullHead'
+  | 'ancestors.nodes.seo.metaDesc'
+  | 'ancestors.nodes.seo.metaKeywords'
+  | 'ancestors.nodes.seo.metaRobotsNofollow'
+  | 'ancestors.nodes.seo.metaRobotsNoindex'
+  | 'ancestors.nodes.seo.opengraphAuthor'
+  | 'ancestors.nodes.seo.opengraphDescription'
+  | 'ancestors.nodes.seo.opengraphModifiedTime'
+  | 'ancestors.nodes.seo.opengraphPublishedTime'
+  | 'ancestors.nodes.seo.opengraphPublisher'
+  | 'ancestors.nodes.seo.opengraphSiteName'
+  | 'ancestors.nodes.seo.opengraphTitle'
+  | 'ancestors.nodes.seo.opengraphType'
+  | 'ancestors.nodes.seo.opengraphUrl'
+  | 'ancestors.nodes.seo.readingTime'
+  | 'ancestors.nodes.seo.title'
+  | 'ancestors.nodes.seo.twitterDescription'
+  | 'ancestors.nodes.seo.twitterTitle'
+  | 'ancestors.nodes.slug'
+  | 'ancestors.nodes.status'
+  | 'ancestors.nodes.template.templateName'
+  | 'ancestors.nodes.uri'
+  | 'authorDatabaseId'
+  | 'authorId'
+  | 'author.node.avatar.default'
+  | 'author.node.avatar.extraAttr'
+  | 'author.node.avatar.forceDefault'
+  | 'author.node.avatar.foundAvatar'
+  | 'author.node.avatar.height'
+  | 'author.node.avatar.rating'
+  | 'author.node.avatar.scheme'
+  | 'author.node.avatar.size'
+  | 'author.node.avatar.url'
+  | 'author.node.avatar.width'
+  | 'author.node.capKey'
+  | 'author.node.capabilities'
+  | 'author.node.children'
+  | 'author.node.children.children'
+  | 'author.node.children.id'
+  | 'author.node.comments.nodes'
+  | 'author.node.databaseId'
+  | 'author.node.description'
+  | 'author.node.email'
+  | 'author.node.extraCapabilities'
+  | 'author.node.firstName'
+  | 'author.node.id'
+  | 'author.node.internal.content'
+  | 'author.node.internal.contentDigest'
+  | 'author.node.internal.contentFilePath'
+  | 'author.node.internal.description'
+  | 'author.node.internal.fieldOwners'
+  | 'author.node.internal.ignoreType'
+  | 'author.node.internal.mediaType'
+  | 'author.node.internal.owner'
+  | 'author.node.internal.type'
+  | 'author.node.isContentNode'
+  | 'author.node.isTermNode'
+  | 'author.node.lastName'
+  | 'author.node.locale'
+  | 'author.node.name'
+  | 'author.node.nicename'
+  | 'author.node.nickname'
+  | 'author.node.nodeType'
+  | 'author.node.pages.nodes'
+  | 'author.node.parent.children'
+  | 'author.node.parent.id'
+  | 'author.node.posts.nodes'
+  | 'author.node.registeredDate'
+  | 'author.node.roles.nodes'
+  | 'author.node.seo.breadcrumbTitle'
+  | 'author.node.seo.canonical'
+  | 'author.node.seo.fullHead'
+  | 'author.node.seo.language'
+  | 'author.node.seo.metaDesc'
+  | 'author.node.seo.metaRobotsNofollow'
+  | 'author.node.seo.metaRobotsNoindex'
+  | 'author.node.seo.opengraphDescription'
+  | 'author.node.seo.opengraphTitle'
+  | 'author.node.seo.region'
+  | 'author.node.seo.title'
+  | 'author.node.seo.twitterDescription'
+  | 'author.node.seo.twitterTitle'
+  | 'author.node.slug'
+  | 'author.node.uri'
+  | 'author.node.url'
+  | 'author.node.username'
+  | 'caption'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'commentCount'
+  | 'commentStatus'
+  | 'comments.nodes'
+  | 'comments.nodes.agent'
+  | 'comments.nodes.authorIp'
+  | 'comments.nodes.children'
+  | 'comments.nodes.children.children'
+  | 'comments.nodes.children.id'
+  | 'comments.nodes.content'
+  | 'comments.nodes.databaseId'
+  | 'comments.nodes.date'
+  | 'comments.nodes.dateGmt'
+  | 'comments.nodes.id'
+  | 'comments.nodes.internal.content'
+  | 'comments.nodes.internal.contentDigest'
+  | 'comments.nodes.internal.contentFilePath'
+  | 'comments.nodes.internal.description'
+  | 'comments.nodes.internal.fieldOwners'
+  | 'comments.nodes.internal.ignoreType'
+  | 'comments.nodes.internal.mediaType'
+  | 'comments.nodes.internal.owner'
+  | 'comments.nodes.internal.type'
+  | 'comments.nodes.karma'
+  | 'comments.nodes.nodeType'
+  | 'comments.nodes.parentDatabaseId'
+  | 'comments.nodes.parentId'
+  | 'comments.nodes.parent.children'
+  | 'comments.nodes.parent.id'
+  | 'comments.nodes.replies.nodes'
+  | 'comments.nodes.status'
+  | 'comments.nodes.type'
+  | 'contentTypeName'
+  | 'contentType.node.archivePath'
+  | 'contentType.node.canExport'
+  | 'contentType.node.children'
+  | 'contentType.node.children.children'
+  | 'contentType.node.children.id'
+  | 'contentType.node.connectedTaxonomies.nodes'
+  | 'contentType.node.contentNodes.nodes'
+  | 'contentType.node.deleteWithUser'
+  | 'contentType.node.description'
+  | 'contentType.node.excludeFromSearch'
+  | 'contentType.node.graphqlPluralName'
+  | 'contentType.node.graphqlSingleName'
+  | 'contentType.node.hasArchive'
+  | 'contentType.node.hierarchical'
+  | 'contentType.node.id'
+  | 'contentType.node.internal.content'
+  | 'contentType.node.internal.contentDigest'
+  | 'contentType.node.internal.contentFilePath'
+  | 'contentType.node.internal.description'
+  | 'contentType.node.internal.fieldOwners'
+  | 'contentType.node.internal.ignoreType'
+  | 'contentType.node.internal.mediaType'
+  | 'contentType.node.internal.owner'
+  | 'contentType.node.internal.type'
+  | 'contentType.node.isContentNode'
+  | 'contentType.node.isFrontPage'
+  | 'contentType.node.isPostsPage'
+  | 'contentType.node.isTermNode'
+  | 'contentType.node.label'
+  | 'contentType.node.labels.addNew'
+  | 'contentType.node.labels.addNewItem'
+  | 'contentType.node.labels.allItems'
+  | 'contentType.node.labels.archives'
+  | 'contentType.node.labels.attributes'
+  | 'contentType.node.labels.editItem'
+  | 'contentType.node.labels.featuredImage'
+  | 'contentType.node.labels.filterItemsList'
+  | 'contentType.node.labels.insertIntoItem'
+  | 'contentType.node.labels.itemsList'
+  | 'contentType.node.labels.itemsListNavigation'
+  | 'contentType.node.labels.menuName'
+  | 'contentType.node.labels.name'
+  | 'contentType.node.labels.newItem'
+  | 'contentType.node.labels.notFound'
+  | 'contentType.node.labels.notFoundInTrash'
+  | 'contentType.node.labels.parentItemColon'
+  | 'contentType.node.labels.removeFeaturedImage'
+  | 'contentType.node.labels.searchItems'
+  | 'contentType.node.labels.setFeaturedImage'
+  | 'contentType.node.labels.singularName'
+  | 'contentType.node.labels.uploadedToThisItem'
+  | 'contentType.node.labels.useFeaturedImage'
+  | 'contentType.node.labels.viewItem'
+  | 'contentType.node.labels.viewItems'
+  | 'contentType.node.menuIcon'
+  | 'contentType.node.menuPosition'
+  | 'contentType.node.name'
+  | 'contentType.node.nodeType'
+  | 'contentType.node.parent.children'
+  | 'contentType.node.parent.id'
+  | 'contentType.node.public'
+  | 'contentType.node.publiclyQueryable'
+  | 'contentType.node.restBase'
+  | 'contentType.node.restControllerClass'
+  | 'contentType.node.showInAdminBar'
+  | 'contentType.node.showInGraphql'
+  | 'contentType.node.showInMenu'
+  | 'contentType.node.showInNavMenus'
+  | 'contentType.node.showInRest'
+  | 'contentType.node.showUi'
+  | 'contentType.node.uri'
+  | 'databaseId'
+  | 'date'
+  | 'dateGmt'
+  | 'description'
+  | 'desiredSlug'
+  | 'enclosure'
+  | 'fileSize'
+  | 'filename'
+  | 'filesize'
+  | 'gatsbyImage'
+  | 'guid'
+  | 'height'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'lastEditedBy.node.avatar.default'
+  | 'lastEditedBy.node.avatar.extraAttr'
+  | 'lastEditedBy.node.avatar.forceDefault'
+  | 'lastEditedBy.node.avatar.foundAvatar'
+  | 'lastEditedBy.node.avatar.height'
+  | 'lastEditedBy.node.avatar.rating'
+  | 'lastEditedBy.node.avatar.scheme'
+  | 'lastEditedBy.node.avatar.size'
+  | 'lastEditedBy.node.avatar.url'
+  | 'lastEditedBy.node.avatar.width'
+  | 'lastEditedBy.node.capKey'
+  | 'lastEditedBy.node.capabilities'
+  | 'lastEditedBy.node.children'
+  | 'lastEditedBy.node.children.children'
+  | 'lastEditedBy.node.children.id'
+  | 'lastEditedBy.node.comments.nodes'
+  | 'lastEditedBy.node.databaseId'
+  | 'lastEditedBy.node.description'
+  | 'lastEditedBy.node.email'
+  | 'lastEditedBy.node.extraCapabilities'
+  | 'lastEditedBy.node.firstName'
+  | 'lastEditedBy.node.id'
+  | 'lastEditedBy.node.internal.content'
+  | 'lastEditedBy.node.internal.contentDigest'
+  | 'lastEditedBy.node.internal.contentFilePath'
+  | 'lastEditedBy.node.internal.description'
+  | 'lastEditedBy.node.internal.fieldOwners'
+  | 'lastEditedBy.node.internal.ignoreType'
+  | 'lastEditedBy.node.internal.mediaType'
+  | 'lastEditedBy.node.internal.owner'
+  | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isTermNode'
+  | 'lastEditedBy.node.lastName'
+  | 'lastEditedBy.node.locale'
+  | 'lastEditedBy.node.name'
+  | 'lastEditedBy.node.nicename'
+  | 'lastEditedBy.node.nickname'
+  | 'lastEditedBy.node.nodeType'
+  | 'lastEditedBy.node.pages.nodes'
+  | 'lastEditedBy.node.parent.children'
+  | 'lastEditedBy.node.parent.id'
+  | 'lastEditedBy.node.posts.nodes'
+  | 'lastEditedBy.node.registeredDate'
+  | 'lastEditedBy.node.roles.nodes'
+  | 'lastEditedBy.node.seo.breadcrumbTitle'
+  | 'lastEditedBy.node.seo.canonical'
+  | 'lastEditedBy.node.seo.fullHead'
+  | 'lastEditedBy.node.seo.language'
+  | 'lastEditedBy.node.seo.metaDesc'
+  | 'lastEditedBy.node.seo.metaRobotsNofollow'
+  | 'lastEditedBy.node.seo.metaRobotsNoindex'
+  | 'lastEditedBy.node.seo.opengraphDescription'
+  | 'lastEditedBy.node.seo.opengraphTitle'
+  | 'lastEditedBy.node.seo.region'
+  | 'lastEditedBy.node.seo.title'
+  | 'lastEditedBy.node.seo.twitterDescription'
+  | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.slug'
+  | 'lastEditedBy.node.uri'
+  | 'lastEditedBy.node.url'
+  | 'lastEditedBy.node.username'
+  | 'link'
+  | 'localFile.absolutePath'
+  | 'localFile.accessTime'
+  | 'localFile.atime'
+  | 'localFile.atimeMs'
+  | 'localFile.base'
+  | 'localFile.birthTime'
+  | 'localFile.birthtime'
+  | 'localFile.birthtimeMs'
+  | 'localFile.blksize'
+  | 'localFile.blocks'
+  | 'localFile.changeTime'
+  | 'localFile.childImageSharp.children'
+  | 'localFile.childImageSharp.children.children'
+  | 'localFile.childImageSharp.children.id'
+  | 'localFile.childImageSharp.fixed.aspectRatio'
+  | 'localFile.childImageSharp.fixed.base64'
+  | 'localFile.childImageSharp.fixed.height'
+  | 'localFile.childImageSharp.fixed.originalName'
+  | 'localFile.childImageSharp.fixed.src'
+  | 'localFile.childImageSharp.fixed.srcSet'
+  | 'localFile.childImageSharp.fixed.srcSetWebp'
+  | 'localFile.childImageSharp.fixed.srcWebp'
+  | 'localFile.childImageSharp.fixed.tracedSVG'
+  | 'localFile.childImageSharp.fixed.width'
+  | 'localFile.childImageSharp.fluid.aspectRatio'
+  | 'localFile.childImageSharp.fluid.base64'
+  | 'localFile.childImageSharp.fluid.originalImg'
+  | 'localFile.childImageSharp.fluid.originalName'
+  | 'localFile.childImageSharp.fluid.presentationHeight'
+  | 'localFile.childImageSharp.fluid.presentationWidth'
+  | 'localFile.childImageSharp.fluid.sizes'
+  | 'localFile.childImageSharp.fluid.src'
+  | 'localFile.childImageSharp.fluid.srcSet'
+  | 'localFile.childImageSharp.fluid.srcSetWebp'
+  | 'localFile.childImageSharp.fluid.srcWebp'
+  | 'localFile.childImageSharp.fluid.tracedSVG'
+  | 'localFile.childImageSharp.gatsbyImageData'
+  | 'localFile.childImageSharp.id'
+  | 'localFile.childImageSharp.internal.content'
+  | 'localFile.childImageSharp.internal.contentDigest'
+  | 'localFile.childImageSharp.internal.contentFilePath'
+  | 'localFile.childImageSharp.internal.description'
+  | 'localFile.childImageSharp.internal.fieldOwners'
+  | 'localFile.childImageSharp.internal.ignoreType'
+  | 'localFile.childImageSharp.internal.mediaType'
+  | 'localFile.childImageSharp.internal.owner'
+  | 'localFile.childImageSharp.internal.type'
+  | 'localFile.childImageSharp.original.height'
+  | 'localFile.childImageSharp.original.src'
+  | 'localFile.childImageSharp.original.width'
+  | 'localFile.childImageSharp.parent.children'
+  | 'localFile.childImageSharp.parent.id'
+  | 'localFile.childImageSharp.resize.aspectRatio'
+  | 'localFile.childImageSharp.resize.height'
+  | 'localFile.childImageSharp.resize.originalName'
+  | 'localFile.childImageSharp.resize.src'
+  | 'localFile.childImageSharp.resize.tracedSVG'
+  | 'localFile.childImageSharp.resize.width'
+  | 'localFile.children'
+  | 'localFile.childrenImageSharp'
+  | 'localFile.childrenImageSharp.children'
+  | 'localFile.childrenImageSharp.children.children'
+  | 'localFile.childrenImageSharp.children.id'
+  | 'localFile.childrenImageSharp.fixed.aspectRatio'
+  | 'localFile.childrenImageSharp.fixed.base64'
+  | 'localFile.childrenImageSharp.fixed.height'
+  | 'localFile.childrenImageSharp.fixed.originalName'
+  | 'localFile.childrenImageSharp.fixed.src'
+  | 'localFile.childrenImageSharp.fixed.srcSet'
+  | 'localFile.childrenImageSharp.fixed.srcSetWebp'
+  | 'localFile.childrenImageSharp.fixed.srcWebp'
+  | 'localFile.childrenImageSharp.fixed.tracedSVG'
+  | 'localFile.childrenImageSharp.fixed.width'
+  | 'localFile.childrenImageSharp.fluid.aspectRatio'
+  | 'localFile.childrenImageSharp.fluid.base64'
+  | 'localFile.childrenImageSharp.fluid.originalImg'
+  | 'localFile.childrenImageSharp.fluid.originalName'
+  | 'localFile.childrenImageSharp.fluid.presentationHeight'
+  | 'localFile.childrenImageSharp.fluid.presentationWidth'
+  | 'localFile.childrenImageSharp.fluid.sizes'
+  | 'localFile.childrenImageSharp.fluid.src'
+  | 'localFile.childrenImageSharp.fluid.srcSet'
+  | 'localFile.childrenImageSharp.fluid.srcSetWebp'
+  | 'localFile.childrenImageSharp.fluid.srcWebp'
+  | 'localFile.childrenImageSharp.fluid.tracedSVG'
+  | 'localFile.childrenImageSharp.gatsbyImageData'
+  | 'localFile.childrenImageSharp.id'
+  | 'localFile.childrenImageSharp.internal.content'
+  | 'localFile.childrenImageSharp.internal.contentDigest'
+  | 'localFile.childrenImageSharp.internal.contentFilePath'
+  | 'localFile.childrenImageSharp.internal.description'
+  | 'localFile.childrenImageSharp.internal.fieldOwners'
+  | 'localFile.childrenImageSharp.internal.ignoreType'
+  | 'localFile.childrenImageSharp.internal.mediaType'
+  | 'localFile.childrenImageSharp.internal.owner'
+  | 'localFile.childrenImageSharp.internal.type'
+  | 'localFile.childrenImageSharp.original.height'
+  | 'localFile.childrenImageSharp.original.src'
+  | 'localFile.childrenImageSharp.original.width'
+  | 'localFile.childrenImageSharp.parent.children'
+  | 'localFile.childrenImageSharp.parent.id'
+  | 'localFile.childrenImageSharp.resize.aspectRatio'
+  | 'localFile.childrenImageSharp.resize.height'
+  | 'localFile.childrenImageSharp.resize.originalName'
+  | 'localFile.childrenImageSharp.resize.src'
+  | 'localFile.childrenImageSharp.resize.tracedSVG'
+  | 'localFile.childrenImageSharp.resize.width'
+  | 'localFile.children.children'
+  | 'localFile.children.children.children'
+  | 'localFile.children.children.id'
+  | 'localFile.children.id'
+  | 'localFile.children.internal.content'
+  | 'localFile.children.internal.contentDigest'
+  | 'localFile.children.internal.contentFilePath'
+  | 'localFile.children.internal.description'
+  | 'localFile.children.internal.fieldOwners'
+  | 'localFile.children.internal.ignoreType'
+  | 'localFile.children.internal.mediaType'
+  | 'localFile.children.internal.owner'
+  | 'localFile.children.internal.type'
+  | 'localFile.children.parent.children'
+  | 'localFile.children.parent.id'
+  | 'localFile.ctime'
+  | 'localFile.ctimeMs'
+  | 'localFile.dev'
+  | 'localFile.dir'
+  | 'localFile.ext'
+  | 'localFile.extension'
+  | 'localFile.gid'
+  | 'localFile.id'
+  | 'localFile.ino'
+  | 'localFile.internal.content'
+  | 'localFile.internal.contentDigest'
+  | 'localFile.internal.contentFilePath'
+  | 'localFile.internal.description'
+  | 'localFile.internal.fieldOwners'
+  | 'localFile.internal.ignoreType'
+  | 'localFile.internal.mediaType'
+  | 'localFile.internal.owner'
+  | 'localFile.internal.type'
+  | 'localFile.mode'
+  | 'localFile.modifiedTime'
+  | 'localFile.mtime'
+  | 'localFile.mtimeMs'
+  | 'localFile.name'
+  | 'localFile.nlink'
+  | 'localFile.parent.children'
+  | 'localFile.parent.children.children'
+  | 'localFile.parent.children.id'
+  | 'localFile.parent.id'
+  | 'localFile.parent.internal.content'
+  | 'localFile.parent.internal.contentDigest'
+  | 'localFile.parent.internal.contentFilePath'
+  | 'localFile.parent.internal.description'
+  | 'localFile.parent.internal.fieldOwners'
+  | 'localFile.parent.internal.ignoreType'
+  | 'localFile.parent.internal.mediaType'
+  | 'localFile.parent.internal.owner'
+  | 'localFile.parent.internal.type'
+  | 'localFile.parent.parent.children'
+  | 'localFile.parent.parent.id'
+  | 'localFile.prettySize'
+  | 'localFile.publicURL'
+  | 'localFile.rdev'
+  | 'localFile.relativeDirectory'
+  | 'localFile.relativePath'
+  | 'localFile.root'
+  | 'localFile.size'
+  | 'localFile.sourceInstanceName'
+  | 'localFile.uid'
+  | 'localFile.url'
+  | 'mediaDetails.file'
+  | 'mediaDetails.height'
+  | 'mediaDetails.meta.aperture'
+  | 'mediaDetails.meta.camera'
+  | 'mediaDetails.meta.caption'
+  | 'mediaDetails.meta.copyright'
+  | 'mediaDetails.meta.createdTimestamp'
+  | 'mediaDetails.meta.credit'
+  | 'mediaDetails.meta.focalLength'
+  | 'mediaDetails.meta.iso'
+  | 'mediaDetails.meta.keywords'
+  | 'mediaDetails.meta.orientation'
+  | 'mediaDetails.meta.shutterSpeed'
+  | 'mediaDetails.meta.title'
+  | 'mediaDetails.sizes'
+  | 'mediaDetails.sizes.file'
+  | 'mediaDetails.sizes.fileSize'
+  | 'mediaDetails.sizes.height'
+  | 'mediaDetails.sizes.mimeType'
+  | 'mediaDetails.sizes.name'
+  | 'mediaDetails.sizes.sourceUrl'
+  | 'mediaDetails.sizes.width'
+  | 'mediaDetails.width'
+  | 'mediaItemUrl'
+  | 'mediaType'
+  | 'mimeType'
+  | 'modified'
+  | 'modifiedGmt'
+  | 'nodeType'
+  | 'parentDatabaseId'
+  | 'parentId'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'publicUrl'
+  | 'resize.height'
+  | 'resize.src'
+  | 'resize.width'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.readingTime'
+  | 'seo.schema.articleType'
+  | 'seo.schema.pageType'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'sizes'
+  | 'slug'
+  | 'sourceUrl'
+  | 'srcSet'
+  | 'status'
+  | 'template.templateName'
+  | 'title'
+  | 'uri'
+  | 'width'
+  | 'wpChildren.nodes'
+  | 'wpChildren.nodes.children'
+  | 'wpChildren.nodes.children.children'
+  | 'wpChildren.nodes.children.id'
+  | 'wpChildren.nodes.contentTypeName'
+  | 'wpChildren.nodes.databaseId'
+  | 'wpChildren.nodes.date'
+  | 'wpChildren.nodes.dateGmt'
+  | 'wpChildren.nodes.desiredSlug'
+  | 'wpChildren.nodes.enclosure'
+  | 'wpChildren.nodes.guid'
+  | 'wpChildren.nodes.id'
+  | 'wpChildren.nodes.internal.content'
+  | 'wpChildren.nodes.internal.contentDigest'
+  | 'wpChildren.nodes.internal.contentFilePath'
+  | 'wpChildren.nodes.internal.description'
+  | 'wpChildren.nodes.internal.fieldOwners'
+  | 'wpChildren.nodes.internal.ignoreType'
+  | 'wpChildren.nodes.internal.mediaType'
+  | 'wpChildren.nodes.internal.owner'
+  | 'wpChildren.nodes.internal.type'
+  | 'wpChildren.nodes.isContentNode'
+  | 'wpChildren.nodes.isTermNode'
+  | 'wpChildren.nodes.link'
+  | 'wpChildren.nodes.modified'
+  | 'wpChildren.nodes.modifiedGmt'
+  | 'wpChildren.nodes.nodeType'
+  | 'wpChildren.nodes.parent.children'
+  | 'wpChildren.nodes.parent.id'
+  | 'wpChildren.nodes.seo.breadcrumbs'
+  | 'wpChildren.nodes.seo.canonical'
+  | 'wpChildren.nodes.seo.cornerstone'
+  | 'wpChildren.nodes.seo.focuskw'
+  | 'wpChildren.nodes.seo.fullHead'
+  | 'wpChildren.nodes.seo.metaDesc'
+  | 'wpChildren.nodes.seo.metaKeywords'
+  | 'wpChildren.nodes.seo.metaRobotsNofollow'
+  | 'wpChildren.nodes.seo.metaRobotsNoindex'
+  | 'wpChildren.nodes.seo.opengraphAuthor'
+  | 'wpChildren.nodes.seo.opengraphDescription'
+  | 'wpChildren.nodes.seo.opengraphModifiedTime'
+  | 'wpChildren.nodes.seo.opengraphPublishedTime'
+  | 'wpChildren.nodes.seo.opengraphPublisher'
+  | 'wpChildren.nodes.seo.opengraphSiteName'
+  | 'wpChildren.nodes.seo.opengraphTitle'
+  | 'wpChildren.nodes.seo.opengraphType'
+  | 'wpChildren.nodes.seo.opengraphUrl'
+  | 'wpChildren.nodes.seo.readingTime'
+  | 'wpChildren.nodes.seo.title'
+  | 'wpChildren.nodes.seo.twitterDescription'
+  | 'wpChildren.nodes.seo.twitterTitle'
+  | 'wpChildren.nodes.slug'
+  | 'wpChildren.nodes.status'
+  | 'wpChildren.nodes.template.templateName'
+  | 'wpChildren.nodes.uri'
+  | 'wpParent.node.children'
+  | 'wpParent.node.children.children'
+  | 'wpParent.node.children.id'
+  | 'wpParent.node.contentTypeName'
+  | 'wpParent.node.databaseId'
+  | 'wpParent.node.date'
+  | 'wpParent.node.dateGmt'
+  | 'wpParent.node.desiredSlug'
+  | 'wpParent.node.enclosure'
+  | 'wpParent.node.guid'
+  | 'wpParent.node.id'
+  | 'wpParent.node.internal.content'
+  | 'wpParent.node.internal.contentDigest'
+  | 'wpParent.node.internal.contentFilePath'
+  | 'wpParent.node.internal.description'
+  | 'wpParent.node.internal.fieldOwners'
+  | 'wpParent.node.internal.ignoreType'
+  | 'wpParent.node.internal.mediaType'
+  | 'wpParent.node.internal.owner'
+  | 'wpParent.node.internal.type'
+  | 'wpParent.node.isContentNode'
+  | 'wpParent.node.isTermNode'
+  | 'wpParent.node.link'
+  | 'wpParent.node.modified'
+  | 'wpParent.node.modifiedGmt'
+  | 'wpParent.node.nodeType'
+  | 'wpParent.node.parent.children'
+  | 'wpParent.node.parent.id'
+  | 'wpParent.node.seo.breadcrumbs'
+  | 'wpParent.node.seo.canonical'
+  | 'wpParent.node.seo.cornerstone'
+  | 'wpParent.node.seo.focuskw'
+  | 'wpParent.node.seo.fullHead'
+  | 'wpParent.node.seo.metaDesc'
+  | 'wpParent.node.seo.metaKeywords'
+  | 'wpParent.node.seo.metaRobotsNofollow'
+  | 'wpParent.node.seo.metaRobotsNoindex'
+  | 'wpParent.node.seo.opengraphAuthor'
+  | 'wpParent.node.seo.opengraphDescription'
+  | 'wpParent.node.seo.opengraphModifiedTime'
+  | 'wpParent.node.seo.opengraphPublishedTime'
+  | 'wpParent.node.seo.opengraphPublisher'
+  | 'wpParent.node.seo.opengraphSiteName'
+  | 'wpParent.node.seo.opengraphTitle'
+  | 'wpParent.node.seo.opengraphType'
+  | 'wpParent.node.seo.opengraphUrl'
+  | 'wpParent.node.seo.readingTime'
+  | 'wpParent.node.seo.title'
+  | 'wpParent.node.seo.twitterDescription'
+  | 'wpParent.node.seo.twitterTitle'
+  | 'wpParent.node.slug'
+  | 'wpParent.node.status'
+  | 'wpParent.node.template.templateName'
+  | 'wpParent.node.uri';
 
 type WpMediaItemFilterInput = {
   readonly altText: InputMaybe<StringQueryOperatorInput>;
@@ -6943,29 +10890,29 @@ type WpMediaItemGroupConnection = {
 
 
 type WpMediaItemGroupConnection_distinctArgs = {
-  field: WpMediaItemFieldSelector;
+  field: WpMediaItemFieldsEnum;
 };
 
 
 type WpMediaItemGroupConnection_groupArgs = {
-  field: WpMediaItemFieldSelector;
+  field: WpMediaItemFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpMediaItemGroupConnection_maxArgs = {
-  field: WpMediaItemFieldSelector;
+  field: WpMediaItemFieldsEnum;
 };
 
 
 type WpMediaItemGroupConnection_minArgs = {
-  field: WpMediaItemFieldSelector;
+  field: WpMediaItemFieldsEnum;
 };
 
 
 type WpMediaItemGroupConnection_sumArgs = {
-  field: WpMediaItemFieldSelector;
+  field: WpMediaItemFieldsEnum;
 };
 
 /** Meta connected to a MediaItem */
@@ -6996,21 +10943,6 @@ type WpMediaItemMeta = {
   readonly title: Maybe<Scalars['String']>;
 };
 
-type WpMediaItemMetaFieldSelector = {
-  readonly aperture: InputMaybe<FieldSelectorEnum>;
-  readonly camera: InputMaybe<FieldSelectorEnum>;
-  readonly caption: InputMaybe<FieldSelectorEnum>;
-  readonly copyright: InputMaybe<FieldSelectorEnum>;
-  readonly createdTimestamp: InputMaybe<FieldSelectorEnum>;
-  readonly credit: InputMaybe<FieldSelectorEnum>;
-  readonly focalLength: InputMaybe<FieldSelectorEnum>;
-  readonly iso: InputMaybe<FieldSelectorEnum>;
-  readonly keywords: InputMaybe<FieldSelectorEnum>;
-  readonly orientation: InputMaybe<FieldSelectorEnum>;
-  readonly shutterSpeed: InputMaybe<FieldSelectorEnum>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpMediaItemMetaFilterInput = {
   readonly aperture: InputMaybe<FloatQueryOperatorInput>;
   readonly camera: InputMaybe<StringQueryOperatorInput>;
@@ -7026,138 +10958,19 @@ type WpMediaItemMetaFilterInput = {
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
-type WpMediaItemMetaSortInput = {
-  readonly aperture: InputMaybe<SortOrderEnum>;
-  readonly camera: InputMaybe<SortOrderEnum>;
-  readonly caption: InputMaybe<SortOrderEnum>;
-  readonly copyright: InputMaybe<SortOrderEnum>;
-  readonly createdTimestamp: InputMaybe<SortOrderEnum>;
-  readonly credit: InputMaybe<SortOrderEnum>;
-  readonly focalLength: InputMaybe<SortOrderEnum>;
-  readonly iso: InputMaybe<SortOrderEnum>;
-  readonly keywords: InputMaybe<SortOrderEnum>;
-  readonly orientation: InputMaybe<SortOrderEnum>;
-  readonly shutterSpeed: InputMaybe<SortOrderEnum>;
-  readonly title: InputMaybe<SortOrderEnum>;
-};
-
 type WpMediaItemSortInput = {
-  readonly altText: InputMaybe<SortOrderEnum>;
-  readonly ancestors: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeSortInput>;
-  readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeSortInput>;
-  readonly authorDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly authorId: InputMaybe<SortOrderEnum>;
-  readonly caption: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly commentCount: InputMaybe<SortOrderEnum>;
-  readonly commentStatus: InputMaybe<SortOrderEnum>;
-  readonly comments: InputMaybe<WpMediaItemToCommentConnectionTypeSortInput>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeSortInput>;
-  readonly contentTypeName: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly date: InputMaybe<SortOrderEnum>;
-  readonly dateGmt: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly desiredSlug: InputMaybe<SortOrderEnum>;
-  readonly enclosure: InputMaybe<SortOrderEnum>;
-  readonly fileSize: InputMaybe<SortOrderEnum>;
-  readonly filename: InputMaybe<SortOrderEnum>;
-  readonly filesize: InputMaybe<SortOrderEnum>;
-  readonly gatsbyImage: InputMaybe<SortOrderEnum>;
-  readonly guid: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeSortInput>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly localFile: InputMaybe<FileSortInput>;
-  readonly mediaDetails: InputMaybe<WpMediaDetailsSortInput>;
-  readonly mediaItemUrl: InputMaybe<SortOrderEnum>;
-  readonly mediaType: InputMaybe<SortOrderEnum>;
-  readonly mimeType: InputMaybe<SortOrderEnum>;
-  readonly modified: InputMaybe<SortOrderEnum>;
-  readonly modifiedGmt: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly parentDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly parentId: InputMaybe<SortOrderEnum>;
-  readonly publicUrl: InputMaybe<SortOrderEnum>;
-  readonly resize: InputMaybe<RemoteFileResizeSortInput>;
-  readonly seo: InputMaybe<WpPostTypeSEOSortInput>;
-  readonly sizes: InputMaybe<SortOrderEnum>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly sourceUrl: InputMaybe<SortOrderEnum>;
-  readonly srcSet: InputMaybe<SortOrderEnum>;
-  readonly status: InputMaybe<SortOrderEnum>;
-  readonly template: InputMaybe<WpContentTemplateSortInput>;
-  readonly title: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
-  readonly wpChildren: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeSortInput>;
-  readonly wpParent: InputMaybe<WpHierarchicalContentNodeToParentContentNodeConnectionEdgeTypeSortInput>;
-};
-
-/** Page Info on the &quot;MediaItemToCommentConnection&quot; */
-type WpMediaItemToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpMediaItemToCommentConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpMediaItemToCommentConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpMediaItemToCommentConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpMediaItemFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the MediaItem type and the Comment type */
 type WpMediaItemToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpMediaItemToCommentConnectionPageInfoType;
-};
-
-type WpMediaItemToCommentConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpCommentFieldSelector>;
-  readonly pageInfo: InputMaybe<WpMediaItemToCommentConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpMediaItemToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
-  readonly pageInfo: InputMaybe<WpMediaItemToCommentConnectionPageInfoTypeFilterInput>;
-};
-
-type WpMediaItemToCommentConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpCommentSortInput>;
-  readonly pageInfo: InputMaybe<WpMediaItemToCommentConnectionPageInfoTypeSortInput>;
 };
 
 /** Details of an available size for a media item */
@@ -7178,16 +10991,6 @@ type WpMediaSize = {
   readonly width: Maybe<Scalars['String']>;
 };
 
-type WpMediaSizeFieldSelector = {
-  readonly file: InputMaybe<FieldSelectorEnum>;
-  readonly fileSize: InputMaybe<FieldSelectorEnum>;
-  readonly height: InputMaybe<FieldSelectorEnum>;
-  readonly mimeType: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly sourceUrl: InputMaybe<FieldSelectorEnum>;
-  readonly width: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpMediaSizeFilterInput = {
   readonly file: InputMaybe<StringQueryOperatorInput>;
   readonly fileSize: InputMaybe<IntQueryOperatorInput>;
@@ -7200,16 +11003,6 @@ type WpMediaSizeFilterInput = {
 
 type WpMediaSizeFilterListInput = {
   readonly elemMatch: InputMaybe<WpMediaSizeFilterInput>;
-};
-
-type WpMediaSizeSortInput = {
-  readonly file: InputMaybe<SortOrderEnum>;
-  readonly fileSize: InputMaybe<SortOrderEnum>;
-  readonly height: InputMaybe<SortOrderEnum>;
-  readonly mimeType: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly sourceUrl: InputMaybe<SortOrderEnum>;
-  readonly width: InputMaybe<SortOrderEnum>;
 };
 
 /** Menus are the containers for navigation items. Menus can be assigned to menu locations, which are typically registered by the active theme. */
@@ -7247,54 +11040,39 @@ type WpMenuConnection = {
 
 
 type WpMenuConnection_distinctArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
 };
 
 
 type WpMenuConnection_groupArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpMenuConnection_maxArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
 };
 
 
 type WpMenuConnection_minArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
 };
 
 
 type WpMenuConnection_sumArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
 };
 
 type WpMenuConnectionEdgeType = {
-  /** The connected Menu Node */
-  readonly node: WpMenu;
-};
-
-type WpMenuConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+  /** The connected node */
+  readonly node: WpNode;
 };
 
 type WpMenuConnectionType = {
   /** A list of connected Menu Nodes */
   readonly nodes: ReadonlyArray<WpMenu>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpMenuConnectionPageInfoType;
 };
 
 type WpMenuEdge = {
@@ -7303,19 +11081,138 @@ type WpMenuEdge = {
   readonly previous: Maybe<WpMenu>;
 };
 
-type WpMenuFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly count: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly locations: InputMaybe<FieldSelectorEnum>;
-  readonly menuItems: InputMaybe<WpMenuToMenuItemConnectionTypeFieldSelector>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-};
+type WpMenuFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'count'
+  | 'databaseId'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'locations'
+  | 'menuItems.nodes'
+  | 'menuItems.nodes.childItems.nodes'
+  | 'menuItems.nodes.children'
+  | 'menuItems.nodes.children.children'
+  | 'menuItems.nodes.children.id'
+  | 'menuItems.nodes.cssClasses'
+  | 'menuItems.nodes.databaseId'
+  | 'menuItems.nodes.description'
+  | 'menuItems.nodes.id'
+  | 'menuItems.nodes.internal.content'
+  | 'menuItems.nodes.internal.contentDigest'
+  | 'menuItems.nodes.internal.contentFilePath'
+  | 'menuItems.nodes.internal.description'
+  | 'menuItems.nodes.internal.fieldOwners'
+  | 'menuItems.nodes.internal.ignoreType'
+  | 'menuItems.nodes.internal.mediaType'
+  | 'menuItems.nodes.internal.owner'
+  | 'menuItems.nodes.internal.type'
+  | 'menuItems.nodes.label'
+  | 'menuItems.nodes.linkRelationship'
+  | 'menuItems.nodes.locations'
+  | 'menuItems.nodes.nodeType'
+  | 'menuItems.nodes.order'
+  | 'menuItems.nodes.parentDatabaseId'
+  | 'menuItems.nodes.parentId'
+  | 'menuItems.nodes.parent.children'
+  | 'menuItems.nodes.parent.id'
+  | 'menuItems.nodes.path'
+  | 'menuItems.nodes.target'
+  | 'menuItems.nodes.title'
+  | 'menuItems.nodes.uri'
+  | 'menuItems.nodes.url'
+  | 'name'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'slug';
 
 type WpMenuFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -7347,29 +11244,29 @@ type WpMenuGroupConnection = {
 
 
 type WpMenuGroupConnection_distinctArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
 };
 
 
 type WpMenuGroupConnection_groupArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpMenuGroupConnection_maxArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
 };
 
 
 type WpMenuGroupConnection_minArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
 };
 
 
 type WpMenuGroupConnection_sumArgs = {
-  field: WpMenuFieldSelector;
+  field: WpMenuFieldsEnum;
 };
 
 /** Navigation menu items are the individual items assigned to a menu. These are rendered as the links in a navigation menu. */
@@ -7429,54 +11326,39 @@ type WpMenuItemConnection = {
 
 
 type WpMenuItemConnection_distinctArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
 };
 
 
 type WpMenuItemConnection_groupArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpMenuItemConnection_maxArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
 };
 
 
 type WpMenuItemConnection_minArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
 };
 
 
 type WpMenuItemConnection_sumArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
 };
 
 type WpMenuItemConnectionEdgeType = {
-  /** The connected MenuItem Node */
-  readonly node: WpMenuItem;
-};
-
-type WpMenuItemConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+  /** The connected node */
+  readonly node: WpNode;
 };
 
 type WpMenuItemConnectionType = {
-  /** A list of connected MenuItem Nodes */
+  /** A list of connected Menu Item Nodes */
   readonly nodes: ReadonlyArray<WpMenuItem>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpMenuItemConnectionPageInfoType;
 };
 
 type WpMenuItemEdge = {
@@ -7485,30 +11367,189 @@ type WpMenuItemEdge = {
   readonly previous: Maybe<WpMenuItem>;
 };
 
-type WpMenuItemFieldSelector = {
-  readonly childItems: InputMaybe<WpMenuItemToMenuItemConnectionTypeFieldSelector>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly connectedNode: InputMaybe<WpMenuItemToMenuItemLinkableConnectionEdgeTypeFieldSelector>;
-  readonly cssClasses: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly label: InputMaybe<FieldSelectorEnum>;
-  readonly linkRelationship: InputMaybe<FieldSelectorEnum>;
-  readonly locations: InputMaybe<FieldSelectorEnum>;
-  readonly menu: InputMaybe<WpMenuItemToMenuConnectionEdgeTypeFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly order: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly parentDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly parentId: InputMaybe<FieldSelectorEnum>;
-  readonly path: InputMaybe<FieldSelectorEnum>;
-  readonly target: InputMaybe<FieldSelectorEnum>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
+type WpMenuItemFieldsEnum =
+  | 'childItems.nodes'
+  | 'childItems.nodes.childItems.nodes'
+  | 'childItems.nodes.children'
+  | 'childItems.nodes.children.children'
+  | 'childItems.nodes.children.id'
+  | 'childItems.nodes.cssClasses'
+  | 'childItems.nodes.databaseId'
+  | 'childItems.nodes.description'
+  | 'childItems.nodes.id'
+  | 'childItems.nodes.internal.content'
+  | 'childItems.nodes.internal.contentDigest'
+  | 'childItems.nodes.internal.contentFilePath'
+  | 'childItems.nodes.internal.description'
+  | 'childItems.nodes.internal.fieldOwners'
+  | 'childItems.nodes.internal.ignoreType'
+  | 'childItems.nodes.internal.mediaType'
+  | 'childItems.nodes.internal.owner'
+  | 'childItems.nodes.internal.type'
+  | 'childItems.nodes.label'
+  | 'childItems.nodes.linkRelationship'
+  | 'childItems.nodes.locations'
+  | 'childItems.nodes.nodeType'
+  | 'childItems.nodes.order'
+  | 'childItems.nodes.parentDatabaseId'
+  | 'childItems.nodes.parentId'
+  | 'childItems.nodes.parent.children'
+  | 'childItems.nodes.parent.id'
+  | 'childItems.nodes.path'
+  | 'childItems.nodes.target'
+  | 'childItems.nodes.title'
+  | 'childItems.nodes.uri'
+  | 'childItems.nodes.url'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'connectedNode.node.children'
+  | 'connectedNode.node.children.children'
+  | 'connectedNode.node.children.id'
+  | 'connectedNode.node.databaseId'
+  | 'connectedNode.node.id'
+  | 'connectedNode.node.internal.content'
+  | 'connectedNode.node.internal.contentDigest'
+  | 'connectedNode.node.internal.contentFilePath'
+  | 'connectedNode.node.internal.description'
+  | 'connectedNode.node.internal.fieldOwners'
+  | 'connectedNode.node.internal.ignoreType'
+  | 'connectedNode.node.internal.mediaType'
+  | 'connectedNode.node.internal.owner'
+  | 'connectedNode.node.internal.type'
+  | 'connectedNode.node.isContentNode'
+  | 'connectedNode.node.isTermNode'
+  | 'connectedNode.node.nodeType'
+  | 'connectedNode.node.parent.children'
+  | 'connectedNode.node.parent.id'
+  | 'connectedNode.node.uri'
+  | 'cssClasses'
+  | 'databaseId'
+  | 'description'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'label'
+  | 'linkRelationship'
+  | 'locations'
+  | 'menu.node.children'
+  | 'menu.node.children.children'
+  | 'menu.node.children.id'
+  | 'menu.node.count'
+  | 'menu.node.databaseId'
+  | 'menu.node.id'
+  | 'menu.node.internal.content'
+  | 'menu.node.internal.contentDigest'
+  | 'menu.node.internal.contentFilePath'
+  | 'menu.node.internal.description'
+  | 'menu.node.internal.fieldOwners'
+  | 'menu.node.internal.ignoreType'
+  | 'menu.node.internal.mediaType'
+  | 'menu.node.internal.owner'
+  | 'menu.node.internal.type'
+  | 'menu.node.locations'
+  | 'menu.node.menuItems.nodes'
+  | 'menu.node.name'
+  | 'menu.node.nodeType'
+  | 'menu.node.parent.children'
+  | 'menu.node.parent.id'
+  | 'menu.node.slug'
+  | 'nodeType'
+  | 'order'
+  | 'parentDatabaseId'
+  | 'parentId'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'path'
+  | 'target'
+  | 'title'
+  | 'uri'
+  | 'url';
 
 type WpMenuItemFilterInput = {
   readonly childItems: InputMaybe<WpMenuItemToMenuItemConnectionTypeFilterInput>;
@@ -7555,29 +11596,29 @@ type WpMenuItemGroupConnection = {
 
 
 type WpMenuItemGroupConnection_distinctArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
 };
 
 
 type WpMenuItemGroupConnection_groupArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpMenuItemGroupConnection_maxArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
 };
 
 
 type WpMenuItemGroupConnection_minArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
 };
 
 
 type WpMenuItemGroupConnection_sumArgs = {
-  field: WpMenuItemFieldSelector;
+  field: WpMenuItemFieldsEnum;
 };
 
 type WpMenuItemLinkable = {
@@ -7610,34 +11651,34 @@ type WpMenuItemLinkableConnection = {
 
 
 type WpMenuItemLinkableConnection_distinctArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
 };
 
 
 type WpMenuItemLinkableConnection_groupArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpMenuItemLinkableConnection_maxArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
 };
 
 
 type WpMenuItemLinkableConnection_minArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
 };
 
 
 type WpMenuItemLinkableConnection_sumArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
 };
 
 type WpMenuItemLinkableConnectionEdgeType = {
-  /** The connected MenuItemLinkable Node */
-  readonly node: WpMenuItemLinkable;
+  /** The connected node */
+  readonly node: WpNode;
 };
 
 type WpMenuItemLinkableEdge = {
@@ -7646,17 +11687,105 @@ type WpMenuItemLinkableEdge = {
   readonly previous: Maybe<WpMenuItemLinkable>;
 };
 
-type WpMenuItemLinkableFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-};
+type WpMenuItemLinkableFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'databaseId'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'uri';
 
 type WpMenuItemLinkableFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -7686,66 +11815,39 @@ type WpMenuItemLinkableGroupConnection = {
 
 
 type WpMenuItemLinkableGroupConnection_distinctArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
 };
 
 
 type WpMenuItemLinkableGroupConnection_groupArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpMenuItemLinkableGroupConnection_maxArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
 };
 
 
 type WpMenuItemLinkableGroupConnection_minArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
 };
 
 
 type WpMenuItemLinkableGroupConnection_sumArgs = {
-  field: WpMenuItemLinkableFieldSelector;
+  field: WpMenuItemLinkableFieldsEnum;
 };
 
 type WpMenuItemLinkableSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly uri: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpMenuItemLinkableFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpMenuItemSortInput = {
-  readonly childItems: InputMaybe<WpMenuItemToMenuItemConnectionTypeSortInput>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly connectedNode: InputMaybe<WpMenuItemToMenuItemLinkableConnectionEdgeTypeSortInput>;
-  readonly cssClasses: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly label: InputMaybe<SortOrderEnum>;
-  readonly linkRelationship: InputMaybe<SortOrderEnum>;
-  readonly locations: InputMaybe<SortOrderEnum>;
-  readonly menu: InputMaybe<WpMenuItemToMenuConnectionEdgeTypeSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly order: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly parentDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly parentId: InputMaybe<SortOrderEnum>;
-  readonly path: InputMaybe<SortOrderEnum>;
-  readonly target: InputMaybe<SortOrderEnum>;
-  readonly title: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpMenuItemFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the MenuItem type and the Menu type */
@@ -7754,77 +11856,18 @@ type WpMenuItemToMenuConnectionEdgeType = WpEdgeType & WpMenuConnectionEdgeType 
   readonly node: WpMenu;
 };
 
-type WpMenuItemToMenuConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpMenuFieldSelector>;
-};
-
 type WpMenuItemToMenuConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpMenuFilterInput>;
-};
-
-type WpMenuItemToMenuConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpMenuSortInput>;
-};
-
-/** Page Info on the &quot;MenuItemToMenuItemConnection&quot; */
-type WpMenuItemToMenuItemConnectionPageInfoType = WpMenuItemConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpMenuItemToMenuItemConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpMenuItemToMenuItemConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpMenuItemToMenuItemConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the MenuItem type and the MenuItem type */
 type WpMenuItemToMenuItemConnectionType = WpConnectionType & WpMenuItemConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpMenuItem>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpMenuItemToMenuItemConnectionPageInfoType;
-};
-
-type WpMenuItemToMenuItemConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpMenuItemFieldSelector>;
-  readonly pageInfo: InputMaybe<WpMenuItemToMenuItemConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpMenuItemToMenuItemConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpMenuItemFilterListInput>;
-  readonly pageInfo: InputMaybe<WpMenuItemToMenuItemConnectionPageInfoTypeFilterInput>;
-};
-
-type WpMenuItemToMenuItemConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpMenuItemSortInput>;
-  readonly pageInfo: InputMaybe<WpMenuItemToMenuItemConnectionPageInfoTypeSortInput>;
 };
 
 /** Connection between the MenuItem type and the MenuItemLinkable type */
@@ -7833,16 +11876,8 @@ type WpMenuItemToMenuItemLinkableConnectionEdgeType = WpEdgeType & WpMenuItemLin
   readonly node: WpMenuItemLinkable;
 };
 
-type WpMenuItemToMenuItemLinkableConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpMenuItemLinkableFieldSelector>;
-};
-
 type WpMenuItemToMenuItemLinkableConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpMenuItemLinkableFilterInput>;
-};
-
-type WpMenuItemToMenuItemLinkableConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpMenuItemLinkableSortInput>;
 };
 
 /** Registered menu locations */
@@ -7858,78 +11893,18 @@ type WpMenuLocationEnumQueryOperatorInput = {
 };
 
 type WpMenuSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly count: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly locations: InputMaybe<SortOrderEnum>;
-  readonly menuItems: InputMaybe<WpMenuToMenuItemConnectionTypeSortInput>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-};
-
-/** Page Info on the &quot;MenuToMenuItemConnection&quot; */
-type WpMenuToMenuItemConnectionPageInfoType = WpMenuItemConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpMenuToMenuItemConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpMenuToMenuItemConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpMenuToMenuItemConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpMenuFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the Menu type and the MenuItem type */
 type WpMenuToMenuItemConnectionType = WpConnectionType & WpMenuItemConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpMenuItem>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpMenuToMenuItemConnectionPageInfoType;
-};
-
-type WpMenuToMenuItemConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpMenuItemFieldSelector>;
-  readonly pageInfo: InputMaybe<WpMenuToMenuItemConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpMenuToMenuItemConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpMenuItemFilterListInput>;
-  readonly pageInfo: InputMaybe<WpMenuToMenuItemConnectionPageInfoTypeFilterInput>;
-};
-
-type WpMenuToMenuItemConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpMenuItemSortInput>;
-  readonly pageInfo: InputMaybe<WpMenuToMenuItemConnectionPageInfoTypeSortInput>;
 };
 
 type WpNode = {
@@ -7965,29 +11940,29 @@ type WpNodeWithAuthorConnection = {
 
 
 type WpNodeWithAuthorConnection_distinctArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
 };
 
 
 type WpNodeWithAuthorConnection_groupArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithAuthorConnection_maxArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
 };
 
 
 type WpNodeWithAuthorConnection_minArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
 };
 
 
 type WpNodeWithAuthorConnection_sumArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
 };
 
 type WpNodeWithAuthorEdge = {
@@ -7996,16 +11971,165 @@ type WpNodeWithAuthorEdge = {
   readonly previous: Maybe<WpNodeWithAuthor>;
 };
 
-type WpNodeWithAuthorFieldSelector = {
-  readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeFieldSelector>;
-  readonly authorDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly authorId: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
+type WpNodeWithAuthorFieldsEnum =
+  | 'authorDatabaseId'
+  | 'authorId'
+  | 'author.node.avatar.default'
+  | 'author.node.avatar.extraAttr'
+  | 'author.node.avatar.forceDefault'
+  | 'author.node.avatar.foundAvatar'
+  | 'author.node.avatar.height'
+  | 'author.node.avatar.rating'
+  | 'author.node.avatar.scheme'
+  | 'author.node.avatar.size'
+  | 'author.node.avatar.url'
+  | 'author.node.avatar.width'
+  | 'author.node.capKey'
+  | 'author.node.capabilities'
+  | 'author.node.children'
+  | 'author.node.children.children'
+  | 'author.node.children.id'
+  | 'author.node.comments.nodes'
+  | 'author.node.databaseId'
+  | 'author.node.description'
+  | 'author.node.email'
+  | 'author.node.extraCapabilities'
+  | 'author.node.firstName'
+  | 'author.node.id'
+  | 'author.node.internal.content'
+  | 'author.node.internal.contentDigest'
+  | 'author.node.internal.contentFilePath'
+  | 'author.node.internal.description'
+  | 'author.node.internal.fieldOwners'
+  | 'author.node.internal.ignoreType'
+  | 'author.node.internal.mediaType'
+  | 'author.node.internal.owner'
+  | 'author.node.internal.type'
+  | 'author.node.isContentNode'
+  | 'author.node.isTermNode'
+  | 'author.node.lastName'
+  | 'author.node.locale'
+  | 'author.node.name'
+  | 'author.node.nicename'
+  | 'author.node.nickname'
+  | 'author.node.nodeType'
+  | 'author.node.pages.nodes'
+  | 'author.node.parent.children'
+  | 'author.node.parent.id'
+  | 'author.node.posts.nodes'
+  | 'author.node.registeredDate'
+  | 'author.node.roles.nodes'
+  | 'author.node.seo.breadcrumbTitle'
+  | 'author.node.seo.canonical'
+  | 'author.node.seo.fullHead'
+  | 'author.node.seo.language'
+  | 'author.node.seo.metaDesc'
+  | 'author.node.seo.metaRobotsNofollow'
+  | 'author.node.seo.metaRobotsNoindex'
+  | 'author.node.seo.opengraphDescription'
+  | 'author.node.seo.opengraphTitle'
+  | 'author.node.seo.region'
+  | 'author.node.seo.title'
+  | 'author.node.seo.twitterDescription'
+  | 'author.node.seo.twitterTitle'
+  | 'author.node.slug'
+  | 'author.node.uri'
+  | 'author.node.url'
+  | 'author.node.username'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type WpNodeWithAuthorFilterInput = {
   readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeFilterInput>;
@@ -8034,40 +12158,34 @@ type WpNodeWithAuthorGroupConnection = {
 
 
 type WpNodeWithAuthorGroupConnection_distinctArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
 };
 
 
 type WpNodeWithAuthorGroupConnection_groupArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithAuthorGroupConnection_maxArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
 };
 
 
 type WpNodeWithAuthorGroupConnection_minArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
 };
 
 
 type WpNodeWithAuthorGroupConnection_sumArgs = {
-  field: WpNodeWithAuthorFieldSelector;
+  field: WpNodeWithAuthorFieldsEnum;
 };
 
 type WpNodeWithAuthorSortInput = {
-  readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeSortInput>;
-  readonly authorDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly authorId: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithAuthorFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the NodeWithAuthor type and the User type */
@@ -8076,16 +12194,8 @@ type WpNodeWithAuthorToUserConnectionEdgeType = WpEdgeType & WpOneToOneConnectio
   readonly node: WpUser;
 };
 
-type WpNodeWithAuthorToUserConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpUserFieldSelector>;
-};
-
 type WpNodeWithAuthorToUserConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpUserFilterInput>;
-};
-
-type WpNodeWithAuthorToUserConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpUserSortInput>;
 };
 
 type WpNodeWithComments = {
@@ -8114,29 +12224,29 @@ type WpNodeWithCommentsConnection = {
 
 
 type WpNodeWithCommentsConnection_distinctArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
 };
 
 
 type WpNodeWithCommentsConnection_groupArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithCommentsConnection_maxArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
 };
 
 
 type WpNodeWithCommentsConnection_minArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
 };
 
 
 type WpNodeWithCommentsConnection_sumArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
 };
 
 type WpNodeWithCommentsEdge = {
@@ -8145,15 +12255,103 @@ type WpNodeWithCommentsEdge = {
   readonly previous: Maybe<WpNodeWithComments>;
 };
 
-type WpNodeWithCommentsFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly commentCount: InputMaybe<FieldSelectorEnum>;
-  readonly commentStatus: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
+type WpNodeWithCommentsFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'commentCount'
+  | 'commentStatus'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type WpNodeWithCommentsFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -8181,39 +12379,34 @@ type WpNodeWithCommentsGroupConnection = {
 
 
 type WpNodeWithCommentsGroupConnection_distinctArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
 };
 
 
 type WpNodeWithCommentsGroupConnection_groupArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithCommentsGroupConnection_maxArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
 };
 
 
 type WpNodeWithCommentsGroupConnection_minArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
 };
 
 
 type WpNodeWithCommentsGroupConnection_sumArgs = {
-  field: WpNodeWithCommentsFieldSelector;
+  field: WpNodeWithCommentsFieldsEnum;
 };
 
 type WpNodeWithCommentsSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly commentCount: InputMaybe<SortOrderEnum>;
-  readonly commentStatus: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithCommentsFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpNodeWithContentEditor = {
@@ -8240,29 +12433,29 @@ type WpNodeWithContentEditorConnection = {
 
 
 type WpNodeWithContentEditorConnection_distinctArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
 };
 
 
 type WpNodeWithContentEditorConnection_groupArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithContentEditorConnection_maxArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
 };
 
 
 type WpNodeWithContentEditorConnection_minArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
 };
 
 
 type WpNodeWithContentEditorConnection_sumArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
 };
 
 type WpNodeWithContentEditorEdge = {
@@ -8271,14 +12464,102 @@ type WpNodeWithContentEditorEdge = {
   readonly previous: Maybe<WpNodeWithContentEditor>;
 };
 
-type WpNodeWithContentEditorFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly content: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
+type WpNodeWithContentEditorFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'content'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type WpNodeWithContentEditorFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -8305,38 +12586,34 @@ type WpNodeWithContentEditorGroupConnection = {
 
 
 type WpNodeWithContentEditorGroupConnection_distinctArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
 };
 
 
 type WpNodeWithContentEditorGroupConnection_groupArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithContentEditorGroupConnection_maxArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
 };
 
 
 type WpNodeWithContentEditorGroupConnection_minArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
 };
 
 
 type WpNodeWithContentEditorGroupConnection_sumArgs = {
-  field: WpNodeWithContentEditorFieldSelector;
+  field: WpNodeWithContentEditorFieldsEnum;
 };
 
 type WpNodeWithContentEditorSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly content: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithContentEditorFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpNodeWithExcerpt = {
@@ -8363,29 +12640,29 @@ type WpNodeWithExcerptConnection = {
 
 
 type WpNodeWithExcerptConnection_distinctArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
 };
 
 
 type WpNodeWithExcerptConnection_groupArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithExcerptConnection_maxArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
 };
 
 
 type WpNodeWithExcerptConnection_minArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
 };
 
 
 type WpNodeWithExcerptConnection_sumArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
 };
 
 type WpNodeWithExcerptEdge = {
@@ -8394,14 +12671,102 @@ type WpNodeWithExcerptEdge = {
   readonly previous: Maybe<WpNodeWithExcerpt>;
 };
 
-type WpNodeWithExcerptFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly excerpt: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
+type WpNodeWithExcerptFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'excerpt'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type WpNodeWithExcerptFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -8428,38 +12793,34 @@ type WpNodeWithExcerptGroupConnection = {
 
 
 type WpNodeWithExcerptGroupConnection_distinctArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
 };
 
 
 type WpNodeWithExcerptGroupConnection_groupArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithExcerptGroupConnection_maxArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
 };
 
 
 type WpNodeWithExcerptGroupConnection_minArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
 };
 
 
 type WpNodeWithExcerptGroupConnection_sumArgs = {
-  field: WpNodeWithExcerptFieldSelector;
+  field: WpNodeWithExcerptFieldsEnum;
 };
 
 type WpNodeWithExcerptSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly excerpt: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithExcerptFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpNodeWithFeaturedImage = {
@@ -8490,29 +12851,29 @@ type WpNodeWithFeaturedImageConnection = {
 
 
 type WpNodeWithFeaturedImageConnection_distinctArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
 };
 
 
 type WpNodeWithFeaturedImageConnection_groupArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithFeaturedImageConnection_maxArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
 };
 
 
 type WpNodeWithFeaturedImageConnection_minArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
 };
 
 
 type WpNodeWithFeaturedImageConnection_sumArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
 };
 
 type WpNodeWithFeaturedImageEdge = {
@@ -8521,16 +12882,228 @@ type WpNodeWithFeaturedImageEdge = {
   readonly previous: Maybe<WpNodeWithFeaturedImage>;
 };
 
-type WpNodeWithFeaturedImageFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFieldSelector>;
-  readonly featuredImageDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly featuredImageId: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
+type WpNodeWithFeaturedImageFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'featuredImageDatabaseId'
+  | 'featuredImageId'
+  | 'featuredImage.node.altText'
+  | 'featuredImage.node.ancestors.nodes'
+  | 'featuredImage.node.authorDatabaseId'
+  | 'featuredImage.node.authorId'
+  | 'featuredImage.node.caption'
+  | 'featuredImage.node.children'
+  | 'featuredImage.node.children.children'
+  | 'featuredImage.node.children.id'
+  | 'featuredImage.node.commentCount'
+  | 'featuredImage.node.commentStatus'
+  | 'featuredImage.node.comments.nodes'
+  | 'featuredImage.node.contentTypeName'
+  | 'featuredImage.node.databaseId'
+  | 'featuredImage.node.date'
+  | 'featuredImage.node.dateGmt'
+  | 'featuredImage.node.description'
+  | 'featuredImage.node.desiredSlug'
+  | 'featuredImage.node.enclosure'
+  | 'featuredImage.node.fileSize'
+  | 'featuredImage.node.filename'
+  | 'featuredImage.node.filesize'
+  | 'featuredImage.node.gatsbyImage'
+  | 'featuredImage.node.guid'
+  | 'featuredImage.node.height'
+  | 'featuredImage.node.id'
+  | 'featuredImage.node.internal.content'
+  | 'featuredImage.node.internal.contentDigest'
+  | 'featuredImage.node.internal.contentFilePath'
+  | 'featuredImage.node.internal.description'
+  | 'featuredImage.node.internal.fieldOwners'
+  | 'featuredImage.node.internal.ignoreType'
+  | 'featuredImage.node.internal.mediaType'
+  | 'featuredImage.node.internal.owner'
+  | 'featuredImage.node.internal.type'
+  | 'featuredImage.node.isContentNode'
+  | 'featuredImage.node.isTermNode'
+  | 'featuredImage.node.link'
+  | 'featuredImage.node.localFile.absolutePath'
+  | 'featuredImage.node.localFile.accessTime'
+  | 'featuredImage.node.localFile.atime'
+  | 'featuredImage.node.localFile.atimeMs'
+  | 'featuredImage.node.localFile.base'
+  | 'featuredImage.node.localFile.birthTime'
+  | 'featuredImage.node.localFile.birthtime'
+  | 'featuredImage.node.localFile.birthtimeMs'
+  | 'featuredImage.node.localFile.blksize'
+  | 'featuredImage.node.localFile.blocks'
+  | 'featuredImage.node.localFile.changeTime'
+  | 'featuredImage.node.localFile.children'
+  | 'featuredImage.node.localFile.childrenImageSharp'
+  | 'featuredImage.node.localFile.ctime'
+  | 'featuredImage.node.localFile.ctimeMs'
+  | 'featuredImage.node.localFile.dev'
+  | 'featuredImage.node.localFile.dir'
+  | 'featuredImage.node.localFile.ext'
+  | 'featuredImage.node.localFile.extension'
+  | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.id'
+  | 'featuredImage.node.localFile.ino'
+  | 'featuredImage.node.localFile.mode'
+  | 'featuredImage.node.localFile.modifiedTime'
+  | 'featuredImage.node.localFile.mtime'
+  | 'featuredImage.node.localFile.mtimeMs'
+  | 'featuredImage.node.localFile.name'
+  | 'featuredImage.node.localFile.nlink'
+  | 'featuredImage.node.localFile.prettySize'
+  | 'featuredImage.node.localFile.publicURL'
+  | 'featuredImage.node.localFile.rdev'
+  | 'featuredImage.node.localFile.relativeDirectory'
+  | 'featuredImage.node.localFile.relativePath'
+  | 'featuredImage.node.localFile.root'
+  | 'featuredImage.node.localFile.size'
+  | 'featuredImage.node.localFile.sourceInstanceName'
+  | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
+  | 'featuredImage.node.mediaDetails.file'
+  | 'featuredImage.node.mediaDetails.height'
+  | 'featuredImage.node.mediaDetails.sizes'
+  | 'featuredImage.node.mediaDetails.width'
+  | 'featuredImage.node.mediaItemUrl'
+  | 'featuredImage.node.mediaType'
+  | 'featuredImage.node.mimeType'
+  | 'featuredImage.node.modified'
+  | 'featuredImage.node.modifiedGmt'
+  | 'featuredImage.node.nodeType'
+  | 'featuredImage.node.parentDatabaseId'
+  | 'featuredImage.node.parentId'
+  | 'featuredImage.node.parent.children'
+  | 'featuredImage.node.parent.id'
+  | 'featuredImage.node.publicUrl'
+  | 'featuredImage.node.resize.height'
+  | 'featuredImage.node.resize.src'
+  | 'featuredImage.node.resize.width'
+  | 'featuredImage.node.seo.breadcrumbs'
+  | 'featuredImage.node.seo.canonical'
+  | 'featuredImage.node.seo.cornerstone'
+  | 'featuredImage.node.seo.focuskw'
+  | 'featuredImage.node.seo.fullHead'
+  | 'featuredImage.node.seo.metaDesc'
+  | 'featuredImage.node.seo.metaKeywords'
+  | 'featuredImage.node.seo.metaRobotsNofollow'
+  | 'featuredImage.node.seo.metaRobotsNoindex'
+  | 'featuredImage.node.seo.opengraphAuthor'
+  | 'featuredImage.node.seo.opengraphDescription'
+  | 'featuredImage.node.seo.opengraphModifiedTime'
+  | 'featuredImage.node.seo.opengraphPublishedTime'
+  | 'featuredImage.node.seo.opengraphPublisher'
+  | 'featuredImage.node.seo.opengraphSiteName'
+  | 'featuredImage.node.seo.opengraphTitle'
+  | 'featuredImage.node.seo.opengraphType'
+  | 'featuredImage.node.seo.opengraphUrl'
+  | 'featuredImage.node.seo.readingTime'
+  | 'featuredImage.node.seo.title'
+  | 'featuredImage.node.seo.twitterDescription'
+  | 'featuredImage.node.seo.twitterTitle'
+  | 'featuredImage.node.sizes'
+  | 'featuredImage.node.slug'
+  | 'featuredImage.node.sourceUrl'
+  | 'featuredImage.node.srcSet'
+  | 'featuredImage.node.status'
+  | 'featuredImage.node.template.templateName'
+  | 'featuredImage.node.title'
+  | 'featuredImage.node.uri'
+  | 'featuredImage.node.width'
+  | 'featuredImage.node.wpChildren.nodes'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type WpNodeWithFeaturedImageFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -8559,58 +13132,44 @@ type WpNodeWithFeaturedImageGroupConnection = {
 
 
 type WpNodeWithFeaturedImageGroupConnection_distinctArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
 };
 
 
 type WpNodeWithFeaturedImageGroupConnection_groupArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithFeaturedImageGroupConnection_maxArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
 };
 
 
 type WpNodeWithFeaturedImageGroupConnection_minArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
 };
 
 
 type WpNodeWithFeaturedImageGroupConnection_sumArgs = {
-  field: WpNodeWithFeaturedImageFieldSelector;
+  field: WpNodeWithFeaturedImageFieldsEnum;
 };
 
 type WpNodeWithFeaturedImageSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeSortInput>;
-  readonly featuredImageDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly featuredImageId: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithFeaturedImageFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the NodeWithFeaturedImage type and the MediaItem type */
-type WpNodeWithFeaturedImageToMediaItemConnectionEdgeType = WpEdgeType & WpMediaItemConnectionEdgeType & WpOneToOneConnectionType & {
+type WpNodeWithFeaturedImageToMediaItemConnectionEdgeType = WpEdgeType & WpOneToOneConnectionType & {
   /** The node of the connection, without the edges */
   readonly node: WpMediaItem;
 };
 
-type WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpMediaItemFieldSelector>;
-};
-
 type WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpMediaItemFilterInput>;
-};
-
-type WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpMediaItemSortInput>;
 };
 
 type WpNodeWithPageAttributes = {
@@ -8637,29 +13196,29 @@ type WpNodeWithPageAttributesConnection = {
 
 
 type WpNodeWithPageAttributesConnection_distinctArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
 };
 
 
 type WpNodeWithPageAttributesConnection_groupArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithPageAttributesConnection_maxArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
 };
 
 
 type WpNodeWithPageAttributesConnection_minArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
 };
 
 
 type WpNodeWithPageAttributesConnection_sumArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
 };
 
 type WpNodeWithPageAttributesEdge = {
@@ -8668,14 +13227,102 @@ type WpNodeWithPageAttributesEdge = {
   readonly previous: Maybe<WpNodeWithPageAttributes>;
 };
 
-type WpNodeWithPageAttributesFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly menuOrder: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
+type WpNodeWithPageAttributesFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'menuOrder'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type WpNodeWithPageAttributesFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -8702,38 +13349,34 @@ type WpNodeWithPageAttributesGroupConnection = {
 
 
 type WpNodeWithPageAttributesGroupConnection_distinctArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
 };
 
 
 type WpNodeWithPageAttributesGroupConnection_groupArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithPageAttributesGroupConnection_maxArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
 };
 
 
 type WpNodeWithPageAttributesGroupConnection_minArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
 };
 
 
 type WpNodeWithPageAttributesGroupConnection_sumArgs = {
-  field: WpNodeWithPageAttributesFieldSelector;
+  field: WpNodeWithPageAttributesFieldsEnum;
 };
 
 type WpNodeWithPageAttributesSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly menuOrder: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithPageAttributesFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpNodeWithRevisions = {
@@ -8760,29 +13403,29 @@ type WpNodeWithRevisionsConnection = {
 
 
 type WpNodeWithRevisionsConnection_distinctArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
 };
 
 
 type WpNodeWithRevisionsConnection_groupArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithRevisionsConnection_maxArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
 };
 
 
 type WpNodeWithRevisionsConnection_minArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
 };
 
 
 type WpNodeWithRevisionsConnection_sumArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
 };
 
 type WpNodeWithRevisionsEdge = {
@@ -8791,14 +13434,102 @@ type WpNodeWithRevisionsEdge = {
   readonly previous: Maybe<WpNodeWithRevisions>;
 };
 
-type WpNodeWithRevisionsFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isRevision: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
+type WpNodeWithRevisionsFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isRevision'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type WpNodeWithRevisionsFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -8825,38 +13556,34 @@ type WpNodeWithRevisionsGroupConnection = {
 
 
 type WpNodeWithRevisionsGroupConnection_distinctArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
 };
 
 
 type WpNodeWithRevisionsGroupConnection_groupArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithRevisionsGroupConnection_maxArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
 };
 
 
 type WpNodeWithRevisionsGroupConnection_minArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
 };
 
 
 type WpNodeWithRevisionsGroupConnection_sumArgs = {
-  field: WpNodeWithRevisionsFieldSelector;
+  field: WpNodeWithRevisionsFieldsEnum;
 };
 
 type WpNodeWithRevisionsSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isRevision: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithRevisionsFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the NodeWithRevisions type and the ContentNode type */
@@ -8889,29 +13616,29 @@ type WpNodeWithTemplateConnection = {
 
 
 type WpNodeWithTemplateConnection_distinctArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
 };
 
 
 type WpNodeWithTemplateConnection_groupArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithTemplateConnection_maxArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
 };
 
 
 type WpNodeWithTemplateConnection_minArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
 };
 
 
 type WpNodeWithTemplateConnection_sumArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
 };
 
 type WpNodeWithTemplateEdge = {
@@ -8920,14 +13647,102 @@ type WpNodeWithTemplateEdge = {
   readonly previous: Maybe<WpNodeWithTemplate>;
 };
 
-type WpNodeWithTemplateFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly template: InputMaybe<WpContentTemplateFieldSelector>;
-};
+type WpNodeWithTemplateFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'template.templateName';
 
 type WpNodeWithTemplateFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -8954,38 +13769,34 @@ type WpNodeWithTemplateGroupConnection = {
 
 
 type WpNodeWithTemplateGroupConnection_distinctArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
 };
 
 
 type WpNodeWithTemplateGroupConnection_groupArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithTemplateGroupConnection_maxArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
 };
 
 
 type WpNodeWithTemplateGroupConnection_minArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
 };
 
 
 type WpNodeWithTemplateGroupConnection_sumArgs = {
-  field: WpNodeWithTemplateFieldSelector;
+  field: WpNodeWithTemplateFieldsEnum;
 };
 
 type WpNodeWithTemplateSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly template: InputMaybe<WpContentTemplateSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithTemplateFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpNodeWithTitle = {
@@ -9014,29 +13825,29 @@ type WpNodeWithTitleConnection = {
 
 
 type WpNodeWithTitleConnection_distinctArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
 };
 
 
 type WpNodeWithTitleConnection_groupArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithTitleConnection_maxArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
 };
 
 
 type WpNodeWithTitleConnection_minArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
 };
 
 
 type WpNodeWithTitleConnection_sumArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
 };
 
 type WpNodeWithTitleEdge = {
@@ -9045,15 +13856,379 @@ type WpNodeWithTitleEdge = {
   readonly previous: Maybe<WpNodeWithTitle>;
 };
 
-type WpNodeWithTitleFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly seo: InputMaybe<WpPostTypeSEOFieldSelector>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-};
+type WpNodeWithTitleFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.readingTime'
+  | 'seo.schema.articleType'
+  | 'seo.schema.pageType'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'title';
 
 type WpNodeWithTitleFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -9081,39 +14256,34 @@ type WpNodeWithTitleGroupConnection = {
 
 
 type WpNodeWithTitleGroupConnection_distinctArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
 };
 
 
 type WpNodeWithTitleGroupConnection_groupArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithTitleGroupConnection_maxArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
 };
 
 
 type WpNodeWithTitleGroupConnection_minArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
 };
 
 
 type WpNodeWithTitleGroupConnection_sumArgs = {
-  field: WpNodeWithTitleFieldSelector;
+  field: WpNodeWithTitleFieldsEnum;
 };
 
 type WpNodeWithTitleSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly seo: InputMaybe<WpPostTypeSEOSortInput>;
-  readonly title: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithTitleFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpNodeWithTrackbacks = {
@@ -9144,29 +14314,29 @@ type WpNodeWithTrackbacksConnection = {
 
 
 type WpNodeWithTrackbacksConnection_distinctArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
 };
 
 
 type WpNodeWithTrackbacksConnection_groupArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithTrackbacksConnection_maxArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
 };
 
 
 type WpNodeWithTrackbacksConnection_minArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
 };
 
 
 type WpNodeWithTrackbacksConnection_sumArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
 };
 
 type WpNodeWithTrackbacksEdge = {
@@ -9175,16 +14345,104 @@ type WpNodeWithTrackbacksEdge = {
   readonly previous: Maybe<WpNodeWithTrackbacks>;
 };
 
-type WpNodeWithTrackbacksFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly pingStatus: InputMaybe<FieldSelectorEnum>;
-  readonly pinged: InputMaybe<FieldSelectorEnum>;
-  readonly toPing: InputMaybe<FieldSelectorEnum>;
-};
+type WpNodeWithTrackbacksFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'pingStatus'
+  | 'pinged'
+  | 'toPing';
 
 type WpNodeWithTrackbacksFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -9213,40 +14471,34 @@ type WpNodeWithTrackbacksGroupConnection = {
 
 
 type WpNodeWithTrackbacksGroupConnection_distinctArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
 };
 
 
 type WpNodeWithTrackbacksGroupConnection_groupArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpNodeWithTrackbacksGroupConnection_maxArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
 };
 
 
 type WpNodeWithTrackbacksGroupConnection_minArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
 };
 
 
 type WpNodeWithTrackbacksGroupConnection_sumArgs = {
-  field: WpNodeWithTrackbacksFieldSelector;
+  field: WpNodeWithTrackbacksFieldsEnum;
 };
 
 type WpNodeWithTrackbacksSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly pingStatus: InputMaybe<SortOrderEnum>;
-  readonly pinged: InputMaybe<SortOrderEnum>;
-  readonly toPing: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpNodeWithTrackbacksFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpOneToOneConnectionType = {
@@ -9393,54 +14645,29 @@ type WpPageConnection = {
 
 
 type WpPageConnection_distinctArgs = {
-  field: WpPageFieldSelector;
+  field: WpPageFieldsEnum;
 };
 
 
 type WpPageConnection_groupArgs = {
-  field: WpPageFieldSelector;
+  field: WpPageFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpPageConnection_maxArgs = {
-  field: WpPageFieldSelector;
+  field: WpPageFieldsEnum;
 };
 
 
 type WpPageConnection_minArgs = {
-  field: WpPageFieldSelector;
+  field: WpPageFieldsEnum;
 };
 
 
 type WpPageConnection_sumArgs = {
-  field: WpPageFieldSelector;
-};
-
-type WpPageConnectionEdgeType = {
-  /** The connected page Node */
-  readonly node: WpPage;
-};
-
-type WpPageConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPageConnectionType = {
-  /** A list of connected page Nodes */
-  readonly nodes: ReadonlyArray<WpPage>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPageConnectionPageInfoType;
+  field: WpPageFieldsEnum;
 };
 
 type WpPageEdge = {
@@ -9449,53 +14676,922 @@ type WpPageEdge = {
   readonly previous: Maybe<WpPage>;
 };
 
-type WpPageFieldSelector = {
-  readonly ancestors: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeFieldSelector>;
-  readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeFieldSelector>;
-  readonly authorDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly authorId: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly commentCount: InputMaybe<FieldSelectorEnum>;
-  readonly commentStatus: InputMaybe<FieldSelectorEnum>;
-  readonly comments: InputMaybe<WpPageToCommentConnectionTypeFieldSelector>;
-  readonly content: InputMaybe<FieldSelectorEnum>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFieldSelector>;
-  readonly contentTypeName: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly date: InputMaybe<FieldSelectorEnum>;
-  readonly dateGmt: InputMaybe<FieldSelectorEnum>;
-  readonly desiredSlug: InputMaybe<FieldSelectorEnum>;
-  readonly enclosure: InputMaybe<FieldSelectorEnum>;
-  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFieldSelector>;
-  readonly featuredImageDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly featuredImageId: InputMaybe<FieldSelectorEnum>;
-  readonly guid: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isFrontPage: InputMaybe<FieldSelectorEnum>;
-  readonly isPostsPage: InputMaybe<FieldSelectorEnum>;
-  readonly isPrivacyPage: InputMaybe<FieldSelectorEnum>;
-  readonly isRevision: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFieldSelector>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly menuOrder: InputMaybe<FieldSelectorEnum>;
-  readonly modified: InputMaybe<FieldSelectorEnum>;
-  readonly modifiedGmt: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly parentDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly parentId: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpPostTypeSEOFieldSelector>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly status: InputMaybe<FieldSelectorEnum>;
-  readonly template: InputMaybe<WpContentTemplateFieldSelector>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-  readonly wpChildren: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeFieldSelector>;
-  readonly wpParent: InputMaybe<WpHierarchicalContentNodeToParentContentNodeConnectionEdgeTypeFieldSelector>;
-};
+type WpPageFieldsEnum =
+  | 'ancestors.nodes'
+  | 'ancestors.nodes.children'
+  | 'ancestors.nodes.children.children'
+  | 'ancestors.nodes.children.id'
+  | 'ancestors.nodes.contentTypeName'
+  | 'ancestors.nodes.databaseId'
+  | 'ancestors.nodes.date'
+  | 'ancestors.nodes.dateGmt'
+  | 'ancestors.nodes.desiredSlug'
+  | 'ancestors.nodes.enclosure'
+  | 'ancestors.nodes.guid'
+  | 'ancestors.nodes.id'
+  | 'ancestors.nodes.internal.content'
+  | 'ancestors.nodes.internal.contentDigest'
+  | 'ancestors.nodes.internal.contentFilePath'
+  | 'ancestors.nodes.internal.description'
+  | 'ancestors.nodes.internal.fieldOwners'
+  | 'ancestors.nodes.internal.ignoreType'
+  | 'ancestors.nodes.internal.mediaType'
+  | 'ancestors.nodes.internal.owner'
+  | 'ancestors.nodes.internal.type'
+  | 'ancestors.nodes.isContentNode'
+  | 'ancestors.nodes.isTermNode'
+  | 'ancestors.nodes.link'
+  | 'ancestors.nodes.modified'
+  | 'ancestors.nodes.modifiedGmt'
+  | 'ancestors.nodes.nodeType'
+  | 'ancestors.nodes.parent.children'
+  | 'ancestors.nodes.parent.id'
+  | 'ancestors.nodes.seo.breadcrumbs'
+  | 'ancestors.nodes.seo.canonical'
+  | 'ancestors.nodes.seo.cornerstone'
+  | 'ancestors.nodes.seo.focuskw'
+  | 'ancestors.nodes.seo.fullHead'
+  | 'ancestors.nodes.seo.metaDesc'
+  | 'ancestors.nodes.seo.metaKeywords'
+  | 'ancestors.nodes.seo.metaRobotsNofollow'
+  | 'ancestors.nodes.seo.metaRobotsNoindex'
+  | 'ancestors.nodes.seo.opengraphAuthor'
+  | 'ancestors.nodes.seo.opengraphDescription'
+  | 'ancestors.nodes.seo.opengraphModifiedTime'
+  | 'ancestors.nodes.seo.opengraphPublishedTime'
+  | 'ancestors.nodes.seo.opengraphPublisher'
+  | 'ancestors.nodes.seo.opengraphSiteName'
+  | 'ancestors.nodes.seo.opengraphTitle'
+  | 'ancestors.nodes.seo.opengraphType'
+  | 'ancestors.nodes.seo.opengraphUrl'
+  | 'ancestors.nodes.seo.readingTime'
+  | 'ancestors.nodes.seo.title'
+  | 'ancestors.nodes.seo.twitterDescription'
+  | 'ancestors.nodes.seo.twitterTitle'
+  | 'ancestors.nodes.slug'
+  | 'ancestors.nodes.status'
+  | 'ancestors.nodes.template.templateName'
+  | 'ancestors.nodes.uri'
+  | 'authorDatabaseId'
+  | 'authorId'
+  | 'author.node.avatar.default'
+  | 'author.node.avatar.extraAttr'
+  | 'author.node.avatar.forceDefault'
+  | 'author.node.avatar.foundAvatar'
+  | 'author.node.avatar.height'
+  | 'author.node.avatar.rating'
+  | 'author.node.avatar.scheme'
+  | 'author.node.avatar.size'
+  | 'author.node.avatar.url'
+  | 'author.node.avatar.width'
+  | 'author.node.capKey'
+  | 'author.node.capabilities'
+  | 'author.node.children'
+  | 'author.node.children.children'
+  | 'author.node.children.id'
+  | 'author.node.comments.nodes'
+  | 'author.node.databaseId'
+  | 'author.node.description'
+  | 'author.node.email'
+  | 'author.node.extraCapabilities'
+  | 'author.node.firstName'
+  | 'author.node.id'
+  | 'author.node.internal.content'
+  | 'author.node.internal.contentDigest'
+  | 'author.node.internal.contentFilePath'
+  | 'author.node.internal.description'
+  | 'author.node.internal.fieldOwners'
+  | 'author.node.internal.ignoreType'
+  | 'author.node.internal.mediaType'
+  | 'author.node.internal.owner'
+  | 'author.node.internal.type'
+  | 'author.node.isContentNode'
+  | 'author.node.isTermNode'
+  | 'author.node.lastName'
+  | 'author.node.locale'
+  | 'author.node.name'
+  | 'author.node.nicename'
+  | 'author.node.nickname'
+  | 'author.node.nodeType'
+  | 'author.node.pages.nodes'
+  | 'author.node.parent.children'
+  | 'author.node.parent.id'
+  | 'author.node.posts.nodes'
+  | 'author.node.registeredDate'
+  | 'author.node.roles.nodes'
+  | 'author.node.seo.breadcrumbTitle'
+  | 'author.node.seo.canonical'
+  | 'author.node.seo.fullHead'
+  | 'author.node.seo.language'
+  | 'author.node.seo.metaDesc'
+  | 'author.node.seo.metaRobotsNofollow'
+  | 'author.node.seo.metaRobotsNoindex'
+  | 'author.node.seo.opengraphDescription'
+  | 'author.node.seo.opengraphTitle'
+  | 'author.node.seo.region'
+  | 'author.node.seo.title'
+  | 'author.node.seo.twitterDescription'
+  | 'author.node.seo.twitterTitle'
+  | 'author.node.slug'
+  | 'author.node.uri'
+  | 'author.node.url'
+  | 'author.node.username'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'commentCount'
+  | 'commentStatus'
+  | 'comments.nodes'
+  | 'comments.nodes.agent'
+  | 'comments.nodes.authorIp'
+  | 'comments.nodes.children'
+  | 'comments.nodes.children.children'
+  | 'comments.nodes.children.id'
+  | 'comments.nodes.content'
+  | 'comments.nodes.databaseId'
+  | 'comments.nodes.date'
+  | 'comments.nodes.dateGmt'
+  | 'comments.nodes.id'
+  | 'comments.nodes.internal.content'
+  | 'comments.nodes.internal.contentDigest'
+  | 'comments.nodes.internal.contentFilePath'
+  | 'comments.nodes.internal.description'
+  | 'comments.nodes.internal.fieldOwners'
+  | 'comments.nodes.internal.ignoreType'
+  | 'comments.nodes.internal.mediaType'
+  | 'comments.nodes.internal.owner'
+  | 'comments.nodes.internal.type'
+  | 'comments.nodes.karma'
+  | 'comments.nodes.nodeType'
+  | 'comments.nodes.parentDatabaseId'
+  | 'comments.nodes.parentId'
+  | 'comments.nodes.parent.children'
+  | 'comments.nodes.parent.id'
+  | 'comments.nodes.replies.nodes'
+  | 'comments.nodes.status'
+  | 'comments.nodes.type'
+  | 'content'
+  | 'contentTypeName'
+  | 'contentType.node.archivePath'
+  | 'contentType.node.canExport'
+  | 'contentType.node.children'
+  | 'contentType.node.children.children'
+  | 'contentType.node.children.id'
+  | 'contentType.node.connectedTaxonomies.nodes'
+  | 'contentType.node.contentNodes.nodes'
+  | 'contentType.node.deleteWithUser'
+  | 'contentType.node.description'
+  | 'contentType.node.excludeFromSearch'
+  | 'contentType.node.graphqlPluralName'
+  | 'contentType.node.graphqlSingleName'
+  | 'contentType.node.hasArchive'
+  | 'contentType.node.hierarchical'
+  | 'contentType.node.id'
+  | 'contentType.node.internal.content'
+  | 'contentType.node.internal.contentDigest'
+  | 'contentType.node.internal.contentFilePath'
+  | 'contentType.node.internal.description'
+  | 'contentType.node.internal.fieldOwners'
+  | 'contentType.node.internal.ignoreType'
+  | 'contentType.node.internal.mediaType'
+  | 'contentType.node.internal.owner'
+  | 'contentType.node.internal.type'
+  | 'contentType.node.isContentNode'
+  | 'contentType.node.isFrontPage'
+  | 'contentType.node.isPostsPage'
+  | 'contentType.node.isTermNode'
+  | 'contentType.node.label'
+  | 'contentType.node.labels.addNew'
+  | 'contentType.node.labels.addNewItem'
+  | 'contentType.node.labels.allItems'
+  | 'contentType.node.labels.archives'
+  | 'contentType.node.labels.attributes'
+  | 'contentType.node.labels.editItem'
+  | 'contentType.node.labels.featuredImage'
+  | 'contentType.node.labels.filterItemsList'
+  | 'contentType.node.labels.insertIntoItem'
+  | 'contentType.node.labels.itemsList'
+  | 'contentType.node.labels.itemsListNavigation'
+  | 'contentType.node.labels.menuName'
+  | 'contentType.node.labels.name'
+  | 'contentType.node.labels.newItem'
+  | 'contentType.node.labels.notFound'
+  | 'contentType.node.labels.notFoundInTrash'
+  | 'contentType.node.labels.parentItemColon'
+  | 'contentType.node.labels.removeFeaturedImage'
+  | 'contentType.node.labels.searchItems'
+  | 'contentType.node.labels.setFeaturedImage'
+  | 'contentType.node.labels.singularName'
+  | 'contentType.node.labels.uploadedToThisItem'
+  | 'contentType.node.labels.useFeaturedImage'
+  | 'contentType.node.labels.viewItem'
+  | 'contentType.node.labels.viewItems'
+  | 'contentType.node.menuIcon'
+  | 'contentType.node.menuPosition'
+  | 'contentType.node.name'
+  | 'contentType.node.nodeType'
+  | 'contentType.node.parent.children'
+  | 'contentType.node.parent.id'
+  | 'contentType.node.public'
+  | 'contentType.node.publiclyQueryable'
+  | 'contentType.node.restBase'
+  | 'contentType.node.restControllerClass'
+  | 'contentType.node.showInAdminBar'
+  | 'contentType.node.showInGraphql'
+  | 'contentType.node.showInMenu'
+  | 'contentType.node.showInNavMenus'
+  | 'contentType.node.showInRest'
+  | 'contentType.node.showUi'
+  | 'contentType.node.uri'
+  | 'databaseId'
+  | 'date'
+  | 'dateGmt'
+  | 'desiredSlug'
+  | 'enclosure'
+  | 'featuredImageDatabaseId'
+  | 'featuredImageId'
+  | 'featuredImage.node.altText'
+  | 'featuredImage.node.ancestors.nodes'
+  | 'featuredImage.node.authorDatabaseId'
+  | 'featuredImage.node.authorId'
+  | 'featuredImage.node.caption'
+  | 'featuredImage.node.children'
+  | 'featuredImage.node.children.children'
+  | 'featuredImage.node.children.id'
+  | 'featuredImage.node.commentCount'
+  | 'featuredImage.node.commentStatus'
+  | 'featuredImage.node.comments.nodes'
+  | 'featuredImage.node.contentTypeName'
+  | 'featuredImage.node.databaseId'
+  | 'featuredImage.node.date'
+  | 'featuredImage.node.dateGmt'
+  | 'featuredImage.node.description'
+  | 'featuredImage.node.desiredSlug'
+  | 'featuredImage.node.enclosure'
+  | 'featuredImage.node.fileSize'
+  | 'featuredImage.node.filename'
+  | 'featuredImage.node.filesize'
+  | 'featuredImage.node.gatsbyImage'
+  | 'featuredImage.node.guid'
+  | 'featuredImage.node.height'
+  | 'featuredImage.node.id'
+  | 'featuredImage.node.internal.content'
+  | 'featuredImage.node.internal.contentDigest'
+  | 'featuredImage.node.internal.contentFilePath'
+  | 'featuredImage.node.internal.description'
+  | 'featuredImage.node.internal.fieldOwners'
+  | 'featuredImage.node.internal.ignoreType'
+  | 'featuredImage.node.internal.mediaType'
+  | 'featuredImage.node.internal.owner'
+  | 'featuredImage.node.internal.type'
+  | 'featuredImage.node.isContentNode'
+  | 'featuredImage.node.isTermNode'
+  | 'featuredImage.node.link'
+  | 'featuredImage.node.localFile.absolutePath'
+  | 'featuredImage.node.localFile.accessTime'
+  | 'featuredImage.node.localFile.atime'
+  | 'featuredImage.node.localFile.atimeMs'
+  | 'featuredImage.node.localFile.base'
+  | 'featuredImage.node.localFile.birthTime'
+  | 'featuredImage.node.localFile.birthtime'
+  | 'featuredImage.node.localFile.birthtimeMs'
+  | 'featuredImage.node.localFile.blksize'
+  | 'featuredImage.node.localFile.blocks'
+  | 'featuredImage.node.localFile.changeTime'
+  | 'featuredImage.node.localFile.children'
+  | 'featuredImage.node.localFile.childrenImageSharp'
+  | 'featuredImage.node.localFile.ctime'
+  | 'featuredImage.node.localFile.ctimeMs'
+  | 'featuredImage.node.localFile.dev'
+  | 'featuredImage.node.localFile.dir'
+  | 'featuredImage.node.localFile.ext'
+  | 'featuredImage.node.localFile.extension'
+  | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.id'
+  | 'featuredImage.node.localFile.ino'
+  | 'featuredImage.node.localFile.mode'
+  | 'featuredImage.node.localFile.modifiedTime'
+  | 'featuredImage.node.localFile.mtime'
+  | 'featuredImage.node.localFile.mtimeMs'
+  | 'featuredImage.node.localFile.name'
+  | 'featuredImage.node.localFile.nlink'
+  | 'featuredImage.node.localFile.prettySize'
+  | 'featuredImage.node.localFile.publicURL'
+  | 'featuredImage.node.localFile.rdev'
+  | 'featuredImage.node.localFile.relativeDirectory'
+  | 'featuredImage.node.localFile.relativePath'
+  | 'featuredImage.node.localFile.root'
+  | 'featuredImage.node.localFile.size'
+  | 'featuredImage.node.localFile.sourceInstanceName'
+  | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
+  | 'featuredImage.node.mediaDetails.file'
+  | 'featuredImage.node.mediaDetails.height'
+  | 'featuredImage.node.mediaDetails.sizes'
+  | 'featuredImage.node.mediaDetails.width'
+  | 'featuredImage.node.mediaItemUrl'
+  | 'featuredImage.node.mediaType'
+  | 'featuredImage.node.mimeType'
+  | 'featuredImage.node.modified'
+  | 'featuredImage.node.modifiedGmt'
+  | 'featuredImage.node.nodeType'
+  | 'featuredImage.node.parentDatabaseId'
+  | 'featuredImage.node.parentId'
+  | 'featuredImage.node.parent.children'
+  | 'featuredImage.node.parent.id'
+  | 'featuredImage.node.publicUrl'
+  | 'featuredImage.node.resize.height'
+  | 'featuredImage.node.resize.src'
+  | 'featuredImage.node.resize.width'
+  | 'featuredImage.node.seo.breadcrumbs'
+  | 'featuredImage.node.seo.canonical'
+  | 'featuredImage.node.seo.cornerstone'
+  | 'featuredImage.node.seo.focuskw'
+  | 'featuredImage.node.seo.fullHead'
+  | 'featuredImage.node.seo.metaDesc'
+  | 'featuredImage.node.seo.metaKeywords'
+  | 'featuredImage.node.seo.metaRobotsNofollow'
+  | 'featuredImage.node.seo.metaRobotsNoindex'
+  | 'featuredImage.node.seo.opengraphAuthor'
+  | 'featuredImage.node.seo.opengraphDescription'
+  | 'featuredImage.node.seo.opengraphModifiedTime'
+  | 'featuredImage.node.seo.opengraphPublishedTime'
+  | 'featuredImage.node.seo.opengraphPublisher'
+  | 'featuredImage.node.seo.opengraphSiteName'
+  | 'featuredImage.node.seo.opengraphTitle'
+  | 'featuredImage.node.seo.opengraphType'
+  | 'featuredImage.node.seo.opengraphUrl'
+  | 'featuredImage.node.seo.readingTime'
+  | 'featuredImage.node.seo.title'
+  | 'featuredImage.node.seo.twitterDescription'
+  | 'featuredImage.node.seo.twitterTitle'
+  | 'featuredImage.node.sizes'
+  | 'featuredImage.node.slug'
+  | 'featuredImage.node.sourceUrl'
+  | 'featuredImage.node.srcSet'
+  | 'featuredImage.node.status'
+  | 'featuredImage.node.template.templateName'
+  | 'featuredImage.node.title'
+  | 'featuredImage.node.uri'
+  | 'featuredImage.node.width'
+  | 'featuredImage.node.wpChildren.nodes'
+  | 'guid'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
+  | 'isPrivacyPage'
+  | 'isRevision'
+  | 'isTermNode'
+  | 'lastEditedBy.node.avatar.default'
+  | 'lastEditedBy.node.avatar.extraAttr'
+  | 'lastEditedBy.node.avatar.forceDefault'
+  | 'lastEditedBy.node.avatar.foundAvatar'
+  | 'lastEditedBy.node.avatar.height'
+  | 'lastEditedBy.node.avatar.rating'
+  | 'lastEditedBy.node.avatar.scheme'
+  | 'lastEditedBy.node.avatar.size'
+  | 'lastEditedBy.node.avatar.url'
+  | 'lastEditedBy.node.avatar.width'
+  | 'lastEditedBy.node.capKey'
+  | 'lastEditedBy.node.capabilities'
+  | 'lastEditedBy.node.children'
+  | 'lastEditedBy.node.children.children'
+  | 'lastEditedBy.node.children.id'
+  | 'lastEditedBy.node.comments.nodes'
+  | 'lastEditedBy.node.databaseId'
+  | 'lastEditedBy.node.description'
+  | 'lastEditedBy.node.email'
+  | 'lastEditedBy.node.extraCapabilities'
+  | 'lastEditedBy.node.firstName'
+  | 'lastEditedBy.node.id'
+  | 'lastEditedBy.node.internal.content'
+  | 'lastEditedBy.node.internal.contentDigest'
+  | 'lastEditedBy.node.internal.contentFilePath'
+  | 'lastEditedBy.node.internal.description'
+  | 'lastEditedBy.node.internal.fieldOwners'
+  | 'lastEditedBy.node.internal.ignoreType'
+  | 'lastEditedBy.node.internal.mediaType'
+  | 'lastEditedBy.node.internal.owner'
+  | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isTermNode'
+  | 'lastEditedBy.node.lastName'
+  | 'lastEditedBy.node.locale'
+  | 'lastEditedBy.node.name'
+  | 'lastEditedBy.node.nicename'
+  | 'lastEditedBy.node.nickname'
+  | 'lastEditedBy.node.nodeType'
+  | 'lastEditedBy.node.pages.nodes'
+  | 'lastEditedBy.node.parent.children'
+  | 'lastEditedBy.node.parent.id'
+  | 'lastEditedBy.node.posts.nodes'
+  | 'lastEditedBy.node.registeredDate'
+  | 'lastEditedBy.node.roles.nodes'
+  | 'lastEditedBy.node.seo.breadcrumbTitle'
+  | 'lastEditedBy.node.seo.canonical'
+  | 'lastEditedBy.node.seo.fullHead'
+  | 'lastEditedBy.node.seo.language'
+  | 'lastEditedBy.node.seo.metaDesc'
+  | 'lastEditedBy.node.seo.metaRobotsNofollow'
+  | 'lastEditedBy.node.seo.metaRobotsNoindex'
+  | 'lastEditedBy.node.seo.opengraphDescription'
+  | 'lastEditedBy.node.seo.opengraphTitle'
+  | 'lastEditedBy.node.seo.region'
+  | 'lastEditedBy.node.seo.title'
+  | 'lastEditedBy.node.seo.twitterDescription'
+  | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.slug'
+  | 'lastEditedBy.node.uri'
+  | 'lastEditedBy.node.url'
+  | 'lastEditedBy.node.username'
+  | 'link'
+  | 'menuOrder'
+  | 'modified'
+  | 'modifiedGmt'
+  | 'nodeType'
+  | 'parentDatabaseId'
+  | 'parentId'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.readingTime'
+  | 'seo.schema.articleType'
+  | 'seo.schema.pageType'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'slug'
+  | 'status'
+  | 'template.templateName'
+  | 'title'
+  | 'uri'
+  | 'wpChildren.nodes'
+  | 'wpChildren.nodes.children'
+  | 'wpChildren.nodes.children.children'
+  | 'wpChildren.nodes.children.id'
+  | 'wpChildren.nodes.contentTypeName'
+  | 'wpChildren.nodes.databaseId'
+  | 'wpChildren.nodes.date'
+  | 'wpChildren.nodes.dateGmt'
+  | 'wpChildren.nodes.desiredSlug'
+  | 'wpChildren.nodes.enclosure'
+  | 'wpChildren.nodes.guid'
+  | 'wpChildren.nodes.id'
+  | 'wpChildren.nodes.internal.content'
+  | 'wpChildren.nodes.internal.contentDigest'
+  | 'wpChildren.nodes.internal.contentFilePath'
+  | 'wpChildren.nodes.internal.description'
+  | 'wpChildren.nodes.internal.fieldOwners'
+  | 'wpChildren.nodes.internal.ignoreType'
+  | 'wpChildren.nodes.internal.mediaType'
+  | 'wpChildren.nodes.internal.owner'
+  | 'wpChildren.nodes.internal.type'
+  | 'wpChildren.nodes.isContentNode'
+  | 'wpChildren.nodes.isTermNode'
+  | 'wpChildren.nodes.link'
+  | 'wpChildren.nodes.modified'
+  | 'wpChildren.nodes.modifiedGmt'
+  | 'wpChildren.nodes.nodeType'
+  | 'wpChildren.nodes.parent.children'
+  | 'wpChildren.nodes.parent.id'
+  | 'wpChildren.nodes.seo.breadcrumbs'
+  | 'wpChildren.nodes.seo.canonical'
+  | 'wpChildren.nodes.seo.cornerstone'
+  | 'wpChildren.nodes.seo.focuskw'
+  | 'wpChildren.nodes.seo.fullHead'
+  | 'wpChildren.nodes.seo.metaDesc'
+  | 'wpChildren.nodes.seo.metaKeywords'
+  | 'wpChildren.nodes.seo.metaRobotsNofollow'
+  | 'wpChildren.nodes.seo.metaRobotsNoindex'
+  | 'wpChildren.nodes.seo.opengraphAuthor'
+  | 'wpChildren.nodes.seo.opengraphDescription'
+  | 'wpChildren.nodes.seo.opengraphModifiedTime'
+  | 'wpChildren.nodes.seo.opengraphPublishedTime'
+  | 'wpChildren.nodes.seo.opengraphPublisher'
+  | 'wpChildren.nodes.seo.opengraphSiteName'
+  | 'wpChildren.nodes.seo.opengraphTitle'
+  | 'wpChildren.nodes.seo.opengraphType'
+  | 'wpChildren.nodes.seo.opengraphUrl'
+  | 'wpChildren.nodes.seo.readingTime'
+  | 'wpChildren.nodes.seo.title'
+  | 'wpChildren.nodes.seo.twitterDescription'
+  | 'wpChildren.nodes.seo.twitterTitle'
+  | 'wpChildren.nodes.slug'
+  | 'wpChildren.nodes.status'
+  | 'wpChildren.nodes.template.templateName'
+  | 'wpChildren.nodes.uri'
+  | 'wpParent.node.children'
+  | 'wpParent.node.children.children'
+  | 'wpParent.node.children.id'
+  | 'wpParent.node.contentTypeName'
+  | 'wpParent.node.databaseId'
+  | 'wpParent.node.date'
+  | 'wpParent.node.dateGmt'
+  | 'wpParent.node.desiredSlug'
+  | 'wpParent.node.enclosure'
+  | 'wpParent.node.guid'
+  | 'wpParent.node.id'
+  | 'wpParent.node.internal.content'
+  | 'wpParent.node.internal.contentDigest'
+  | 'wpParent.node.internal.contentFilePath'
+  | 'wpParent.node.internal.description'
+  | 'wpParent.node.internal.fieldOwners'
+  | 'wpParent.node.internal.ignoreType'
+  | 'wpParent.node.internal.mediaType'
+  | 'wpParent.node.internal.owner'
+  | 'wpParent.node.internal.type'
+  | 'wpParent.node.isContentNode'
+  | 'wpParent.node.isTermNode'
+  | 'wpParent.node.link'
+  | 'wpParent.node.modified'
+  | 'wpParent.node.modifiedGmt'
+  | 'wpParent.node.nodeType'
+  | 'wpParent.node.parent.children'
+  | 'wpParent.node.parent.id'
+  | 'wpParent.node.seo.breadcrumbs'
+  | 'wpParent.node.seo.canonical'
+  | 'wpParent.node.seo.cornerstone'
+  | 'wpParent.node.seo.focuskw'
+  | 'wpParent.node.seo.fullHead'
+  | 'wpParent.node.seo.metaDesc'
+  | 'wpParent.node.seo.metaKeywords'
+  | 'wpParent.node.seo.metaRobotsNofollow'
+  | 'wpParent.node.seo.metaRobotsNoindex'
+  | 'wpParent.node.seo.opengraphAuthor'
+  | 'wpParent.node.seo.opengraphDescription'
+  | 'wpParent.node.seo.opengraphModifiedTime'
+  | 'wpParent.node.seo.opengraphPublishedTime'
+  | 'wpParent.node.seo.opengraphPublisher'
+  | 'wpParent.node.seo.opengraphSiteName'
+  | 'wpParent.node.seo.opengraphTitle'
+  | 'wpParent.node.seo.opengraphType'
+  | 'wpParent.node.seo.opengraphUrl'
+  | 'wpParent.node.seo.readingTime'
+  | 'wpParent.node.seo.title'
+  | 'wpParent.node.seo.twitterDescription'
+  | 'wpParent.node.seo.twitterTitle'
+  | 'wpParent.node.slug'
+  | 'wpParent.node.status'
+  | 'wpParent.node.template.templateName'
+  | 'wpParent.node.uri';
 
 type WpPageFilterInput = {
   readonly ancestors: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeFilterInput>;
@@ -9565,149 +15661,44 @@ type WpPageGroupConnection = {
 
 
 type WpPageGroupConnection_distinctArgs = {
-  field: WpPageFieldSelector;
+  field: WpPageFieldsEnum;
 };
 
 
 type WpPageGroupConnection_groupArgs = {
-  field: WpPageFieldSelector;
+  field: WpPageFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpPageGroupConnection_maxArgs = {
-  field: WpPageFieldSelector;
+  field: WpPageFieldsEnum;
 };
 
 
 type WpPageGroupConnection_minArgs = {
-  field: WpPageFieldSelector;
+  field: WpPageFieldsEnum;
 };
 
 
 type WpPageGroupConnection_sumArgs = {
-  field: WpPageFieldSelector;
-};
-
-type WpPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+  field: WpPageFieldsEnum;
 };
 
 type WpPageSortInput = {
-  readonly ancestors: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeSortInput>;
-  readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeSortInput>;
-  readonly authorDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly authorId: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly commentCount: InputMaybe<SortOrderEnum>;
-  readonly commentStatus: InputMaybe<SortOrderEnum>;
-  readonly comments: InputMaybe<WpPageToCommentConnectionTypeSortInput>;
-  readonly content: InputMaybe<SortOrderEnum>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeSortInput>;
-  readonly contentTypeName: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly date: InputMaybe<SortOrderEnum>;
-  readonly dateGmt: InputMaybe<SortOrderEnum>;
-  readonly desiredSlug: InputMaybe<SortOrderEnum>;
-  readonly enclosure: InputMaybe<SortOrderEnum>;
-  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeSortInput>;
-  readonly featuredImageDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly featuredImageId: InputMaybe<SortOrderEnum>;
-  readonly guid: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isFrontPage: InputMaybe<SortOrderEnum>;
-  readonly isPostsPage: InputMaybe<SortOrderEnum>;
-  readonly isPrivacyPage: InputMaybe<SortOrderEnum>;
-  readonly isRevision: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeSortInput>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly menuOrder: InputMaybe<SortOrderEnum>;
-  readonly modified: InputMaybe<SortOrderEnum>;
-  readonly modifiedGmt: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly parentDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly parentId: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpPostTypeSEOSortInput>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly status: InputMaybe<SortOrderEnum>;
-  readonly template: InputMaybe<WpContentTemplateSortInput>;
-  readonly title: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-  readonly wpChildren: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeSortInput>;
-  readonly wpParent: InputMaybe<WpHierarchicalContentNodeToParentContentNodeConnectionEdgeTypeSortInput>;
-};
-
-/** Page Info on the &quot;PageToCommentConnection&quot; */
-type WpPageToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPageToCommentConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPageToCommentConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPageToCommentConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpPageFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the Page type and the Comment type */
 type WpPageToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPageToCommentConnectionPageInfoType;
-};
-
-type WpPageToCommentConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpCommentFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPageToCommentConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpPageToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPageToCommentConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPageToCommentConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpCommentSortInput>;
-  readonly pageInfo: InputMaybe<WpPageToCommentConnectionPageInfoTypeSortInput>;
 };
 
 /** The post type */
@@ -9851,54 +15842,29 @@ type WpPostConnection = {
 
 
 type WpPostConnection_distinctArgs = {
-  field: WpPostFieldSelector;
+  field: WpPostFieldsEnum;
 };
 
 
 type WpPostConnection_groupArgs = {
-  field: WpPostFieldSelector;
+  field: WpPostFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpPostConnection_maxArgs = {
-  field: WpPostFieldSelector;
+  field: WpPostFieldsEnum;
 };
 
 
 type WpPostConnection_minArgs = {
-  field: WpPostFieldSelector;
+  field: WpPostFieldsEnum;
 };
 
 
 type WpPostConnection_sumArgs = {
-  field: WpPostFieldSelector;
-};
-
-type WpPostConnectionEdgeType = {
-  /** The connected post Node */
-  readonly node: WpPost;
-};
-
-type WpPostConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPostConnectionType = {
-  /** A list of connected post Nodes */
-  readonly nodes: ReadonlyArray<WpPost>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPostConnectionPageInfoType;
+  field: WpPostFieldsEnum;
 };
 
 type WpPostEdge = {
@@ -9907,54 +15873,948 @@ type WpPostEdge = {
   readonly previous: Maybe<WpPost>;
 };
 
-type WpPostFieldSelector = {
-  readonly acfSampleField: InputMaybe<WpPost_AcfsamplefieldFieldSelector>;
-  readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeFieldSelector>;
-  readonly authorDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly authorId: InputMaybe<FieldSelectorEnum>;
-  readonly categories: InputMaybe<WpPostToCategoryConnectionTypeFieldSelector>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly commentCount: InputMaybe<FieldSelectorEnum>;
-  readonly commentStatus: InputMaybe<FieldSelectorEnum>;
-  readonly comments: InputMaybe<WpPostToCommentConnectionTypeFieldSelector>;
-  readonly content: InputMaybe<FieldSelectorEnum>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFieldSelector>;
-  readonly contentTypeName: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly date: InputMaybe<FieldSelectorEnum>;
-  readonly dateGmt: InputMaybe<FieldSelectorEnum>;
-  readonly desiredSlug: InputMaybe<FieldSelectorEnum>;
-  readonly enclosure: InputMaybe<FieldSelectorEnum>;
-  readonly excerpt: InputMaybe<FieldSelectorEnum>;
-  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFieldSelector>;
-  readonly featuredImageDatabaseId: InputMaybe<FieldSelectorEnum>;
-  readonly featuredImageId: InputMaybe<FieldSelectorEnum>;
-  readonly guid: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isRevision: InputMaybe<FieldSelectorEnum>;
-  readonly isSticky: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFieldSelector>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly modified: InputMaybe<FieldSelectorEnum>;
-  readonly modifiedGmt: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly pingStatus: InputMaybe<FieldSelectorEnum>;
-  readonly pinged: InputMaybe<FieldSelectorEnum>;
-  readonly postFormats: InputMaybe<WpPostToPostFormatConnectionTypeFieldSelector>;
-  readonly seo: InputMaybe<WpPostTypeSEOFieldSelector>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly status: InputMaybe<FieldSelectorEnum>;
-  readonly tags: InputMaybe<WpPostToTagConnectionTypeFieldSelector>;
-  readonly template: InputMaybe<WpContentTemplateFieldSelector>;
-  readonly terms: InputMaybe<WpPostToTermNodeConnectionTypeFieldSelector>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-  readonly toPing: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-};
+type WpPostFieldsEnum =
+  | 'acfSampleField.fieldGroupName'
+  | 'acfSampleField.test'
+  | 'authorDatabaseId'
+  | 'authorId'
+  | 'author.node.avatar.default'
+  | 'author.node.avatar.extraAttr'
+  | 'author.node.avatar.forceDefault'
+  | 'author.node.avatar.foundAvatar'
+  | 'author.node.avatar.height'
+  | 'author.node.avatar.rating'
+  | 'author.node.avatar.scheme'
+  | 'author.node.avatar.size'
+  | 'author.node.avatar.url'
+  | 'author.node.avatar.width'
+  | 'author.node.capKey'
+  | 'author.node.capabilities'
+  | 'author.node.children'
+  | 'author.node.children.children'
+  | 'author.node.children.id'
+  | 'author.node.comments.nodes'
+  | 'author.node.databaseId'
+  | 'author.node.description'
+  | 'author.node.email'
+  | 'author.node.extraCapabilities'
+  | 'author.node.firstName'
+  | 'author.node.id'
+  | 'author.node.internal.content'
+  | 'author.node.internal.contentDigest'
+  | 'author.node.internal.contentFilePath'
+  | 'author.node.internal.description'
+  | 'author.node.internal.fieldOwners'
+  | 'author.node.internal.ignoreType'
+  | 'author.node.internal.mediaType'
+  | 'author.node.internal.owner'
+  | 'author.node.internal.type'
+  | 'author.node.isContentNode'
+  | 'author.node.isTermNode'
+  | 'author.node.lastName'
+  | 'author.node.locale'
+  | 'author.node.name'
+  | 'author.node.nicename'
+  | 'author.node.nickname'
+  | 'author.node.nodeType'
+  | 'author.node.pages.nodes'
+  | 'author.node.parent.children'
+  | 'author.node.parent.id'
+  | 'author.node.posts.nodes'
+  | 'author.node.registeredDate'
+  | 'author.node.roles.nodes'
+  | 'author.node.seo.breadcrumbTitle'
+  | 'author.node.seo.canonical'
+  | 'author.node.seo.fullHead'
+  | 'author.node.seo.language'
+  | 'author.node.seo.metaDesc'
+  | 'author.node.seo.metaRobotsNofollow'
+  | 'author.node.seo.metaRobotsNoindex'
+  | 'author.node.seo.opengraphDescription'
+  | 'author.node.seo.opengraphTitle'
+  | 'author.node.seo.region'
+  | 'author.node.seo.title'
+  | 'author.node.seo.twitterDescription'
+  | 'author.node.seo.twitterTitle'
+  | 'author.node.slug'
+  | 'author.node.uri'
+  | 'author.node.url'
+  | 'author.node.username'
+  | 'categories.nodes'
+  | 'categories.nodes.ancestors.nodes'
+  | 'categories.nodes.children'
+  | 'categories.nodes.children.children'
+  | 'categories.nodes.children.id'
+  | 'categories.nodes.contentNodes.nodes'
+  | 'categories.nodes.count'
+  | 'categories.nodes.databaseId'
+  | 'categories.nodes.description'
+  | 'categories.nodes.id'
+  | 'categories.nodes.internal.content'
+  | 'categories.nodes.internal.contentDigest'
+  | 'categories.nodes.internal.contentFilePath'
+  | 'categories.nodes.internal.description'
+  | 'categories.nodes.internal.fieldOwners'
+  | 'categories.nodes.internal.ignoreType'
+  | 'categories.nodes.internal.mediaType'
+  | 'categories.nodes.internal.owner'
+  | 'categories.nodes.internal.type'
+  | 'categories.nodes.isContentNode'
+  | 'categories.nodes.isTermNode'
+  | 'categories.nodes.link'
+  | 'categories.nodes.name'
+  | 'categories.nodes.nodeType'
+  | 'categories.nodes.parentDatabaseId'
+  | 'categories.nodes.parentId'
+  | 'categories.nodes.parent.children'
+  | 'categories.nodes.parent.id'
+  | 'categories.nodes.posts.nodes'
+  | 'categories.nodes.seo.breadcrumbs'
+  | 'categories.nodes.seo.canonical'
+  | 'categories.nodes.seo.cornerstone'
+  | 'categories.nodes.seo.focuskw'
+  | 'categories.nodes.seo.fullHead'
+  | 'categories.nodes.seo.metaDesc'
+  | 'categories.nodes.seo.metaKeywords'
+  | 'categories.nodes.seo.metaRobotsNofollow'
+  | 'categories.nodes.seo.metaRobotsNoindex'
+  | 'categories.nodes.seo.opengraphAuthor'
+  | 'categories.nodes.seo.opengraphDescription'
+  | 'categories.nodes.seo.opengraphModifiedTime'
+  | 'categories.nodes.seo.opengraphPublishedTime'
+  | 'categories.nodes.seo.opengraphPublisher'
+  | 'categories.nodes.seo.opengraphSiteName'
+  | 'categories.nodes.seo.opengraphTitle'
+  | 'categories.nodes.seo.opengraphType'
+  | 'categories.nodes.seo.opengraphUrl'
+  | 'categories.nodes.seo.title'
+  | 'categories.nodes.seo.twitterDescription'
+  | 'categories.nodes.seo.twitterTitle'
+  | 'categories.nodes.slug'
+  | 'categories.nodes.taxonomyName'
+  | 'categories.nodes.termGroupId'
+  | 'categories.nodes.termTaxonomyId'
+  | 'categories.nodes.uri'
+  | 'categories.nodes.wpChildren.nodes'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'commentCount'
+  | 'commentStatus'
+  | 'comments.nodes'
+  | 'comments.nodes.agent'
+  | 'comments.nodes.authorIp'
+  | 'comments.nodes.children'
+  | 'comments.nodes.children.children'
+  | 'comments.nodes.children.id'
+  | 'comments.nodes.content'
+  | 'comments.nodes.databaseId'
+  | 'comments.nodes.date'
+  | 'comments.nodes.dateGmt'
+  | 'comments.nodes.id'
+  | 'comments.nodes.internal.content'
+  | 'comments.nodes.internal.contentDigest'
+  | 'comments.nodes.internal.contentFilePath'
+  | 'comments.nodes.internal.description'
+  | 'comments.nodes.internal.fieldOwners'
+  | 'comments.nodes.internal.ignoreType'
+  | 'comments.nodes.internal.mediaType'
+  | 'comments.nodes.internal.owner'
+  | 'comments.nodes.internal.type'
+  | 'comments.nodes.karma'
+  | 'comments.nodes.nodeType'
+  | 'comments.nodes.parentDatabaseId'
+  | 'comments.nodes.parentId'
+  | 'comments.nodes.parent.children'
+  | 'comments.nodes.parent.id'
+  | 'comments.nodes.replies.nodes'
+  | 'comments.nodes.status'
+  | 'comments.nodes.type'
+  | 'content'
+  | 'contentTypeName'
+  | 'contentType.node.archivePath'
+  | 'contentType.node.canExport'
+  | 'contentType.node.children'
+  | 'contentType.node.children.children'
+  | 'contentType.node.children.id'
+  | 'contentType.node.connectedTaxonomies.nodes'
+  | 'contentType.node.contentNodes.nodes'
+  | 'contentType.node.deleteWithUser'
+  | 'contentType.node.description'
+  | 'contentType.node.excludeFromSearch'
+  | 'contentType.node.graphqlPluralName'
+  | 'contentType.node.graphqlSingleName'
+  | 'contentType.node.hasArchive'
+  | 'contentType.node.hierarchical'
+  | 'contentType.node.id'
+  | 'contentType.node.internal.content'
+  | 'contentType.node.internal.contentDigest'
+  | 'contentType.node.internal.contentFilePath'
+  | 'contentType.node.internal.description'
+  | 'contentType.node.internal.fieldOwners'
+  | 'contentType.node.internal.ignoreType'
+  | 'contentType.node.internal.mediaType'
+  | 'contentType.node.internal.owner'
+  | 'contentType.node.internal.type'
+  | 'contentType.node.isContentNode'
+  | 'contentType.node.isFrontPage'
+  | 'contentType.node.isPostsPage'
+  | 'contentType.node.isTermNode'
+  | 'contentType.node.label'
+  | 'contentType.node.labels.addNew'
+  | 'contentType.node.labels.addNewItem'
+  | 'contentType.node.labels.allItems'
+  | 'contentType.node.labels.archives'
+  | 'contentType.node.labels.attributes'
+  | 'contentType.node.labels.editItem'
+  | 'contentType.node.labels.featuredImage'
+  | 'contentType.node.labels.filterItemsList'
+  | 'contentType.node.labels.insertIntoItem'
+  | 'contentType.node.labels.itemsList'
+  | 'contentType.node.labels.itemsListNavigation'
+  | 'contentType.node.labels.menuName'
+  | 'contentType.node.labels.name'
+  | 'contentType.node.labels.newItem'
+  | 'contentType.node.labels.notFound'
+  | 'contentType.node.labels.notFoundInTrash'
+  | 'contentType.node.labels.parentItemColon'
+  | 'contentType.node.labels.removeFeaturedImage'
+  | 'contentType.node.labels.searchItems'
+  | 'contentType.node.labels.setFeaturedImage'
+  | 'contentType.node.labels.singularName'
+  | 'contentType.node.labels.uploadedToThisItem'
+  | 'contentType.node.labels.useFeaturedImage'
+  | 'contentType.node.labels.viewItem'
+  | 'contentType.node.labels.viewItems'
+  | 'contentType.node.menuIcon'
+  | 'contentType.node.menuPosition'
+  | 'contentType.node.name'
+  | 'contentType.node.nodeType'
+  | 'contentType.node.parent.children'
+  | 'contentType.node.parent.id'
+  | 'contentType.node.public'
+  | 'contentType.node.publiclyQueryable'
+  | 'contentType.node.restBase'
+  | 'contentType.node.restControllerClass'
+  | 'contentType.node.showInAdminBar'
+  | 'contentType.node.showInGraphql'
+  | 'contentType.node.showInMenu'
+  | 'contentType.node.showInNavMenus'
+  | 'contentType.node.showInRest'
+  | 'contentType.node.showUi'
+  | 'contentType.node.uri'
+  | 'databaseId'
+  | 'date'
+  | 'dateGmt'
+  | 'desiredSlug'
+  | 'enclosure'
+  | 'excerpt'
+  | 'featuredImageDatabaseId'
+  | 'featuredImageId'
+  | 'featuredImage.node.altText'
+  | 'featuredImage.node.ancestors.nodes'
+  | 'featuredImage.node.authorDatabaseId'
+  | 'featuredImage.node.authorId'
+  | 'featuredImage.node.caption'
+  | 'featuredImage.node.children'
+  | 'featuredImage.node.children.children'
+  | 'featuredImage.node.children.id'
+  | 'featuredImage.node.commentCount'
+  | 'featuredImage.node.commentStatus'
+  | 'featuredImage.node.comments.nodes'
+  | 'featuredImage.node.contentTypeName'
+  | 'featuredImage.node.databaseId'
+  | 'featuredImage.node.date'
+  | 'featuredImage.node.dateGmt'
+  | 'featuredImage.node.description'
+  | 'featuredImage.node.desiredSlug'
+  | 'featuredImage.node.enclosure'
+  | 'featuredImage.node.fileSize'
+  | 'featuredImage.node.filename'
+  | 'featuredImage.node.filesize'
+  | 'featuredImage.node.gatsbyImage'
+  | 'featuredImage.node.guid'
+  | 'featuredImage.node.height'
+  | 'featuredImage.node.id'
+  | 'featuredImage.node.internal.content'
+  | 'featuredImage.node.internal.contentDigest'
+  | 'featuredImage.node.internal.contentFilePath'
+  | 'featuredImage.node.internal.description'
+  | 'featuredImage.node.internal.fieldOwners'
+  | 'featuredImage.node.internal.ignoreType'
+  | 'featuredImage.node.internal.mediaType'
+  | 'featuredImage.node.internal.owner'
+  | 'featuredImage.node.internal.type'
+  | 'featuredImage.node.isContentNode'
+  | 'featuredImage.node.isTermNode'
+  | 'featuredImage.node.link'
+  | 'featuredImage.node.localFile.absolutePath'
+  | 'featuredImage.node.localFile.accessTime'
+  | 'featuredImage.node.localFile.atime'
+  | 'featuredImage.node.localFile.atimeMs'
+  | 'featuredImage.node.localFile.base'
+  | 'featuredImage.node.localFile.birthTime'
+  | 'featuredImage.node.localFile.birthtime'
+  | 'featuredImage.node.localFile.birthtimeMs'
+  | 'featuredImage.node.localFile.blksize'
+  | 'featuredImage.node.localFile.blocks'
+  | 'featuredImage.node.localFile.changeTime'
+  | 'featuredImage.node.localFile.children'
+  | 'featuredImage.node.localFile.childrenImageSharp'
+  | 'featuredImage.node.localFile.ctime'
+  | 'featuredImage.node.localFile.ctimeMs'
+  | 'featuredImage.node.localFile.dev'
+  | 'featuredImage.node.localFile.dir'
+  | 'featuredImage.node.localFile.ext'
+  | 'featuredImage.node.localFile.extension'
+  | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.id'
+  | 'featuredImage.node.localFile.ino'
+  | 'featuredImage.node.localFile.mode'
+  | 'featuredImage.node.localFile.modifiedTime'
+  | 'featuredImage.node.localFile.mtime'
+  | 'featuredImage.node.localFile.mtimeMs'
+  | 'featuredImage.node.localFile.name'
+  | 'featuredImage.node.localFile.nlink'
+  | 'featuredImage.node.localFile.prettySize'
+  | 'featuredImage.node.localFile.publicURL'
+  | 'featuredImage.node.localFile.rdev'
+  | 'featuredImage.node.localFile.relativeDirectory'
+  | 'featuredImage.node.localFile.relativePath'
+  | 'featuredImage.node.localFile.root'
+  | 'featuredImage.node.localFile.size'
+  | 'featuredImage.node.localFile.sourceInstanceName'
+  | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
+  | 'featuredImage.node.mediaDetails.file'
+  | 'featuredImage.node.mediaDetails.height'
+  | 'featuredImage.node.mediaDetails.sizes'
+  | 'featuredImage.node.mediaDetails.width'
+  | 'featuredImage.node.mediaItemUrl'
+  | 'featuredImage.node.mediaType'
+  | 'featuredImage.node.mimeType'
+  | 'featuredImage.node.modified'
+  | 'featuredImage.node.modifiedGmt'
+  | 'featuredImage.node.nodeType'
+  | 'featuredImage.node.parentDatabaseId'
+  | 'featuredImage.node.parentId'
+  | 'featuredImage.node.parent.children'
+  | 'featuredImage.node.parent.id'
+  | 'featuredImage.node.publicUrl'
+  | 'featuredImage.node.resize.height'
+  | 'featuredImage.node.resize.src'
+  | 'featuredImage.node.resize.width'
+  | 'featuredImage.node.seo.breadcrumbs'
+  | 'featuredImage.node.seo.canonical'
+  | 'featuredImage.node.seo.cornerstone'
+  | 'featuredImage.node.seo.focuskw'
+  | 'featuredImage.node.seo.fullHead'
+  | 'featuredImage.node.seo.metaDesc'
+  | 'featuredImage.node.seo.metaKeywords'
+  | 'featuredImage.node.seo.metaRobotsNofollow'
+  | 'featuredImage.node.seo.metaRobotsNoindex'
+  | 'featuredImage.node.seo.opengraphAuthor'
+  | 'featuredImage.node.seo.opengraphDescription'
+  | 'featuredImage.node.seo.opengraphModifiedTime'
+  | 'featuredImage.node.seo.opengraphPublishedTime'
+  | 'featuredImage.node.seo.opengraphPublisher'
+  | 'featuredImage.node.seo.opengraphSiteName'
+  | 'featuredImage.node.seo.opengraphTitle'
+  | 'featuredImage.node.seo.opengraphType'
+  | 'featuredImage.node.seo.opengraphUrl'
+  | 'featuredImage.node.seo.readingTime'
+  | 'featuredImage.node.seo.title'
+  | 'featuredImage.node.seo.twitterDescription'
+  | 'featuredImage.node.seo.twitterTitle'
+  | 'featuredImage.node.sizes'
+  | 'featuredImage.node.slug'
+  | 'featuredImage.node.sourceUrl'
+  | 'featuredImage.node.srcSet'
+  | 'featuredImage.node.status'
+  | 'featuredImage.node.template.templateName'
+  | 'featuredImage.node.title'
+  | 'featuredImage.node.uri'
+  | 'featuredImage.node.width'
+  | 'featuredImage.node.wpChildren.nodes'
+  | 'guid'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isRevision'
+  | 'isSticky'
+  | 'isTermNode'
+  | 'lastEditedBy.node.avatar.default'
+  | 'lastEditedBy.node.avatar.extraAttr'
+  | 'lastEditedBy.node.avatar.forceDefault'
+  | 'lastEditedBy.node.avatar.foundAvatar'
+  | 'lastEditedBy.node.avatar.height'
+  | 'lastEditedBy.node.avatar.rating'
+  | 'lastEditedBy.node.avatar.scheme'
+  | 'lastEditedBy.node.avatar.size'
+  | 'lastEditedBy.node.avatar.url'
+  | 'lastEditedBy.node.avatar.width'
+  | 'lastEditedBy.node.capKey'
+  | 'lastEditedBy.node.capabilities'
+  | 'lastEditedBy.node.children'
+  | 'lastEditedBy.node.children.children'
+  | 'lastEditedBy.node.children.id'
+  | 'lastEditedBy.node.comments.nodes'
+  | 'lastEditedBy.node.databaseId'
+  | 'lastEditedBy.node.description'
+  | 'lastEditedBy.node.email'
+  | 'lastEditedBy.node.extraCapabilities'
+  | 'lastEditedBy.node.firstName'
+  | 'lastEditedBy.node.id'
+  | 'lastEditedBy.node.internal.content'
+  | 'lastEditedBy.node.internal.contentDigest'
+  | 'lastEditedBy.node.internal.contentFilePath'
+  | 'lastEditedBy.node.internal.description'
+  | 'lastEditedBy.node.internal.fieldOwners'
+  | 'lastEditedBy.node.internal.ignoreType'
+  | 'lastEditedBy.node.internal.mediaType'
+  | 'lastEditedBy.node.internal.owner'
+  | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isTermNode'
+  | 'lastEditedBy.node.lastName'
+  | 'lastEditedBy.node.locale'
+  | 'lastEditedBy.node.name'
+  | 'lastEditedBy.node.nicename'
+  | 'lastEditedBy.node.nickname'
+  | 'lastEditedBy.node.nodeType'
+  | 'lastEditedBy.node.pages.nodes'
+  | 'lastEditedBy.node.parent.children'
+  | 'lastEditedBy.node.parent.id'
+  | 'lastEditedBy.node.posts.nodes'
+  | 'lastEditedBy.node.registeredDate'
+  | 'lastEditedBy.node.roles.nodes'
+  | 'lastEditedBy.node.seo.breadcrumbTitle'
+  | 'lastEditedBy.node.seo.canonical'
+  | 'lastEditedBy.node.seo.fullHead'
+  | 'lastEditedBy.node.seo.language'
+  | 'lastEditedBy.node.seo.metaDesc'
+  | 'lastEditedBy.node.seo.metaRobotsNofollow'
+  | 'lastEditedBy.node.seo.metaRobotsNoindex'
+  | 'lastEditedBy.node.seo.opengraphDescription'
+  | 'lastEditedBy.node.seo.opengraphTitle'
+  | 'lastEditedBy.node.seo.region'
+  | 'lastEditedBy.node.seo.title'
+  | 'lastEditedBy.node.seo.twitterDescription'
+  | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.slug'
+  | 'lastEditedBy.node.uri'
+  | 'lastEditedBy.node.url'
+  | 'lastEditedBy.node.username'
+  | 'link'
+  | 'modified'
+  | 'modifiedGmt'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'pingStatus'
+  | 'pinged'
+  | 'postFormats.nodes'
+  | 'postFormats.nodes.children'
+  | 'postFormats.nodes.children.children'
+  | 'postFormats.nodes.children.id'
+  | 'postFormats.nodes.contentNodes.nodes'
+  | 'postFormats.nodes.count'
+  | 'postFormats.nodes.databaseId'
+  | 'postFormats.nodes.description'
+  | 'postFormats.nodes.id'
+  | 'postFormats.nodes.internal.content'
+  | 'postFormats.nodes.internal.contentDigest'
+  | 'postFormats.nodes.internal.contentFilePath'
+  | 'postFormats.nodes.internal.description'
+  | 'postFormats.nodes.internal.fieldOwners'
+  | 'postFormats.nodes.internal.ignoreType'
+  | 'postFormats.nodes.internal.mediaType'
+  | 'postFormats.nodes.internal.owner'
+  | 'postFormats.nodes.internal.type'
+  | 'postFormats.nodes.isContentNode'
+  | 'postFormats.nodes.isTermNode'
+  | 'postFormats.nodes.link'
+  | 'postFormats.nodes.name'
+  | 'postFormats.nodes.nodeType'
+  | 'postFormats.nodes.parent.children'
+  | 'postFormats.nodes.parent.id'
+  | 'postFormats.nodes.posts.nodes'
+  | 'postFormats.nodes.seo.breadcrumbs'
+  | 'postFormats.nodes.seo.canonical'
+  | 'postFormats.nodes.seo.cornerstone'
+  | 'postFormats.nodes.seo.focuskw'
+  | 'postFormats.nodes.seo.fullHead'
+  | 'postFormats.nodes.seo.metaDesc'
+  | 'postFormats.nodes.seo.metaKeywords'
+  | 'postFormats.nodes.seo.metaRobotsNofollow'
+  | 'postFormats.nodes.seo.metaRobotsNoindex'
+  | 'postFormats.nodes.seo.opengraphAuthor'
+  | 'postFormats.nodes.seo.opengraphDescription'
+  | 'postFormats.nodes.seo.opengraphModifiedTime'
+  | 'postFormats.nodes.seo.opengraphPublishedTime'
+  | 'postFormats.nodes.seo.opengraphPublisher'
+  | 'postFormats.nodes.seo.opengraphSiteName'
+  | 'postFormats.nodes.seo.opengraphTitle'
+  | 'postFormats.nodes.seo.opengraphType'
+  | 'postFormats.nodes.seo.opengraphUrl'
+  | 'postFormats.nodes.seo.title'
+  | 'postFormats.nodes.seo.twitterDescription'
+  | 'postFormats.nodes.seo.twitterTitle'
+  | 'postFormats.nodes.slug'
+  | 'postFormats.nodes.taxonomyName'
+  | 'postFormats.nodes.termGroupId'
+  | 'postFormats.nodes.termTaxonomyId'
+  | 'postFormats.nodes.uri'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.readingTime'
+  | 'seo.schema.articleType'
+  | 'seo.schema.pageType'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'slug'
+  | 'status'
+  | 'tags.nodes'
+  | 'tags.nodes.children'
+  | 'tags.nodes.children.children'
+  | 'tags.nodes.children.id'
+  | 'tags.nodes.contentNodes.nodes'
+  | 'tags.nodes.count'
+  | 'tags.nodes.databaseId'
+  | 'tags.nodes.description'
+  | 'tags.nodes.id'
+  | 'tags.nodes.internal.content'
+  | 'tags.nodes.internal.contentDigest'
+  | 'tags.nodes.internal.contentFilePath'
+  | 'tags.nodes.internal.description'
+  | 'tags.nodes.internal.fieldOwners'
+  | 'tags.nodes.internal.ignoreType'
+  | 'tags.nodes.internal.mediaType'
+  | 'tags.nodes.internal.owner'
+  | 'tags.nodes.internal.type'
+  | 'tags.nodes.isContentNode'
+  | 'tags.nodes.isTermNode'
+  | 'tags.nodes.link'
+  | 'tags.nodes.name'
+  | 'tags.nodes.nodeType'
+  | 'tags.nodes.parent.children'
+  | 'tags.nodes.parent.id'
+  | 'tags.nodes.posts.nodes'
+  | 'tags.nodes.seo.breadcrumbs'
+  | 'tags.nodes.seo.canonical'
+  | 'tags.nodes.seo.cornerstone'
+  | 'tags.nodes.seo.focuskw'
+  | 'tags.nodes.seo.fullHead'
+  | 'tags.nodes.seo.metaDesc'
+  | 'tags.nodes.seo.metaKeywords'
+  | 'tags.nodes.seo.metaRobotsNofollow'
+  | 'tags.nodes.seo.metaRobotsNoindex'
+  | 'tags.nodes.seo.opengraphAuthor'
+  | 'tags.nodes.seo.opengraphDescription'
+  | 'tags.nodes.seo.opengraphModifiedTime'
+  | 'tags.nodes.seo.opengraphPublishedTime'
+  | 'tags.nodes.seo.opengraphPublisher'
+  | 'tags.nodes.seo.opengraphSiteName'
+  | 'tags.nodes.seo.opengraphTitle'
+  | 'tags.nodes.seo.opengraphType'
+  | 'tags.nodes.seo.opengraphUrl'
+  | 'tags.nodes.seo.title'
+  | 'tags.nodes.seo.twitterDescription'
+  | 'tags.nodes.seo.twitterTitle'
+  | 'tags.nodes.slug'
+  | 'tags.nodes.taxonomyName'
+  | 'tags.nodes.termGroupId'
+  | 'tags.nodes.termTaxonomyId'
+  | 'tags.nodes.uri'
+  | 'template.templateName'
+  | 'terms.nodes'
+  | 'terms.nodes.children'
+  | 'terms.nodes.children.children'
+  | 'terms.nodes.children.id'
+  | 'terms.nodes.count'
+  | 'terms.nodes.databaseId'
+  | 'terms.nodes.description'
+  | 'terms.nodes.id'
+  | 'terms.nodes.internal.content'
+  | 'terms.nodes.internal.contentDigest'
+  | 'terms.nodes.internal.contentFilePath'
+  | 'terms.nodes.internal.description'
+  | 'terms.nodes.internal.fieldOwners'
+  | 'terms.nodes.internal.ignoreType'
+  | 'terms.nodes.internal.mediaType'
+  | 'terms.nodes.internal.owner'
+  | 'terms.nodes.internal.type'
+  | 'terms.nodes.isContentNode'
+  | 'terms.nodes.isTermNode'
+  | 'terms.nodes.link'
+  | 'terms.nodes.name'
+  | 'terms.nodes.nodeType'
+  | 'terms.nodes.parent.children'
+  | 'terms.nodes.parent.id'
+  | 'terms.nodes.slug'
+  | 'terms.nodes.taxonomyName'
+  | 'terms.nodes.termGroupId'
+  | 'terms.nodes.termTaxonomyId'
+  | 'terms.nodes.uri'
+  | 'title'
+  | 'toPing'
+  | 'uri';
 
 type WpPostFilterInput = {
   readonly acfSampleField: InputMaybe<WpPost_AcfsamplefieldFilterInput>;
@@ -10064,54 +16924,29 @@ type WpPostFormatConnection = {
 
 
 type WpPostFormatConnection_distinctArgs = {
-  field: WpPostFormatFieldSelector;
+  field: WpPostFormatFieldsEnum;
 };
 
 
 type WpPostFormatConnection_groupArgs = {
-  field: WpPostFormatFieldSelector;
+  field: WpPostFormatFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpPostFormatConnection_maxArgs = {
-  field: WpPostFormatFieldSelector;
+  field: WpPostFormatFieldsEnum;
 };
 
 
 type WpPostFormatConnection_minArgs = {
-  field: WpPostFormatFieldSelector;
+  field: WpPostFormatFieldsEnum;
 };
 
 
 type WpPostFormatConnection_sumArgs = {
-  field: WpPostFormatFieldSelector;
-};
-
-type WpPostFormatConnectionEdgeType = {
-  /** The connected postFormat Node */
-  readonly node: WpPostFormat;
-};
-
-type WpPostFormatConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPostFormatConnectionType = {
-  /** A list of connected postFormat Nodes */
-  readonly nodes: ReadonlyArray<WpPostFormat>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPostFormatConnectionPageInfoType;
+  field: WpPostFormatFieldsEnum;
 };
 
 type WpPostFormatEdge = {
@@ -10120,29 +16955,553 @@ type WpPostFormatEdge = {
   readonly previous: Maybe<WpPostFormat>;
 };
 
-type WpPostFormatFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly contentNodes: InputMaybe<WpPostFormatToContentNodeConnectionTypeFieldSelector>;
-  readonly count: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly posts: InputMaybe<WpPostFormatToPostConnectionTypeFieldSelector>;
-  readonly seo: InputMaybe<WpTaxonomySEOFieldSelector>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly taxonomy: InputMaybe<WpPostFormatToTaxonomyConnectionEdgeTypeFieldSelector>;
-  readonly taxonomyName: InputMaybe<FieldSelectorEnum>;
-  readonly termGroupId: InputMaybe<FieldSelectorEnum>;
-  readonly termTaxonomyId: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-};
+type WpPostFormatFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'contentNodes.nodes'
+  | 'contentNodes.nodes.children'
+  | 'contentNodes.nodes.children.children'
+  | 'contentNodes.nodes.children.id'
+  | 'contentNodes.nodes.contentTypeName'
+  | 'contentNodes.nodes.databaseId'
+  | 'contentNodes.nodes.date'
+  | 'contentNodes.nodes.dateGmt'
+  | 'contentNodes.nodes.desiredSlug'
+  | 'contentNodes.nodes.enclosure'
+  | 'contentNodes.nodes.guid'
+  | 'contentNodes.nodes.id'
+  | 'contentNodes.nodes.internal.content'
+  | 'contentNodes.nodes.internal.contentDigest'
+  | 'contentNodes.nodes.internal.contentFilePath'
+  | 'contentNodes.nodes.internal.description'
+  | 'contentNodes.nodes.internal.fieldOwners'
+  | 'contentNodes.nodes.internal.ignoreType'
+  | 'contentNodes.nodes.internal.mediaType'
+  | 'contentNodes.nodes.internal.owner'
+  | 'contentNodes.nodes.internal.type'
+  | 'contentNodes.nodes.isContentNode'
+  | 'contentNodes.nodes.isTermNode'
+  | 'contentNodes.nodes.link'
+  | 'contentNodes.nodes.modified'
+  | 'contentNodes.nodes.modifiedGmt'
+  | 'contentNodes.nodes.nodeType'
+  | 'contentNodes.nodes.parent.children'
+  | 'contentNodes.nodes.parent.id'
+  | 'contentNodes.nodes.seo.breadcrumbs'
+  | 'contentNodes.nodes.seo.canonical'
+  | 'contentNodes.nodes.seo.cornerstone'
+  | 'contentNodes.nodes.seo.focuskw'
+  | 'contentNodes.nodes.seo.fullHead'
+  | 'contentNodes.nodes.seo.metaDesc'
+  | 'contentNodes.nodes.seo.metaKeywords'
+  | 'contentNodes.nodes.seo.metaRobotsNofollow'
+  | 'contentNodes.nodes.seo.metaRobotsNoindex'
+  | 'contentNodes.nodes.seo.opengraphAuthor'
+  | 'contentNodes.nodes.seo.opengraphDescription'
+  | 'contentNodes.nodes.seo.opengraphModifiedTime'
+  | 'contentNodes.nodes.seo.opengraphPublishedTime'
+  | 'contentNodes.nodes.seo.opengraphPublisher'
+  | 'contentNodes.nodes.seo.opengraphSiteName'
+  | 'contentNodes.nodes.seo.opengraphTitle'
+  | 'contentNodes.nodes.seo.opengraphType'
+  | 'contentNodes.nodes.seo.opengraphUrl'
+  | 'contentNodes.nodes.seo.readingTime'
+  | 'contentNodes.nodes.seo.title'
+  | 'contentNodes.nodes.seo.twitterDescription'
+  | 'contentNodes.nodes.seo.twitterTitle'
+  | 'contentNodes.nodes.slug'
+  | 'contentNodes.nodes.status'
+  | 'contentNodes.nodes.template.templateName'
+  | 'contentNodes.nodes.uri'
+  | 'count'
+  | 'databaseId'
+  | 'description'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'link'
+  | 'name'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'posts.nodes'
+  | 'posts.nodes.acfSampleField.fieldGroupName'
+  | 'posts.nodes.acfSampleField.test'
+  | 'posts.nodes.authorDatabaseId'
+  | 'posts.nodes.authorId'
+  | 'posts.nodes.categories.nodes'
+  | 'posts.nodes.children'
+  | 'posts.nodes.children.children'
+  | 'posts.nodes.children.id'
+  | 'posts.nodes.commentCount'
+  | 'posts.nodes.commentStatus'
+  | 'posts.nodes.comments.nodes'
+  | 'posts.nodes.content'
+  | 'posts.nodes.contentTypeName'
+  | 'posts.nodes.databaseId'
+  | 'posts.nodes.date'
+  | 'posts.nodes.dateGmt'
+  | 'posts.nodes.desiredSlug'
+  | 'posts.nodes.enclosure'
+  | 'posts.nodes.excerpt'
+  | 'posts.nodes.featuredImageDatabaseId'
+  | 'posts.nodes.featuredImageId'
+  | 'posts.nodes.guid'
+  | 'posts.nodes.id'
+  | 'posts.nodes.internal.content'
+  | 'posts.nodes.internal.contentDigest'
+  | 'posts.nodes.internal.contentFilePath'
+  | 'posts.nodes.internal.description'
+  | 'posts.nodes.internal.fieldOwners'
+  | 'posts.nodes.internal.ignoreType'
+  | 'posts.nodes.internal.mediaType'
+  | 'posts.nodes.internal.owner'
+  | 'posts.nodes.internal.type'
+  | 'posts.nodes.isContentNode'
+  | 'posts.nodes.isRevision'
+  | 'posts.nodes.isSticky'
+  | 'posts.nodes.isTermNode'
+  | 'posts.nodes.link'
+  | 'posts.nodes.modified'
+  | 'posts.nodes.modifiedGmt'
+  | 'posts.nodes.nodeType'
+  | 'posts.nodes.parent.children'
+  | 'posts.nodes.parent.id'
+  | 'posts.nodes.pingStatus'
+  | 'posts.nodes.pinged'
+  | 'posts.nodes.postFormats.nodes'
+  | 'posts.nodes.seo.breadcrumbs'
+  | 'posts.nodes.seo.canonical'
+  | 'posts.nodes.seo.cornerstone'
+  | 'posts.nodes.seo.focuskw'
+  | 'posts.nodes.seo.fullHead'
+  | 'posts.nodes.seo.metaDesc'
+  | 'posts.nodes.seo.metaKeywords'
+  | 'posts.nodes.seo.metaRobotsNofollow'
+  | 'posts.nodes.seo.metaRobotsNoindex'
+  | 'posts.nodes.seo.opengraphAuthor'
+  | 'posts.nodes.seo.opengraphDescription'
+  | 'posts.nodes.seo.opengraphModifiedTime'
+  | 'posts.nodes.seo.opengraphPublishedTime'
+  | 'posts.nodes.seo.opengraphPublisher'
+  | 'posts.nodes.seo.opengraphSiteName'
+  | 'posts.nodes.seo.opengraphTitle'
+  | 'posts.nodes.seo.opengraphType'
+  | 'posts.nodes.seo.opengraphUrl'
+  | 'posts.nodes.seo.readingTime'
+  | 'posts.nodes.seo.title'
+  | 'posts.nodes.seo.twitterDescription'
+  | 'posts.nodes.seo.twitterTitle'
+  | 'posts.nodes.slug'
+  | 'posts.nodes.status'
+  | 'posts.nodes.tags.nodes'
+  | 'posts.nodes.template.templateName'
+  | 'posts.nodes.terms.nodes'
+  | 'posts.nodes.title'
+  | 'posts.nodes.toPing'
+  | 'posts.nodes.uri'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'slug'
+  | 'taxonomyName'
+  | 'taxonomy.node.archivePath'
+  | 'taxonomy.node.children'
+  | 'taxonomy.node.children.children'
+  | 'taxonomy.node.children.id'
+  | 'taxonomy.node.connectedContentTypes.nodes'
+  | 'taxonomy.node.description'
+  | 'taxonomy.node.graphqlPluralName'
+  | 'taxonomy.node.graphqlSingleName'
+  | 'taxonomy.node.hierarchical'
+  | 'taxonomy.node.id'
+  | 'taxonomy.node.internal.content'
+  | 'taxonomy.node.internal.contentDigest'
+  | 'taxonomy.node.internal.contentFilePath'
+  | 'taxonomy.node.internal.description'
+  | 'taxonomy.node.internal.fieldOwners'
+  | 'taxonomy.node.internal.ignoreType'
+  | 'taxonomy.node.internal.mediaType'
+  | 'taxonomy.node.internal.owner'
+  | 'taxonomy.node.internal.type'
+  | 'taxonomy.node.label'
+  | 'taxonomy.node.name'
+  | 'taxonomy.node.nodeType'
+  | 'taxonomy.node.parent.children'
+  | 'taxonomy.node.parent.id'
+  | 'taxonomy.node.public'
+  | 'taxonomy.node.restBase'
+  | 'taxonomy.node.restControllerClass'
+  | 'taxonomy.node.showCloud'
+  | 'taxonomy.node.showInAdminColumn'
+  | 'taxonomy.node.showInGraphql'
+  | 'taxonomy.node.showInMenu'
+  | 'taxonomy.node.showInNavMenus'
+  | 'taxonomy.node.showInQuickEdit'
+  | 'taxonomy.node.showInRest'
+  | 'taxonomy.node.showUi'
+  | 'termGroupId'
+  | 'termTaxonomyId'
+  | 'uri';
 
 type WpPostFormatFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -10188,175 +17547,54 @@ type WpPostFormatGroupConnection = {
 
 
 type WpPostFormatGroupConnection_distinctArgs = {
-  field: WpPostFormatFieldSelector;
+  field: WpPostFormatFieldsEnum;
 };
 
 
 type WpPostFormatGroupConnection_groupArgs = {
-  field: WpPostFormatFieldSelector;
+  field: WpPostFormatFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpPostFormatGroupConnection_maxArgs = {
-  field: WpPostFormatFieldSelector;
+  field: WpPostFormatFieldsEnum;
 };
 
 
 type WpPostFormatGroupConnection_minArgs = {
-  field: WpPostFormatFieldSelector;
+  field: WpPostFormatFieldsEnum;
 };
 
 
 type WpPostFormatGroupConnection_sumArgs = {
-  field: WpPostFormatFieldSelector;
+  field: WpPostFormatFieldsEnum;
 };
 
 type WpPostFormatSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly contentNodes: InputMaybe<WpPostFormatToContentNodeConnectionTypeSortInput>;
-  readonly count: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly posts: InputMaybe<WpPostFormatToPostConnectionTypeSortInput>;
-  readonly seo: InputMaybe<WpTaxonomySEOSortInput>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly taxonomy: InputMaybe<WpPostFormatToTaxonomyConnectionEdgeTypeSortInput>;
-  readonly taxonomyName: InputMaybe<SortOrderEnum>;
-  readonly termGroupId: InputMaybe<SortOrderEnum>;
-  readonly termTaxonomyId: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-};
-
-/** Page Info on the &quot;PostFormatToContentNodeConnection&quot; */
-type WpPostFormatToContentNodeConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPostFormatToContentNodeConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPostFormatToContentNodeConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPostFormatToContentNodeConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpPostFormatFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the PostFormat type and the ContentNode type */
-type WpPostFormatToContentNodeConnectionType = WpConnectionType & WpContentNodeConnectionType & {
+type WpPostFormatToContentNodeConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPostFormatToContentNodeConnectionPageInfoType;
-};
-
-type WpPostFormatToContentNodeConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpContentNodeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPostFormatToContentNodeConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpPostFormatToContentNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPostFormatToContentNodeConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPostFormatToContentNodeConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpContentNodeSortInput>;
-  readonly pageInfo: InputMaybe<WpPostFormatToContentNodeConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;PostFormatToPostConnection&quot; */
-type WpPostFormatToPostConnectionPageInfoType = WpPageInfoType & WpPostConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPostFormatToPostConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPostFormatToPostConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPostFormatToPostConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the PostFormat type and the post type */
-type WpPostFormatToPostConnectionType = WpConnectionType & WpPostConnectionType & {
+type WpPostFormatToPostConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPost>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPostFormatToPostConnectionPageInfoType;
-};
-
-type WpPostFormatToPostConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpPostFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPostFormatToPostConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpPostFormatToPostConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPostFormatToPostConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPostFormatToPostConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpPostSortInput>;
-  readonly pageInfo: InputMaybe<WpPostFormatToPostConnectionPageInfoTypeSortInput>;
 };
 
 /** Connection between the PostFormat type and the Taxonomy type */
@@ -10365,16 +17603,8 @@ type WpPostFormatToTaxonomyConnectionEdgeType = WpEdgeType & WpOneToOneConnectio
   readonly node: WpTaxonomy;
 };
 
-type WpPostFormatToTaxonomyConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpTaxonomyFieldSelector>;
-};
-
 type WpPostFormatToTaxonomyConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpTaxonomyFilterInput>;
-};
-
-type WpPostFormatToTaxonomyConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpTaxonomySortInput>;
 };
 
 type WpPostGroupConnection = {
@@ -10393,383 +17623,84 @@ type WpPostGroupConnection = {
 
 
 type WpPostGroupConnection_distinctArgs = {
-  field: WpPostFieldSelector;
+  field: WpPostFieldsEnum;
 };
 
 
 type WpPostGroupConnection_groupArgs = {
-  field: WpPostFieldSelector;
+  field: WpPostFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpPostGroupConnection_maxArgs = {
-  field: WpPostFieldSelector;
+  field: WpPostFieldsEnum;
 };
 
 
 type WpPostGroupConnection_minArgs = {
-  field: WpPostFieldSelector;
+  field: WpPostFieldsEnum;
 };
 
 
 type WpPostGroupConnection_sumArgs = {
-  field: WpPostFieldSelector;
+  field: WpPostFieldsEnum;
 };
 
 type WpPostSortInput = {
-  readonly acfSampleField: InputMaybe<WpPost_AcfsamplefieldSortInput>;
-  readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeSortInput>;
-  readonly authorDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly authorId: InputMaybe<SortOrderEnum>;
-  readonly categories: InputMaybe<WpPostToCategoryConnectionTypeSortInput>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly commentCount: InputMaybe<SortOrderEnum>;
-  readonly commentStatus: InputMaybe<SortOrderEnum>;
-  readonly comments: InputMaybe<WpPostToCommentConnectionTypeSortInput>;
-  readonly content: InputMaybe<SortOrderEnum>;
-  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeSortInput>;
-  readonly contentTypeName: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly date: InputMaybe<SortOrderEnum>;
-  readonly dateGmt: InputMaybe<SortOrderEnum>;
-  readonly desiredSlug: InputMaybe<SortOrderEnum>;
-  readonly enclosure: InputMaybe<SortOrderEnum>;
-  readonly excerpt: InputMaybe<SortOrderEnum>;
-  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeSortInput>;
-  readonly featuredImageDatabaseId: InputMaybe<SortOrderEnum>;
-  readonly featuredImageId: InputMaybe<SortOrderEnum>;
-  readonly guid: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isRevision: InputMaybe<SortOrderEnum>;
-  readonly isSticky: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeSortInput>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly modified: InputMaybe<SortOrderEnum>;
-  readonly modifiedGmt: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly pingStatus: InputMaybe<SortOrderEnum>;
-  readonly pinged: InputMaybe<SortOrderEnum>;
-  readonly postFormats: InputMaybe<WpPostToPostFormatConnectionTypeSortInput>;
-  readonly seo: InputMaybe<WpPostTypeSEOSortInput>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly status: InputMaybe<SortOrderEnum>;
-  readonly tags: InputMaybe<WpPostToTagConnectionTypeSortInput>;
-  readonly template: InputMaybe<WpContentTemplateSortInput>;
-  readonly terms: InputMaybe<WpPostToTermNodeConnectionTypeSortInput>;
-  readonly title: InputMaybe<SortOrderEnum>;
-  readonly toPing: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-};
-
-/** Page Info on the &quot;PostToCategoryConnection&quot; */
-type WpPostToCategoryConnectionPageInfoType = WpCategoryConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPostToCategoryConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPostToCategoryConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPostToCategoryConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpPostFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the Post type and the category type */
-type WpPostToCategoryConnectionType = WpCategoryConnectionType & WpConnectionType & {
+type WpPostToCategoryConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpCategory>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPostToCategoryConnectionPageInfoType;
-};
-
-type WpPostToCategoryConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpCategoryFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPostToCategoryConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpPostToCategoryConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCategoryFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPostToCategoryConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPostToCategoryConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpCategorySortInput>;
-  readonly pageInfo: InputMaybe<WpPostToCategoryConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;PostToCommentConnection&quot; */
-type WpPostToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPostToCommentConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPostToCommentConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPostToCommentConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the Post type and the Comment type */
 type WpPostToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPostToCommentConnectionPageInfoType;
-};
-
-type WpPostToCommentConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpCommentFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPostToCommentConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpPostToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPostToCommentConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPostToCommentConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpCommentSortInput>;
-  readonly pageInfo: InputMaybe<WpPostToCommentConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;PostToPostFormatConnection&quot; */
-type WpPostToPostFormatConnectionPageInfoType = WpPageInfoType & WpPostFormatConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPostToPostFormatConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPostToPostFormatConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPostToPostFormatConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the Post type and the postFormat type */
-type WpPostToPostFormatConnectionType = WpConnectionType & WpPostFormatConnectionType & {
+type WpPostToPostFormatConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPostFormat>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPostToPostFormatConnectionPageInfoType;
-};
-
-type WpPostToPostFormatConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpPostFormatFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPostToPostFormatConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpPostToPostFormatConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFormatFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPostToPostFormatConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPostToPostFormatConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpPostFormatSortInput>;
-  readonly pageInfo: InputMaybe<WpPostToPostFormatConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;PostToTagConnection&quot; */
-type WpPostToTagConnectionPageInfoType = WpPageInfoType & WpTagConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPostToTagConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPostToTagConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPostToTagConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the Post type and the tag type */
-type WpPostToTagConnectionType = WpConnectionType & WpTagConnectionType & {
+type WpPostToTagConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpTag>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPostToTagConnectionPageInfoType;
-};
-
-type WpPostToTagConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpTagFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPostToTagConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpPostToTagConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpTagFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPostToTagConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPostToTagConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpTagSortInput>;
-  readonly pageInfo: InputMaybe<WpPostToTagConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;PostToTermNodeConnection&quot; */
-type WpPostToTermNodeConnectionPageInfoType = WpPageInfoType & WpTermNodeConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpPostToTermNodeConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpPostToTermNodeConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPostToTermNodeConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the Post type and the TermNode type */
 type WpPostToTermNodeConnectionType = WpConnectionType & WpTermNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpTermNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpPostToTermNodeConnectionPageInfoType;
-};
-
-type WpPostToTermNodeConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpTermNodeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpPostToTermNodeConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpPostToTermNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpTermNodeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpPostToTermNodeConnectionPageInfoTypeFilterInput>;
-};
-
-type WpPostToTermNodeConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpTermNodeSortInput>;
-  readonly pageInfo: InputMaybe<WpPostToTermNodeConnectionPageInfoTypeSortInput>;
 };
 
 /** Details for labels of the PostType */
@@ -10826,34 +17757,6 @@ type WpPostTypeLabelDetails = {
   readonly viewItems: Maybe<Scalars['String']>;
 };
 
-type WpPostTypeLabelDetailsFieldSelector = {
-  readonly addNew: InputMaybe<FieldSelectorEnum>;
-  readonly addNewItem: InputMaybe<FieldSelectorEnum>;
-  readonly allItems: InputMaybe<FieldSelectorEnum>;
-  readonly archives: InputMaybe<FieldSelectorEnum>;
-  readonly attributes: InputMaybe<FieldSelectorEnum>;
-  readonly editItem: InputMaybe<FieldSelectorEnum>;
-  readonly featuredImage: InputMaybe<FieldSelectorEnum>;
-  readonly filterItemsList: InputMaybe<FieldSelectorEnum>;
-  readonly insertIntoItem: InputMaybe<FieldSelectorEnum>;
-  readonly itemsList: InputMaybe<FieldSelectorEnum>;
-  readonly itemsListNavigation: InputMaybe<FieldSelectorEnum>;
-  readonly menuName: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly newItem: InputMaybe<FieldSelectorEnum>;
-  readonly notFound: InputMaybe<FieldSelectorEnum>;
-  readonly notFoundInTrash: InputMaybe<FieldSelectorEnum>;
-  readonly parentItemColon: InputMaybe<FieldSelectorEnum>;
-  readonly removeFeaturedImage: InputMaybe<FieldSelectorEnum>;
-  readonly searchItems: InputMaybe<FieldSelectorEnum>;
-  readonly setFeaturedImage: InputMaybe<FieldSelectorEnum>;
-  readonly singularName: InputMaybe<FieldSelectorEnum>;
-  readonly uploadedToThisItem: InputMaybe<FieldSelectorEnum>;
-  readonly useFeaturedImage: InputMaybe<FieldSelectorEnum>;
-  readonly viewItem: InputMaybe<FieldSelectorEnum>;
-  readonly viewItems: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpPostTypeLabelDetailsFilterInput = {
   readonly addNew: InputMaybe<StringQueryOperatorInput>;
   readonly addNewItem: InputMaybe<StringQueryOperatorInput>;
@@ -10880,34 +17783,6 @@ type WpPostTypeLabelDetailsFilterInput = {
   readonly useFeaturedImage: InputMaybe<StringQueryOperatorInput>;
   readonly viewItem: InputMaybe<StringQueryOperatorInput>;
   readonly viewItems: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPostTypeLabelDetailsSortInput = {
-  readonly addNew: InputMaybe<SortOrderEnum>;
-  readonly addNewItem: InputMaybe<SortOrderEnum>;
-  readonly allItems: InputMaybe<SortOrderEnum>;
-  readonly archives: InputMaybe<SortOrderEnum>;
-  readonly attributes: InputMaybe<SortOrderEnum>;
-  readonly editItem: InputMaybe<SortOrderEnum>;
-  readonly featuredImage: InputMaybe<SortOrderEnum>;
-  readonly filterItemsList: InputMaybe<SortOrderEnum>;
-  readonly insertIntoItem: InputMaybe<SortOrderEnum>;
-  readonly itemsList: InputMaybe<SortOrderEnum>;
-  readonly itemsListNavigation: InputMaybe<SortOrderEnum>;
-  readonly menuName: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly newItem: InputMaybe<SortOrderEnum>;
-  readonly notFound: InputMaybe<SortOrderEnum>;
-  readonly notFoundInTrash: InputMaybe<SortOrderEnum>;
-  readonly parentItemColon: InputMaybe<SortOrderEnum>;
-  readonly removeFeaturedImage: InputMaybe<SortOrderEnum>;
-  readonly searchItems: InputMaybe<SortOrderEnum>;
-  readonly setFeaturedImage: InputMaybe<SortOrderEnum>;
-  readonly singularName: InputMaybe<SortOrderEnum>;
-  readonly uploadedToThisItem: InputMaybe<SortOrderEnum>;
-  readonly useFeaturedImage: InputMaybe<SortOrderEnum>;
-  readonly viewItem: InputMaybe<SortOrderEnum>;
-  readonly viewItems: InputMaybe<SortOrderEnum>;
 };
 
 type WpPostTypeSEO = {
@@ -10938,34 +17813,6 @@ type WpPostTypeSEO = {
   readonly twitterTitle: Maybe<Scalars['String']>;
 };
 
-type WpPostTypeSEOFieldSelector = {
-  readonly breadcrumbs: InputMaybe<WpSEOPostTypeBreadcrumbsFieldSelector>;
-  readonly canonical: InputMaybe<FieldSelectorEnum>;
-  readonly cornerstone: InputMaybe<FieldSelectorEnum>;
-  readonly focuskw: InputMaybe<FieldSelectorEnum>;
-  readonly fullHead: InputMaybe<FieldSelectorEnum>;
-  readonly metaDesc: InputMaybe<FieldSelectorEnum>;
-  readonly metaKeywords: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsNofollow: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsNoindex: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphAuthor: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphDescription: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphImage: InputMaybe<WpMediaItemFieldSelector>;
-  readonly opengraphModifiedTime: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphPublishedTime: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphPublisher: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphSiteName: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphTitle: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphType: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphUrl: InputMaybe<FieldSelectorEnum>;
-  readonly readingTime: InputMaybe<FieldSelectorEnum>;
-  readonly schema: InputMaybe<WpSEOPostTypeSchemaFieldSelector>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-  readonly twitterDescription: InputMaybe<FieldSelectorEnum>;
-  readonly twitterImage: InputMaybe<WpMediaItemFieldSelector>;
-  readonly twitterTitle: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpPostTypeSEOFilterInput = {
   readonly breadcrumbs: InputMaybe<WpSEOPostTypeBreadcrumbsFilterListInput>;
   readonly canonical: InputMaybe<StringQueryOperatorInput>;
@@ -10994,53 +17841,15 @@ type WpPostTypeSEOFilterInput = {
   readonly twitterTitle: InputMaybe<StringQueryOperatorInput>;
 };
 
-type WpPostTypeSEOSortInput = {
-  readonly breadcrumbs: InputMaybe<WpSEOPostTypeBreadcrumbsSortInput>;
-  readonly canonical: InputMaybe<SortOrderEnum>;
-  readonly cornerstone: InputMaybe<SortOrderEnum>;
-  readonly focuskw: InputMaybe<SortOrderEnum>;
-  readonly fullHead: InputMaybe<SortOrderEnum>;
-  readonly metaDesc: InputMaybe<SortOrderEnum>;
-  readonly metaKeywords: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsNofollow: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsNoindex: InputMaybe<SortOrderEnum>;
-  readonly opengraphAuthor: InputMaybe<SortOrderEnum>;
-  readonly opengraphDescription: InputMaybe<SortOrderEnum>;
-  readonly opengraphImage: InputMaybe<WpMediaItemSortInput>;
-  readonly opengraphModifiedTime: InputMaybe<SortOrderEnum>;
-  readonly opengraphPublishedTime: InputMaybe<SortOrderEnum>;
-  readonly opengraphPublisher: InputMaybe<SortOrderEnum>;
-  readonly opengraphSiteName: InputMaybe<SortOrderEnum>;
-  readonly opengraphTitle: InputMaybe<SortOrderEnum>;
-  readonly opengraphType: InputMaybe<SortOrderEnum>;
-  readonly opengraphUrl: InputMaybe<SortOrderEnum>;
-  readonly readingTime: InputMaybe<SortOrderEnum>;
-  readonly schema: InputMaybe<WpSEOPostTypeSchemaSortInput>;
-  readonly title: InputMaybe<SortOrderEnum>;
-  readonly twitterDescription: InputMaybe<SortOrderEnum>;
-  readonly twitterImage: InputMaybe<WpMediaItemSortInput>;
-  readonly twitterTitle: InputMaybe<SortOrderEnum>;
-};
-
 /** Field Group */
 type WpPost_Acfsamplefield = {
   readonly fieldGroupName: Maybe<Scalars['String']>;
   readonly test: Maybe<Scalars['String']>;
 };
 
-type WpPost_AcfsamplefieldFieldSelector = {
-  readonly fieldGroupName: InputMaybe<FieldSelectorEnum>;
-  readonly test: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpPost_AcfsamplefieldFilterInput = {
   readonly fieldGroupName: InputMaybe<StringQueryOperatorInput>;
   readonly test: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpPost_AcfsamplefieldSortInput = {
-  readonly fieldGroupName: InputMaybe<SortOrderEnum>;
-  readonly test: InputMaybe<SortOrderEnum>;
 };
 
 /** The reading setting type */
@@ -11055,25 +17864,11 @@ type WpReadingSettings = {
   readonly showOnFront: Maybe<Scalars['String']>;
 };
 
-type WpReadingSettingsFieldSelector = {
-  readonly pageForPosts: InputMaybe<FieldSelectorEnum>;
-  readonly pageOnFront: InputMaybe<FieldSelectorEnum>;
-  readonly postsPerPage: InputMaybe<FieldSelectorEnum>;
-  readonly showOnFront: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpReadingSettingsFilterInput = {
   readonly pageForPosts: InputMaybe<IntQueryOperatorInput>;
   readonly pageOnFront: InputMaybe<IntQueryOperatorInput>;
   readonly postsPerPage: InputMaybe<IntQueryOperatorInput>;
   readonly showOnFront: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpReadingSettingsSortInput = {
-  readonly pageForPosts: InputMaybe<SortOrderEnum>;
-  readonly pageOnFront: InputMaybe<SortOrderEnum>;
-  readonly postsPerPage: InputMaybe<SortOrderEnum>;
-  readonly showOnFront: InputMaybe<SortOrderEnum>;
 };
 
 /** The Yoast SEO breadcrumb config */
@@ -11089,18 +17884,6 @@ type WpSEOBreadcrumbs = {
   readonly showBlogPage: Maybe<Scalars['Boolean']>;
 };
 
-type WpSEOBreadcrumbsFieldSelector = {
-  readonly archivePrefix: InputMaybe<FieldSelectorEnum>;
-  readonly boldLast: InputMaybe<FieldSelectorEnum>;
-  readonly enabled: InputMaybe<FieldSelectorEnum>;
-  readonly homeText: InputMaybe<FieldSelectorEnum>;
-  readonly notFoundText: InputMaybe<FieldSelectorEnum>;
-  readonly prefix: InputMaybe<FieldSelectorEnum>;
-  readonly searchPrefix: InputMaybe<FieldSelectorEnum>;
-  readonly separator: InputMaybe<FieldSelectorEnum>;
-  readonly showBlogPage: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOBreadcrumbsFilterInput = {
   readonly archivePrefix: InputMaybe<StringQueryOperatorInput>;
   readonly boldLast: InputMaybe<BooleanQueryOperatorInput>;
@@ -11111,18 +17894,6 @@ type WpSEOBreadcrumbsFilterInput = {
   readonly searchPrefix: InputMaybe<StringQueryOperatorInput>;
   readonly separator: InputMaybe<StringQueryOperatorInput>;
   readonly showBlogPage: InputMaybe<BooleanQueryOperatorInput>;
-};
-
-type WpSEOBreadcrumbsSortInput = {
-  readonly archivePrefix: InputMaybe<SortOrderEnum>;
-  readonly boldLast: InputMaybe<SortOrderEnum>;
-  readonly enabled: InputMaybe<SortOrderEnum>;
-  readonly homeText: InputMaybe<SortOrderEnum>;
-  readonly notFoundText: InputMaybe<SortOrderEnum>;
-  readonly prefix: InputMaybe<SortOrderEnum>;
-  readonly searchPrefix: InputMaybe<SortOrderEnum>;
-  readonly separator: InputMaybe<SortOrderEnum>;
-  readonly showBlogPage: InputMaybe<SortOrderEnum>;
 };
 
 /** Types of cards */
@@ -11149,17 +17920,6 @@ type WpSEOConfig = {
   readonly webmaster: Maybe<WpSEOWebmaster>;
 };
 
-type WpSEOConfigFieldSelector = {
-  readonly breadcrumbs: InputMaybe<WpSEOBreadcrumbsFieldSelector>;
-  readonly contentTypes: InputMaybe<WpSEOContentTypesFieldSelector>;
-  readonly meta: InputMaybe<WpSEOGlobalMetaFieldSelector>;
-  readonly openGraph: InputMaybe<WpSEOOpenGraphFieldSelector>;
-  readonly redirects: InputMaybe<WpSEORedirectFieldSelector>;
-  readonly schema: InputMaybe<WpSEOSchemaFieldSelector>;
-  readonly social: InputMaybe<WpSEOSocialFieldSelector>;
-  readonly webmaster: InputMaybe<WpSEOWebmasterFieldSelector>;
-};
-
 type WpSEOConfigFilterInput = {
   readonly breadcrumbs: InputMaybe<WpSEOBreadcrumbsFilterInput>;
   readonly contentTypes: InputMaybe<WpSEOContentTypesFilterInput>;
@@ -11169,17 +17929,6 @@ type WpSEOConfigFilterInput = {
   readonly schema: InputMaybe<WpSEOSchemaFilterInput>;
   readonly social: InputMaybe<WpSEOSocialFilterInput>;
   readonly webmaster: InputMaybe<WpSEOWebmasterFilterInput>;
-};
-
-type WpSEOConfigSortInput = {
-  readonly breadcrumbs: InputMaybe<WpSEOBreadcrumbsSortInput>;
-  readonly contentTypes: InputMaybe<WpSEOContentTypesSortInput>;
-  readonly meta: InputMaybe<WpSEOGlobalMetaSortInput>;
-  readonly openGraph: InputMaybe<WpSEOOpenGraphSortInput>;
-  readonly redirects: InputMaybe<WpSEORedirectSortInput>;
-  readonly schema: InputMaybe<WpSEOSchemaSortInput>;
-  readonly social: InputMaybe<WpSEOSocialSortInput>;
-  readonly webmaster: InputMaybe<WpSEOWebmasterSortInput>;
 };
 
 /** The Yoast SEO search appearance content types fields */
@@ -11206,19 +17955,6 @@ type WpSEOContentTypeArchive = {
   readonly title: Maybe<Scalars['String']>;
 };
 
-type WpSEOContentTypeArchiveFieldSelector = {
-  readonly archiveLink: InputMaybe<FieldSelectorEnum>;
-  readonly breadcrumbTitle: InputMaybe<FieldSelectorEnum>;
-  readonly fullHead: InputMaybe<FieldSelectorEnum>;
-  readonly hasArchive: InputMaybe<FieldSelectorEnum>;
-  readonly metaDesc: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsFollow: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsIndex: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsNofollow: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsNoindex: InputMaybe<FieldSelectorEnum>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOContentTypeArchiveFilterInput = {
   readonly archiveLink: InputMaybe<StringQueryOperatorInput>;
   readonly breadcrumbTitle: InputMaybe<StringQueryOperatorInput>;
@@ -11232,28 +17968,6 @@ type WpSEOContentTypeArchiveFilterInput = {
   readonly title: InputMaybe<StringQueryOperatorInput>;
 };
 
-type WpSEOContentTypeArchiveSortInput = {
-  readonly archiveLink: InputMaybe<SortOrderEnum>;
-  readonly breadcrumbTitle: InputMaybe<SortOrderEnum>;
-  readonly fullHead: InputMaybe<SortOrderEnum>;
-  readonly hasArchive: InputMaybe<SortOrderEnum>;
-  readonly metaDesc: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsFollow: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsIndex: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsNofollow: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsNoindex: InputMaybe<SortOrderEnum>;
-  readonly title: InputMaybe<SortOrderEnum>;
-};
-
-type WpSEOContentTypeFieldSelector = {
-  readonly archive: InputMaybe<WpSEOContentTypeArchiveFieldSelector>;
-  readonly metaDesc: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsNoindex: InputMaybe<FieldSelectorEnum>;
-  readonly schema: InputMaybe<WpSEOPageInfoSchemaFieldSelector>;
-  readonly schemaType: InputMaybe<FieldSelectorEnum>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOContentTypeFilterInput = {
   readonly archive: InputMaybe<WpSEOContentTypeArchiveFilterInput>;
   readonly metaDesc: InputMaybe<StringQueryOperatorInput>;
@@ -11261,15 +17975,6 @@ type WpSEOContentTypeFilterInput = {
   readonly schema: InputMaybe<WpSEOPageInfoSchemaFilterInput>;
   readonly schemaType: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOContentTypeSortInput = {
-  readonly archive: InputMaybe<WpSEOContentTypeArchiveSortInput>;
-  readonly metaDesc: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsNoindex: InputMaybe<SortOrderEnum>;
-  readonly schema: InputMaybe<WpSEOPageInfoSchemaSortInput>;
-  readonly schemaType: InputMaybe<SortOrderEnum>;
-  readonly title: InputMaybe<SortOrderEnum>;
 };
 
 /** The Yoast SEO search appearance content types */
@@ -11280,25 +17985,11 @@ type WpSEOContentTypes = {
   readonly post: Maybe<WpSEOContentType>;
 };
 
-type WpSEOContentTypesFieldSelector = {
-  readonly actionMonitorAction: InputMaybe<WpSEOContentTypeFieldSelector>;
-  readonly mediaItem: InputMaybe<WpSEOContentTypeFieldSelector>;
-  readonly page: InputMaybe<WpSEOContentTypeFieldSelector>;
-  readonly post: InputMaybe<WpSEOContentTypeFieldSelector>;
-};
-
 type WpSEOContentTypesFilterInput = {
   readonly actionMonitorAction: InputMaybe<WpSEOContentTypeFilterInput>;
   readonly mediaItem: InputMaybe<WpSEOContentTypeFilterInput>;
   readonly page: InputMaybe<WpSEOContentTypeFilterInput>;
   readonly post: InputMaybe<WpSEOContentTypeFilterInput>;
-};
-
-type WpSEOContentTypesSortInput = {
-  readonly actionMonitorAction: InputMaybe<WpSEOContentTypeSortInput>;
-  readonly mediaItem: InputMaybe<WpSEOContentTypeSortInput>;
-  readonly page: InputMaybe<WpSEOContentTypeSortInput>;
-  readonly post: InputMaybe<WpSEOContentTypeSortInput>;
 };
 
 /** The Yoast SEO meta data */
@@ -11325,19 +18016,9 @@ type WpSEOGlobalMeta404 = {
   readonly title: Maybe<Scalars['String']>;
 };
 
-type WpSEOGlobalMeta404FieldSelector = {
-  readonly breadcrumb: InputMaybe<FieldSelectorEnum>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOGlobalMeta404FilterInput = {
   readonly breadcrumb: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOGlobalMeta404SortInput = {
-  readonly breadcrumb: InputMaybe<SortOrderEnum>;
-  readonly title: InputMaybe<SortOrderEnum>;
 };
 
 /** The Yoast SEO Author data */
@@ -11346,19 +18027,9 @@ type WpSEOGlobalMetaAuthor = {
   readonly title: Maybe<Scalars['String']>;
 };
 
-type WpSEOGlobalMetaAuthorFieldSelector = {
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOGlobalMetaAuthorFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOGlobalMetaAuthorSortInput = {
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly title: InputMaybe<SortOrderEnum>;
 };
 
 /** The Yoast SEO meta config data */
@@ -11366,30 +18037,14 @@ type WpSEOGlobalMetaConfig = {
   readonly separator: Maybe<Scalars['String']>;
 };
 
-type WpSEOGlobalMetaConfigFieldSelector = {
-  readonly separator: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOGlobalMetaConfigFilterInput = {
   readonly separator: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOGlobalMetaConfigSortInput = {
-  readonly separator: InputMaybe<SortOrderEnum>;
 };
 
 /** The Yoast SEO Date data */
 type WpSEOGlobalMetaDate = {
   readonly description: Maybe<Scalars['String']>;
   readonly title: Maybe<Scalars['String']>;
-};
-
-type WpSEOGlobalMetaFieldSelector = {
-  readonly author: InputMaybe<WpSEOGlobalMetaAuthorFieldSelector>;
-  readonly config: InputMaybe<WpSEOGlobalMetaConfigFieldSelector>;
-  readonly date: InputMaybe<FieldSelectorEnum>;
-  readonly homepage: InputMaybe<WpSEOGlobalMetaHomeFieldSelector>;
-  readonly notFound: InputMaybe<WpSEOGlobalMeta404FieldSelector>;
 };
 
 type WpSEOGlobalMetaFilterInput = {
@@ -11406,38 +18061,15 @@ type WpSEOGlobalMetaHome = {
   readonly title: Maybe<Scalars['String']>;
 };
 
-type WpSEOGlobalMetaHomeFieldSelector = {
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOGlobalMetaHomeFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOGlobalMetaHomeSortInput = {
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly title: InputMaybe<SortOrderEnum>;
-};
-
-type WpSEOGlobalMetaSortInput = {
-  readonly author: InputMaybe<WpSEOGlobalMetaAuthorSortInput>;
-  readonly config: InputMaybe<WpSEOGlobalMetaConfigSortInput>;
-  readonly date: InputMaybe<SortOrderEnum>;
-  readonly homepage: InputMaybe<WpSEOGlobalMetaHomeSortInput>;
-  readonly notFound: InputMaybe<WpSEOGlobalMeta404SortInput>;
 };
 
 /** The Open Graph data */
 type WpSEOOpenGraph = {
   readonly defaultImage: Maybe<WpMediaItem>;
   readonly frontPage: Maybe<WpSEOOpenGraphFrontPage>;
-};
-
-type WpSEOOpenGraphFieldSelector = {
-  readonly defaultImage: InputMaybe<WpMediaItemFieldSelector>;
-  readonly frontPage: InputMaybe<WpSEOOpenGraphFrontPageFieldSelector>;
 };
 
 type WpSEOOpenGraphFilterInput = {
@@ -11452,27 +18084,10 @@ type WpSEOOpenGraphFrontPage = {
   readonly title: Maybe<Scalars['String']>;
 };
 
-type WpSEOOpenGraphFrontPageFieldSelector = {
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly image: InputMaybe<WpMediaItemFieldSelector>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOOpenGraphFrontPageFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly image: InputMaybe<WpMediaItemFilterInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOOpenGraphFrontPageSortInput = {
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly image: InputMaybe<WpMediaItemSortInput>;
-  readonly title: InputMaybe<SortOrderEnum>;
-};
-
-type WpSEOOpenGraphSortInput = {
-  readonly defaultImage: InputMaybe<WpMediaItemSortInput>;
-  readonly frontPage: InputMaybe<WpSEOOpenGraphFrontPageSortInput>;
 };
 
 /** The Schema for post type */
@@ -11480,26 +18095,13 @@ type WpSEOPageInfoSchema = {
   readonly raw: Maybe<Scalars['String']>;
 };
 
-type WpSEOPageInfoSchemaFieldSelector = {
-  readonly raw: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOPageInfoSchemaFilterInput = {
   readonly raw: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOPageInfoSchemaSortInput = {
-  readonly raw: InputMaybe<SortOrderEnum>;
 };
 
 type WpSEOPostTypeBreadcrumbs = {
   readonly text: Maybe<Scalars['String']>;
   readonly url: Maybe<Scalars['String']>;
-};
-
-type WpSEOPostTypeBreadcrumbsFieldSelector = {
-  readonly text: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
 };
 
 type WpSEOPostTypeBreadcrumbsFilterInput = {
@@ -11511,39 +18113,11 @@ type WpSEOPostTypeBreadcrumbsFilterListInput = {
   readonly elemMatch: InputMaybe<WpSEOPostTypeBreadcrumbsFilterInput>;
 };
 
-type WpSEOPostTypeBreadcrumbsSortInput = {
-  readonly text: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-};
-
-/** The page info SEO details */
-type WpSEOPostTypePageInfoType = {
-  readonly schema: Maybe<WpSEOPageInfoSchema>;
-};
-
-type WpSEOPostTypePageInfoTypeFieldSelector = {
-  readonly schema: InputMaybe<WpSEOPageInfoSchemaFieldSelector>;
-};
-
-type WpSEOPostTypePageInfoTypeFilterInput = {
-  readonly schema: InputMaybe<WpSEOPageInfoSchemaFilterInput>;
-};
-
-type WpSEOPostTypePageInfoTypeSortInput = {
-  readonly schema: InputMaybe<WpSEOPageInfoSchemaSortInput>;
-};
-
 /** The Schema types */
 type WpSEOPostTypeSchema = {
   readonly articleType: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly pageType: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly raw: Maybe<Scalars['String']>;
-};
-
-type WpSEOPostTypeSchemaFieldSelector = {
-  readonly articleType: InputMaybe<FieldSelectorEnum>;
-  readonly pageType: InputMaybe<FieldSelectorEnum>;
-  readonly raw: InputMaybe<FieldSelectorEnum>;
 };
 
 type WpSEOPostTypeSchemaFilterInput = {
@@ -11552,25 +18126,12 @@ type WpSEOPostTypeSchemaFilterInput = {
   readonly raw: InputMaybe<StringQueryOperatorInput>;
 };
 
-type WpSEOPostTypeSchemaSortInput = {
-  readonly articleType: InputMaybe<SortOrderEnum>;
-  readonly pageType: InputMaybe<SortOrderEnum>;
-  readonly raw: InputMaybe<SortOrderEnum>;
-};
-
 /** The Yoast redirect data  (Yoast Premium only) */
 type WpSEORedirect = {
   readonly format: Maybe<Scalars['String']>;
   readonly origin: Maybe<Scalars['String']>;
   readonly target: Maybe<Scalars['String']>;
   readonly type: Maybe<Scalars['Int']>;
-};
-
-type WpSEORedirectFieldSelector = {
-  readonly format: InputMaybe<FieldSelectorEnum>;
-  readonly origin: InputMaybe<FieldSelectorEnum>;
-  readonly target: InputMaybe<FieldSelectorEnum>;
-  readonly type: InputMaybe<FieldSelectorEnum>;
 };
 
 type WpSEORedirectFilterInput = {
@@ -11582,13 +18143,6 @@ type WpSEORedirectFilterInput = {
 
 type WpSEORedirectFilterListInput = {
   readonly elemMatch: InputMaybe<WpSEORedirectFilterInput>;
-};
-
-type WpSEORedirectSortInput = {
-  readonly format: InputMaybe<SortOrderEnum>;
-  readonly origin: InputMaybe<SortOrderEnum>;
-  readonly target: InputMaybe<SortOrderEnum>;
-  readonly type: InputMaybe<SortOrderEnum>;
 };
 
 /** The Yoast SEO schema data */
@@ -11606,20 +18160,6 @@ type WpSEOSchema = {
   readonly wordpressSiteName: Maybe<Scalars['String']>;
 };
 
-type WpSEOSchemaFieldSelector = {
-  readonly companyLogo: InputMaybe<WpMediaItemFieldSelector>;
-  readonly companyName: InputMaybe<FieldSelectorEnum>;
-  readonly companyOrPerson: InputMaybe<FieldSelectorEnum>;
-  readonly homeUrl: InputMaybe<FieldSelectorEnum>;
-  readonly inLanguage: InputMaybe<FieldSelectorEnum>;
-  readonly logo: InputMaybe<WpMediaItemFieldSelector>;
-  readonly personLogo: InputMaybe<WpMediaItemFieldSelector>;
-  readonly personName: InputMaybe<FieldSelectorEnum>;
-  readonly siteName: InputMaybe<FieldSelectorEnum>;
-  readonly siteUrl: InputMaybe<FieldSelectorEnum>;
-  readonly wordpressSiteName: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOSchemaFilterInput = {
   readonly companyLogo: InputMaybe<WpMediaItemFilterInput>;
   readonly companyName: InputMaybe<StringQueryOperatorInput>;
@@ -11632,20 +18172,6 @@ type WpSEOSchemaFilterInput = {
   readonly siteName: InputMaybe<StringQueryOperatorInput>;
   readonly siteUrl: InputMaybe<StringQueryOperatorInput>;
   readonly wordpressSiteName: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOSchemaSortInput = {
-  readonly companyLogo: InputMaybe<WpMediaItemSortInput>;
-  readonly companyName: InputMaybe<SortOrderEnum>;
-  readonly companyOrPerson: InputMaybe<SortOrderEnum>;
-  readonly homeUrl: InputMaybe<SortOrderEnum>;
-  readonly inLanguage: InputMaybe<SortOrderEnum>;
-  readonly logo: InputMaybe<WpMediaItemSortInput>;
-  readonly personLogo: InputMaybe<WpMediaItemSortInput>;
-  readonly personName: InputMaybe<SortOrderEnum>;
-  readonly siteName: InputMaybe<SortOrderEnum>;
-  readonly siteUrl: InputMaybe<SortOrderEnum>;
-  readonly wordpressSiteName: InputMaybe<SortOrderEnum>;
 };
 
 /** The Yoast SEO Social media links */
@@ -11666,31 +18192,9 @@ type WpSEOSocialFacebook = {
   readonly url: Maybe<Scalars['String']>;
 };
 
-type WpSEOSocialFacebookFieldSelector = {
-  readonly defaultImage: InputMaybe<WpMediaItemFieldSelector>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOSocialFacebookFilterInput = {
   readonly defaultImage: InputMaybe<WpMediaItemFilterInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOSocialFacebookSortInput = {
-  readonly defaultImage: InputMaybe<WpMediaItemSortInput>;
-  readonly url: InputMaybe<SortOrderEnum>;
-};
-
-type WpSEOSocialFieldSelector = {
-  readonly facebook: InputMaybe<WpSEOSocialFacebookFieldSelector>;
-  readonly instagram: InputMaybe<WpSEOSocialInstagramFieldSelector>;
-  readonly linkedIn: InputMaybe<WpSEOSocialLinkedInFieldSelector>;
-  readonly mySpace: InputMaybe<WpSEOSocialMySpaceFieldSelector>;
-  readonly otherSocials: InputMaybe<FieldSelectorEnum>;
-  readonly pinterest: InputMaybe<WpSEOSocialPinterestFieldSelector>;
-  readonly twitter: InputMaybe<WpSEOSocialTwitterFieldSelector>;
-  readonly wikipedia: InputMaybe<WpSEOSocialWikipediaFieldSelector>;
-  readonly youTube: InputMaybe<WpSEOSocialYoutubeFieldSelector>;
 };
 
 type WpSEOSocialFilterInput = {
@@ -11709,48 +18213,24 @@ type WpSEOSocialInstagram = {
   readonly url: Maybe<Scalars['String']>;
 };
 
-type WpSEOSocialInstagramFieldSelector = {
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOSocialInstagramFilterInput = {
   readonly url: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOSocialInstagramSortInput = {
-  readonly url: InputMaybe<SortOrderEnum>;
 };
 
 type WpSEOSocialLinkedIn = {
   readonly url: Maybe<Scalars['String']>;
 };
 
-type WpSEOSocialLinkedInFieldSelector = {
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOSocialLinkedInFilterInput = {
   readonly url: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOSocialLinkedInSortInput = {
-  readonly url: InputMaybe<SortOrderEnum>;
 };
 
 type WpSEOSocialMySpace = {
   readonly url: Maybe<Scalars['String']>;
 };
 
-type WpSEOSocialMySpaceFieldSelector = {
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOSocialMySpaceFilterInput = {
   readonly url: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOSocialMySpaceSortInput = {
-  readonly url: InputMaybe<SortOrderEnum>;
 };
 
 type WpSEOSocialPinterest = {
@@ -11758,31 +18238,9 @@ type WpSEOSocialPinterest = {
   readonly url: Maybe<Scalars['String']>;
 };
 
-type WpSEOSocialPinterestFieldSelector = {
-  readonly metaTag: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOSocialPinterestFilterInput = {
   readonly metaTag: InputMaybe<StringQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOSocialPinterestSortInput = {
-  readonly metaTag: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-};
-
-type WpSEOSocialSortInput = {
-  readonly facebook: InputMaybe<WpSEOSocialFacebookSortInput>;
-  readonly instagram: InputMaybe<WpSEOSocialInstagramSortInput>;
-  readonly linkedIn: InputMaybe<WpSEOSocialLinkedInSortInput>;
-  readonly mySpace: InputMaybe<WpSEOSocialMySpaceSortInput>;
-  readonly otherSocials: InputMaybe<SortOrderEnum>;
-  readonly pinterest: InputMaybe<WpSEOSocialPinterestSortInput>;
-  readonly twitter: InputMaybe<WpSEOSocialTwitterSortInput>;
-  readonly wikipedia: InputMaybe<WpSEOSocialWikipediaSortInput>;
-  readonly youTube: InputMaybe<WpSEOSocialYoutubeSortInput>;
 };
 
 type WpSEOSocialTwitter = {
@@ -11790,51 +18248,25 @@ type WpSEOSocialTwitter = {
   readonly username: Maybe<Scalars['String']>;
 };
 
-type WpSEOSocialTwitterFieldSelector = {
-  readonly cardType: InputMaybe<FieldSelectorEnum>;
-  readonly username: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOSocialTwitterFilterInput = {
   readonly cardType: InputMaybe<WpSEOCardTypeQueryOperatorInput>;
   readonly username: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOSocialTwitterSortInput = {
-  readonly cardType: InputMaybe<SortOrderEnum>;
-  readonly username: InputMaybe<SortOrderEnum>;
 };
 
 type WpSEOSocialWikipedia = {
   readonly url: Maybe<Scalars['String']>;
 };
 
-type WpSEOSocialWikipediaFieldSelector = {
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOSocialWikipediaFilterInput = {
   readonly url: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOSocialWikipediaSortInput = {
-  readonly url: InputMaybe<SortOrderEnum>;
 };
 
 type WpSEOSocialYoutube = {
   readonly url: Maybe<Scalars['String']>;
 };
 
-type WpSEOSocialYoutubeFieldSelector = {
-  readonly url: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOSocialYoutubeFilterInput = {
   readonly url: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOSocialYoutubeSortInput = {
-  readonly url: InputMaybe<SortOrderEnum>;
 };
 
 /** The Schema types for Taxonomy */
@@ -11842,16 +18274,8 @@ type WpSEOTaxonomySchema = {
   readonly raw: Maybe<Scalars['String']>;
 };
 
-type WpSEOTaxonomySchemaFieldSelector = {
-  readonly raw: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOTaxonomySchemaFilterInput = {
   readonly raw: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOTaxonomySchemaSortInput = {
-  readonly raw: InputMaybe<SortOrderEnum>;
 };
 
 type WpSEOUser = {
@@ -11872,26 +18296,6 @@ type WpSEOUser = {
   readonly twitterDescription: Maybe<Scalars['String']>;
   readonly twitterImage: Maybe<WpMediaItem>;
   readonly twitterTitle: Maybe<Scalars['String']>;
-};
-
-type WpSEOUserFieldSelector = {
-  readonly breadcrumbTitle: InputMaybe<FieldSelectorEnum>;
-  readonly canonical: InputMaybe<FieldSelectorEnum>;
-  readonly fullHead: InputMaybe<FieldSelectorEnum>;
-  readonly language: InputMaybe<FieldSelectorEnum>;
-  readonly metaDesc: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsNofollow: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsNoindex: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphDescription: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphImage: InputMaybe<WpMediaItemFieldSelector>;
-  readonly opengraphTitle: InputMaybe<FieldSelectorEnum>;
-  readonly region: InputMaybe<FieldSelectorEnum>;
-  readonly schema: InputMaybe<WpSEOUserSchemaFieldSelector>;
-  readonly social: InputMaybe<WpSEOUserSocialFieldSelector>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-  readonly twitterDescription: InputMaybe<FieldSelectorEnum>;
-  readonly twitterImage: InputMaybe<WpMediaItemFieldSelector>;
-  readonly twitterTitle: InputMaybe<FieldSelectorEnum>;
 };
 
 type WpSEOUserFilterInput = {
@@ -11921,22 +18325,10 @@ type WpSEOUserSchema = {
   readonly raw: Maybe<Scalars['String']>;
 };
 
-type WpSEOUserSchemaFieldSelector = {
-  readonly articleType: InputMaybe<FieldSelectorEnum>;
-  readonly pageType: InputMaybe<FieldSelectorEnum>;
-  readonly raw: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOUserSchemaFilterInput = {
   readonly articleType: InputMaybe<StringQueryOperatorInput>;
   readonly pageType: InputMaybe<StringQueryOperatorInput>;
   readonly raw: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOUserSchemaSortInput = {
-  readonly articleType: InputMaybe<SortOrderEnum>;
-  readonly pageType: InputMaybe<SortOrderEnum>;
-  readonly raw: InputMaybe<SortOrderEnum>;
 };
 
 type WpSEOUserSocial = {
@@ -11951,18 +18343,6 @@ type WpSEOUserSocial = {
   readonly youTube: Maybe<Scalars['String']>;
 };
 
-type WpSEOUserSocialFieldSelector = {
-  readonly facebook: InputMaybe<FieldSelectorEnum>;
-  readonly instagram: InputMaybe<FieldSelectorEnum>;
-  readonly linkedIn: InputMaybe<FieldSelectorEnum>;
-  readonly mySpace: InputMaybe<FieldSelectorEnum>;
-  readonly pinterest: InputMaybe<FieldSelectorEnum>;
-  readonly soundCloud: InputMaybe<FieldSelectorEnum>;
-  readonly twitter: InputMaybe<FieldSelectorEnum>;
-  readonly wikipedia: InputMaybe<FieldSelectorEnum>;
-  readonly youTube: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOUserSocialFilterInput = {
   readonly facebook: InputMaybe<StringQueryOperatorInput>;
   readonly instagram: InputMaybe<StringQueryOperatorInput>;
@@ -11975,38 +18355,6 @@ type WpSEOUserSocialFilterInput = {
   readonly youTube: InputMaybe<StringQueryOperatorInput>;
 };
 
-type WpSEOUserSocialSortInput = {
-  readonly facebook: InputMaybe<SortOrderEnum>;
-  readonly instagram: InputMaybe<SortOrderEnum>;
-  readonly linkedIn: InputMaybe<SortOrderEnum>;
-  readonly mySpace: InputMaybe<SortOrderEnum>;
-  readonly pinterest: InputMaybe<SortOrderEnum>;
-  readonly soundCloud: InputMaybe<SortOrderEnum>;
-  readonly twitter: InputMaybe<SortOrderEnum>;
-  readonly wikipedia: InputMaybe<SortOrderEnum>;
-  readonly youTube: InputMaybe<SortOrderEnum>;
-};
-
-type WpSEOUserSortInput = {
-  readonly breadcrumbTitle: InputMaybe<SortOrderEnum>;
-  readonly canonical: InputMaybe<SortOrderEnum>;
-  readonly fullHead: InputMaybe<SortOrderEnum>;
-  readonly language: InputMaybe<SortOrderEnum>;
-  readonly metaDesc: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsNofollow: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsNoindex: InputMaybe<SortOrderEnum>;
-  readonly opengraphDescription: InputMaybe<SortOrderEnum>;
-  readonly opengraphImage: InputMaybe<WpMediaItemSortInput>;
-  readonly opengraphTitle: InputMaybe<SortOrderEnum>;
-  readonly region: InputMaybe<SortOrderEnum>;
-  readonly schema: InputMaybe<WpSEOUserSchemaSortInput>;
-  readonly social: InputMaybe<WpSEOUserSocialSortInput>;
-  readonly title: InputMaybe<SortOrderEnum>;
-  readonly twitterDescription: InputMaybe<SortOrderEnum>;
-  readonly twitterImage: InputMaybe<WpMediaItemSortInput>;
-  readonly twitterTitle: InputMaybe<SortOrderEnum>;
-};
-
 /** The Yoast SEO  webmaster fields */
 type WpSEOWebmaster = {
   readonly baiduVerify: Maybe<Scalars['String']>;
@@ -12015,25 +18363,11 @@ type WpSEOWebmaster = {
   readonly yandexVerify: Maybe<Scalars['String']>;
 };
 
-type WpSEOWebmasterFieldSelector = {
-  readonly baiduVerify: InputMaybe<FieldSelectorEnum>;
-  readonly googleVerify: InputMaybe<FieldSelectorEnum>;
-  readonly msVerify: InputMaybe<FieldSelectorEnum>;
-  readonly yandexVerify: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSEOWebmasterFilterInput = {
   readonly baiduVerify: InputMaybe<StringQueryOperatorInput>;
   readonly googleVerify: InputMaybe<StringQueryOperatorInput>;
   readonly msVerify: InputMaybe<StringQueryOperatorInput>;
   readonly yandexVerify: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpSEOWebmasterSortInput = {
-  readonly baiduVerify: InputMaybe<SortOrderEnum>;
-  readonly googleVerify: InputMaybe<SortOrderEnum>;
-  readonly msVerify: InputMaybe<SortOrderEnum>;
-  readonly yandexVerify: InputMaybe<SortOrderEnum>;
 };
 
 /** All of the registered settings */
@@ -12076,27 +18410,6 @@ type WpSettings = {
   readonly writingSettingsUseSmilies: Maybe<Scalars['Boolean']>;
 };
 
-type WpSettingsFieldSelector = {
-  readonly discussionSettingsDefaultCommentStatus: InputMaybe<FieldSelectorEnum>;
-  readonly discussionSettingsDefaultPingStatus: InputMaybe<FieldSelectorEnum>;
-  readonly generalSettingsDateFormat: InputMaybe<FieldSelectorEnum>;
-  readonly generalSettingsDescription: InputMaybe<FieldSelectorEnum>;
-  readonly generalSettingsEmail: InputMaybe<FieldSelectorEnum>;
-  readonly generalSettingsLanguage: InputMaybe<FieldSelectorEnum>;
-  readonly generalSettingsStartOfWeek: InputMaybe<FieldSelectorEnum>;
-  readonly generalSettingsTimeFormat: InputMaybe<FieldSelectorEnum>;
-  readonly generalSettingsTimezone: InputMaybe<FieldSelectorEnum>;
-  readonly generalSettingsTitle: InputMaybe<FieldSelectorEnum>;
-  readonly generalSettingsUrl: InputMaybe<FieldSelectorEnum>;
-  readonly readingSettingsPageForPosts: InputMaybe<FieldSelectorEnum>;
-  readonly readingSettingsPageOnFront: InputMaybe<FieldSelectorEnum>;
-  readonly readingSettingsPostsPerPage: InputMaybe<FieldSelectorEnum>;
-  readonly readingSettingsShowOnFront: InputMaybe<FieldSelectorEnum>;
-  readonly writingSettingsDefaultCategory: InputMaybe<FieldSelectorEnum>;
-  readonly writingSettingsDefaultPostFormat: InputMaybe<FieldSelectorEnum>;
-  readonly writingSettingsUseSmilies: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpSettingsFilterInput = {
   readonly discussionSettingsDefaultCommentStatus: InputMaybe<StringQueryOperatorInput>;
   readonly discussionSettingsDefaultPingStatus: InputMaybe<StringQueryOperatorInput>;
@@ -12118,42 +18431,9 @@ type WpSettingsFilterInput = {
   readonly writingSettingsUseSmilies: InputMaybe<BooleanQueryOperatorInput>;
 };
 
-type WpSettingsSortInput = {
-  readonly discussionSettingsDefaultCommentStatus: InputMaybe<SortOrderEnum>;
-  readonly discussionSettingsDefaultPingStatus: InputMaybe<SortOrderEnum>;
-  readonly generalSettingsDateFormat: InputMaybe<SortOrderEnum>;
-  readonly generalSettingsDescription: InputMaybe<SortOrderEnum>;
-  readonly generalSettingsEmail: InputMaybe<SortOrderEnum>;
-  readonly generalSettingsLanguage: InputMaybe<SortOrderEnum>;
-  readonly generalSettingsStartOfWeek: InputMaybe<SortOrderEnum>;
-  readonly generalSettingsTimeFormat: InputMaybe<SortOrderEnum>;
-  readonly generalSettingsTimezone: InputMaybe<SortOrderEnum>;
-  readonly generalSettingsTitle: InputMaybe<SortOrderEnum>;
-  readonly generalSettingsUrl: InputMaybe<SortOrderEnum>;
-  readonly readingSettingsPageForPosts: InputMaybe<SortOrderEnum>;
-  readonly readingSettingsPageOnFront: InputMaybe<SortOrderEnum>;
-  readonly readingSettingsPostsPerPage: InputMaybe<SortOrderEnum>;
-  readonly readingSettingsShowOnFront: InputMaybe<SortOrderEnum>;
-  readonly writingSettingsDefaultCategory: InputMaybe<SortOrderEnum>;
-  readonly writingSettingsDefaultPostFormat: InputMaybe<SortOrderEnum>;
-  readonly writingSettingsUseSmilies: InputMaybe<SortOrderEnum>;
-};
-
 type WpSortInput = {
-  readonly allSettings: InputMaybe<WpSettingsSortInput>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly discussionSettings: InputMaybe<WpDiscussionSettingsSortInput>;
-  readonly generalSettings: InputMaybe<WpGeneralSettingsSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly readingSettings: InputMaybe<WpReadingSettingsSortInput>;
-  readonly schemaMd5: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOConfigSortInput>;
-  readonly viewer: InputMaybe<WpUserSortInput>;
-  readonly wpGatsby: InputMaybe<WpWPGatsbySortInput>;
-  readonly writingSettings: InputMaybe<WpWritingSettingsSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** The tag type */
@@ -12211,54 +18491,29 @@ type WpTagConnection = {
 
 
 type WpTagConnection_distinctArgs = {
-  field: WpTagFieldSelector;
+  field: WpTagFieldsEnum;
 };
 
 
 type WpTagConnection_groupArgs = {
-  field: WpTagFieldSelector;
+  field: WpTagFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpTagConnection_maxArgs = {
-  field: WpTagFieldSelector;
+  field: WpTagFieldsEnum;
 };
 
 
 type WpTagConnection_minArgs = {
-  field: WpTagFieldSelector;
+  field: WpTagFieldsEnum;
 };
 
 
 type WpTagConnection_sumArgs = {
-  field: WpTagFieldSelector;
-};
-
-type WpTagConnectionEdgeType = {
-  /** The connected tag Node */
-  readonly node: WpTag;
-};
-
-type WpTagConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpTagConnectionType = {
-  /** A list of connected tag Nodes */
-  readonly nodes: ReadonlyArray<WpTag>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpTagConnectionPageInfoType;
+  field: WpTagFieldsEnum;
 };
 
 type WpTagEdge = {
@@ -12267,29 +18522,553 @@ type WpTagEdge = {
   readonly previous: Maybe<WpTag>;
 };
 
-type WpTagFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly contentNodes: InputMaybe<WpTagToContentNodeConnectionTypeFieldSelector>;
-  readonly count: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly posts: InputMaybe<WpTagToPostConnectionTypeFieldSelector>;
-  readonly seo: InputMaybe<WpTaxonomySEOFieldSelector>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly taxonomy: InputMaybe<WpTagToTaxonomyConnectionEdgeTypeFieldSelector>;
-  readonly taxonomyName: InputMaybe<FieldSelectorEnum>;
-  readonly termGroupId: InputMaybe<FieldSelectorEnum>;
-  readonly termTaxonomyId: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-};
+type WpTagFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'contentNodes.nodes'
+  | 'contentNodes.nodes.children'
+  | 'contentNodes.nodes.children.children'
+  | 'contentNodes.nodes.children.id'
+  | 'contentNodes.nodes.contentTypeName'
+  | 'contentNodes.nodes.databaseId'
+  | 'contentNodes.nodes.date'
+  | 'contentNodes.nodes.dateGmt'
+  | 'contentNodes.nodes.desiredSlug'
+  | 'contentNodes.nodes.enclosure'
+  | 'contentNodes.nodes.guid'
+  | 'contentNodes.nodes.id'
+  | 'contentNodes.nodes.internal.content'
+  | 'contentNodes.nodes.internal.contentDigest'
+  | 'contentNodes.nodes.internal.contentFilePath'
+  | 'contentNodes.nodes.internal.description'
+  | 'contentNodes.nodes.internal.fieldOwners'
+  | 'contentNodes.nodes.internal.ignoreType'
+  | 'contentNodes.nodes.internal.mediaType'
+  | 'contentNodes.nodes.internal.owner'
+  | 'contentNodes.nodes.internal.type'
+  | 'contentNodes.nodes.isContentNode'
+  | 'contentNodes.nodes.isTermNode'
+  | 'contentNodes.nodes.link'
+  | 'contentNodes.nodes.modified'
+  | 'contentNodes.nodes.modifiedGmt'
+  | 'contentNodes.nodes.nodeType'
+  | 'contentNodes.nodes.parent.children'
+  | 'contentNodes.nodes.parent.id'
+  | 'contentNodes.nodes.seo.breadcrumbs'
+  | 'contentNodes.nodes.seo.canonical'
+  | 'contentNodes.nodes.seo.cornerstone'
+  | 'contentNodes.nodes.seo.focuskw'
+  | 'contentNodes.nodes.seo.fullHead'
+  | 'contentNodes.nodes.seo.metaDesc'
+  | 'contentNodes.nodes.seo.metaKeywords'
+  | 'contentNodes.nodes.seo.metaRobotsNofollow'
+  | 'contentNodes.nodes.seo.metaRobotsNoindex'
+  | 'contentNodes.nodes.seo.opengraphAuthor'
+  | 'contentNodes.nodes.seo.opengraphDescription'
+  | 'contentNodes.nodes.seo.opengraphModifiedTime'
+  | 'contentNodes.nodes.seo.opengraphPublishedTime'
+  | 'contentNodes.nodes.seo.opengraphPublisher'
+  | 'contentNodes.nodes.seo.opengraphSiteName'
+  | 'contentNodes.nodes.seo.opengraphTitle'
+  | 'contentNodes.nodes.seo.opengraphType'
+  | 'contentNodes.nodes.seo.opengraphUrl'
+  | 'contentNodes.nodes.seo.readingTime'
+  | 'contentNodes.nodes.seo.title'
+  | 'contentNodes.nodes.seo.twitterDescription'
+  | 'contentNodes.nodes.seo.twitterTitle'
+  | 'contentNodes.nodes.slug'
+  | 'contentNodes.nodes.status'
+  | 'contentNodes.nodes.template.templateName'
+  | 'contentNodes.nodes.uri'
+  | 'count'
+  | 'databaseId'
+  | 'description'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'link'
+  | 'name'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'posts.nodes'
+  | 'posts.nodes.acfSampleField.fieldGroupName'
+  | 'posts.nodes.acfSampleField.test'
+  | 'posts.nodes.authorDatabaseId'
+  | 'posts.nodes.authorId'
+  | 'posts.nodes.categories.nodes'
+  | 'posts.nodes.children'
+  | 'posts.nodes.children.children'
+  | 'posts.nodes.children.id'
+  | 'posts.nodes.commentCount'
+  | 'posts.nodes.commentStatus'
+  | 'posts.nodes.comments.nodes'
+  | 'posts.nodes.content'
+  | 'posts.nodes.contentTypeName'
+  | 'posts.nodes.databaseId'
+  | 'posts.nodes.date'
+  | 'posts.nodes.dateGmt'
+  | 'posts.nodes.desiredSlug'
+  | 'posts.nodes.enclosure'
+  | 'posts.nodes.excerpt'
+  | 'posts.nodes.featuredImageDatabaseId'
+  | 'posts.nodes.featuredImageId'
+  | 'posts.nodes.guid'
+  | 'posts.nodes.id'
+  | 'posts.nodes.internal.content'
+  | 'posts.nodes.internal.contentDigest'
+  | 'posts.nodes.internal.contentFilePath'
+  | 'posts.nodes.internal.description'
+  | 'posts.nodes.internal.fieldOwners'
+  | 'posts.nodes.internal.ignoreType'
+  | 'posts.nodes.internal.mediaType'
+  | 'posts.nodes.internal.owner'
+  | 'posts.nodes.internal.type'
+  | 'posts.nodes.isContentNode'
+  | 'posts.nodes.isRevision'
+  | 'posts.nodes.isSticky'
+  | 'posts.nodes.isTermNode'
+  | 'posts.nodes.link'
+  | 'posts.nodes.modified'
+  | 'posts.nodes.modifiedGmt'
+  | 'posts.nodes.nodeType'
+  | 'posts.nodes.parent.children'
+  | 'posts.nodes.parent.id'
+  | 'posts.nodes.pingStatus'
+  | 'posts.nodes.pinged'
+  | 'posts.nodes.postFormats.nodes'
+  | 'posts.nodes.seo.breadcrumbs'
+  | 'posts.nodes.seo.canonical'
+  | 'posts.nodes.seo.cornerstone'
+  | 'posts.nodes.seo.focuskw'
+  | 'posts.nodes.seo.fullHead'
+  | 'posts.nodes.seo.metaDesc'
+  | 'posts.nodes.seo.metaKeywords'
+  | 'posts.nodes.seo.metaRobotsNofollow'
+  | 'posts.nodes.seo.metaRobotsNoindex'
+  | 'posts.nodes.seo.opengraphAuthor'
+  | 'posts.nodes.seo.opengraphDescription'
+  | 'posts.nodes.seo.opengraphModifiedTime'
+  | 'posts.nodes.seo.opengraphPublishedTime'
+  | 'posts.nodes.seo.opengraphPublisher'
+  | 'posts.nodes.seo.opengraphSiteName'
+  | 'posts.nodes.seo.opengraphTitle'
+  | 'posts.nodes.seo.opengraphType'
+  | 'posts.nodes.seo.opengraphUrl'
+  | 'posts.nodes.seo.readingTime'
+  | 'posts.nodes.seo.title'
+  | 'posts.nodes.seo.twitterDescription'
+  | 'posts.nodes.seo.twitterTitle'
+  | 'posts.nodes.slug'
+  | 'posts.nodes.status'
+  | 'posts.nodes.tags.nodes'
+  | 'posts.nodes.template.templateName'
+  | 'posts.nodes.terms.nodes'
+  | 'posts.nodes.title'
+  | 'posts.nodes.toPing'
+  | 'posts.nodes.uri'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'slug'
+  | 'taxonomyName'
+  | 'taxonomy.node.archivePath'
+  | 'taxonomy.node.children'
+  | 'taxonomy.node.children.children'
+  | 'taxonomy.node.children.id'
+  | 'taxonomy.node.connectedContentTypes.nodes'
+  | 'taxonomy.node.description'
+  | 'taxonomy.node.graphqlPluralName'
+  | 'taxonomy.node.graphqlSingleName'
+  | 'taxonomy.node.hierarchical'
+  | 'taxonomy.node.id'
+  | 'taxonomy.node.internal.content'
+  | 'taxonomy.node.internal.contentDigest'
+  | 'taxonomy.node.internal.contentFilePath'
+  | 'taxonomy.node.internal.description'
+  | 'taxonomy.node.internal.fieldOwners'
+  | 'taxonomy.node.internal.ignoreType'
+  | 'taxonomy.node.internal.mediaType'
+  | 'taxonomy.node.internal.owner'
+  | 'taxonomy.node.internal.type'
+  | 'taxonomy.node.label'
+  | 'taxonomy.node.name'
+  | 'taxonomy.node.nodeType'
+  | 'taxonomy.node.parent.children'
+  | 'taxonomy.node.parent.id'
+  | 'taxonomy.node.public'
+  | 'taxonomy.node.restBase'
+  | 'taxonomy.node.restControllerClass'
+  | 'taxonomy.node.showCloud'
+  | 'taxonomy.node.showInAdminColumn'
+  | 'taxonomy.node.showInGraphql'
+  | 'taxonomy.node.showInMenu'
+  | 'taxonomy.node.showInNavMenus'
+  | 'taxonomy.node.showInQuickEdit'
+  | 'taxonomy.node.showInRest'
+  | 'taxonomy.node.showUi'
+  | 'termGroupId'
+  | 'termTaxonomyId'
+  | 'uri';
 
 type WpTagFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -12335,175 +19114,54 @@ type WpTagGroupConnection = {
 
 
 type WpTagGroupConnection_distinctArgs = {
-  field: WpTagFieldSelector;
+  field: WpTagFieldsEnum;
 };
 
 
 type WpTagGroupConnection_groupArgs = {
-  field: WpTagFieldSelector;
+  field: WpTagFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpTagGroupConnection_maxArgs = {
-  field: WpTagFieldSelector;
+  field: WpTagFieldsEnum;
 };
 
 
 type WpTagGroupConnection_minArgs = {
-  field: WpTagFieldSelector;
+  field: WpTagFieldsEnum;
 };
 
 
 type WpTagGroupConnection_sumArgs = {
-  field: WpTagFieldSelector;
+  field: WpTagFieldsEnum;
 };
 
 type WpTagSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly contentNodes: InputMaybe<WpTagToContentNodeConnectionTypeSortInput>;
-  readonly count: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly posts: InputMaybe<WpTagToPostConnectionTypeSortInput>;
-  readonly seo: InputMaybe<WpTaxonomySEOSortInput>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly taxonomy: InputMaybe<WpTagToTaxonomyConnectionEdgeTypeSortInput>;
-  readonly taxonomyName: InputMaybe<SortOrderEnum>;
-  readonly termGroupId: InputMaybe<SortOrderEnum>;
-  readonly termTaxonomyId: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-};
-
-/** Page Info on the &quot;TagToContentNodeConnection&quot; */
-type WpTagToContentNodeConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpTagToContentNodeConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpTagToContentNodeConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpTagToContentNodeConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpTagFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the Tag type and the ContentNode type */
-type WpTagToContentNodeConnectionType = WpConnectionType & WpContentNodeConnectionType & {
+type WpTagToContentNodeConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpTagToContentNodeConnectionPageInfoType;
-};
-
-type WpTagToContentNodeConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpContentNodeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpTagToContentNodeConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpTagToContentNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpTagToContentNodeConnectionPageInfoTypeFilterInput>;
-};
-
-type WpTagToContentNodeConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpContentNodeSortInput>;
-  readonly pageInfo: InputMaybe<WpTagToContentNodeConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;TagToPostConnection&quot; */
-type WpTagToPostConnectionPageInfoType = WpPageInfoType & WpPostConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpTagToPostConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpTagToPostConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpTagToPostConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the Tag type and the post type */
-type WpTagToPostConnectionType = WpConnectionType & WpPostConnectionType & {
+type WpTagToPostConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPost>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpTagToPostConnectionPageInfoType;
-};
-
-type WpTagToPostConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpPostFieldSelector>;
-  readonly pageInfo: InputMaybe<WpTagToPostConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpTagToPostConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFilterListInput>;
-  readonly pageInfo: InputMaybe<WpTagToPostConnectionPageInfoTypeFilterInput>;
-};
-
-type WpTagToPostConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpPostSortInput>;
-  readonly pageInfo: InputMaybe<WpTagToPostConnectionPageInfoTypeSortInput>;
 };
 
 /** Connection between the Tag type and the Taxonomy type */
@@ -12512,16 +19170,8 @@ type WpTagToTaxonomyConnectionEdgeType = WpEdgeType & WpOneToOneConnectionType &
   readonly node: WpTaxonomy;
 };
 
-type WpTagToTaxonomyConnectionEdgeTypeFieldSelector = {
-  readonly node: InputMaybe<WpTaxonomyFieldSelector>;
-};
-
 type WpTagToTaxonomyConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpTaxonomyFilterInput>;
-};
-
-type WpTagToTaxonomyConnectionEdgeTypeSortInput = {
-  readonly node: InputMaybe<WpTaxonomySortInput>;
 };
 
 /** A taxonomy object */
@@ -12585,54 +19235,39 @@ type WpTaxonomyConnection = {
 
 
 type WpTaxonomyConnection_distinctArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
 };
 
 
 type WpTaxonomyConnection_groupArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpTaxonomyConnection_maxArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
 };
 
 
 type WpTaxonomyConnection_minArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
 };
 
 
 type WpTaxonomyConnection_sumArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
 };
 
 type WpTaxonomyConnectionEdgeType = {
-  /** The connected Taxonomy Node */
-  readonly node: WpTaxonomy;
-};
-
-type WpTaxonomyConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+  /** The connected node */
+  readonly node: WpNode;
 };
 
 type WpTaxonomyConnectionType = {
   /** A list of connected Taxonomy Nodes */
   readonly nodes: ReadonlyArray<WpTaxonomy>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpTaxonomyConnectionPageInfoType;
 };
 
 type WpTaxonomyEdge = {
@@ -12641,32 +19276,191 @@ type WpTaxonomyEdge = {
   readonly previous: Maybe<WpTaxonomy>;
 };
 
-type WpTaxonomyFieldSelector = {
-  readonly archivePath: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly connectedContentTypes: InputMaybe<WpTaxonomyToContentTypeConnectionTypeFieldSelector>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly graphqlPluralName: InputMaybe<FieldSelectorEnum>;
-  readonly graphqlSingleName: InputMaybe<FieldSelectorEnum>;
-  readonly hierarchical: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly label: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly public: InputMaybe<FieldSelectorEnum>;
-  readonly restBase: InputMaybe<FieldSelectorEnum>;
-  readonly restControllerClass: InputMaybe<FieldSelectorEnum>;
-  readonly showCloud: InputMaybe<FieldSelectorEnum>;
-  readonly showInAdminColumn: InputMaybe<FieldSelectorEnum>;
-  readonly showInGraphql: InputMaybe<FieldSelectorEnum>;
-  readonly showInMenu: InputMaybe<FieldSelectorEnum>;
-  readonly showInNavMenus: InputMaybe<FieldSelectorEnum>;
-  readonly showInQuickEdit: InputMaybe<FieldSelectorEnum>;
-  readonly showInRest: InputMaybe<FieldSelectorEnum>;
-  readonly showUi: InputMaybe<FieldSelectorEnum>;
-};
+type WpTaxonomyFieldsEnum =
+  | 'archivePath'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'connectedContentTypes.nodes'
+  | 'connectedContentTypes.nodes.archivePath'
+  | 'connectedContentTypes.nodes.canExport'
+  | 'connectedContentTypes.nodes.children'
+  | 'connectedContentTypes.nodes.children.children'
+  | 'connectedContentTypes.nodes.children.id'
+  | 'connectedContentTypes.nodes.connectedTaxonomies.nodes'
+  | 'connectedContentTypes.nodes.contentNodes.nodes'
+  | 'connectedContentTypes.nodes.deleteWithUser'
+  | 'connectedContentTypes.nodes.description'
+  | 'connectedContentTypes.nodes.excludeFromSearch'
+  | 'connectedContentTypes.nodes.graphqlPluralName'
+  | 'connectedContentTypes.nodes.graphqlSingleName'
+  | 'connectedContentTypes.nodes.hasArchive'
+  | 'connectedContentTypes.nodes.hierarchical'
+  | 'connectedContentTypes.nodes.id'
+  | 'connectedContentTypes.nodes.internal.content'
+  | 'connectedContentTypes.nodes.internal.contentDigest'
+  | 'connectedContentTypes.nodes.internal.contentFilePath'
+  | 'connectedContentTypes.nodes.internal.description'
+  | 'connectedContentTypes.nodes.internal.fieldOwners'
+  | 'connectedContentTypes.nodes.internal.ignoreType'
+  | 'connectedContentTypes.nodes.internal.mediaType'
+  | 'connectedContentTypes.nodes.internal.owner'
+  | 'connectedContentTypes.nodes.internal.type'
+  | 'connectedContentTypes.nodes.isContentNode'
+  | 'connectedContentTypes.nodes.isFrontPage'
+  | 'connectedContentTypes.nodes.isPostsPage'
+  | 'connectedContentTypes.nodes.isTermNode'
+  | 'connectedContentTypes.nodes.label'
+  | 'connectedContentTypes.nodes.labels.addNew'
+  | 'connectedContentTypes.nodes.labels.addNewItem'
+  | 'connectedContentTypes.nodes.labels.allItems'
+  | 'connectedContentTypes.nodes.labels.archives'
+  | 'connectedContentTypes.nodes.labels.attributes'
+  | 'connectedContentTypes.nodes.labels.editItem'
+  | 'connectedContentTypes.nodes.labels.featuredImage'
+  | 'connectedContentTypes.nodes.labels.filterItemsList'
+  | 'connectedContentTypes.nodes.labels.insertIntoItem'
+  | 'connectedContentTypes.nodes.labels.itemsList'
+  | 'connectedContentTypes.nodes.labels.itemsListNavigation'
+  | 'connectedContentTypes.nodes.labels.menuName'
+  | 'connectedContentTypes.nodes.labels.name'
+  | 'connectedContentTypes.nodes.labels.newItem'
+  | 'connectedContentTypes.nodes.labels.notFound'
+  | 'connectedContentTypes.nodes.labels.notFoundInTrash'
+  | 'connectedContentTypes.nodes.labels.parentItemColon'
+  | 'connectedContentTypes.nodes.labels.removeFeaturedImage'
+  | 'connectedContentTypes.nodes.labels.searchItems'
+  | 'connectedContentTypes.nodes.labels.setFeaturedImage'
+  | 'connectedContentTypes.nodes.labels.singularName'
+  | 'connectedContentTypes.nodes.labels.uploadedToThisItem'
+  | 'connectedContentTypes.nodes.labels.useFeaturedImage'
+  | 'connectedContentTypes.nodes.labels.viewItem'
+  | 'connectedContentTypes.nodes.labels.viewItems'
+  | 'connectedContentTypes.nodes.menuIcon'
+  | 'connectedContentTypes.nodes.menuPosition'
+  | 'connectedContentTypes.nodes.name'
+  | 'connectedContentTypes.nodes.nodeType'
+  | 'connectedContentTypes.nodes.parent.children'
+  | 'connectedContentTypes.nodes.parent.id'
+  | 'connectedContentTypes.nodes.public'
+  | 'connectedContentTypes.nodes.publiclyQueryable'
+  | 'connectedContentTypes.nodes.restBase'
+  | 'connectedContentTypes.nodes.restControllerClass'
+  | 'connectedContentTypes.nodes.showInAdminBar'
+  | 'connectedContentTypes.nodes.showInGraphql'
+  | 'connectedContentTypes.nodes.showInMenu'
+  | 'connectedContentTypes.nodes.showInNavMenus'
+  | 'connectedContentTypes.nodes.showInRest'
+  | 'connectedContentTypes.nodes.showUi'
+  | 'connectedContentTypes.nodes.uri'
+  | 'description'
+  | 'graphqlPluralName'
+  | 'graphqlSingleName'
+  | 'hierarchical'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'label'
+  | 'name'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'public'
+  | 'restBase'
+  | 'restControllerClass'
+  | 'showCloud'
+  | 'showInAdminColumn'
+  | 'showInGraphql'
+  | 'showInMenu'
+  | 'showInNavMenus'
+  | 'showInQuickEdit'
+  | 'showInRest'
+  | 'showUi';
 
 type WpTaxonomyFilterInput = {
   readonly archivePath: InputMaybe<StringQueryOperatorInput>;
@@ -12715,29 +19509,29 @@ type WpTaxonomyGroupConnection = {
 
 
 type WpTaxonomyGroupConnection_distinctArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
 };
 
 
 type WpTaxonomyGroupConnection_groupArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpTaxonomyGroupConnection_maxArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
 };
 
 
 type WpTaxonomyGroupConnection_minArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
 };
 
 
 type WpTaxonomyGroupConnection_sumArgs = {
-  field: WpTaxonomyFieldSelector;
+  field: WpTaxonomyFieldsEnum;
 };
 
 type WpTaxonomySEO = {
@@ -12767,33 +19561,6 @@ type WpTaxonomySEO = {
   readonly twitterTitle: Maybe<Scalars['String']>;
 };
 
-type WpTaxonomySEOFieldSelector = {
-  readonly breadcrumbs: InputMaybe<WpSEOPostTypeBreadcrumbsFieldSelector>;
-  readonly canonical: InputMaybe<FieldSelectorEnum>;
-  readonly cornerstone: InputMaybe<FieldSelectorEnum>;
-  readonly focuskw: InputMaybe<FieldSelectorEnum>;
-  readonly fullHead: InputMaybe<FieldSelectorEnum>;
-  readonly metaDesc: InputMaybe<FieldSelectorEnum>;
-  readonly metaKeywords: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsNofollow: InputMaybe<FieldSelectorEnum>;
-  readonly metaRobotsNoindex: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphAuthor: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphDescription: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphImage: InputMaybe<WpMediaItemFieldSelector>;
-  readonly opengraphModifiedTime: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphPublishedTime: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphPublisher: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphSiteName: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphTitle: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphType: InputMaybe<FieldSelectorEnum>;
-  readonly opengraphUrl: InputMaybe<FieldSelectorEnum>;
-  readonly schema: InputMaybe<WpSEOTaxonomySchemaFieldSelector>;
-  readonly title: InputMaybe<FieldSelectorEnum>;
-  readonly twitterDescription: InputMaybe<FieldSelectorEnum>;
-  readonly twitterImage: InputMaybe<WpMediaItemFieldSelector>;
-  readonly twitterTitle: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpTaxonomySEOFilterInput = {
   readonly breadcrumbs: InputMaybe<WpSEOPostTypeBreadcrumbsFilterListInput>;
   readonly canonical: InputMaybe<StringQueryOperatorInput>;
@@ -12821,119 +19588,19 @@ type WpTaxonomySEOFilterInput = {
   readonly twitterTitle: InputMaybe<StringQueryOperatorInput>;
 };
 
-type WpTaxonomySEOSortInput = {
-  readonly breadcrumbs: InputMaybe<WpSEOPostTypeBreadcrumbsSortInput>;
-  readonly canonical: InputMaybe<SortOrderEnum>;
-  readonly cornerstone: InputMaybe<SortOrderEnum>;
-  readonly focuskw: InputMaybe<SortOrderEnum>;
-  readonly fullHead: InputMaybe<SortOrderEnum>;
-  readonly metaDesc: InputMaybe<SortOrderEnum>;
-  readonly metaKeywords: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsNofollow: InputMaybe<SortOrderEnum>;
-  readonly metaRobotsNoindex: InputMaybe<SortOrderEnum>;
-  readonly opengraphAuthor: InputMaybe<SortOrderEnum>;
-  readonly opengraphDescription: InputMaybe<SortOrderEnum>;
-  readonly opengraphImage: InputMaybe<WpMediaItemSortInput>;
-  readonly opengraphModifiedTime: InputMaybe<SortOrderEnum>;
-  readonly opengraphPublishedTime: InputMaybe<SortOrderEnum>;
-  readonly opengraphPublisher: InputMaybe<SortOrderEnum>;
-  readonly opengraphSiteName: InputMaybe<SortOrderEnum>;
-  readonly opengraphTitle: InputMaybe<SortOrderEnum>;
-  readonly opengraphType: InputMaybe<SortOrderEnum>;
-  readonly opengraphUrl: InputMaybe<SortOrderEnum>;
-  readonly schema: InputMaybe<WpSEOTaxonomySchemaSortInput>;
-  readonly title: InputMaybe<SortOrderEnum>;
-  readonly twitterDescription: InputMaybe<SortOrderEnum>;
-  readonly twitterImage: InputMaybe<WpMediaItemSortInput>;
-  readonly twitterTitle: InputMaybe<SortOrderEnum>;
-};
-
 type WpTaxonomySortInput = {
-  readonly archivePath: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly connectedContentTypes: InputMaybe<WpTaxonomyToContentTypeConnectionTypeSortInput>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly graphqlPluralName: InputMaybe<SortOrderEnum>;
-  readonly graphqlSingleName: InputMaybe<SortOrderEnum>;
-  readonly hierarchical: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly label: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly public: InputMaybe<SortOrderEnum>;
-  readonly restBase: InputMaybe<SortOrderEnum>;
-  readonly restControllerClass: InputMaybe<SortOrderEnum>;
-  readonly showCloud: InputMaybe<SortOrderEnum>;
-  readonly showInAdminColumn: InputMaybe<SortOrderEnum>;
-  readonly showInGraphql: InputMaybe<SortOrderEnum>;
-  readonly showInMenu: InputMaybe<SortOrderEnum>;
-  readonly showInNavMenus: InputMaybe<SortOrderEnum>;
-  readonly showInQuickEdit: InputMaybe<SortOrderEnum>;
-  readonly showInRest: InputMaybe<SortOrderEnum>;
-  readonly showUi: InputMaybe<SortOrderEnum>;
-};
-
-/** Page Info on the &quot;TaxonomyToContentTypeConnection&quot; */
-type WpTaxonomyToContentTypeConnectionPageInfoType = WpContentTypeConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpTaxonomyToContentTypeConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpTaxonomyToContentTypeConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpTaxonomyToContentTypeConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpTaxonomyFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the Taxonomy type and the ContentType type */
 type WpTaxonomyToContentTypeConnectionType = WpConnectionType & WpContentTypeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentType>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpTaxonomyToContentTypeConnectionPageInfoType;
-};
-
-type WpTaxonomyToContentTypeConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpContentTypeFieldSelector>;
-  readonly pageInfo: InputMaybe<WpTaxonomyToContentTypeConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpTaxonomyToContentTypeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentTypeFilterListInput>;
-  readonly pageInfo: InputMaybe<WpTaxonomyToContentTypeConnectionPageInfoTypeFilterInput>;
-};
-
-type WpTaxonomyToContentTypeConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpContentTypeSortInput>;
-  readonly pageInfo: InputMaybe<WpTaxonomyToContentTypeConnectionPageInfoTypeSortInput>;
 };
 
 type WpTermNode = {
@@ -12982,54 +19649,39 @@ type WpTermNodeConnection = {
 
 
 type WpTermNodeConnection_distinctArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
 };
 
 
 type WpTermNodeConnection_groupArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpTermNodeConnection_maxArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
 };
 
 
 type WpTermNodeConnection_minArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
 };
 
 
 type WpTermNodeConnection_sumArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
 };
 
 type WpTermNodeConnectionEdgeType = {
-  /** The connected TermNode Node */
-  readonly node: WpTermNode;
-};
-
-type WpTermNodeConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+  /** The connected node */
+  readonly node: WpNode;
 };
 
 type WpTermNodeConnectionType = {
-  /** A list of connected TermNode Nodes */
+  /** A list of connected Term Nodes */
   readonly nodes: ReadonlyArray<WpTermNode>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpTermNodeConnectionPageInfoType;
 };
 
 type WpTermNodeEdge = {
@@ -13038,25 +19690,113 @@ type WpTermNodeEdge = {
   readonly previous: Maybe<WpTermNode>;
 };
 
-type WpTermNodeFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly count: InputMaybe<FieldSelectorEnum>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly link: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly taxonomyName: InputMaybe<FieldSelectorEnum>;
-  readonly termGroupId: InputMaybe<FieldSelectorEnum>;
-  readonly termTaxonomyId: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-};
+type WpTermNodeFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'count'
+  | 'databaseId'
+  | 'description'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'link'
+  | 'name'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'slug'
+  | 'taxonomyName'
+  | 'termGroupId'
+  | 'termTaxonomyId'
+  | 'uri';
 
 type WpTermNodeFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -13098,49 +19838,34 @@ type WpTermNodeGroupConnection = {
 
 
 type WpTermNodeGroupConnection_distinctArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
 };
 
 
 type WpTermNodeGroupConnection_groupArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpTermNodeGroupConnection_maxArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
 };
 
 
 type WpTermNodeGroupConnection_minArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
 };
 
 
 type WpTermNodeGroupConnection_sumArgs = {
-  field: WpTermNodeFieldSelector;
+  field: WpTermNodeFieldsEnum;
 };
 
 type WpTermNodeSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly count: InputMaybe<SortOrderEnum>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly link: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly taxonomyName: InputMaybe<SortOrderEnum>;
-  readonly termGroupId: InputMaybe<SortOrderEnum>;
-  readonly termTaxonomyId: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpTermNodeFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpUniformResourceIdentifiable = {
@@ -13171,29 +19896,29 @@ type WpUniformResourceIdentifiableConnection = {
 
 
 type WpUniformResourceIdentifiableConnection_distinctArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
 };
 
 
 type WpUniformResourceIdentifiableConnection_groupArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpUniformResourceIdentifiableConnection_maxArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
 };
 
 
 type WpUniformResourceIdentifiableConnection_minArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
 };
 
 
 type WpUniformResourceIdentifiableConnection_sumArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
 };
 
 type WpUniformResourceIdentifiableEdge = {
@@ -13202,16 +19927,104 @@ type WpUniformResourceIdentifiableEdge = {
   readonly previous: Maybe<WpUniformResourceIdentifiable>;
 };
 
-type WpUniformResourceIdentifiableFieldSelector = {
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-};
+type WpUniformResourceIdentifiableFieldsEnum =
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'uri';
 
 type WpUniformResourceIdentifiableFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
@@ -13240,40 +20053,34 @@ type WpUniformResourceIdentifiableGroupConnection = {
 
 
 type WpUniformResourceIdentifiableGroupConnection_distinctArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
 };
 
 
 type WpUniformResourceIdentifiableGroupConnection_groupArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpUniformResourceIdentifiableGroupConnection_maxArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
 };
 
 
 type WpUniformResourceIdentifiableGroupConnection_minArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
 };
 
 
 type WpUniformResourceIdentifiableGroupConnection_sumArgs = {
-  field: WpUniformResourceIdentifiableFieldSelector;
+  field: WpUniformResourceIdentifiableFieldsEnum;
 };
 
 type WpUniformResourceIdentifiableSortInput = {
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly uri: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpUniformResourceIdentifiableFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** A User object */
@@ -13325,8 +20132,6 @@ type WpUser = Node & WpCommenter & WpDatabaseIdentifier & WpNode & WpUniformReso
   readonly roles: Maybe<WpUserToUserRoleConnectionType>;
   /** The Yoast SEO data of a user */
   readonly seo: Maybe<WpSEOUser>;
-  /** Whether the Toolbar should be displayed when the user is viewing the site. */
-  readonly shouldShowAdminToolbar: Maybe<Scalars['Boolean']>;
   /** The slug for the user. This field is equivalent to WP_User-&gt;user_nicename */
   readonly slug: Maybe<Scalars['String']>;
   /** The unique resource identifier path */
@@ -13351,54 +20156,39 @@ type WpUserConnection = {
 
 
 type WpUserConnection_distinctArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
 };
 
 
 type WpUserConnection_groupArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpUserConnection_maxArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
 };
 
 
 type WpUserConnection_minArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
 };
 
 
 type WpUserConnection_sumArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
 };
 
 type WpUserConnectionEdgeType = {
-  /** The connected User Node */
-  readonly node: WpUser;
-};
-
-type WpUserConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
+  /** The connected node */
+  readonly node: WpNode;
 };
 
 type WpUserConnectionType = {
   /** A list of connected User Nodes */
   readonly nodes: ReadonlyArray<WpUser>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpUserConnectionPageInfoType;
 };
 
 type WpUserEdge = {
@@ -13407,39 +20197,603 @@ type WpUserEdge = {
   readonly previous: Maybe<WpUser>;
 };
 
-type WpUserFieldSelector = {
-  readonly avatar: InputMaybe<WpAvatarFieldSelector>;
-  readonly capKey: InputMaybe<FieldSelectorEnum>;
-  readonly capabilities: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly comments: InputMaybe<WpUserToCommentConnectionTypeFieldSelector>;
-  readonly databaseId: InputMaybe<FieldSelectorEnum>;
-  readonly description: InputMaybe<FieldSelectorEnum>;
-  readonly email: InputMaybe<FieldSelectorEnum>;
-  readonly extraCapabilities: InputMaybe<FieldSelectorEnum>;
-  readonly firstName: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly isContentNode: InputMaybe<FieldSelectorEnum>;
-  readonly isTermNode: InputMaybe<FieldSelectorEnum>;
-  readonly lastName: InputMaybe<FieldSelectorEnum>;
-  readonly locale: InputMaybe<FieldSelectorEnum>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nicename: InputMaybe<FieldSelectorEnum>;
-  readonly nickname: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly pages: InputMaybe<WpUserToPageConnectionTypeFieldSelector>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-  readonly posts: InputMaybe<WpUserToPostConnectionTypeFieldSelector>;
-  readonly registeredDate: InputMaybe<FieldSelectorEnum>;
-  readonly roles: InputMaybe<WpUserToUserRoleConnectionTypeFieldSelector>;
-  readonly seo: InputMaybe<WpSEOUserFieldSelector>;
-  readonly shouldShowAdminToolbar: InputMaybe<FieldSelectorEnum>;
-  readonly slug: InputMaybe<FieldSelectorEnum>;
-  readonly uri: InputMaybe<FieldSelectorEnum>;
-  readonly url: InputMaybe<FieldSelectorEnum>;
-  readonly username: InputMaybe<FieldSelectorEnum>;
-};
+type WpUserFieldsEnum =
+  | 'avatar.default'
+  | 'avatar.extraAttr'
+  | 'avatar.forceDefault'
+  | 'avatar.foundAvatar'
+  | 'avatar.height'
+  | 'avatar.rating'
+  | 'avatar.scheme'
+  | 'avatar.size'
+  | 'avatar.url'
+  | 'avatar.width'
+  | 'capKey'
+  | 'capabilities'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'comments.nodes'
+  | 'comments.nodes.agent'
+  | 'comments.nodes.authorIp'
+  | 'comments.nodes.children'
+  | 'comments.nodes.children.children'
+  | 'comments.nodes.children.id'
+  | 'comments.nodes.content'
+  | 'comments.nodes.databaseId'
+  | 'comments.nodes.date'
+  | 'comments.nodes.dateGmt'
+  | 'comments.nodes.id'
+  | 'comments.nodes.internal.content'
+  | 'comments.nodes.internal.contentDigest'
+  | 'comments.nodes.internal.contentFilePath'
+  | 'comments.nodes.internal.description'
+  | 'comments.nodes.internal.fieldOwners'
+  | 'comments.nodes.internal.ignoreType'
+  | 'comments.nodes.internal.mediaType'
+  | 'comments.nodes.internal.owner'
+  | 'comments.nodes.internal.type'
+  | 'comments.nodes.karma'
+  | 'comments.nodes.nodeType'
+  | 'comments.nodes.parentDatabaseId'
+  | 'comments.nodes.parentId'
+  | 'comments.nodes.parent.children'
+  | 'comments.nodes.parent.id'
+  | 'comments.nodes.replies.nodes'
+  | 'comments.nodes.status'
+  | 'comments.nodes.type'
+  | 'databaseId'
+  | 'description'
+  | 'email'
+  | 'extraCapabilities'
+  | 'firstName'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isContentNode'
+  | 'isTermNode'
+  | 'lastName'
+  | 'locale'
+  | 'name'
+  | 'nicename'
+  | 'nickname'
+  | 'nodeType'
+  | 'pages.nodes'
+  | 'pages.nodes.ancestors.nodes'
+  | 'pages.nodes.authorDatabaseId'
+  | 'pages.nodes.authorId'
+  | 'pages.nodes.children'
+  | 'pages.nodes.children.children'
+  | 'pages.nodes.children.id'
+  | 'pages.nodes.commentCount'
+  | 'pages.nodes.commentStatus'
+  | 'pages.nodes.comments.nodes'
+  | 'pages.nodes.content'
+  | 'pages.nodes.contentTypeName'
+  | 'pages.nodes.databaseId'
+  | 'pages.nodes.date'
+  | 'pages.nodes.dateGmt'
+  | 'pages.nodes.desiredSlug'
+  | 'pages.nodes.enclosure'
+  | 'pages.nodes.featuredImageDatabaseId'
+  | 'pages.nodes.featuredImageId'
+  | 'pages.nodes.guid'
+  | 'pages.nodes.id'
+  | 'pages.nodes.internal.content'
+  | 'pages.nodes.internal.contentDigest'
+  | 'pages.nodes.internal.contentFilePath'
+  | 'pages.nodes.internal.description'
+  | 'pages.nodes.internal.fieldOwners'
+  | 'pages.nodes.internal.ignoreType'
+  | 'pages.nodes.internal.mediaType'
+  | 'pages.nodes.internal.owner'
+  | 'pages.nodes.internal.type'
+  | 'pages.nodes.isContentNode'
+  | 'pages.nodes.isFrontPage'
+  | 'pages.nodes.isPostsPage'
+  | 'pages.nodes.isPrivacyPage'
+  | 'pages.nodes.isRevision'
+  | 'pages.nodes.isTermNode'
+  | 'pages.nodes.link'
+  | 'pages.nodes.menuOrder'
+  | 'pages.nodes.modified'
+  | 'pages.nodes.modifiedGmt'
+  | 'pages.nodes.nodeType'
+  | 'pages.nodes.parentDatabaseId'
+  | 'pages.nodes.parentId'
+  | 'pages.nodes.parent.children'
+  | 'pages.nodes.parent.id'
+  | 'pages.nodes.seo.breadcrumbs'
+  | 'pages.nodes.seo.canonical'
+  | 'pages.nodes.seo.cornerstone'
+  | 'pages.nodes.seo.focuskw'
+  | 'pages.nodes.seo.fullHead'
+  | 'pages.nodes.seo.metaDesc'
+  | 'pages.nodes.seo.metaKeywords'
+  | 'pages.nodes.seo.metaRobotsNofollow'
+  | 'pages.nodes.seo.metaRobotsNoindex'
+  | 'pages.nodes.seo.opengraphAuthor'
+  | 'pages.nodes.seo.opengraphDescription'
+  | 'pages.nodes.seo.opengraphModifiedTime'
+  | 'pages.nodes.seo.opengraphPublishedTime'
+  | 'pages.nodes.seo.opengraphPublisher'
+  | 'pages.nodes.seo.opengraphSiteName'
+  | 'pages.nodes.seo.opengraphTitle'
+  | 'pages.nodes.seo.opengraphType'
+  | 'pages.nodes.seo.opengraphUrl'
+  | 'pages.nodes.seo.readingTime'
+  | 'pages.nodes.seo.title'
+  | 'pages.nodes.seo.twitterDescription'
+  | 'pages.nodes.seo.twitterTitle'
+  | 'pages.nodes.slug'
+  | 'pages.nodes.status'
+  | 'pages.nodes.template.templateName'
+  | 'pages.nodes.title'
+  | 'pages.nodes.uri'
+  | 'pages.nodes.wpChildren.nodes'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'posts.nodes'
+  | 'posts.nodes.acfSampleField.fieldGroupName'
+  | 'posts.nodes.acfSampleField.test'
+  | 'posts.nodes.authorDatabaseId'
+  | 'posts.nodes.authorId'
+  | 'posts.nodes.categories.nodes'
+  | 'posts.nodes.children'
+  | 'posts.nodes.children.children'
+  | 'posts.nodes.children.id'
+  | 'posts.nodes.commentCount'
+  | 'posts.nodes.commentStatus'
+  | 'posts.nodes.comments.nodes'
+  | 'posts.nodes.content'
+  | 'posts.nodes.contentTypeName'
+  | 'posts.nodes.databaseId'
+  | 'posts.nodes.date'
+  | 'posts.nodes.dateGmt'
+  | 'posts.nodes.desiredSlug'
+  | 'posts.nodes.enclosure'
+  | 'posts.nodes.excerpt'
+  | 'posts.nodes.featuredImageDatabaseId'
+  | 'posts.nodes.featuredImageId'
+  | 'posts.nodes.guid'
+  | 'posts.nodes.id'
+  | 'posts.nodes.internal.content'
+  | 'posts.nodes.internal.contentDigest'
+  | 'posts.nodes.internal.contentFilePath'
+  | 'posts.nodes.internal.description'
+  | 'posts.nodes.internal.fieldOwners'
+  | 'posts.nodes.internal.ignoreType'
+  | 'posts.nodes.internal.mediaType'
+  | 'posts.nodes.internal.owner'
+  | 'posts.nodes.internal.type'
+  | 'posts.nodes.isContentNode'
+  | 'posts.nodes.isRevision'
+  | 'posts.nodes.isSticky'
+  | 'posts.nodes.isTermNode'
+  | 'posts.nodes.link'
+  | 'posts.nodes.modified'
+  | 'posts.nodes.modifiedGmt'
+  | 'posts.nodes.nodeType'
+  | 'posts.nodes.parent.children'
+  | 'posts.nodes.parent.id'
+  | 'posts.nodes.pingStatus'
+  | 'posts.nodes.pinged'
+  | 'posts.nodes.postFormats.nodes'
+  | 'posts.nodes.seo.breadcrumbs'
+  | 'posts.nodes.seo.canonical'
+  | 'posts.nodes.seo.cornerstone'
+  | 'posts.nodes.seo.focuskw'
+  | 'posts.nodes.seo.fullHead'
+  | 'posts.nodes.seo.metaDesc'
+  | 'posts.nodes.seo.metaKeywords'
+  | 'posts.nodes.seo.metaRobotsNofollow'
+  | 'posts.nodes.seo.metaRobotsNoindex'
+  | 'posts.nodes.seo.opengraphAuthor'
+  | 'posts.nodes.seo.opengraphDescription'
+  | 'posts.nodes.seo.opengraphModifiedTime'
+  | 'posts.nodes.seo.opengraphPublishedTime'
+  | 'posts.nodes.seo.opengraphPublisher'
+  | 'posts.nodes.seo.opengraphSiteName'
+  | 'posts.nodes.seo.opengraphTitle'
+  | 'posts.nodes.seo.opengraphType'
+  | 'posts.nodes.seo.opengraphUrl'
+  | 'posts.nodes.seo.readingTime'
+  | 'posts.nodes.seo.title'
+  | 'posts.nodes.seo.twitterDescription'
+  | 'posts.nodes.seo.twitterTitle'
+  | 'posts.nodes.slug'
+  | 'posts.nodes.status'
+  | 'posts.nodes.tags.nodes'
+  | 'posts.nodes.template.templateName'
+  | 'posts.nodes.terms.nodes'
+  | 'posts.nodes.title'
+  | 'posts.nodes.toPing'
+  | 'posts.nodes.uri'
+  | 'registeredDate'
+  | 'roles.nodes'
+  | 'roles.nodes.capabilities'
+  | 'roles.nodes.children'
+  | 'roles.nodes.children.children'
+  | 'roles.nodes.children.id'
+  | 'roles.nodes.displayName'
+  | 'roles.nodes.id'
+  | 'roles.nodes.internal.content'
+  | 'roles.nodes.internal.contentDigest'
+  | 'roles.nodes.internal.contentFilePath'
+  | 'roles.nodes.internal.description'
+  | 'roles.nodes.internal.fieldOwners'
+  | 'roles.nodes.internal.ignoreType'
+  | 'roles.nodes.internal.mediaType'
+  | 'roles.nodes.internal.owner'
+  | 'roles.nodes.internal.type'
+  | 'roles.nodes.name'
+  | 'roles.nodes.nodeType'
+  | 'roles.nodes.parent.children'
+  | 'roles.nodes.parent.id'
+  | 'seo.breadcrumbTitle'
+  | 'seo.canonical'
+  | 'seo.fullHead'
+  | 'seo.language'
+  | 'seo.metaDesc'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphTitle'
+  | 'seo.region'
+  | 'seo.schema.articleType'
+  | 'seo.schema.pageType'
+  | 'seo.schema.raw'
+  | 'seo.social.facebook'
+  | 'seo.social.instagram'
+  | 'seo.social.linkedIn'
+  | 'seo.social.mySpace'
+  | 'seo.social.pinterest'
+  | 'seo.social.soundCloud'
+  | 'seo.social.twitter'
+  | 'seo.social.wikipedia'
+  | 'seo.social.youTube'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'slug'
+  | 'uri'
+  | 'url'
+  | 'username';
 
 type WpUserFilterInput = {
   readonly avatar: InputMaybe<WpAvatarFilterInput>;
@@ -13468,7 +20822,6 @@ type WpUserFilterInput = {
   readonly registeredDate: InputMaybe<StringQueryOperatorInput>;
   readonly roles: InputMaybe<WpUserToUserRoleConnectionTypeFilterInput>;
   readonly seo: InputMaybe<WpSEOUserFilterInput>;
-  readonly shouldShowAdminToolbar: InputMaybe<BooleanQueryOperatorInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly uri: InputMaybe<StringQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
@@ -13491,29 +20844,29 @@ type WpUserGroupConnection = {
 
 
 type WpUserGroupConnection_distinctArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
 };
 
 
 type WpUserGroupConnection_groupArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpUserGroupConnection_maxArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
 };
 
 
 type WpUserGroupConnection_minArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
 };
 
 
 type WpUserGroupConnection_sumArgs = {
-  field: WpUserFieldSelector;
+  field: WpUserFieldsEnum;
 };
 
 /** A user role object */
@@ -13545,54 +20898,29 @@ type WpUserRoleConnection = {
 
 
 type WpUserRoleConnection_distinctArgs = {
-  field: WpUserRoleFieldSelector;
+  field: WpUserRoleFieldsEnum;
 };
 
 
 type WpUserRoleConnection_groupArgs = {
-  field: WpUserRoleFieldSelector;
+  field: WpUserRoleFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpUserRoleConnection_maxArgs = {
-  field: WpUserRoleFieldSelector;
+  field: WpUserRoleFieldsEnum;
 };
 
 
 type WpUserRoleConnection_minArgs = {
-  field: WpUserRoleFieldSelector;
+  field: WpUserRoleFieldsEnum;
 };
 
 
 type WpUserRoleConnection_sumArgs = {
-  field: WpUserRoleFieldSelector;
-};
-
-type WpUserRoleConnectionEdgeType = {
-  /** The connected UserRole Node */
-  readonly node: WpUserRole;
-};
-
-type WpUserRoleConnectionPageInfoType = {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpUserRoleConnectionType = {
-  /** A list of connected UserRole Nodes */
-  readonly nodes: ReadonlyArray<WpUserRole>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpUserRoleConnectionPageInfoType;
+  field: WpUserRoleFieldsEnum;
 };
 
 type WpUserRoleEdge = {
@@ -13601,16 +20929,104 @@ type WpUserRoleEdge = {
   readonly previous: Maybe<WpUserRole>;
 };
 
-type WpUserRoleFieldSelector = {
-  readonly capabilities: InputMaybe<FieldSelectorEnum>;
-  readonly children: InputMaybe<NodeFieldSelector>;
-  readonly displayName: InputMaybe<FieldSelectorEnum>;
-  readonly id: InputMaybe<FieldSelectorEnum>;
-  readonly internal: InputMaybe<InternalFieldSelector>;
-  readonly name: InputMaybe<FieldSelectorEnum>;
-  readonly nodeType: InputMaybe<FieldSelectorEnum>;
-  readonly parent: InputMaybe<NodeFieldSelector>;
-};
+type WpUserRoleFieldsEnum =
+  | 'capabilities'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'displayName'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'name'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id';
 
 type WpUserRoleFilterInput = {
   readonly capabilities: InputMaybe<StringQueryOperatorInput>;
@@ -13643,318 +21059,79 @@ type WpUserRoleGroupConnection = {
 
 
 type WpUserRoleGroupConnection_distinctArgs = {
-  field: WpUserRoleFieldSelector;
+  field: WpUserRoleFieldsEnum;
 };
 
 
 type WpUserRoleGroupConnection_groupArgs = {
-  field: WpUserRoleFieldSelector;
+  field: WpUserRoleFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
 
 type WpUserRoleGroupConnection_maxArgs = {
-  field: WpUserRoleFieldSelector;
+  field: WpUserRoleFieldsEnum;
 };
 
 
 type WpUserRoleGroupConnection_minArgs = {
-  field: WpUserRoleFieldSelector;
+  field: WpUserRoleFieldsEnum;
 };
 
 
 type WpUserRoleGroupConnection_sumArgs = {
-  field: WpUserRoleFieldSelector;
+  field: WpUserRoleFieldsEnum;
 };
 
 type WpUserRoleSortInput = {
-  readonly capabilities: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly displayName: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly parent: InputMaybe<NodeSortInput>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpUserRoleFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 type WpUserSortInput = {
-  readonly avatar: InputMaybe<WpAvatarSortInput>;
-  readonly capKey: InputMaybe<SortOrderEnum>;
-  readonly capabilities: InputMaybe<SortOrderEnum>;
-  readonly children: InputMaybe<NodeSortInput>;
-  readonly comments: InputMaybe<WpUserToCommentConnectionTypeSortInput>;
-  readonly databaseId: InputMaybe<SortOrderEnum>;
-  readonly description: InputMaybe<SortOrderEnum>;
-  readonly email: InputMaybe<SortOrderEnum>;
-  readonly extraCapabilities: InputMaybe<SortOrderEnum>;
-  readonly firstName: InputMaybe<SortOrderEnum>;
-  readonly id: InputMaybe<SortOrderEnum>;
-  readonly internal: InputMaybe<InternalSortInput>;
-  readonly isContentNode: InputMaybe<SortOrderEnum>;
-  readonly isTermNode: InputMaybe<SortOrderEnum>;
-  readonly lastName: InputMaybe<SortOrderEnum>;
-  readonly locale: InputMaybe<SortOrderEnum>;
-  readonly name: InputMaybe<SortOrderEnum>;
-  readonly nicename: InputMaybe<SortOrderEnum>;
-  readonly nickname: InputMaybe<SortOrderEnum>;
-  readonly nodeType: InputMaybe<SortOrderEnum>;
-  readonly pages: InputMaybe<WpUserToPageConnectionTypeSortInput>;
-  readonly parent: InputMaybe<NodeSortInput>;
-  readonly posts: InputMaybe<WpUserToPostConnectionTypeSortInput>;
-  readonly registeredDate: InputMaybe<SortOrderEnum>;
-  readonly roles: InputMaybe<WpUserToUserRoleConnectionTypeSortInput>;
-  readonly seo: InputMaybe<WpSEOUserSortInput>;
-  readonly shouldShowAdminToolbar: InputMaybe<SortOrderEnum>;
-  readonly slug: InputMaybe<SortOrderEnum>;
-  readonly uri: InputMaybe<SortOrderEnum>;
-  readonly url: InputMaybe<SortOrderEnum>;
-  readonly username: InputMaybe<SortOrderEnum>;
-};
-
-/** Page Info on the &quot;UserToCommentConnection&quot; */
-type WpUserToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpUserToCommentConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpUserToCommentConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpUserToCommentConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpUserFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** Connection between the User type and the Comment type */
 type WpUserToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpUserToCommentConnectionPageInfoType;
-};
-
-type WpUserToCommentConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpCommentFieldSelector>;
-  readonly pageInfo: InputMaybe<WpUserToCommentConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpUserToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
-  readonly pageInfo: InputMaybe<WpUserToCommentConnectionPageInfoTypeFilterInput>;
-};
-
-type WpUserToCommentConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpCommentSortInput>;
-  readonly pageInfo: InputMaybe<WpUserToCommentConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;UserToPageConnection&quot; */
-type WpUserToPageConnectionPageInfoType = WpPageConnectionPageInfoType & WpPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpUserToPageConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpUserToPageConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpUserToPageConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the User type and the page type */
-type WpUserToPageConnectionType = WpConnectionType & WpPageConnectionType & {
+type WpUserToPageConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPage>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpUserToPageConnectionPageInfoType;
-};
-
-type WpUserToPageConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpPageFieldSelector>;
-  readonly pageInfo: InputMaybe<WpUserToPageConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpUserToPageConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPageFilterListInput>;
-  readonly pageInfo: InputMaybe<WpUserToPageConnectionPageInfoTypeFilterInput>;
-};
-
-type WpUserToPageConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpPageSortInput>;
-  readonly pageInfo: InputMaybe<WpUserToPageConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;UserToPostConnection&quot; */
-type WpUserToPostConnectionPageInfoType = WpPageInfoType & WpPostConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpUserToPostConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpUserToPostConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpUserToPostConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the User type and the post type */
-type WpUserToPostConnectionType = WpConnectionType & WpPostConnectionType & {
+type WpUserToPostConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPost>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpUserToPostConnectionPageInfoType;
-};
-
-type WpUserToPostConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpPostFieldSelector>;
-  readonly pageInfo: InputMaybe<WpUserToPostConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpUserToPostConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFilterListInput>;
-  readonly pageInfo: InputMaybe<WpUserToPostConnectionPageInfoTypeFilterInput>;
-};
-
-type WpUserToPostConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpPostSortInput>;
-  readonly pageInfo: InputMaybe<WpUserToPostConnectionPageInfoTypeSortInput>;
-};
-
-/** Page Info on the &quot;UserToUserRoleConnection&quot; */
-type WpUserToUserRoleConnectionPageInfoType = WpPageInfoType & WpUserRoleConnectionPageInfoType & {
-  /** When paginating forwards, the cursor to continue. */
-  readonly endCursor: Maybe<Scalars['String']>;
-  /** When paginating forwards, are there more items? */
-  readonly hasNextPage: Scalars['Boolean'];
-  /** When paginating backwards, are there more items? */
-  readonly hasPreviousPage: Scalars['Boolean'];
-  /** Raw schema for page */
-  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
-  /** When paginating backwards, the cursor to continue. */
-  readonly startCursor: Maybe<Scalars['String']>;
-};
-
-type WpUserToUserRoleConnectionPageInfoTypeFieldSelector = {
-  readonly endCursor: InputMaybe<FieldSelectorEnum>;
-  readonly hasNextPage: InputMaybe<FieldSelectorEnum>;
-  readonly hasPreviousPage: InputMaybe<FieldSelectorEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFieldSelector>;
-  readonly startCursor: InputMaybe<FieldSelectorEnum>;
-};
-
-type WpUserToUserRoleConnectionPageInfoTypeFilterInput = {
-  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
-  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
-  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
-};
-
-type WpUserToUserRoleConnectionPageInfoTypeSortInput = {
-  readonly endCursor: InputMaybe<SortOrderEnum>;
-  readonly hasNextPage: InputMaybe<SortOrderEnum>;
-  readonly hasPreviousPage: InputMaybe<SortOrderEnum>;
-  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeSortInput>;
-  readonly startCursor: InputMaybe<SortOrderEnum>;
 };
 
 /** Connection between the User type and the UserRole type */
-type WpUserToUserRoleConnectionType = WpConnectionType & WpUserRoleConnectionType & {
+type WpUserToUserRoleConnectionType = WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpUserRole>;
-  /** Information about pagination in a connection. */
-  readonly pageInfo: WpUserToUserRoleConnectionPageInfoType;
-};
-
-type WpUserToUserRoleConnectionTypeFieldSelector = {
-  readonly nodes: InputMaybe<WpUserRoleFieldSelector>;
-  readonly pageInfo: InputMaybe<WpUserToUserRoleConnectionPageInfoTypeFieldSelector>;
 };
 
 type WpUserToUserRoleConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpUserRoleFilterListInput>;
-  readonly pageInfo: InputMaybe<WpUserToUserRoleConnectionPageInfoTypeFilterInput>;
-};
-
-type WpUserToUserRoleConnectionTypeSortInput = {
-  readonly nodes: InputMaybe<WpUserRoleSortInput>;
-  readonly pageInfo: InputMaybe<WpUserToUserRoleConnectionPageInfoTypeSortInput>;
 };
 
 /** Information needed by gatsby-source-wordpress. */
@@ -13965,19 +21142,9 @@ type WpWPGatsby = {
   readonly isPreviewFrontendOnline: Maybe<Scalars['Boolean']>;
 };
 
-type WpWPGatsbyFieldSelector = {
-  readonly arePrettyPermalinksEnabled: InputMaybe<FieldSelectorEnum>;
-  readonly isPreviewFrontendOnline: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpWPGatsbyFilterInput = {
   readonly arePrettyPermalinksEnabled: InputMaybe<BooleanQueryOperatorInput>;
   readonly isPreviewFrontendOnline: InputMaybe<BooleanQueryOperatorInput>;
-};
-
-type WpWPGatsbySortInput = {
-  readonly arePrettyPermalinksEnabled: InputMaybe<SortOrderEnum>;
-  readonly isPreviewFrontendOnline: InputMaybe<SortOrderEnum>;
 };
 
 /** The writing setting type */
@@ -13990,22 +21157,10 @@ type WpWritingSettings = {
   readonly useSmilies: Maybe<Scalars['Boolean']>;
 };
 
-type WpWritingSettingsFieldSelector = {
-  readonly defaultCategory: InputMaybe<FieldSelectorEnum>;
-  readonly defaultPostFormat: InputMaybe<FieldSelectorEnum>;
-  readonly useSmilies: InputMaybe<FieldSelectorEnum>;
-};
-
 type WpWritingSettingsFilterInput = {
   readonly defaultCategory: InputMaybe<IntQueryOperatorInput>;
   readonly defaultPostFormat: InputMaybe<StringQueryOperatorInput>;
   readonly useSmilies: InputMaybe<BooleanQueryOperatorInput>;
-};
-
-type WpWritingSettingsSortInput = {
-  readonly defaultCategory: InputMaybe<SortOrderEnum>;
-  readonly defaultPostFormat: InputMaybe<SortOrderEnum>;
-  readonly useSmilies: InputMaybe<SortOrderEnum>;
 };
 
 type AuthorFragment = { readonly author: { readonly node: { readonly firstName: string | null, readonly lastName: string | null, readonly description: string | null, readonly avatar: { readonly url: string | null } | null } } | null };

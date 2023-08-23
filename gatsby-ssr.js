@@ -20,3 +20,7 @@ export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
     lang: 'pt-BR'
   })
 }
+
+export const wrapRootElement = ({ element }) => {
+  return <>{element}</>
+}

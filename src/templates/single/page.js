@@ -5,7 +5,7 @@ import parse from 'html-react-parser'
 
 import Layout from '@components/layout'
 import Headline from '@components/shared/headline'
-import Seo from '@components/infra/seo'
+import Seo from '@/components/infra/seo'
 import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
 
 import Sidebar from '@components/shared/sidebar'
