@@ -39,7 +39,7 @@
     "gatsby-plugin-tsconfig-paths": "^1.0.5",
     "gatsby-plugin-typescript": "^5.11.0",
     "gatsby-source-filesystem": "^5.11.0",
-    "gatsby-source-wordpress": "^6.25.4",
+    "gatsby-source-wordpress": "^7.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
     "hamburger-react": "^2.4.0",
     "happy-dom": "^10.9.0",
