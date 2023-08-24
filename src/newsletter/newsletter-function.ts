@@ -77,7 +77,7 @@ const newsletter = async () => {
               dateStyle: 'medium'
             }),
             feedName: feedObj.name,
-            content: formattedContent
+            content: resumedContent
           }
         })
       )
