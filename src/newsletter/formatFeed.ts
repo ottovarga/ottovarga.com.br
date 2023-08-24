@@ -47,15 +47,16 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration)
 
-export type Feed = {
+export type FeedItem = {
   title: string
   link: string
-  categories: string[]
   date: string
   dateISO: string
   feedName: string
   content: string
-}[]
+}
+
+export type Feed = FeedItem[]
 
 export async function formatContent(text: string, url: string) {
   if (text.length > 500) return text
@@ -180,9 +181,7 @@ export const formatFeed: (feed: Feed) => string[] = (feed: Feed) => {
     finalStringArr[index] = ''
     finalStringArr[index] += `Notícia ${index + 1}:\n\n`
     finalStringArr[index] += `Data: ${content.date}\n`
-    finalStringArr[index] += `*${
-      content.title
-    }*\nCategorias: ${content.categories.join(', ')}\n\n${content.content}\n\n`
+    finalStringArr[index] += `*${content.title}*\n\n${content.content}\n\n`
     finalStringArr[index] += `Via @${content.feedName}\n\n`
     finalStringArr[
       index

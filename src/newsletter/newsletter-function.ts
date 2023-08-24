@@ -4,12 +4,14 @@ import {
   formatContent,
   formatTitle,
   categorizePosts,
-  categoriesCondition
+  categoriesCondition,
+  Feed
 } from '@/newsletter/formatFeed'
 
 import { postToSlack, FEEDS_URL } from '@/newsletter/postFeed'
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
+const YESTERDAT_MIDNIGHT = new Date().setHours(0, 0, 0, 0) - DAY_IN_MILISECONDS
 
 const newsletter = async () => {
   let parser = new RSSParser()
@@ -18,8 +20,27 @@ const newsletter = async () => {
     FEEDS_URL.map(async feedObj => {
       const feed = await parser.parseURL(feedObj.url)
 
-      const items = await Promise.all(
-        feed.items.map(async item => {
+      //filter posts by date and category
+      const filteredItems: {
+        [key: string]: any
+      } & RSSParser.Item = await asyncFilter(
+        feed.items,
+        async (item: RSSParser.Item) => {
+          const dateCondition =
+            item.isoDate > new Date(YESTERDAT_MIDNIGHT).toISOString()
+
+          if (!dateCondition) return false
+
+          const AICategories = await categorizePosts(item.content)
+
+          return categoriesCondition(AICategories)
+        }
+      )
+
+      console.log(filteredItems)
+
+      const items: Feed = await Promise.all(
+        filteredItems.map(async (item: RSSParser.Item) => {
           const formattedContent = await formatContent(
             item.contentSnippet ? item.contentSnippet : item.content,
             item.link
@@ -27,12 +48,9 @@ const newsletter = async () => {
 
           const formattedTitle = await formatTitle(item.title)
 
-          const AICategories = await categorizePosts(item.content)
-
           return {
             title: formattedTitle,
             link: item.link,
-            categories: AICategories,
             dateISO: item.isoDate,
             date: new Date(item.isoDate).toLocaleString('pt-BR', {
               timeZone: 'America/Sao_Paulo',
@@ -44,26 +62,7 @@ const newsletter = async () => {
         })
       )
 
-      return (
-        items
-          .filter(item => item.title && item.link && item.content)
-          //filter categories
-          .filter(item => {
-            console.log(
-              'filtro categorias: ',
-              categoriesCondition(item.categories)
-            )
-            return true //categoriesCondition(item.categories)
-          })
-          // get items from yesterday
-          .filter(
-            item =>
-              item.dateISO >
-              new Date(
-                new Date().setHours(0, 0, 0, 0) - DAY_IN_MILISECONDS
-              ).toISOString()
-          )
-      )
+      return items.filter(item => item.title && item.link && item.content)
     })
   )
 
@@ -80,3 +79,12 @@ const newsletter = async () => {
 }
 
 export default newsletter
+
+const asyncFilter = async (
+  arr: any[],
+  predicate: (value: any, index?: number, array?: any[]) => unknown
+) =>
+  arr.reduce(
+    async (memo, e) => ((await predicate(e)) ? [...(await memo), e] : memo),
+    []
+  )
