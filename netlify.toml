@@ -10,5 +10,5 @@ package = "@netlify/plugin-gatsby"
 [functions]
   external_node_modules = ["jsdom", "@mozilla/readability", "rss-parser", "openai"]
 
-[functions."newsletter-background"]
+[functions."newsletter-scheduled-background"]
   schedule = "0 8 * * *"
