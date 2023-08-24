@@ -2,16 +2,19 @@ import RSSParser from 'rss-parser'
 
 import {
   formatContent,
-  formatTitle,
+  translateTitle,
   categorizePosts,
   categoriesCondition,
+  translateContent,
+  resumeContent,
   Feed
 } from '@/newsletter/formatFeed'
 
 import { postToSlack, FEEDS_URL } from '@/newsletter/postFeed'
 
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
-const YESTERDAT_MIDNIGHT = new Date().setHours(0, 0, 0, 0) - DAY_IN_MILISECONDS
+const TODAY_MIDNIGHT = new Date().setHours(0, 0, 0, 0)
+const YESTERDAT_MIDNIGHT = TODAY_MIDNIGHT - DAY_IN_MILISECONDS
 
 const newsletter = async () => {
   let parser = new RSSParser()
@@ -26,14 +29,10 @@ const newsletter = async () => {
       } & RSSParser.Item = await asyncFilter(
         feed.items,
         async (item: RSSParser.Item) => {
-          const dateCondition =
-            item.isoDate > new Date(YESTERDAT_MIDNIGHT).toISOString()
-
-          if (!dateCondition) return false
-
-          const AICategories = await categorizePosts(item.content)
-
-          return categoriesCondition(AICategories)
+          return (
+            item.isoDate >= new Date(YESTERDAT_MIDNIGHT).toISOString() &&
+            item.isoDate < new Date(TODAY_MIDNIGHT).toISOString()
+          )
         }
       )
 
@@ -41,16 +40,37 @@ const newsletter = async () => {
 
       const items: Feed = await Promise.all(
         filteredItems.map(async (item: RSSParser.Item) => {
+          const empty = {
+            title: '',
+            link: '',
+            content: ''
+          }
+
           const formattedContent = await formatContent(
             item.contentSnippet ? item.contentSnippet : item.content,
             item.link
           )
 
-          const formattedTitle = await formatTitle(item.title)
+          if (!formatContent) return empty
+
+          const AICategories = await categorizePosts(item.content)
+
+          if (!categoriesCondition(AICategories)) return empty
+
+          const translatedContent = await translateContent(formattedContent)
+
+          if (!translatedContent) return empty
+
+          const resumedContent = await resumeContent(translatedContent)
+
+          if (!resumedContent) return empty
+
+          const formattedTitle = await translateTitle(item.title)
 
           return {
             title: formattedTitle,
             link: item.link,
+            categories: AICategories,
             dateISO: item.isoDate,
             date: new Date(item.isoDate).toLocaleString('pt-BR', {
               timeZone: 'America/Sao_Paulo',

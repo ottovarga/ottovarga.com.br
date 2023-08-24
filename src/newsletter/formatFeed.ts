@@ -50,9 +50,10 @@ const openai = new OpenAIApi(configuration)
 export type FeedItem = {
   title: string
   link: string
-  date: string
-  dateISO: string
-  feedName: string
+  categories?: string[]
+  date?: string
+  dateISO?: string
+  feedName?: string
   content: string
 }
 
@@ -75,15 +76,47 @@ export async function formatContent(text: string, url: string) {
 
     const article = reader.parse().textContent.replace('\n\n', '\n')
 
+    return article.substring(0, 15999)
+  } catch (err) {
+    console.log('Erro ao formatar conteúdo: ', url, err)
+    return null
+  }
+}
+
+export async function resumeContent(text: string) {
+  try {
     let openaiResponse = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo-16k',
       messages: [
         {
           role: 'user',
-          content: `Traduza o seguinte texto para portugês: ${article.substring(
-            0,
-            15999
-          )}`
+          content: `Resuma o conteúdo considerando as seguintes informações: O conteúdo resumido deverá ter tom jornalístico e propósito informacional e deverá ter no máximo 80 palavras. Conteúdo: ${text}`
+        }
+      ],
+      temperature: 0.5
+    })
+
+    const abstract = openaiResponse.data.choices[0].message.content
+
+    return abstract
+  } catch (err) {
+    console.log('Erro ao resumir conteúdo: ', err)
+    return null
+  }
+}
+
+export async function translateContent(text: string) {
+  const language = await detectLanguage(text)
+
+  if (language.includes('pt')) return text
+
+  try {
+    let openaiResponse = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo-16k',
+      messages: [
+        {
+          role: 'user',
+          content: `Traduza o seguinte texto para portugês: ${text}`
         }
       ],
       temperature: 0
@@ -91,30 +124,38 @@ export async function formatContent(text: string, url: string) {
 
     const translation = openaiResponse.data.choices[0].message.content
 
-    openaiResponse = await openai.createChatCompletion({
-      model: 'gpt-3.5-turbo-16k',
-      messages: [
-        {
-          role: 'user',
-          content: `Resuma o conteúdo considerando as seguintes informações: O conteúdo resumido deverá ter tom jornalístico e propósito informacional e deverá ter no máximo 80 palavras. Conteúdo: ${translation.substring(
-            0,
-            15999
-          )}`
-        }
-      ],
-      temperature: 0.5
-    })
-
-    const content = openaiResponse.data.choices[0].message.content
-
-    return content
+    return translation
   } catch (err) {
-    console.log('Erro ao formatar conteúdo: ', url, err)
+    console.log('Erro ao traduzir conteúdo: ', err)
     return null
   }
 }
 
-export async function formatTitle(title: string) {
+export async function detectLanguage(text: string) {
+  try {
+    let openaiResponse = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo-16k',
+      messages: [
+        {
+          role: 'user',
+          content: `Determine o idioma do seguinte conteúdo:\n${text}\n\n
+          A resposta deve ser apenas o código do idioma no formato ISO 639-1`
+        }
+      ],
+      temperature: 0,
+      max_tokens: 5
+    })
+
+    const language = openaiResponse.data.choices[0].message.content
+
+    return language
+  } catch (err) {
+    console.log('Erro ao detectar idioma: ', err)
+    return null
+  }
+}
+
+export async function translateTitle(title: string) {
   try {
     let openaiResponse = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo-16k',
@@ -127,9 +168,11 @@ export async function formatTitle(title: string) {
       temperature: 0
     })
 
-    return openaiResponse.data.choices[0].message.content
+    const translation = openaiResponse.data.choices[0].message.content
+
+    return translation
   } catch (err) {
-    console.log('Erro ao formatar título: ', title, err)
+    console.log('Erro ao traduzir título: ', title, err)
     return title
   }
 }
@@ -181,7 +224,9 @@ export const formatFeed: (feed: Feed) => string[] = (feed: Feed) => {
     finalStringArr[index] = ''
     finalStringArr[index] += `Notícia ${index + 1}:\n\n`
     finalStringArr[index] += `Data: ${content.date}\n`
-    finalStringArr[index] += `*${content.title}*\n\n${content.content}\n\n`
+    finalStringArr[index] += `*${
+      content.title
+    }*\nCategorias: ${content.categories.join(', ')}\n\n${content.content}\n\n`
     finalStringArr[index] += `Via @${content.feedName}\n\n`
     finalStringArr[
       index
