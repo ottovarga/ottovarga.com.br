@@ -1,5 +1,7 @@
 import React from 'react'
 
+import RootElement from '@components/rootElement'
+
 export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
   setHeadComponents([
     React.createElement('link', {
@@ -22,5 +24,5 @@ export const onRenderBody = ({ setHeadComponents, setHtmlAttributes }) => {
 }
 
 export const wrapRootElement = ({ element }) => {
-  return <>{element}</>
+  return <RootElement>{element}</RootElement>
 }

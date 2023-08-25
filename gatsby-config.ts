@@ -9,6 +9,9 @@ const siteMetadata = require('./config/metadata')
 module.exports = {
   siteMetadata,
   graphqlTypegen: true,
+  partytownProxiedURLs: [
+    `https://www.googletagmanager.com/gtm.js?id=${process.env.GATSBY_GTM}`
+  ],
   plugins: [
     'gatsby-plugin-tsconfig-paths',
     {

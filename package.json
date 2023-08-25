@@ -19,7 +19,6 @@
     "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-plugin-advanced-sitemap": "^2.1.0",
     "gatsby-plugin-algolia": "^0.16.2",
-    "gatsby-plugin-analytics": "^0.2.0",
     "gatsby-plugin-breadcrumb": "^12.3.2",
     "gatsby-plugin-disqus": "^1.2.2",
     "gatsby-plugin-image": "^2.25.0",
