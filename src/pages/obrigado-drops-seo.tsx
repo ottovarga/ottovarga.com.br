@@ -6,7 +6,7 @@ import { Link } from 'gatsby'
 const NotFoundPage = () => (
   <div>
     <Layout>
-      <Seo title="Confirmação de Cadastro | OV SEO" />
+      <Seo title="Confirmação de Cadastro | SEO Otto Varga" />
       <div className="flex justify-center items-center mt-32 max-w-2xl mx-auto px-4">
         <div className="text-center">
           <p className="text-lg mb-4">

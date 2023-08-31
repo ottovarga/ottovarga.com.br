@@ -130,8 +130,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'OV SEO',
-        short_name: 'OV SEO',
+        name: 'SEO Otto Varga',
+        short_name: 'SEO Otto Varga',
         start_url: '/',
         background_color: '#374151',
         theme_color: '#374151',

@@ -20,7 +20,7 @@ const contato: React.FC<Props> = ({ pageContext }) => {
 
   return (
     <Layout>
-      <Seo title="Contato | OV SEO" description="Página de contato" />
+      <Seo title="Contato | SEO Otto Varga" description="Página de contato" />
       <div className="container mt-12 mb-12 md:mt-24 md:mb-20 px-4">
         <div className="flex">
           <div className="w-full lg:w-5/12">
