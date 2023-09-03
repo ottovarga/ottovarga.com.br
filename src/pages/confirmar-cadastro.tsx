@@ -1,19 +1,21 @@
 import React from 'react'
 import Layout from '@components/layout'
 import Seo from '@components/infra/seo'
+import { Link } from 'gatsby'
 
 const NotFoundPage = () => (
   <div>
     <Layout>
-      <Seo title="Página não encontrada | SEO Otto Varga" />
+      <Seo title="Confirmação de Cadastro | SEO Otto Varga" />
       <div className="flex justify-center items-center mt-32 max-w-2xl mx-auto px-4">
         <div className="text-center">
-          <h1 className="text-5xl font-bold mb-4">
-            404: Página não encontrada
-          </h1>
-          <p className="text-lg">
-            Parace que alguma coisa deu errado aí... Volte algumas casas e
-            aguarde novamente a sua vez de jogar.
+          <p className="text-lg mb-4">
+            Recebi seu cadastro, agora basta confirmar a inscrição no seu e-mail!
+          </p>
+          <p>
+            <Link className="underline" to="/">
+              Voltar para Home
+            </Link>
           </p>
         </div>
       </div>
