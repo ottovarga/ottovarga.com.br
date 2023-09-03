@@ -4,7 +4,7 @@ require('dotenv').config({
   path: '.env'
 })
 
-const siteMetadata = require('./config/metadata')
+import siteMetadata from './config/metadata'
 
 module.exports = {
   siteMetadata,
@@ -38,6 +38,15 @@ module.exports = {
       options: {
         name: 'images',
         path: path.join(__dirname, 'src/assets/images')
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-google-tagmanager',
+      options: {
+        id: process.env.GATSBY_GTM,
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: 'gatsby' },
+        enableWebVitalsTracking: true
       }
     },
     {
@@ -85,14 +94,6 @@ module.exports = {
         }
       }
     },
-
-    {
-      resolve: 'gatsby-plugin-disqus',
-      options: {
-        shortname: 'gustavo-wtf'
-      }
-    },
-
     {
       resolve: 'gatsby-plugin-breadcrumb',
       options: {
