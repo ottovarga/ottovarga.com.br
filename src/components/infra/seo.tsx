@@ -76,7 +76,6 @@ const seo: React.FC<Props> = ({
 
   const openGraphImages = (img: Images) => {
     return Object.keys(img.localFile.childImageSharp).map((key, index) => {
-      console.log(key)
       const url = `${defaults.siteUrl}${img.localFile.childImageSharp[key].images.fallback.src}`
 
       const og = {

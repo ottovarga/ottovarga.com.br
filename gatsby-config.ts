@@ -113,7 +113,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
-        failOn: 'none'
+        failOn: 'none',
+        defaults: {
+          formats: ['auto', 'webp', 'avif'],
+          placeholder: 'dominantColor',
+          quality: 100
+        }
       }
     },
     'gatsby-plugin-image',
