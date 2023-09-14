@@ -118,6 +118,7 @@ module.exports = {
     },
     'gatsby-plugin-image',
     'gatsby-plugin-advanced-sitemap',
+    'gatsby-plugin-sass',
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-css-modules',
     'gatsby-plugin-netlify',

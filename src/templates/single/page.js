@@ -7,15 +7,17 @@ import Layout from '@components/layout'
 import Headline from '@components/shared/headline'
 import Seo from '@/components/infra/seo'
 import { Breadcrumb } from 'gatsby-plugin-breadcrumb'
-
+/*
 import Sidebar from '@components/shared/sidebar'
 import SearchLink from '@/components/shared/search/searchLink'
-import TagList from '@components/shared/widgets/tagList'
+import TagList from '@components/shared/widgets/tagList' */
 
 import parseBlocks from '@components/blocks/parseBlocks'
 
+import '@styles/gutenberg.scss'
+
 const page = ({ data, pageContext, location }) => {
-  const { content, title, dateGmt, modifiedGmt, seo } = data.page
+  const { content, title, dateGmt, modifiedGmt, seo, featuredImage } = data.page
   const tags = data.allTags.edges
   const {
     breadcrumb: { crumbs }
@@ -30,6 +32,7 @@ const page = ({ data, pageContext, location }) => {
         modified={modifiedGmt}
         schema={seo.schema}
         breadcrumbs={seo.breadcrumbs}
+        images={featuredImage && featuredImage.node}
       />
       <div className="container mt-12 mb-12 md:mt-24 md:mb-20 px-4">
         <div className="flex">

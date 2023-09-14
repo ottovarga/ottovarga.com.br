@@ -74,3 +74,7 @@
 .dark .lds-ripple div {
   border: 4px solid #d1d5db;
 }
+
+.sou-um-robo {
+  @apply hidden;
+}

@@ -1,0 +1,183 @@
+@import '~@wordpress/base-styles/colors';
+@import '~@wordpress/base-styles/variables';
+@import '~@wordpress/base-styles/mixins';
+@import '~@wordpress/base-styles/breakpoints';
+@import '~@wordpress/base-styles/animations';
+@import '~@wordpress/base-styles/z-index';
+
+@import '~@wordpress/block-library/src/style.scss';
+@import '~@wordpress/block-library/src/theme.scss';
+
+$font-sizes: ('extra-small', theme('fontSize.xs')),
+  ('small', theme('fontSize.sm')), ('normal', theme('fontSize.base')),
+  ('large', theme('fontSize.xl')), ('extra-large', theme('fontSize.3xl')),
+  ('huge', theme('fontSize.5xl')), ('gigantic', theme('fontSize.8xl'));
+
+:root {
+  --global--spacing-unit: 1rem;
+  --global--spacing-measure: unset;
+  --global--spacing-horizontal: 1rem;
+  --global--spacing-vertical: 2rem;
+
+  --responsive--spacing-horizontal: calc(
+    2 * var(--global--spacing-horizontal) * 0.6
+  );
+  --responsive--aligndefault-width: calc(
+    100vw - var(--responsive--spacing-horizontal)
+  );
+  --responsive--alignwide-width: calc(
+    100vw - var(--responsive--spacing-horizontal)
+  );
+  --responsive--alignfull-width: 100%;
+  --responsive--alignright-margin: var(--global--spacing-horizontal);
+  --responsive--alignleft-margin: var(--global--spacing-horizontal);
+
+  @screen sm {
+    --responsive--aligndefault-width: min(
+      calc(100vw - 4 * var(--global--spacing-horizontal)),
+      610px
+    );
+    --responsive--alignwide-width: calc(
+      100vw - 4 * var(--global--spacing-horizontal)
+    );
+    --responsive--alignright-margin: calc(
+      0.5 * (100vw - var(--responsive--aligndefault-width))
+    );
+    --responsive--alignleft-margin: calc(
+      0.5 * (100vw - var(--responsive--aligndefault-width))
+    );
+  }
+
+  @screen lg {
+    --responsive--aligndefault-width: min(
+      calc(100vw - 8 * var(--global--spacing-horizontal)),
+      900px
+    );
+    --responsive--alignwide-width: min(
+      calc(100vw - 8 * var(--global--spacing-horizontal)),
+      1240px
+    );
+  }
+}
+
+.entry-content {
+  @apply py-24;
+
+  & > *,
+  .wp-block-column > p {
+    @apply text-base text-gray-600 leading-relaxed my-8;
+
+    &:first-child {
+      @apply mt-0 #{!important};
+    }
+
+    &:last-child {
+      @apply mb-0 #{!important};
+    }
+
+    @screen lg {
+      @apply text-lg;
+    }
+
+    &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce),
+    .default-max-width,
+    [class*='inner-container']
+      > *:not(.entry-content):not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce) {
+      @apply mx-auto;
+      max-width: var(--responsive--aligndefault-width);
+    }
+  }
+
+  .alignwide {
+    max-width: var(--responsive--alignwide-width);
+    @apply mx-auto clear-both;
+  }
+
+  .alignfull {
+    max-width: var(--responsive--alignfull-width);
+    @apply mx-auto clear-both;
+  }
+
+  .alignleft {
+    @apply float-left;
+  }
+
+  .alignright {
+    @apply float-right;
+  }
+
+  a {
+    @apply text-red-300 underline;
+  }
+
+  .wp-block-image {
+    &.alignwide,
+    &.alignfull {
+      .gatsby-image-wrapper {
+        @apply w-full #{!important};
+      }
+    }
+  }
+
+  // font sizes
+  @each $name, $size in $font-sizes {
+    .has-#{$name}-font-size {
+      font-size: $size !important;
+    }
+  }
+}
+
+.wp-block-columns {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-red-300 mb-4;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-3xl;
+  }
+  h4 {
+    @apply text-2xl;
+  }
+  h5,
+  h6 {
+    @apply text-xl;
+  }
+  p {
+    @apply mb-4;
+  }
+}
+
+article .inline-gatsby-image-wrapper,
+article .inline-gatsby-image-wrapper span {
+  @apply block;
+}
+
+.wp-block-image .aligncenter,
+.wp-block-image .alignleft,
+.wp-block-image .alignright {
+  @apply block;
+}
+
+.wp-block-image .aligncenter > figcaption,
+.wp-block-image .alignleft > figcaption,
+.wp-block-image .alignright > figcaption {
+  @apply block;
+}
+
+.wp-block-image .aligncenter .inline-gatsby-image-wrapper {
+  @apply mx-auto;
+}
+
+.wp-block-image .alignleft .inline-gatsby-image-wrapper {
+  @apply mr-auto ml-0;
+}
+
+.wp-block-image .alignright .inline-gatsby-image-wrapper {
+  @apply ml-auto mr-auto;
+}

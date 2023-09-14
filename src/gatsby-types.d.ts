@@ -2064,6 +2064,7 @@ type Query_siteArgs = {
   internal: InputMaybe<InternalFilterInput>;
   jsxRuntime: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
+  partytownProxiedURLs: InputMaybe<StringQueryOperatorInput>;
   pathPrefix: InputMaybe<StringQueryOperatorInput>;
   polyfill: InputMaybe<BooleanQueryOperatorInput>;
   port: InputMaybe<IntQueryOperatorInput>;
@@ -2822,6 +2823,7 @@ type Query_wpUserArgs = {
   registeredDate: InputMaybe<StringQueryOperatorInput>;
   roles: InputMaybe<WpUserToUserRoleConnectionTypeFilterInput>;
   seo: InputMaybe<WpSEOUserFilterInput>;
+  shouldShowAdminToolbar: InputMaybe<BooleanQueryOperatorInput>;
   slug: InputMaybe<StringQueryOperatorInput>;
   uri: InputMaybe<StringQueryOperatorInput>;
   url: InputMaybe<StringQueryOperatorInput>;
@@ -2946,6 +2948,7 @@ type Site = Node & {
   readonly internal: Internal;
   readonly jsxRuntime: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
+  readonly partytownProxiedURLs: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
   readonly pathPrefix: Maybe<Scalars['String']>;
   readonly polyfill: Maybe<Scalars['Boolean']>;
   readonly port: Maybe<Scalars['Int']>;
@@ -3316,6 +3319,7 @@ type SiteFieldsEnum =
   | 'parent.parent.internal.type'
   | 'parent.parent.parent.children'
   | 'parent.parent.parent.id'
+  | 'partytownProxiedURLs'
   | 'pathPrefix'
   | 'polyfill'
   | 'port'
@@ -3339,6 +3343,7 @@ type SiteFilterInput = {
   readonly internal: InputMaybe<InternalFilterInput>;
   readonly jsxRuntime: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
+  readonly partytownProxiedURLs: InputMaybe<StringQueryOperatorInput>;
   readonly pathPrefix: InputMaybe<StringQueryOperatorInput>;
   readonly polyfill: InputMaybe<BooleanQueryOperatorInput>;
   readonly port: InputMaybe<IntQueryOperatorInput>;
@@ -4324,6 +4329,31 @@ type WpCategoryConnection_sumArgs = {
   field: WpCategoryFieldsEnum;
 };
 
+type WpCategoryConnectionEdgeType = {
+  /** The connected category Node */
+  readonly node: WpCategory;
+};
+
+type WpCategoryConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpCategoryConnectionType = {
+  /** A list of connected category Nodes */
+  readonly nodes: ReadonlyArray<WpCategory>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpCategoryConnectionPageInfoType;
+};
+
 type WpCategoryEdge = {
   readonly next: Maybe<WpCategory>;
   readonly node: WpCategory;
@@ -4387,6 +4417,10 @@ type WpCategoryFieldsEnum =
   | 'ancestors.nodes.termTaxonomyId'
   | 'ancestors.nodes.uri'
   | 'ancestors.nodes.wpChildren.nodes'
+  | 'ancestors.pageInfo.endCursor'
+  | 'ancestors.pageInfo.hasNextPage'
+  | 'ancestors.pageInfo.hasPreviousPage'
+  | 'ancestors.pageInfo.startCursor'
   | 'children'
   | 'children.children'
   | 'children.children.children'
@@ -4484,6 +4518,10 @@ type WpCategoryFieldsEnum =
   | 'contentNodes.nodes.status'
   | 'contentNodes.nodes.template.templateName'
   | 'contentNodes.nodes.uri'
+  | 'contentNodes.pageInfo.endCursor'
+  | 'contentNodes.pageInfo.hasNextPage'
+  | 'contentNodes.pageInfo.hasPreviousPage'
+  | 'contentNodes.pageInfo.startCursor'
   | 'count'
   | 'databaseId'
   | 'description'
@@ -4621,6 +4659,10 @@ type WpCategoryFieldsEnum =
   | 'posts.nodes.title'
   | 'posts.nodes.toPing'
   | 'posts.nodes.uri'
+  | 'posts.pageInfo.endCursor'
+  | 'posts.pageInfo.hasNextPage'
+  | 'posts.pageInfo.hasPreviousPage'
+  | 'posts.pageInfo.startCursor'
   | 'seo.breadcrumbs'
   | 'seo.breadcrumbs.text'
   | 'seo.breadcrumbs.url'
@@ -4991,6 +5033,10 @@ type WpCategoryFieldsEnum =
   | 'wpChildren.nodes.termTaxonomyId'
   | 'wpChildren.nodes.uri'
   | 'wpChildren.nodes.wpChildren.nodes'
+  | 'wpChildren.pageInfo.endCursor'
+  | 'wpChildren.pageInfo.hasNextPage'
+  | 'wpChildren.pageInfo.hasPreviousPage'
+  | 'wpChildren.pageInfo.startCursor'
   | 'wpParent.node.ancestors.nodes'
   | 'wpParent.node.children'
   | 'wpParent.node.children.children'
@@ -5126,38 +5172,113 @@ type WpCategorySortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;CategoryToAncestorsCategoryConnection&quot; */
+type WpCategoryToAncestorsCategoryConnectionPageInfoType = WpCategoryConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpCategoryToAncestorsCategoryConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the Category type and the category type */
-type WpCategoryToAncestorsCategoryConnectionType = WpConnectionType & {
+type WpCategoryToAncestorsCategoryConnectionType = WpCategoryConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpCategory>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpCategoryToAncestorsCategoryConnectionPageInfoType;
 };
 
 type WpCategoryToAncestorsCategoryConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCategoryFilterListInput>;
+  readonly pageInfo: InputMaybe<WpCategoryToAncestorsCategoryConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;CategoryToCategoryConnection&quot; */
+type WpCategoryToCategoryConnectionPageInfoType = WpCategoryConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpCategoryToCategoryConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the Category type and the category type */
-type WpCategoryToCategoryConnectionType = WpConnectionType & {
+type WpCategoryToCategoryConnectionType = WpCategoryConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpCategory>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpCategoryToCategoryConnectionPageInfoType;
 };
 
 type WpCategoryToCategoryConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCategoryFilterListInput>;
+  readonly pageInfo: InputMaybe<WpCategoryToCategoryConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;CategoryToContentNodeConnection&quot; */
+type WpCategoryToContentNodeConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpCategoryToContentNodeConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the Category type and the ContentNode type */
-type WpCategoryToContentNodeConnectionType = WpConnectionType & {
+type WpCategoryToContentNodeConnectionType = WpConnectionType & WpContentNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpCategoryToContentNodeConnectionPageInfoType;
 };
 
 type WpCategoryToContentNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpCategoryToContentNodeConnectionPageInfoTypeFilterInput>;
 };
 
 /** Connection between the Category type and the category type */
-type WpCategoryToParentCategoryConnectionEdgeType = WpEdgeType & WpOneToOneConnectionType & {
+type WpCategoryToParentCategoryConnectionEdgeType = WpCategoryConnectionEdgeType & WpEdgeType & WpOneToOneConnectionType & {
   /** The node of the connection, without the edges */
   readonly node: WpCategory;
 };
@@ -5166,14 +5287,39 @@ type WpCategoryToParentCategoryConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpCategoryFilterInput>;
 };
 
+/** Page Info on the &quot;CategoryToPostConnection&quot; */
+type WpCategoryToPostConnectionPageInfoType = WpPageInfoType & WpPostConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpCategoryToPostConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the Category type and the post type */
-type WpCategoryToPostConnectionType = WpConnectionType & {
+type WpCategoryToPostConnectionType = WpConnectionType & WpPostConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPost>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpCategoryToPostConnectionPageInfoType;
 };
 
 type WpCategoryToPostConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFilterListInput>;
+  readonly pageInfo: InputMaybe<WpCategoryToPostConnectionPageInfoTypeFilterInput>;
 };
 
 /** Connection between the Category type and the Taxonomy type */
@@ -5516,13 +5662,28 @@ type WpCommentConnection_sumArgs = {
 };
 
 type WpCommentConnectionEdgeType = {
-  /** The connected node */
-  readonly node: WpNode;
+  /** The connected Comment Node */
+  readonly node: WpComment;
+};
+
+type WpCommentConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
 };
 
 type WpCommentConnectionType = {
   /** A list of connected Comment Nodes */
   readonly nodes: ReadonlyArray<WpComment>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpCommentConnectionPageInfoType;
 };
 
 type WpCommentEdge = {
@@ -5748,6 +5909,10 @@ type WpCommentFieldsEnum =
   | 'replies.nodes.replies.nodes'
   | 'replies.nodes.status'
   | 'replies.nodes.type'
+  | 'replies.pageInfo.endCursor'
+  | 'replies.pageInfo.hasNextPage'
+  | 'replies.pageInfo.hasPreviousPage'
+  | 'replies.pageInfo.startCursor'
   | 'status'
   | 'type'
   | 'wpParent.node.agent'
@@ -5866,18 +6031,43 @@ type WpCommentStatusEnumQueryOperatorInput = {
   readonly nin: InputMaybe<ReadonlyArray<InputMaybe<WpCommentStatusEnum>>>;
 };
 
+/** Page Info on the &quot;CommentToCommentConnection&quot; */
+type WpCommentToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpCommentToCommentConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the Comment type and the Comment type */
 type WpCommentToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpCommentToCommentConnectionPageInfoType;
 };
 
 type WpCommentToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
+  readonly pageInfo: InputMaybe<WpCommentToCommentConnectionPageInfoTypeFilterInput>;
 };
 
 /** Connection between the Comment type and the Commenter type */
-type WpCommentToCommenterConnectionEdgeType = WpEdgeType & WpOneToOneConnectionType & {
+type WpCommentToCommenterConnectionEdgeType = WpCommenterConnectionEdgeType & WpEdgeType & WpOneToOneConnectionType & {
   /** The node of the connection, without the edges */
   readonly node: WpCommenter;
 };
@@ -5961,6 +6151,11 @@ type WpCommenterConnection_minArgs = {
 
 type WpCommenterConnection_sumArgs = {
   field: WpCommenterFieldsEnum;
+};
+
+type WpCommenterConnectionEdgeType = {
+  /** The connected Commenter Node */
+  readonly node: WpCommenter;
 };
 
 type WpCommenterEdge = {
@@ -6180,6 +6375,8 @@ type WpConnection_sumArgs = {
 type WpConnectionType = {
   /** A list of connected nodes */
   readonly nodes: ReadonlyArray<WpNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPageInfoType;
 };
 
 type WpContentNode = {
@@ -6300,13 +6497,28 @@ type WpContentNodeConnection_sumArgs = {
 };
 
 type WpContentNodeConnectionEdgeType = {
-  /** The connected node */
-  readonly node: WpNode;
+  /** The connected ContentNode Node */
+  readonly node: WpContentNode;
+};
+
+type WpContentNodeConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
 };
 
 type WpContentNodeConnectionType = {
-  /** A list of connected Content Nodes */
+  /** A list of connected ContentNode Nodes */
   readonly nodes: ReadonlyArray<WpContentNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpContentNodeConnectionPageInfoType;
 };
 
 type WpContentNodeEdge = {
@@ -6506,6 +6718,7 @@ type WpContentNodeFieldsEnum =
   | 'lastEditedBy.node.seo.title'
   | 'lastEditedBy.node.seo.twitterDescription'
   | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.shouldShowAdminToolbar'
   | 'lastEditedBy.node.slug'
   | 'lastEditedBy.node.uri'
   | 'lastEditedBy.node.url'
@@ -7062,13 +7275,28 @@ type WpContentTypeConnection_sumArgs = {
 };
 
 type WpContentTypeConnectionEdgeType = {
-  /** The connected node */
-  readonly node: WpNode;
+  /** The connected ContentType Node */
+  readonly node: WpContentType;
+};
+
+type WpContentTypeConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
 };
 
 type WpContentTypeConnectionType = {
-  /** A list of connected Content Type Nodes */
+  /** A list of connected ContentType Nodes */
   readonly nodes: ReadonlyArray<WpContentType>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpContentTypeConnectionPageInfoType;
 };
 
 type WpContentTypeEdge = {
@@ -7158,6 +7386,10 @@ type WpContentTypeFieldsEnum =
   | 'connectedTaxonomies.nodes.showInQuickEdit'
   | 'connectedTaxonomies.nodes.showInRest'
   | 'connectedTaxonomies.nodes.showUi'
+  | 'connectedTaxonomies.pageInfo.endCursor'
+  | 'connectedTaxonomies.pageInfo.hasNextPage'
+  | 'connectedTaxonomies.pageInfo.hasPreviousPage'
+  | 'connectedTaxonomies.pageInfo.startCursor'
   | 'contentNodes.nodes'
   | 'contentNodes.nodes.children'
   | 'contentNodes.nodes.children.children'
@@ -7213,6 +7445,10 @@ type WpContentTypeFieldsEnum =
   | 'contentNodes.nodes.status'
   | 'contentNodes.nodes.template.templateName'
   | 'contentNodes.nodes.uri'
+  | 'contentNodes.pageInfo.endCursor'
+  | 'contentNodes.pageInfo.hasNextPage'
+  | 'contentNodes.pageInfo.hasPreviousPage'
+  | 'contentNodes.pageInfo.startCursor'
   | 'deleteWithUser'
   | 'description'
   | 'excludeFromSearch'
@@ -7406,24 +7642,74 @@ type WpContentTypeSortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;ContentTypeToContentNodeConnection&quot; */
+type WpContentTypeToContentNodeConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpContentTypeToContentNodeConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the ContentType type and the ContentNode type */
 type WpContentTypeToContentNodeConnectionType = WpConnectionType & WpContentNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpContentTypeToContentNodeConnectionPageInfoType;
 };
 
 type WpContentTypeToContentNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpContentTypeToContentNodeConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;ContentTypeToTaxonomyConnection&quot; */
+type WpContentTypeToTaxonomyConnectionPageInfoType = WpPageInfoType & WpTaxonomyConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpContentTypeToTaxonomyConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the ContentType type and the Taxonomy type */
 type WpContentTypeToTaxonomyConnectionType = WpConnectionType & WpTaxonomyConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpTaxonomy>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpContentTypeToTaxonomyConnectionPageInfoType;
 };
 
 type WpContentTypeToTaxonomyConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpTaxonomyFilterListInput>;
+  readonly pageInfo: InputMaybe<WpContentTypeToTaxonomyConnectionPageInfoTypeFilterInput>;
 };
 
 type WpDatabaseIdentifier = {
@@ -7860,6 +8146,10 @@ type WpFieldsEnum =
   | 'viewer.comments.nodes.parentId'
   | 'viewer.comments.nodes.status'
   | 'viewer.comments.nodes.type'
+  | 'viewer.comments.pageInfo.endCursor'
+  | 'viewer.comments.pageInfo.hasNextPage'
+  | 'viewer.comments.pageInfo.hasPreviousPage'
+  | 'viewer.comments.pageInfo.startCursor'
   | 'viewer.databaseId'
   | 'viewer.description'
   | 'viewer.email'
@@ -7917,6 +8207,10 @@ type WpFieldsEnum =
   | 'viewer.pages.nodes.status'
   | 'viewer.pages.nodes.title'
   | 'viewer.pages.nodes.uri'
+  | 'viewer.pages.pageInfo.endCursor'
+  | 'viewer.pages.pageInfo.hasNextPage'
+  | 'viewer.pages.pageInfo.hasPreviousPage'
+  | 'viewer.pages.pageInfo.startCursor'
   | 'viewer.parent.children'
   | 'viewer.parent.children.children'
   | 'viewer.parent.children.id'
@@ -7965,6 +8259,10 @@ type WpFieldsEnum =
   | 'viewer.posts.nodes.title'
   | 'viewer.posts.nodes.toPing'
   | 'viewer.posts.nodes.uri'
+  | 'viewer.posts.pageInfo.endCursor'
+  | 'viewer.posts.pageInfo.hasNextPage'
+  | 'viewer.posts.pageInfo.hasPreviousPage'
+  | 'viewer.posts.pageInfo.startCursor'
   | 'viewer.registeredDate'
   | 'viewer.roles.nodes'
   | 'viewer.roles.nodes.capabilities'
@@ -7973,6 +8271,10 @@ type WpFieldsEnum =
   | 'viewer.roles.nodes.id'
   | 'viewer.roles.nodes.name'
   | 'viewer.roles.nodes.nodeType'
+  | 'viewer.roles.pageInfo.endCursor'
+  | 'viewer.roles.pageInfo.hasNextPage'
+  | 'viewer.roles.pageInfo.hasPreviousPage'
+  | 'viewer.roles.pageInfo.startCursor'
   | 'viewer.seo.breadcrumbTitle'
   | 'viewer.seo.canonical'
   | 'viewer.seo.fullHead'
@@ -8080,6 +8382,7 @@ type WpFieldsEnum =
   | 'viewer.seo.twitterImage.uri'
   | 'viewer.seo.twitterImage.width'
   | 'viewer.seo.twitterTitle'
+  | 'viewer.shouldShowAdminToolbar'
   | 'viewer.slug'
   | 'viewer.uri'
   | 'viewer.url'
@@ -8371,6 +8674,10 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'ancestors.nodes.status'
   | 'ancestors.nodes.template.templateName'
   | 'ancestors.nodes.uri'
+  | 'ancestors.pageInfo.endCursor'
+  | 'ancestors.pageInfo.hasNextPage'
+  | 'ancestors.pageInfo.hasPreviousPage'
+  | 'ancestors.pageInfo.startCursor'
   | 'children'
   | 'children.children'
   | 'children.children.children'
@@ -8561,6 +8868,7 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'lastEditedBy.node.seo.title'
   | 'lastEditedBy.node.seo.twitterDescription'
   | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.shouldShowAdminToolbar'
   | 'lastEditedBy.node.slug'
   | 'lastEditedBy.node.uri'
   | 'lastEditedBy.node.url'
@@ -8948,6 +9256,10 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'wpChildren.nodes.status'
   | 'wpChildren.nodes.template.templateName'
   | 'wpChildren.nodes.uri'
+  | 'wpChildren.pageInfo.endCursor'
+  | 'wpChildren.pageInfo.hasNextPage'
+  | 'wpChildren.pageInfo.hasPreviousPage'
+  | 'wpChildren.pageInfo.startCursor'
   | 'wpParent.node.children'
   | 'wpParent.node.children.children'
   | 'wpParent.node.children.id'
@@ -9081,24 +9393,74 @@ type WpHierarchicalContentNodeSortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;HierarchicalContentNodeToContentNodeAncestorsConnection&quot; */
+type WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the HierarchicalContentNode type and the ContentNode type */
 type WpHierarchicalContentNodeToContentNodeAncestorsConnectionType = WpConnectionType & WpContentNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoType;
 };
 
 type WpHierarchicalContentNodeToContentNodeAncestorsConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpHierarchicalContentNodeToContentNodeAncestorsConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;HierarchicalContentNodeToContentNodeChildrenConnection&quot; */
+type WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the HierarchicalContentNode type and the ContentNode type */
 type WpHierarchicalContentNodeToContentNodeChildrenConnectionType = WpConnectionType & WpContentNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoType;
 };
 
 type WpHierarchicalContentNodeToContentNodeChildrenConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpHierarchicalContentNodeToContentNodeChildrenConnectionPageInfoTypeFilterInput>;
 };
 
 /** Connection between the HierarchicalContentNode type and the ContentNode type */
@@ -9813,6 +10175,31 @@ type WpMediaItemConnection_sumArgs = {
   field: WpMediaItemFieldsEnum;
 };
 
+type WpMediaItemConnectionEdgeType = {
+  /** The connected mediaItem Node */
+  readonly node: WpMediaItem;
+};
+
+type WpMediaItemConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpMediaItemConnectionType = {
+  /** A list of connected mediaItem Nodes */
+  readonly nodes: ReadonlyArray<WpMediaItem>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpMediaItemConnectionPageInfoType;
+};
+
 type WpMediaItemEdge = {
   readonly next: Maybe<WpMediaItem>;
   readonly node: WpMediaItem;
@@ -9876,6 +10263,10 @@ type WpMediaItemFieldsEnum =
   | 'ancestors.nodes.status'
   | 'ancestors.nodes.template.templateName'
   | 'ancestors.nodes.uri'
+  | 'ancestors.pageInfo.endCursor'
+  | 'ancestors.pageInfo.hasNextPage'
+  | 'ancestors.pageInfo.hasPreviousPage'
+  | 'ancestors.pageInfo.startCursor'
   | 'authorDatabaseId'
   | 'authorId'
   | 'author.node.avatar.default'
@@ -9936,6 +10327,7 @@ type WpMediaItemFieldsEnum =
   | 'author.node.seo.title'
   | 'author.node.seo.twitterDescription'
   | 'author.node.seo.twitterTitle'
+  | 'author.node.shouldShowAdminToolbar'
   | 'author.node.slug'
   | 'author.node.uri'
   | 'author.node.url'
@@ -10014,6 +10406,10 @@ type WpMediaItemFieldsEnum =
   | 'comments.nodes.replies.nodes'
   | 'comments.nodes.status'
   | 'comments.nodes.type'
+  | 'comments.pageInfo.endCursor'
+  | 'comments.pageInfo.hasNextPage'
+  | 'comments.pageInfo.hasPreviousPage'
+  | 'comments.pageInfo.startCursor'
   | 'contentTypeName'
   | 'contentType.node.archivePath'
   | 'contentType.node.canExport'
@@ -10168,6 +10564,7 @@ type WpMediaItemFieldsEnum =
   | 'lastEditedBy.node.seo.title'
   | 'lastEditedBy.node.seo.twitterDescription'
   | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.shouldShowAdminToolbar'
   | 'lastEditedBy.node.slug'
   | 'lastEditedBy.node.uri'
   | 'lastEditedBy.node.url'
@@ -10761,6 +11158,10 @@ type WpMediaItemFieldsEnum =
   | 'wpChildren.nodes.status'
   | 'wpChildren.nodes.template.templateName'
   | 'wpChildren.nodes.uri'
+  | 'wpChildren.pageInfo.endCursor'
+  | 'wpChildren.pageInfo.hasNextPage'
+  | 'wpChildren.pageInfo.hasPreviousPage'
+  | 'wpChildren.pageInfo.startCursor'
   | 'wpParent.node.children'
   | 'wpParent.node.children.children'
   | 'wpParent.node.children.id'
@@ -10963,14 +11364,39 @@ type WpMediaItemSortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;MediaItemToCommentConnection&quot; */
+type WpMediaItemToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpMediaItemToCommentConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the MediaItem type and the Comment type */
 type WpMediaItemToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpMediaItemToCommentConnectionPageInfoType;
 };
 
 type WpMediaItemToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
+  readonly pageInfo: InputMaybe<WpMediaItemToCommentConnectionPageInfoTypeFilterInput>;
 };
 
 /** Details of an available size for a media item */
@@ -11066,13 +11492,28 @@ type WpMenuConnection_sumArgs = {
 };
 
 type WpMenuConnectionEdgeType = {
-  /** The connected node */
-  readonly node: WpNode;
+  /** The connected Menu Node */
+  readonly node: WpMenu;
+};
+
+type WpMenuConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
 };
 
 type WpMenuConnectionType = {
   /** A list of connected Menu Nodes */
   readonly nodes: ReadonlyArray<WpMenu>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpMenuConnectionPageInfoType;
 };
 
 type WpMenuEdge = {
@@ -11169,6 +11610,10 @@ type WpMenuFieldsEnum =
   | 'menuItems.nodes.title'
   | 'menuItems.nodes.uri'
   | 'menuItems.nodes.url'
+  | 'menuItems.pageInfo.endCursor'
+  | 'menuItems.pageInfo.hasNextPage'
+  | 'menuItems.pageInfo.hasPreviousPage'
+  | 'menuItems.pageInfo.startCursor'
   | 'name'
   | 'nodeType'
   | 'parent.children'
@@ -11352,13 +11797,28 @@ type WpMenuItemConnection_sumArgs = {
 };
 
 type WpMenuItemConnectionEdgeType = {
-  /** The connected node */
-  readonly node: WpNode;
+  /** The connected MenuItem Node */
+  readonly node: WpMenuItem;
+};
+
+type WpMenuItemConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
 };
 
 type WpMenuItemConnectionType = {
-  /** A list of connected Menu Item Nodes */
+  /** A list of connected MenuItem Nodes */
   readonly nodes: ReadonlyArray<WpMenuItem>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpMenuItemConnectionPageInfoType;
 };
 
 type WpMenuItemEdge = {
@@ -11400,6 +11860,10 @@ type WpMenuItemFieldsEnum =
   | 'childItems.nodes.title'
   | 'childItems.nodes.uri'
   | 'childItems.nodes.url'
+  | 'childItems.pageInfo.endCursor'
+  | 'childItems.pageInfo.hasNextPage'
+  | 'childItems.pageInfo.hasPreviousPage'
+  | 'childItems.pageInfo.startCursor'
   | 'children'
   | 'children.children'
   | 'children.children.children'
@@ -11677,8 +12141,8 @@ type WpMenuItemLinkableConnection_sumArgs = {
 };
 
 type WpMenuItemLinkableConnectionEdgeType = {
-  /** The connected node */
-  readonly node: WpNode;
+  /** The connected MenuItemLinkable Node */
+  readonly node: WpMenuItemLinkable;
 };
 
 type WpMenuItemLinkableEdge = {
@@ -11860,14 +12324,39 @@ type WpMenuItemToMenuConnectionEdgeTypeFilterInput = {
   readonly node: InputMaybe<WpMenuFilterInput>;
 };
 
+/** Page Info on the &quot;MenuItemToMenuItemConnection&quot; */
+type WpMenuItemToMenuItemConnectionPageInfoType = WpMenuItemConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpMenuItemToMenuItemConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the MenuItem type and the MenuItem type */
 type WpMenuItemToMenuItemConnectionType = WpConnectionType & WpMenuItemConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpMenuItem>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpMenuItemToMenuItemConnectionPageInfoType;
 };
 
 type WpMenuItemToMenuItemConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpMenuItemFilterListInput>;
+  readonly pageInfo: InputMaybe<WpMenuItemToMenuItemConnectionPageInfoTypeFilterInput>;
 };
 
 /** Connection between the MenuItem type and the MenuItemLinkable type */
@@ -11897,14 +12386,39 @@ type WpMenuSortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;MenuToMenuItemConnection&quot; */
+type WpMenuToMenuItemConnectionPageInfoType = WpMenuItemConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpMenuToMenuItemConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the Menu type and the MenuItem type */
 type WpMenuToMenuItemConnectionType = WpConnectionType & WpMenuItemConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpMenuItem>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpMenuToMenuItemConnectionPageInfoType;
 };
 
 type WpMenuToMenuItemConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpMenuItemFilterListInput>;
+  readonly pageInfo: InputMaybe<WpMenuToMenuItemConnectionPageInfoTypeFilterInput>;
 };
 
 type WpNode = {
@@ -12032,6 +12546,7 @@ type WpNodeWithAuthorFieldsEnum =
   | 'author.node.seo.title'
   | 'author.node.seo.twitterDescription'
   | 'author.node.seo.twitterTitle'
+  | 'author.node.shouldShowAdminToolbar'
   | 'author.node.slug'
   | 'author.node.uri'
   | 'author.node.url'
@@ -13163,7 +13678,7 @@ type WpNodeWithFeaturedImageSortInput = {
 };
 
 /** Connection between the NodeWithFeaturedImage type and the MediaItem type */
-type WpNodeWithFeaturedImageToMediaItemConnectionEdgeType = WpEdgeType & WpOneToOneConnectionType & {
+type WpNodeWithFeaturedImageToMediaItemConnectionEdgeType = WpEdgeType & WpMediaItemConnectionEdgeType & WpOneToOneConnectionType & {
   /** The node of the connection, without the edges */
   readonly node: WpMediaItem;
 };
@@ -14670,6 +15185,31 @@ type WpPageConnection_sumArgs = {
   field: WpPageFieldsEnum;
 };
 
+type WpPageConnectionEdgeType = {
+  /** The connected page Node */
+  readonly node: WpPage;
+};
+
+type WpPageConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPageConnectionType = {
+  /** A list of connected page Nodes */
+  readonly nodes: ReadonlyArray<WpPage>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPageConnectionPageInfoType;
+};
+
 type WpPageEdge = {
   readonly next: Maybe<WpPage>;
   readonly node: WpPage;
@@ -14732,6 +15272,10 @@ type WpPageFieldsEnum =
   | 'ancestors.nodes.status'
   | 'ancestors.nodes.template.templateName'
   | 'ancestors.nodes.uri'
+  | 'ancestors.pageInfo.endCursor'
+  | 'ancestors.pageInfo.hasNextPage'
+  | 'ancestors.pageInfo.hasPreviousPage'
+  | 'ancestors.pageInfo.startCursor'
   | 'authorDatabaseId'
   | 'authorId'
   | 'author.node.avatar.default'
@@ -14792,6 +15336,7 @@ type WpPageFieldsEnum =
   | 'author.node.seo.title'
   | 'author.node.seo.twitterDescription'
   | 'author.node.seo.twitterTitle'
+  | 'author.node.shouldShowAdminToolbar'
   | 'author.node.slug'
   | 'author.node.uri'
   | 'author.node.url'
@@ -14869,6 +15414,10 @@ type WpPageFieldsEnum =
   | 'comments.nodes.replies.nodes'
   | 'comments.nodes.status'
   | 'comments.nodes.type'
+  | 'comments.pageInfo.endCursor'
+  | 'comments.pageInfo.hasNextPage'
+  | 'comments.pageInfo.hasPreviousPage'
+  | 'comments.pageInfo.startCursor'
   | 'content'
   | 'contentTypeName'
   | 'contentType.node.archivePath'
@@ -15149,6 +15698,7 @@ type WpPageFieldsEnum =
   | 'lastEditedBy.node.seo.title'
   | 'lastEditedBy.node.seo.twitterDescription'
   | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.shouldShowAdminToolbar'
   | 'lastEditedBy.node.slug'
   | 'lastEditedBy.node.uri'
   | 'lastEditedBy.node.url'
@@ -15538,6 +16088,10 @@ type WpPageFieldsEnum =
   | 'wpChildren.nodes.status'
   | 'wpChildren.nodes.template.templateName'
   | 'wpChildren.nodes.uri'
+  | 'wpChildren.pageInfo.endCursor'
+  | 'wpChildren.pageInfo.hasNextPage'
+  | 'wpChildren.pageInfo.hasPreviousPage'
+  | 'wpChildren.pageInfo.startCursor'
   | 'wpParent.node.children'
   | 'wpParent.node.children.children'
   | 'wpParent.node.children.id'
@@ -15686,19 +16240,55 @@ type WpPageGroupConnection_sumArgs = {
   field: WpPageFieldsEnum;
 };
 
+type WpPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
 type WpPageSortInput = {
   readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpPageFieldsEnum>>>;
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
+};
+
+/** Page Info on the &quot;PageToCommentConnection&quot; */
+type WpPageToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPageToCommentConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the Page type and the Comment type */
 type WpPageToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPageToCommentConnectionPageInfoType;
 };
 
 type WpPageToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPageToCommentConnectionPageInfoTypeFilterInput>;
 };
 
 /** The post type */
@@ -15867,6 +16457,31 @@ type WpPostConnection_sumArgs = {
   field: WpPostFieldsEnum;
 };
 
+type WpPostConnectionEdgeType = {
+  /** The connected post Node */
+  readonly node: WpPost;
+};
+
+type WpPostConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPostConnectionType = {
+  /** A list of connected post Nodes */
+  readonly nodes: ReadonlyArray<WpPost>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPostConnectionPageInfoType;
+};
+
 type WpPostEdge = {
   readonly next: Maybe<WpPost>;
   readonly node: WpPost;
@@ -15936,6 +16551,7 @@ type WpPostFieldsEnum =
   | 'author.node.seo.title'
   | 'author.node.seo.twitterDescription'
   | 'author.node.seo.twitterTitle'
+  | 'author.node.shouldShowAdminToolbar'
   | 'author.node.slug'
   | 'author.node.uri'
   | 'author.node.url'
@@ -15996,6 +16612,10 @@ type WpPostFieldsEnum =
   | 'categories.nodes.termTaxonomyId'
   | 'categories.nodes.uri'
   | 'categories.nodes.wpChildren.nodes'
+  | 'categories.pageInfo.endCursor'
+  | 'categories.pageInfo.hasNextPage'
+  | 'categories.pageInfo.hasPreviousPage'
+  | 'categories.pageInfo.startCursor'
   | 'children'
   | 'children.children'
   | 'children.children.children'
@@ -16069,6 +16689,10 @@ type WpPostFieldsEnum =
   | 'comments.nodes.replies.nodes'
   | 'comments.nodes.status'
   | 'comments.nodes.type'
+  | 'comments.pageInfo.endCursor'
+  | 'comments.pageInfo.hasNextPage'
+  | 'comments.pageInfo.hasPreviousPage'
+  | 'comments.pageInfo.startCursor'
   | 'content'
   | 'contentTypeName'
   | 'contentType.node.archivePath'
@@ -16348,6 +16972,7 @@ type WpPostFieldsEnum =
   | 'lastEditedBy.node.seo.title'
   | 'lastEditedBy.node.seo.twitterDescription'
   | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.shouldShowAdminToolbar'
   | 'lastEditedBy.node.slug'
   | 'lastEditedBy.node.uri'
   | 'lastEditedBy.node.url'
@@ -16451,6 +17076,10 @@ type WpPostFieldsEnum =
   | 'postFormats.nodes.termGroupId'
   | 'postFormats.nodes.termTaxonomyId'
   | 'postFormats.nodes.uri'
+  | 'postFormats.pageInfo.endCursor'
+  | 'postFormats.pageInfo.hasNextPage'
+  | 'postFormats.pageInfo.hasPreviousPage'
+  | 'postFormats.pageInfo.startCursor'
   | 'seo.breadcrumbs'
   | 'seo.breadcrumbs.text'
   | 'seo.breadcrumbs.url'
@@ -16782,6 +17411,10 @@ type WpPostFieldsEnum =
   | 'tags.nodes.termGroupId'
   | 'tags.nodes.termTaxonomyId'
   | 'tags.nodes.uri'
+  | 'tags.pageInfo.endCursor'
+  | 'tags.pageInfo.hasNextPage'
+  | 'tags.pageInfo.hasPreviousPage'
+  | 'tags.pageInfo.startCursor'
   | 'template.templateName'
   | 'terms.nodes'
   | 'terms.nodes.children'
@@ -16812,6 +17445,10 @@ type WpPostFieldsEnum =
   | 'terms.nodes.termGroupId'
   | 'terms.nodes.termTaxonomyId'
   | 'terms.nodes.uri'
+  | 'terms.pageInfo.endCursor'
+  | 'terms.pageInfo.hasNextPage'
+  | 'terms.pageInfo.hasPreviousPage'
+  | 'terms.pageInfo.startCursor'
   | 'title'
   | 'toPing'
   | 'uri';
@@ -16949,6 +17586,31 @@ type WpPostFormatConnection_sumArgs = {
   field: WpPostFormatFieldsEnum;
 };
 
+type WpPostFormatConnectionEdgeType = {
+  /** The connected postFormat Node */
+  readonly node: WpPostFormat;
+};
+
+type WpPostFormatConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPostFormatConnectionType = {
+  /** A list of connected postFormat Nodes */
+  readonly nodes: ReadonlyArray<WpPostFormat>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPostFormatConnectionPageInfoType;
+};
+
 type WpPostFormatEdge = {
   readonly next: Maybe<WpPostFormat>;
   readonly node: WpPostFormat;
@@ -17053,6 +17715,10 @@ type WpPostFormatFieldsEnum =
   | 'contentNodes.nodes.status'
   | 'contentNodes.nodes.template.templateName'
   | 'contentNodes.nodes.uri'
+  | 'contentNodes.pageInfo.endCursor'
+  | 'contentNodes.pageInfo.hasNextPage'
+  | 'contentNodes.pageInfo.hasPreviousPage'
+  | 'contentNodes.pageInfo.startCursor'
   | 'count'
   | 'databaseId'
   | 'description'
@@ -17188,6 +17854,10 @@ type WpPostFormatFieldsEnum =
   | 'posts.nodes.title'
   | 'posts.nodes.toPing'
   | 'posts.nodes.uri'
+  | 'posts.pageInfo.endCursor'
+  | 'posts.pageInfo.hasNextPage'
+  | 'posts.pageInfo.hasPreviousPage'
+  | 'posts.pageInfo.startCursor'
   | 'seo.breadcrumbs'
   | 'seo.breadcrumbs.text'
   | 'seo.breadcrumbs.url'
@@ -17577,24 +18247,74 @@ type WpPostFormatSortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;PostFormatToContentNodeConnection&quot; */
+type WpPostFormatToContentNodeConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPostFormatToContentNodeConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the PostFormat type and the ContentNode type */
-type WpPostFormatToContentNodeConnectionType = WpConnectionType & {
+type WpPostFormatToContentNodeConnectionType = WpConnectionType & WpContentNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPostFormatToContentNodeConnectionPageInfoType;
 };
 
 type WpPostFormatToContentNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPostFormatToContentNodeConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;PostFormatToPostConnection&quot; */
+type WpPostFormatToPostConnectionPageInfoType = WpPageInfoType & WpPostConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPostFormatToPostConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the PostFormat type and the post type */
-type WpPostFormatToPostConnectionType = WpConnectionType & {
+type WpPostFormatToPostConnectionType = WpConnectionType & WpPostConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPost>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPostFormatToPostConnectionPageInfoType;
 };
 
 type WpPostFormatToPostConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPostFormatToPostConnectionPageInfoTypeFilterInput>;
 };
 
 /** Connection between the PostFormat type and the Taxonomy type */
@@ -17653,54 +18373,179 @@ type WpPostSortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;PostToCategoryConnection&quot; */
+type WpPostToCategoryConnectionPageInfoType = WpCategoryConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPostToCategoryConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the Post type and the category type */
-type WpPostToCategoryConnectionType = WpConnectionType & {
+type WpPostToCategoryConnectionType = WpCategoryConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpCategory>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPostToCategoryConnectionPageInfoType;
 };
 
 type WpPostToCategoryConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCategoryFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPostToCategoryConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;PostToCommentConnection&quot; */
+type WpPostToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPostToCommentConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the Post type and the Comment type */
 type WpPostToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPostToCommentConnectionPageInfoType;
 };
 
 type WpPostToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPostToCommentConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;PostToPostFormatConnection&quot; */
+type WpPostToPostFormatConnectionPageInfoType = WpPageInfoType & WpPostFormatConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPostToPostFormatConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the Post type and the postFormat type */
-type WpPostToPostFormatConnectionType = WpConnectionType & {
+type WpPostToPostFormatConnectionType = WpConnectionType & WpPostFormatConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPostFormat>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPostToPostFormatConnectionPageInfoType;
 };
 
 type WpPostToPostFormatConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFormatFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPostToPostFormatConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;PostToTagConnection&quot; */
+type WpPostToTagConnectionPageInfoType = WpPageInfoType & WpTagConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPostToTagConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the Post type and the tag type */
-type WpPostToTagConnectionType = WpConnectionType & {
+type WpPostToTagConnectionType = WpConnectionType & WpTagConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpTag>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPostToTagConnectionPageInfoType;
 };
 
 type WpPostToTagConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpTagFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPostToTagConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;PostToTermNodeConnection&quot; */
+type WpPostToTermNodeConnectionPageInfoType = WpPageInfoType & WpTermNodeConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpPostToTermNodeConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the Post type and the TermNode type */
 type WpPostToTermNodeConnectionType = WpConnectionType & WpTermNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpTermNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpPostToTermNodeConnectionPageInfoType;
 };
 
 type WpPostToTermNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpTermNodeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpPostToTermNodeConnectionPageInfoTypeFilterInput>;
 };
 
 /** Details for labels of the PostType */
@@ -18113,6 +18958,15 @@ type WpSEOPostTypeBreadcrumbsFilterListInput = {
   readonly elemMatch: InputMaybe<WpSEOPostTypeBreadcrumbsFilterInput>;
 };
 
+/** The page info SEO details */
+type WpSEOPostTypePageInfoType = {
+  readonly schema: Maybe<WpSEOPageInfoSchema>;
+};
+
+type WpSEOPostTypePageInfoTypeFilterInput = {
+  readonly schema: InputMaybe<WpSEOPageInfoSchemaFilterInput>;
+};
+
 /** The Schema types */
 type WpSEOPostTypeSchema = {
   readonly articleType: Maybe<ReadonlyArray<Maybe<Scalars['String']>>>;
@@ -18516,6 +19370,31 @@ type WpTagConnection_sumArgs = {
   field: WpTagFieldsEnum;
 };
 
+type WpTagConnectionEdgeType = {
+  /** The connected tag Node */
+  readonly node: WpTag;
+};
+
+type WpTagConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpTagConnectionType = {
+  /** A list of connected tag Nodes */
+  readonly nodes: ReadonlyArray<WpTag>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpTagConnectionPageInfoType;
+};
+
 type WpTagEdge = {
   readonly next: Maybe<WpTag>;
   readonly node: WpTag;
@@ -18620,6 +19499,10 @@ type WpTagFieldsEnum =
   | 'contentNodes.nodes.status'
   | 'contentNodes.nodes.template.templateName'
   | 'contentNodes.nodes.uri'
+  | 'contentNodes.pageInfo.endCursor'
+  | 'contentNodes.pageInfo.hasNextPage'
+  | 'contentNodes.pageInfo.hasPreviousPage'
+  | 'contentNodes.pageInfo.startCursor'
   | 'count'
   | 'databaseId'
   | 'description'
@@ -18755,6 +19638,10 @@ type WpTagFieldsEnum =
   | 'posts.nodes.title'
   | 'posts.nodes.toPing'
   | 'posts.nodes.uri'
+  | 'posts.pageInfo.endCursor'
+  | 'posts.pageInfo.hasNextPage'
+  | 'posts.pageInfo.hasPreviousPage'
+  | 'posts.pageInfo.startCursor'
   | 'seo.breadcrumbs'
   | 'seo.breadcrumbs.text'
   | 'seo.breadcrumbs.url'
@@ -19144,24 +20031,74 @@ type WpTagSortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;TagToContentNodeConnection&quot; */
+type WpTagToContentNodeConnectionPageInfoType = WpContentNodeConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpTagToContentNodeConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the Tag type and the ContentNode type */
-type WpTagToContentNodeConnectionType = WpConnectionType & {
+type WpTagToContentNodeConnectionType = WpConnectionType & WpContentNodeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpTagToContentNodeConnectionPageInfoType;
 };
 
 type WpTagToContentNodeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentNodeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpTagToContentNodeConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;TagToPostConnection&quot; */
+type WpTagToPostConnectionPageInfoType = WpPageInfoType & WpPostConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpTagToPostConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the Tag type and the post type */
-type WpTagToPostConnectionType = WpConnectionType & {
+type WpTagToPostConnectionType = WpConnectionType & WpPostConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPost>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpTagToPostConnectionPageInfoType;
 };
 
 type WpTagToPostConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFilterListInput>;
+  readonly pageInfo: InputMaybe<WpTagToPostConnectionPageInfoTypeFilterInput>;
 };
 
 /** Connection between the Tag type and the Taxonomy type */
@@ -19261,13 +20198,28 @@ type WpTaxonomyConnection_sumArgs = {
 };
 
 type WpTaxonomyConnectionEdgeType = {
-  /** The connected node */
-  readonly node: WpNode;
+  /** The connected Taxonomy Node */
+  readonly node: WpTaxonomy;
+};
+
+type WpTaxonomyConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
 };
 
 type WpTaxonomyConnectionType = {
   /** A list of connected Taxonomy Nodes */
   readonly nodes: ReadonlyArray<WpTaxonomy>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpTaxonomyConnectionPageInfoType;
 };
 
 type WpTaxonomyEdge = {
@@ -19392,6 +20344,10 @@ type WpTaxonomyFieldsEnum =
   | 'connectedContentTypes.nodes.showInRest'
   | 'connectedContentTypes.nodes.showUi'
   | 'connectedContentTypes.nodes.uri'
+  | 'connectedContentTypes.pageInfo.endCursor'
+  | 'connectedContentTypes.pageInfo.hasNextPage'
+  | 'connectedContentTypes.pageInfo.hasPreviousPage'
+  | 'connectedContentTypes.pageInfo.startCursor'
   | 'description'
   | 'graphqlPluralName'
   | 'graphqlSingleName'
@@ -19593,14 +20549,39 @@ type WpTaxonomySortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;TaxonomyToContentTypeConnection&quot; */
+type WpTaxonomyToContentTypeConnectionPageInfoType = WpContentTypeConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpTaxonomyToContentTypeConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the Taxonomy type and the ContentType type */
 type WpTaxonomyToContentTypeConnectionType = WpConnectionType & WpContentTypeConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpContentType>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpTaxonomyToContentTypeConnectionPageInfoType;
 };
 
 type WpTaxonomyToContentTypeConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpContentTypeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpTaxonomyToContentTypeConnectionPageInfoTypeFilterInput>;
 };
 
 type WpTermNode = {
@@ -19675,13 +20656,28 @@ type WpTermNodeConnection_sumArgs = {
 };
 
 type WpTermNodeConnectionEdgeType = {
-  /** The connected node */
-  readonly node: WpNode;
+  /** The connected TermNode Node */
+  readonly node: WpTermNode;
+};
+
+type WpTermNodeConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
 };
 
 type WpTermNodeConnectionType = {
-  /** A list of connected Term Nodes */
+  /** A list of connected TermNode Nodes */
   readonly nodes: ReadonlyArray<WpTermNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpTermNodeConnectionPageInfoType;
 };
 
 type WpTermNodeEdge = {
@@ -20132,6 +21128,8 @@ type WpUser = Node & WpCommenter & WpDatabaseIdentifier & WpNode & WpUniformReso
   readonly roles: Maybe<WpUserToUserRoleConnectionType>;
   /** The Yoast SEO data of a user */
   readonly seo: Maybe<WpSEOUser>;
+  /** Whether the Toolbar should be displayed when the user is viewing the site. */
+  readonly shouldShowAdminToolbar: Maybe<Scalars['Boolean']>;
   /** The slug for the user. This field is equivalent to WP_User-&gt;user_nicename */
   readonly slug: Maybe<Scalars['String']>;
   /** The unique resource identifier path */
@@ -20182,13 +21180,28 @@ type WpUserConnection_sumArgs = {
 };
 
 type WpUserConnectionEdgeType = {
-  /** The connected node */
-  readonly node: WpNode;
+  /** The connected User Node */
+  readonly node: WpUser;
+};
+
+type WpUserConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
 };
 
 type WpUserConnectionType = {
   /** A list of connected User Nodes */
   readonly nodes: ReadonlyArray<WpUser>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpUserConnectionPageInfoType;
 };
 
 type WpUserEdge = {
@@ -20281,6 +21294,10 @@ type WpUserFieldsEnum =
   | 'comments.nodes.replies.nodes'
   | 'comments.nodes.status'
   | 'comments.nodes.type'
+  | 'comments.pageInfo.endCursor'
+  | 'comments.pageInfo.hasNextPage'
+  | 'comments.pageInfo.hasPreviousPage'
+  | 'comments.pageInfo.startCursor'
   | 'databaseId'
   | 'description'
   | 'email'
@@ -20377,6 +21394,10 @@ type WpUserFieldsEnum =
   | 'pages.nodes.title'
   | 'pages.nodes.uri'
   | 'pages.nodes.wpChildren.nodes'
+  | 'pages.pageInfo.endCursor'
+  | 'pages.pageInfo.hasNextPage'
+  | 'pages.pageInfo.hasPreviousPage'
+  | 'pages.pageInfo.startCursor'
   | 'parent.children'
   | 'parent.children.children'
   | 'parent.children.children.children'
@@ -20494,6 +21515,10 @@ type WpUserFieldsEnum =
   | 'posts.nodes.title'
   | 'posts.nodes.toPing'
   | 'posts.nodes.uri'
+  | 'posts.pageInfo.endCursor'
+  | 'posts.pageInfo.hasNextPage'
+  | 'posts.pageInfo.hasPreviousPage'
+  | 'posts.pageInfo.startCursor'
   | 'registeredDate'
   | 'roles.nodes'
   | 'roles.nodes.capabilities'
@@ -20515,6 +21540,10 @@ type WpUserFieldsEnum =
   | 'roles.nodes.nodeType'
   | 'roles.nodes.parent.children'
   | 'roles.nodes.parent.id'
+  | 'roles.pageInfo.endCursor'
+  | 'roles.pageInfo.hasNextPage'
+  | 'roles.pageInfo.hasPreviousPage'
+  | 'roles.pageInfo.startCursor'
   | 'seo.breadcrumbTitle'
   | 'seo.canonical'
   | 'seo.fullHead'
@@ -20790,6 +21819,7 @@ type WpUserFieldsEnum =
   | 'seo.twitterImage.width'
   | 'seo.twitterImage.wpChildren.nodes'
   | 'seo.twitterTitle'
+  | 'shouldShowAdminToolbar'
   | 'slug'
   | 'uri'
   | 'url'
@@ -20822,6 +21852,7 @@ type WpUserFilterInput = {
   readonly registeredDate: InputMaybe<StringQueryOperatorInput>;
   readonly roles: InputMaybe<WpUserToUserRoleConnectionTypeFilterInput>;
   readonly seo: InputMaybe<WpSEOUserFilterInput>;
+  readonly shouldShowAdminToolbar: InputMaybe<BooleanQueryOperatorInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly uri: InputMaybe<StringQueryOperatorInput>;
   readonly url: InputMaybe<StringQueryOperatorInput>;
@@ -20921,6 +21952,31 @@ type WpUserRoleConnection_minArgs = {
 
 type WpUserRoleConnection_sumArgs = {
   field: WpUserRoleFieldsEnum;
+};
+
+type WpUserRoleConnectionEdgeType = {
+  /** The connected UserRole Node */
+  readonly node: WpUserRole;
+};
+
+type WpUserRoleConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpUserRoleConnectionType = {
+  /** A list of connected UserRole Nodes */
+  readonly nodes: ReadonlyArray<WpUserRole>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpUserRoleConnectionPageInfoType;
 };
 
 type WpUserRoleEdge = {
@@ -21094,44 +22150,144 @@ type WpUserSortInput = {
   readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
+/** Page Info on the &quot;UserToCommentConnection&quot; */
+type WpUserToCommentConnectionPageInfoType = WpCommentConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpUserToCommentConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
 /** Connection between the User type and the Comment type */
 type WpUserToCommentConnectionType = WpCommentConnectionType & WpConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpComment>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpUserToCommentConnectionPageInfoType;
 };
 
 type WpUserToCommentConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpCommentFilterListInput>;
+  readonly pageInfo: InputMaybe<WpUserToCommentConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;UserToPageConnection&quot; */
+type WpUserToPageConnectionPageInfoType = WpPageConnectionPageInfoType & WpPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpUserToPageConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the User type and the page type */
-type WpUserToPageConnectionType = WpConnectionType & {
+type WpUserToPageConnectionType = WpConnectionType & WpPageConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPage>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpUserToPageConnectionPageInfoType;
 };
 
 type WpUserToPageConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPageFilterListInput>;
+  readonly pageInfo: InputMaybe<WpUserToPageConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;UserToPostConnection&quot; */
+type WpUserToPostConnectionPageInfoType = WpPageInfoType & WpPostConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpUserToPostConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the User type and the post type */
-type WpUserToPostConnectionType = WpConnectionType & {
+type WpUserToPostConnectionType = WpConnectionType & WpPostConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpPost>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpUserToPostConnectionPageInfoType;
 };
 
 type WpUserToPostConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpPostFilterListInput>;
+  readonly pageInfo: InputMaybe<WpUserToPostConnectionPageInfoTypeFilterInput>;
+};
+
+/** Page Info on the &quot;UserToUserRoleConnection&quot; */
+type WpUserToUserRoleConnectionPageInfoType = WpPageInfoType & WpUserRoleConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpUserToUserRoleConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
 };
 
 /** Connection between the User type and the UserRole type */
-type WpUserToUserRoleConnectionType = WpConnectionType & {
+type WpUserToUserRoleConnectionType = WpConnectionType & WpUserRoleConnectionType & {
   /** The nodes of the connection, without the edges */
   readonly nodes: ReadonlyArray<WpUserRole>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpUserToUserRoleConnectionPageInfoType;
 };
 
 type WpUserToUserRoleConnectionTypeFilterInput = {
   readonly nodes: InputMaybe<WpUserRoleFilterListInput>;
+  readonly pageInfo: InputMaybe<WpUserToUserRoleConnectionPageInfoTypeFilterInput>;
 };
 
 /** Information needed by gatsby-source-wordpress. */
@@ -21176,6 +22332,8 @@ type BLOG_QUERYQuery = { readonly allPosts: { readonly edges: ReadonlyArray<{ re
 
 type FeaturedImageFragment = { readonly featuredImage: { readonly node: { readonly altText: string | null, readonly localFile: { readonly childImageSharp: { readonly thumb: import('gatsby-plugin-image').IGatsbyImageData, readonly featured: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImage: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageSquare: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageFourXThree: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageSixteenXNine: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } } | null };
 
+type FeaturedImageFieldsFragment = { readonly altText: string | null, readonly localFile: { readonly childImageSharp: { readonly thumb: import('gatsby-plugin-image').IGatsbyImageData, readonly featured: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImage: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageSquare: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageFourXThree: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageSixteenXNine: import('gatsby-plugin-image').IGatsbyImageData } | null } | null };
+
 type GatsbyImageSharpFixedFragment = { readonly base64: string | null, readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
 
 type GatsbyImageSharpFixed_noBase64Fragment = { readonly width: number, readonly height: number, readonly src: string, readonly srcSet: string };
@@ -21212,9 +22370,9 @@ type PAGE_QUERYQueryVariables = Exact<{
 }>;
 
 
-type PAGE_QUERYQuery = { readonly page: { readonly id: string, readonly slug: string | null, readonly uri: string | null, readonly content: string | null, readonly title: string | null, readonly dateGmt: string | null, readonly modifiedGmt: string | null, readonly seo: { readonly canonical: string | null, readonly metaDesc: string | null, readonly title: string | null, readonly schema: { readonly pageType: ReadonlyArray<string | null> | null, readonly articleType: ReadonlyArray<string | null> | null } | null, readonly breadcrumbs: ReadonlyArray<{ readonly text: string | null, readonly url: string | null } | null> | null } | null } | null, readonly allTags: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly slug: string | null } }> } };
+type PAGE_QUERYQuery = { readonly page: { readonly id: string, readonly slug: string | null, readonly uri: string | null, readonly content: string | null, readonly title: string | null, readonly dateGmt: string | null, readonly modifiedGmt: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly localFile: { readonly childImageSharp: { readonly thumb: import('gatsby-plugin-image').IGatsbyImageData, readonly featured: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImage: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageSquare: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageFourXThree: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageSixteenXNine: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } } | null, readonly seo: { readonly canonical: string | null, readonly metaDesc: string | null, readonly title: string | null, readonly schema: { readonly pageType: ReadonlyArray<string | null> | null, readonly articleType: ReadonlyArray<string | null> | null } | null, readonly breadcrumbs: ReadonlyArray<{ readonly text: string | null, readonly url: string | null } | null> | null } | null } | null, readonly allTags: { readonly edges: ReadonlyArray<{ readonly node: { readonly name: string | null, readonly slug: string | null } }> } };
 
-type PageFieldsFragment = { readonly id: string, readonly slug: string | null, readonly uri: string | null, readonly content: string | null, readonly title: string | null, readonly dateGmt: string | null, readonly modifiedGmt: string | null };
+type PageFieldsFragment = { readonly id: string, readonly slug: string | null, readonly uri: string | null, readonly content: string | null, readonly title: string | null, readonly dateGmt: string | null, readonly modifiedGmt: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly localFile: { readonly childImageSharp: { readonly thumb: import('gatsby-plugin-image').IGatsbyImageData, readonly featured: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImage: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageSquare: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageFourXThree: import('gatsby-plugin-image').IGatsbyImageData, readonly ogImageSixteenXNine: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } } | null };
 
 type POST_QUERYQueryVariables = Exact<{
   id: Scalars['String'];

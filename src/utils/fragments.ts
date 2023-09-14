@@ -32,33 +32,36 @@ export const featuredImage = graphql`
   fragment FeaturedImage on WpPost {
     featuredImage {
       node {
-        altText
-        localFile {
-          childImageSharp {
-            thumb: gatsbyImageData(layout: CONSTRAINED, width: 600)
-            featured: gatsbyImageData(layout: CONSTRAINED, width: 1000)
-            ogImage: gatsbyImageData(layout: FIXED, width: 1200, height: 630)
-            ogImageSquare: gatsbyImageData(
-              layout: FIXED
-              width: 1000
-              height: 1000
-            )
-            ogImageFourXThree: gatsbyImageData(
-              layout: FIXED
-              width: 1200
-              height: 900
-            )
-            ogImageSixteenXNine: gatsbyImageData(
-              layout: FIXED
-              width: 1600
-              height: 900
-            )
-          }
-        }
+        ...FeaturedImageFields
       }
     }
   }
 `
+
+export const featuredImageFields = graphql`
+  fragment FeaturedImageFields on WpMediaItem {
+    altText
+    localFile {
+      childImageSharp {
+        thumb: gatsbyImageData(layout: CONSTRAINED, width: 600)
+        featured: gatsbyImageData(layout: CONSTRAINED, width: 1000)
+        ogImage: gatsbyImageData(layout: FIXED, width: 1200, height: 630)
+        ogImageSquare: gatsbyImageData(layout: FIXED, width: 1000, height: 1000)
+        ogImageFourXThree: gatsbyImageData(
+          layout: FIXED
+          width: 1200
+          height: 900
+        )
+        ogImageSixteenXNine: gatsbyImageData(
+          layout: FIXED
+          width: 1600
+          height: 900
+        )
+      }
+    }
+  }
+`
+
 export const author = graphql`
   fragment Author on WpPost {
     author {
@@ -111,5 +114,10 @@ export const pageFields = graphql`
     title
     dateGmt
     modifiedGmt
+    featuredImage {
+      node {
+        ...FeaturedImageFields
+      }
+    }
   }
 `
