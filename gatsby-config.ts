@@ -146,6 +146,6 @@ module.exports = {
         icon: './src/assets/images/favicon-seo.png'
       }
     },
-    'gatsby-plugin-offline'
+    'gatsby-plugin-remove-serviceworker'
   ]
 }
