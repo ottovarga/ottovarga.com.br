@@ -51,10 +51,7 @@ export async function triggerLogsSlack() {
 function logToString(log: LogItem[]) {
   return log
     .map(({ log_name, log_content }) => {
-      return `*${log_name}*:\n${JSON.stringify(log_content, null, 2).substring(
-        0,
-        200
-      )}`
+      return `*${log_name}*:\n${JSON.stringify(log_content, null, 2)}`
     })
-    .join('\n\n')
+    .join('\n\n\n')
 }

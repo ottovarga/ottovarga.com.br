@@ -85,7 +85,11 @@ export async function formatContent(text: string, url: string) {
     console.log('Erro ao formatar conteúdo: ', url, err)
     logError('Erro ao formatar conteúdo:', err)
   } finally {
-    logFunction('formatContent', { text, url }, article)
+    logFunction(
+      'formatContent',
+      { text: text.substring(0, 200), url },
+      article.substring(0, 200)
+    )
   }
 
   return article
@@ -111,7 +115,11 @@ export async function resumeContent(text: string) {
     console.log('Erro ao resumir conteúdo: ', err)
     logError('Erro ao resumir conteúdo: ', err)
   } finally {
-    logFunction('resumeContent', { text }, abstract)
+    logFunction(
+      'resumeContent',
+      { text: text.substring(0, 200) },
+      abstract.substring(0, 200)
+    )
   }
 
   return abstract
@@ -144,7 +152,11 @@ export async function translateContent(text: string) {
     console.log('Erro ao traduzir conteúdo: ', err)
     logError('Erro ao traduzir conteúdo: ', err)
   } finally {
-    logFunction('translateContent', { text }, translation)
+    logFunction(
+      'translateContent',
+      { text: text.substring(0, 200) },
+      translation.substring(0, 200)
+    )
   }
 
   return translation
@@ -172,7 +184,7 @@ export async function detectLanguage(text: string) {
     console.log('Erro ao detectar idioma: ', err)
     logError('Erro ao detectar idioma: ', err)
   } finally {
-    logFunction('detectLanguage', { text }, language)
+    logFunction('detectLanguage', { text: text.substring(0, 200) }, language)
   }
 
   return language
@@ -198,7 +210,11 @@ export async function translateTitle(title: string) {
     console.log('Erro ao traduzir título: ', title, err)
     logError('Erro ao traduzir título: ', err)
   } finally {
-    logFunction('translateTitle', { title }, translation)
+    logFunction(
+      'translateTitle',
+      { title: title.substring(0, 200) },
+      translation.substring(0, 200)
+    )
   }
 
   return translation
@@ -244,7 +260,11 @@ export async function categorizePosts(postContent: string) {
     console.log('Erro ao categorizar post: ', err)
     logError('Erro ao categorizar post: ', err)
   } finally {
-    logFunction('categorizePosts', { postContent }, categories)
+    logFunction(
+      'categorizePosts',
+      { postContent: postContent.substring(0, 200) },
+      categories
+    )
   }
 
   return categories
