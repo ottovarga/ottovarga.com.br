@@ -2,6 +2,7 @@ import { JSDOM } from 'jsdom'
 import fetch from 'node-fetch'
 import { Configuration, OpenAIApi } from 'openai'
 import { Readability } from '@mozilla/readability'
+import { logFunction, logError } from '@/newsletter/logs'
 
 const GENERAL_TOPICS = [
   // incluir
@@ -60,6 +61,8 @@ export type FeedItem = {
 export type Feed = FeedItem[]
 
 export async function formatContent(text: string, url: string) {
+  let article = text
+
   if (text.length > 500) return text
 
   const formattedURL = url.includes('google.com') ? `${url}?hl=pt-br` : url
@@ -74,16 +77,23 @@ export async function formatContent(text: string, url: string) {
       disableJSONLD: true
     })
 
-    const article = reader.parse().textContent.replace('\n\n', '\n')
-
-    return article.substring(0, 15999)
+    article = reader
+      .parse()
+      .textContent.replace('\n\n', '\n')
+      .substring(0, 15999)
   } catch (err) {
     console.log('Erro ao formatar conteúdo: ', url, err)
-    return null
+    logError('Erro ao formatar conteúdo:', err)
+  } finally {
+    logFunction('formatContent', { text, url }, article)
   }
+
+  return article
 }
 
 export async function resumeContent(text: string) {
+  let abstract = text
+
   try {
     let openaiResponse = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo-16k',
@@ -96,19 +106,26 @@ export async function resumeContent(text: string) {
       temperature: 0.5
     })
 
-    const abstract = openaiResponse.data.choices[0].message.content
-
-    return abstract
+    abstract = openaiResponse.data.choices[0].message.content
   } catch (err) {
     console.log('Erro ao resumir conteúdo: ', err)
-    return null
+    logError('Erro ao resumir conteúdo: ', err)
+  } finally {
+    logFunction('resumeContent', { text }, abstract)
   }
+
+  return abstract
 }
 
 export async function translateContent(text: string) {
   const language = await detectLanguage(text)
 
-  if (language.includes('pt')) return text
+  if (language.includes('pt')) {
+    logFunction('translateContent', { text }, text)
+    return text
+  }
+
+  let translation = text
 
   try {
     let openaiResponse = await openai.createChatCompletion({
@@ -122,16 +139,20 @@ export async function translateContent(text: string) {
       temperature: 0
     })
 
-    const translation = openaiResponse.data.choices[0].message.content
-
-    return translation
+    translation = openaiResponse.data.choices[0].message.content
   } catch (err) {
     console.log('Erro ao traduzir conteúdo: ', err)
-    return null
+    logError('Erro ao traduzir conteúdo: ', err)
+  } finally {
+    logFunction('translateContent', { text }, translation)
   }
+
+  return translation
 }
 
 export async function detectLanguage(text: string) {
+  let language = ''
+
   try {
     let openaiResponse = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo-16k',
@@ -146,16 +167,20 @@ export async function detectLanguage(text: string) {
       max_tokens: 5
     })
 
-    const language = openaiResponse.data.choices[0].message.content
-
-    return language
+    language = openaiResponse.data.choices[0].message.content
   } catch (err) {
     console.log('Erro ao detectar idioma: ', err)
-    return null
+    logError('Erro ao detectar idioma: ', err)
+  } finally {
+    logFunction('detectLanguage', { text }, language)
   }
+
+  return language
 }
 
 export async function translateTitle(title: string) {
+  let translation = title
+
   try {
     let openaiResponse = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo-16k',
@@ -168,16 +193,20 @@ export async function translateTitle(title: string) {
       temperature: 0
     })
 
-    const translation = openaiResponse.data.choices[0].message.content
-
-    return translation
+    translation = openaiResponse.data.choices[0].message.content
   } catch (err) {
     console.log('Erro ao traduzir título: ', title, err)
-    return title
+    logError('Erro ao traduzir título: ', err)
+  } finally {
+    logFunction('translateTitle', { title }, translation)
   }
+
+  return translation
 }
 
 export async function categorizePosts(postContent: string) {
+  let categories = ['']
+
   try {
     let openaiResponse = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo-16k',
@@ -210,11 +239,15 @@ export async function categorizePosts(postContent: string) {
       .match(/'[^']*'/g)
       .map(topic => topic.slice(1, -1))
 
-    return generatedTopics
+    categories = generatedTopics
   } catch (err) {
     console.log('Erro ao categorizar post: ', err)
-    return ['']
+    logError('Erro ao categorizar post: ', err)
+  } finally {
+    logFunction('categorizePosts', { postContent }, categories)
   }
+
+  return categories
 }
 
 export const formatFeed: (feed: Feed) => string[] = (feed: Feed) => {

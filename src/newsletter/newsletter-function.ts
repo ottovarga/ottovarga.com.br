@@ -12,6 +12,8 @@ import {
 
 import { postToSlack, FEEDS_URL } from '@/newsletter/postFeed'
 
+import { triggerLogsSlack } from '@/newsletter/logs'
+
 const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 const TODAY_MIDNIGHT = new Date().setHours(0, 0, 0, 0)
 const YESTERDAT_MIDNIGHT = TODAY_MIDNIGHT - DAY_IN_MILISECONDS
@@ -93,7 +95,8 @@ const newsletter = async () => {
   //post to slack
   await postToSlack(flatOrderedFeeds)
 
-  console.log('tarefa concluída')
+  //log to slack
+  await triggerLogsSlack()
 
   return flatOrderedFeeds
 }
