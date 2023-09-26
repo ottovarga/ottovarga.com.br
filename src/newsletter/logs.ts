@@ -31,11 +31,7 @@ export function logError(errorName: string, errorData: any) {
 }
 
 export async function triggerLogsSlack() {
-  const textContent = logContent
-    .map(({ log_name, log_content }) => {
-      return `*${log_name}*:\n${JSON.stringify(log_content, null, 2)}`
-    })
-    .join('\n\n')
+  const textContent = logToString(logContent)
 
   try {
     await fetch(process.env.SLACK_LOGS_WEBHOOK_URL, {
@@ -50,4 +46,15 @@ export async function triggerLogsSlack() {
   } catch (err) {
     console.log(err)
   }
+}
+
+function logToString(log: LogItem[]) {
+  return log
+    .map(({ log_name, log_content }) => {
+      return `*${log_name}*:\n${JSON.stringify(log_content, null, 2).substring(
+        0,
+        200
+      )}`
+    })
+    .join('\n\n')
 }
