@@ -75,16 +75,22 @@ export async function formatContent(text: string, url: string) {
   const formattedURL = url.includes('google.com') ? `${url}?hl=pt-br` : url
 
   try {
-    const pageHTML = await fetch(formattedURL).then(res => {
-      if (res.status >= 400) {
-        logError('Erro ao formatar conteúdo: fetch pageHTML', {
-          status: res.status,
-          statusText: res.statusText,
-          url: formattedURL
-        })
-      }
-      return res.text()
-    })
+    const response = await fetch(formattedURL)
+    const pageHTML = await response.text()
+
+    if (!response.ok) {
+      logError('Erro ao formatar conteúdo: fetch pageHTML', {
+        status: response.status,
+        statusText: response.statusText,
+        headers: [...response.headers],
+        responseType: response.type,
+        redirected: response.redirected,
+        responseURL: response.url,
+        responseText: pageHTML,
+        url: formattedURL
+      })
+    }
+
     const jsdom = new JSDOM(pageHTML, {
       url: formattedURL
     })
