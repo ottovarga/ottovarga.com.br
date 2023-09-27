@@ -63,12 +63,28 @@ export type Feed = FeedItem[]
 export async function formatContent(text: string, url: string) {
   let article = text
 
-  if (text.length > 500) return text
+  if (text.length > 500) {
+    logFunction(
+      'formatContent',
+      { text: text.substring(0, 200), url },
+      text.substring(0, 200)
+    )
+    return text
+  }
 
   const formattedURL = url.includes('google.com') ? `${url}?hl=pt-br` : url
 
   try {
-    const pageHTML = await fetch(formattedURL).then(res => res.text())
+    const pageHTML = await fetch(formattedURL).then(res => {
+      if (res.status >= 400) {
+        logError('Erro ao formatar conteúdo: fetch pageHTML', {
+          status: res.status,
+          statusText: res.statusText,
+          url: formattedURL
+        })
+      }
+      return res.text()
+    })
     const jsdom = new JSDOM(pageHTML, {
       url: formattedURL
     })
@@ -170,9 +186,13 @@ export async function detectLanguage(text: string) {
       model: 'gpt-3.5-turbo-16k',
       messages: [
         {
+          role: 'system',
+          content: 'You are a helpful assistant.'
+        },
+        {
           role: 'user',
           content: `Determine o idioma do seguinte conteúdo:\n${text}\n\n
-          A resposta deve ser apenas o código do idioma no formato ISO 639-1`
+          A resposta deve estar no formato ISO 639-1`
         }
       ],
       temperature: 0,

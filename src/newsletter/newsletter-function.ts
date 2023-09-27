@@ -38,8 +38,6 @@ const newsletter = async () => {
         }
       )
 
-      console.log(filteredItems)
-
       const items: Feed = await Promise.all(
         filteredItems.map(async (item: RSSParser.Item) => {
           const empty = {
@@ -55,7 +53,7 @@ const newsletter = async () => {
 
           if (!formatContent) return empty
 
-          const AICategories = await categorizePosts(item.content)
+          const AICategories = await categorizePosts(formattedContent)
 
           if (!categoriesCondition(AICategories)) return empty
 
