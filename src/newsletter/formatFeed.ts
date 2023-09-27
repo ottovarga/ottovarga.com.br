@@ -1,6 +1,5 @@
 import { JSDOM } from 'jsdom'
 import fetch from 'node-fetch'
-import { curly } from 'node-libcurl'
 import { Configuration, OpenAIApi } from 'openai'
 import { Readability } from '@mozilla/readability'
 import { logFunction, logError } from '@/newsletter/logs'
@@ -76,14 +75,23 @@ export async function formatContent(text: string, url: string) {
   const formattedURL = url.includes('google.com') ? `${url}?hl=pt-br` : url
 
   try {
-    const { data, headers, statusCode } = await curly.get(formattedURL)
-    const pageHTML = data
+    const response = await fetch(formattedURL)
+    const pageHTML = await response.text()
 
-    if (statusCode >= 400) {
-      logError('Erro ao formatar conteúdo: fetch pageHTML', {
-        status: statusCode,
-        headers: headers,
-        url: formattedURL
+    if (!response.ok) {
+      throw new Error('fetch pageHTML', {
+        cause: {
+          status: response.status,
+          statusText: response.statusText,
+          headers: [...response.headers.entries()].map(([key, value]) => ({
+            key: key,
+            value: value
+          })),
+          responseType: response.type,
+          redirected: response.redirected,
+          responseURL: response.url,
+          url: formattedURL
+        }
       })
     }
 
