@@ -11,6 +11,7 @@
     "@wordpress/base-styles": "^3.5.4",
     "@wordpress/block-library": "^3.2.13",
     "algoliasearch": "^4.8.3",
+    "apify-client": "^2.8.0",
     "autoprefixer": "^10.1.0",
     "axios": "^0.21.1",
     "cross-env": "^7.0.3",

@@ -1,8 +1,46 @@
 import { JSDOM } from 'jsdom'
-import fetch from 'node-fetch'
 import { Configuration, OpenAIApi } from 'openai'
 import { Readability } from '@mozilla/readability'
 import { logFunction, logError } from '@/newsletter/logs'
+import { ApifyClient } from 'apify-client'
+
+const client = new ApifyClient({
+  token: process.env.APIFY_TOKEN || ''
+})
+
+const defaultScrapeOptions = {
+  debugLog: false,
+  excludes: [
+    {
+      glob: '/**/*.{png,jpg,jpeg,pdf}'
+    }
+  ],
+  forceResponseEncoding: false,
+  ignoreSslErrors: false,
+  keepUrlFragments: false,
+  proxyConfiguration: {
+    useApifyProxy: true
+  },
+  pageFunction: async function pageFunction(context) {
+    const { $, request, log } = context
+
+    const pageTitle = $('title').first().text()
+    const htmlContent = $('html').html()
+
+    //remove <head> tag
+    const body = htmlContent.replace(/<head>[\s\S]*<\/head>/, '')
+
+    const url = request.url
+    log.info('Page scraped', { url, pageTitle })
+
+    return {
+      url,
+      pageTitle,
+      body
+    }
+  },
+  startUrls: []
+}
 
 const GENERAL_TOPICS = [
   // incluir
@@ -63,39 +101,17 @@ export type Feed = FeedItem[]
 export async function formatContent(text: string, url: string) {
   let article = text
 
-  if (text.length > 200) {
-    logFunction(
-      'formatContent',
-      { text: text.substring(0, 200), url },
-      text.substring(0, 200)
-    )
-    return text
-  }
-
   const formattedURL = url.includes('google.com') ? `${url}?hl=pt-br` : url
 
+  const input = { ...defaultScrapeOptions }.startUrls.push(formattedURL)
+
   try {
-    const response = await fetch(formattedURL)
-    const pageHTML = await response.text()
+    const run = await client.actor(process.env.APIFY_ACTOR_ID).call(input)
+    const { items } = await client.dataset(run.defaultDatasetId).listItems()
 
-    if (!response.ok) {
-      article = ''
+    logFunction('formatContent: apify test', { items }, '')
 
-      throw new Error('fetch pageHTML', {
-        cause: {
-          status: response.status,
-          statusText: response.statusText,
-          headers: [...response.headers.entries()].map(([key, value]) => ({
-            key: key,
-            value: value
-          })),
-          responseType: response.type,
-          redirected: response.redirected,
-          responseURL: response.url,
-          url: formattedURL
-        }
-      })
-    }
+    const pageHTML = items[0].body as string
 
     const jsdom = new JSDOM(pageHTML, {
       url: formattedURL
