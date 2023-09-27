@@ -4,8 +4,8 @@ export const FEEDS_URL = [
   {
     name: 'SeRoundTable',
     url: 'http://feeds.seroundtable.com/SearchEngineRoundtable1'
-  }
-  /* { name: 'Moz', url: 'https://moz.com/posts/rss/blog' },
+  },
+  { name: 'Moz', url: 'https://moz.com/posts/rss/blog' },
   {
     name: 'GoogleSearchCentralBlog',
     url: 'https://feeds.feedburner.com/blogspot/amDG'
@@ -15,7 +15,7 @@ export const FEEDS_URL = [
   { name: 'SearchEngineLand', url: 'https://www.searchengineland.com/feed/' },
   { name: 'Ahrefs', url: 'https://ahrefs.com/blog/feed/' },
   { name: 'ScreamingFrog', url: 'https://www.screamingfrog.co.uk/feed/' },
-  { name: 'SearchEngineJournal', url: 'https://rss.searchenginejournal.com' } */
+  { name: 'SearchEngineJournal', url: 'https://rss.searchenginejournal.com' }
 ]
 
 export async function postToSlack(feed: Feed) {
