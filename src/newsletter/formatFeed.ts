@@ -75,14 +75,22 @@ export async function formatContent(text: string, url: string) {
   const formattedURL = url.includes('google.com') ? `${url}?hl=pt-br` : url
 
   try {
-    const response = await fetch(formattedURL)
+    const response = await fetch(formattedURL, {
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/W.X.Y.Z Mobile Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
+      }
+    })
     const pageHTML = await response.text()
 
     if (!response.ok) {
       logError('Erro ao formatar conteúdo: fetch pageHTML', {
         status: response.status,
         statusText: response.statusText,
-        headers: [...response.headers],
+        headers: [...response.headers.entries()].map(([key, value]) => ({
+          key: key,
+          value: value
+        })),
         responseType: response.type,
         redirected: response.redirected,
         responseURL: response.url,
