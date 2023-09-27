@@ -50,10 +50,7 @@ const newsletter = async () => {
             ? item.contentSnippet
             : item.content
 
-          const formattedContent =
-            feedObj.name === 'SeRoundTable'
-              ? content
-              : await formatContent(content, item.link)
+          const formattedContent = await formatContent(content, item.link)
 
           if (!formatContent) return empty
 

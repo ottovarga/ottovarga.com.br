@@ -63,7 +63,7 @@ export type Feed = FeedItem[]
 export async function formatContent(text: string, url: string) {
   let article = text
 
-  if (text.length > 500) {
+  if (text.length > 200) {
     logFunction(
       'formatContent',
       { text: text.substring(0, 200), url },
@@ -79,6 +79,8 @@ export async function formatContent(text: string, url: string) {
     const pageHTML = await response.text()
 
     if (!response.ok) {
+      article = ''
+
       throw new Error('fetch pageHTML', {
         cause: {
           status: response.status,
@@ -110,6 +112,8 @@ export async function formatContent(text: string, url: string) {
   } catch (err) {
     console.log('Erro ao formatar conteúdo: ', url, err)
     logError('Erro ao formatar conteúdo:', err)
+
+    article = ''
   } finally {
     logFunction(
       'formatContent',
@@ -123,6 +127,15 @@ export async function formatContent(text: string, url: string) {
 
 export async function resumeContent(text: string) {
   let abstract = text
+
+  if (text.length <= 500) {
+    logFunction(
+      'resumeContent',
+      { text: text.substring(0, 200) },
+      text.substring(0, 200)
+    )
+    return text
+  }
 
   try {
     let openaiResponse = await openai.createChatCompletion({
@@ -140,6 +153,8 @@ export async function resumeContent(text: string) {
   } catch (err) {
     console.log('Erro ao resumir conteúdo: ', err)
     logError('Erro ao resumir conteúdo: ', err)
+
+    abstract = ''
   } finally {
     logFunction(
       'resumeContent',
@@ -177,6 +192,8 @@ export async function translateContent(text: string) {
   } catch (err) {
     console.log('Erro ao traduzir conteúdo: ', err)
     logError('Erro ao traduzir conteúdo: ', err)
+
+    translation = ''
   } finally {
     logFunction(
       'translateContent',
