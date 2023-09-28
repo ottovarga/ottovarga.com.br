@@ -1,7 +1,7 @@
 import { JSDOM } from 'jsdom'
-import { Configuration, OpenAIApi } from 'openai'
 import { Readability } from '@mozilla/readability'
 import { logFunction, logError } from '@/newsletter/logs'
+import { createChatCompletionWithRateLimit } from '@/newsletter/api'
 
 const GENERAL_TOPICS = [
   // incluir
@@ -40,12 +40,6 @@ const VALID_TOPICS = [
   'Content Strategy',
   'AI'
 ]
-
-const configuration = new Configuration({
-  apiKey: process.env.OPENAI_API_KEY
-})
-
-const openai = new OpenAIApi(configuration)
 
 export type FeedItem = {
   title: string
@@ -94,17 +88,8 @@ export async function formatContent(pageHTML: string, url: string) {
 export async function resumeContent(text: string) {
   let abstract = text
 
-  if (text.length <= 500) {
-    logFunction(
-      'resumeContent',
-      { text: text.substring(0, 200) },
-      text.substring(0, 200)
-    )
-    return text
-  }
-
   try {
-    let openaiResponse = await openai.createChatCompletion({
+    let openaiResponse = await createChatCompletionWithRateLimit({
       model: 'gpt-3.5-turbo-16k',
       messages: [
         {
@@ -143,7 +128,7 @@ export async function translateContent(text: string) {
   let translation = text
 
   try {
-    let openaiResponse = await openai.createChatCompletion({
+    let openaiResponse = await createChatCompletionWithRateLimit({
       model: 'gpt-3.5-turbo-16k',
       messages: [
         {
@@ -175,7 +160,7 @@ export async function detectLanguage(text: string) {
   let language = ''
 
   try {
-    let openaiResponse = await openai.createChatCompletion({
+    let openaiResponse = await createChatCompletionWithRateLimit({
       model: 'gpt-3.5-turbo-16k',
       messages: [
         {
@@ -203,7 +188,7 @@ export async function translateTitle(title: string) {
   let translation = title
 
   try {
-    let openaiResponse = await openai.createChatCompletion({
+    let openaiResponse = await createChatCompletionWithRateLimit({
       model: 'gpt-3.5-turbo-16k',
       messages: [
         {
@@ -234,7 +219,7 @@ export async function categorizePosts(postContent: string) {
   let categories = ['']
 
   try {
-    let openaiResponse = await openai.createChatCompletion({
+    let openaiResponse = await createChatCompletionWithRateLimit({
       model: 'gpt-3.5-turbo-16k',
       messages: [
         {
