@@ -12,6 +12,7 @@ const NotFoundPage = () => (
         <h1 className="text-5xl font-bold mb-4">
             CONFIRME SEU CADASTRO NO EMAIL
           </h1>
+          <br/>
           <p className="text-lg mb-4">
             Falta muito pouco, basta confirmar sua inscrição no seu e-mail!
           </p>
