@@ -212,7 +212,8 @@ export async function translateTitle(title: string) {
           content: `Traduza o seguinte texto para portugês: ${title}`
         }
       ],
-      temperature: 0
+      temperature: 0,
+      max_tokens: 150
     })
 
     translation = openaiResponse.data.choices[0].message.content

@@ -31,18 +31,21 @@ export function logError(errorName: string, errorData: any) {
 }
 
 export async function triggerLogsSlack() {
-  const textContent = logToString(logContent)
+  // split logContent into ~= 2000 characters chunks (break only on \n\n\n)
+  const textContent = logToString(logContent).match(/[\s\S]{1,2000}/g)
 
   try {
-    await fetch(process.env.SLACK_LOGS_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        text: textContent
+    for (const text of textContent) {
+      await fetch(process.env.SLACK_LOGS_WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          text
+        })
       })
-    })
+    }
   } catch (err) {
     console.log(err)
   }
