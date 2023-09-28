@@ -17,13 +17,20 @@ import { FEEDS_URL, scrapePosts } from '@/newsletter/scrape'
 import { triggerLogsSlack } from '@/newsletter/logs'
 
 const newsletter = async () => {
+  console.log('Starting newsletter function')
   const postsFeed = await getPosts(FEEDS_URL)
+  console.log('Post feed fetched')
 
+  console.log('Scraping posts')
   const postsHTML = await scrapePosts(postsFeed)
+  console.log('Posts scraped\n\n')
 
   let feeds: Feed = []
 
+  console.log('Formatting posts')
   for (const postItem of postsHTML) {
+    console.log(`Formatting post ${postItem.url}`)
+
     const formattedContent = await formatContent(postItem.body, postItem.url)
 
     if (!formatContent) continue
@@ -42,6 +49,10 @@ const newsletter = async () => {
 
     const formattedTitle = await translateTitle(postItem.title)
 
+    if (!formattedTitle) continue
+
+    console.log(`Post formatted\n\n`)
+
     feeds.push({
       title: formattedTitle,
       link: postItem.url,
@@ -56,10 +67,13 @@ const newsletter = async () => {
     })
   }
 
+  console.log('Sorting and filtering posts')
   feeds = feeds.filter(item => item !== null && item !== undefined)
   feeds = feeds.sort((a, b) => {
     return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
   })
+
+  console.log('Posts sorted and filtered\n\n')
 
   //post to slack
   await postToSlack(feeds)
