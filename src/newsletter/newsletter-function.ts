@@ -4,8 +4,7 @@ import {
   categorizePosts,
   categoriesCondition,
   translateContent,
-  resumeContent,
-  Feed
+  resumeContent
 } from '@/newsletter/formatFeed'
 
 import { getPosts } from '@/newsletter/rss'
@@ -17,63 +16,50 @@ import { FEEDS_URL, scrapePosts } from '@/newsletter/scrape'
 import { triggerLogsSlack } from '@/newsletter/logs'
 
 const newsletter = async () => {
-  console.log('Starting newsletter function')
   const postsFeed = await getPosts(FEEDS_URL)
-  console.log('Post feed fetched')
 
-  console.log('Scraping posts')
   const postsHTML = await scrapePosts(postsFeed)
-  console.log('Posts scraped\n\n')
 
-  let feeds: Feed = []
+  const feeds = await Promise.all(
+    postsHTML.map(async postItem => {
+      const formattedContent = await formatContent(postItem.body, postItem.url)
 
-  console.log('Formatting posts')
-  for (const postItem of postsHTML) {
-    console.log(`Formatting post ${postItem.url}`)
+      if (!formatContent) return null
 
-    const formattedContent = await formatContent(postItem.body, postItem.url)
+      const AICategories = await categorizePosts(formattedContent)
 
-    if (!formatContent) continue
+      if (!categoriesCondition(AICategories)) return null
 
-    const AICategories = await categorizePosts(formattedContent)
+      const translatedContent = await translateContent(formattedContent)
 
-    if (!categoriesCondition(AICategories)) continue
+      if (!translatedContent) return null
 
-    const translatedContent = await translateContent(formattedContent)
+      const resumedContent = await resumeContent(translatedContent)
 
-    if (!translatedContent) continue
+      if (!resumedContent) return null
 
-    const resumedContent = await resumeContent(translatedContent)
+      const formattedTitle = await translateTitle(postItem.title)
 
-    if (!resumedContent) continue
-
-    const formattedTitle = await translateTitle(postItem.title)
-
-    if (!formattedTitle) continue
-
-    console.log(`Post formatted\n\n`)
-
-    feeds.push({
-      title: formattedTitle,
-      link: postItem.url,
-      categories: AICategories,
-      dateISO: postItem.isoDate,
-      date: new Date(postItem.isoDate).toLocaleString('pt-BR', {
-        timeZone: 'America/Sao_Paulo',
-        dateStyle: 'medium'
-      }),
-      feedName: postItem.feedName,
-      content: resumedContent
+      return {
+        title: formattedTitle,
+        link: postItem.url,
+        categories: AICategories,
+        dateISO: postItem.isoDate,
+        date: new Date(postItem.isoDate).toLocaleString('pt-BR', {
+          timeZone: 'America/Sao_Paulo',
+          dateStyle: 'medium'
+        }),
+        feedName: postItem.feedName,
+        content: resumedContent
+      }
     })
-  }
-
-  console.log('Sorting and filtering posts')
-  feeds = feeds.filter(item => item !== null && item !== undefined)
-  feeds = feeds.sort((a, b) => {
-    return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
-  })
-
-  console.log('Posts sorted and filtered\n\n')
+  )
+    .then(items => items.filter(item => item !== null && item !== undefined))
+    .then(items =>
+      items.sort((a, b) => {
+        return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
+      })
+    )
 
   //post to slack
   await postToSlack(feeds)
