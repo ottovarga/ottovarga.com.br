@@ -4,7 +4,8 @@ import {
   categorizePosts,
   categoriesCondition,
   translateContent,
-  resumeContent
+  resumeContent,
+  Feed
 } from '@/newsletter/formatFeed'
 
 import { getPosts } from '@/newsletter/rss'
@@ -20,46 +21,45 @@ const newsletter = async () => {
 
   const postsHTML = await scrapePosts(postsFeed)
 
-  const feeds = await Promise.all(
-    postsHTML.map(async postItem => {
-      const formattedContent = await formatContent(postItem.body, postItem.url)
+  let feeds: Feed = []
 
-      if (!formatContent) return null
+  for (const postItem of postsHTML) {
+    const formattedContent = await formatContent(postItem.body, postItem.url)
 
-      const AICategories = await categorizePosts(formattedContent)
+    if (!formatContent) continue
 
-      if (!categoriesCondition(AICategories)) return null
+    const AICategories = await categorizePosts(formattedContent)
 
-      const translatedContent = await translateContent(formattedContent)
+    if (!categoriesCondition(AICategories)) continue
 
-      if (!translatedContent) return null
+    const translatedContent = await translateContent(formattedContent)
 
-      const resumedContent = await resumeContent(translatedContent)
+    if (!translatedContent) continue
 
-      if (!resumedContent) return null
+    const resumedContent = await resumeContent(translatedContent)
 
-      const formattedTitle = await translateTitle(postItem.title)
+    if (!resumedContent) continue
 
-      return {
-        title: formattedTitle,
-        link: postItem.url,
-        categories: AICategories,
-        dateISO: postItem.isoDate,
-        date: new Date(postItem.isoDate).toLocaleString('pt-BR', {
-          timeZone: 'America/Sao_Paulo',
-          dateStyle: 'medium'
-        }),
-        feedName: postItem.feedName,
-        content: resumedContent
-      }
+    const formattedTitle = await translateTitle(postItem.title)
+
+    feeds.push({
+      title: formattedTitle,
+      link: postItem.url,
+      categories: AICategories,
+      dateISO: postItem.isoDate,
+      date: new Date(postItem.isoDate).toLocaleString('pt-BR', {
+        timeZone: 'America/Sao_Paulo',
+        dateStyle: 'medium'
+      }),
+      feedName: postItem.feedName,
+      content: resumedContent
     })
-  )
-    .then(items => items.filter(item => item !== null && item !== undefined))
-    .then(items =>
-      items.sort((a, b) => {
-        return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
-      })
-    )
+  }
+
+  feeds = feeds.filter(item => item !== null && item !== undefined)
+  feeds = feeds.sort((a, b) => {
+    return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
+  })
 
   //post to slack
   await postToSlack(feeds)
