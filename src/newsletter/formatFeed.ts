@@ -1,46 +1,8 @@
 import { JSDOM } from 'jsdom'
 import { Configuration, OpenAIApi } from 'openai'
+import fetch from 'node-fetch'
 import { Readability } from '@mozilla/readability'
 import { logFunction, logError } from '@/newsletter/logs'
-import { ApifyClient } from 'apify-client'
-
-const client = new ApifyClient({
-  token: process.env.APIFY_TOKEN || ''
-})
-
-const defaultScrapeOptions = {
-  debugLog: false,
-  excludes: [
-    {
-      glob: '/**/*.{png,jpg,jpeg,pdf}'
-    }
-  ],
-  forceResponseEncoding: false,
-  ignoreSslErrors: false,
-  keepUrlFragments: false,
-  proxyConfiguration: {
-    useApifyProxy: true
-  },
-  pageFunction: async function pageFunction(context) {
-    const { $, request, log } = context
-
-    const pageTitle = $('title').first().text()
-    const htmlContent = $('html').html()
-
-    //remove <head> tag
-    const body = htmlContent.replace(/<head>[\s\S]*<\/head>/, '')
-
-    const url = request.url
-    log.info('Page scraped', { url, pageTitle })
-
-    return {
-      url,
-      pageTitle,
-      body
-    }
-  },
-  startUrls: []
-}
 
 const GENERAL_TOPICS = [
   // incluir
@@ -103,13 +65,39 @@ export async function formatContent(text: string, url: string) {
 
   const formattedURL = url.includes('google.com') ? `${url}?hl=pt-br` : url
 
-  const input = { ...defaultScrapeOptions }.startUrls.push(formattedURL)
-
   try {
-    const run = await client.actor(process.env.APIFY_ACTOR_ID).call(input)
-    const { items } = await client.dataset(run.defaultDatasetId).listItems()
+    // run task
+    const run = await fetch(
+      `https://api.apify.com/v2/actor-tasks/gustavo_onserp~newsletter/run-sync?token=${process.env.APIFY_TOKEN}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          startUrls: [
+            {
+              url: formattedURL
+            }
+          ]
+        })
+      }
+    )
 
-    logFunction('formatContent: apify test', { items }, '')
+    if (!run.ok) {
+      throw new Error('Erro ao rodar task', { cause: run.statusText })
+    }
+
+    //get dataset items
+    const data = await fetch(
+      `https://api.apify.com/v2/actor-tasks/gustavo_onserp~newsletter/runs/last/dataset/items?token=${process.env.APIFY_TOKEN}`
+    )
+
+    if (!data.ok) {
+      throw new Error('Erro ao buscar dados', { cause: data.statusText })
+    }
+
+    const items = await data.json()
 
     const pageHTML = items[0].body as string
 
