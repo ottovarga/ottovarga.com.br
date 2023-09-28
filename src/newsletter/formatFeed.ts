@@ -60,49 +60,12 @@ export type FeedItem = {
 
 export type Feed = FeedItem[]
 
-export async function formatContent(text: string, url: string) {
-  let article = text
-
-  const formattedURL = url.includes('google.com') ? `${url}?hl=pt-br` : url
+export async function formatContent(pageHTML: string, url: string) {
+  let article = pageHTML
 
   try {
-    // run task
-    const run = await fetch(
-      `https://api.apify.com/v2/actor-tasks/gustavo_onserp~newsletter/run-sync?token=${process.env.APIFY_TOKEN}`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          startUrls: [
-            {
-              url: formattedURL
-            }
-          ]
-        })
-      }
-    )
-
-    if (!run.ok) {
-      throw new Error('Erro ao rodar task', { cause: run.statusText })
-    }
-
-    //get dataset items
-    const data = await fetch(
-      `https://api.apify.com/v2/actor-tasks/gustavo_onserp~newsletter/runs/last/dataset/items?token=${process.env.APIFY_TOKEN}`
-    )
-
-    if (!data.ok) {
-      throw new Error('Erro ao buscar dados', { cause: data.statusText })
-    }
-
-    const items = await data.json()
-
-    const pageHTML = items[0].body as string
-
     const jsdom = new JSDOM(pageHTML, {
-      url: formattedURL
+      url
     })
 
     const reader = new Readability(jsdom.window.document, {
@@ -121,7 +84,7 @@ export async function formatContent(text: string, url: string) {
   } finally {
     logFunction(
       'formatContent',
-      { text: text.substring(0, 200), url },
+      { pageHTML: pageHTML.substring(0, 200), url },
       article.substring(0, 200)
     )
   }
@@ -189,7 +152,8 @@ export async function translateContent(text: string) {
           content: `Traduza o seguinte texto para portugês: ${text}`
         }
       ],
-      temperature: 0
+      temperature: 0,
+      max_tokens: 2 //en ou pt
     })
 
     translation = openaiResponse.data.choices[0].message.content

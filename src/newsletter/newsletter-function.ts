@@ -10,7 +10,9 @@ import {
   Feed
 } from '@/newsletter/formatFeed'
 
-import { postToSlack, FEEDS_URL } from '@/newsletter/postFeed'
+import { postToSlack } from '@/newsletter/postFeed'
+
+import { FEEDS_URL, scrapePosts } from '@/newsletter/scrape'
 
 import { triggerLogsSlack } from '@/newsletter/logs'
 
@@ -21,7 +23,7 @@ const YESTERDAT_MIDNIGHT = TODAY_MIDNIGHT - DAY_IN_MILISECONDS
 const newsletter = async () => {
   let parser = new RSSParser()
 
-  const feeds = await Promise.all(
+  const postsHTML = await Promise.all(
     FEEDS_URL.map(async feedObj => {
       const feed = await parser.parseURL(feedObj.url)
 
@@ -38,66 +40,67 @@ const newsletter = async () => {
         }
       )
 
-      const items: Feed = await Promise.all(
-        filteredItems.map(async (item: RSSParser.Item) => {
-          const empty = {
-            title: '',
-            link: '',
-            content: ''
-          }
+      let posts = filteredItems.map((item: RSSParser.Item) => {
+        return {
+          url: item.link,
+          title: item.title,
+          isoDate: item.isoDate,
+          feedName: feedObj.name
+        }
+      })
 
-          const content = item.contentSnippet
-            ? item.contentSnippet
-            : item.content
+      return await scrapePosts(posts)
+    })
+  ).then(res => res.flat())
 
-          const formattedContent = await formatContent(content, item.link)
+  const feeds = await Promise.all(
+    postsHTML.map(async postItem => {
+      const formattedContent = await formatContent(postItem.body, postItem.url)
 
-          if (!formatContent) return empty
+      if (!formatContent) return null
 
-          const AICategories = await categorizePosts(formattedContent)
+      const AICategories = await categorizePosts(formattedContent)
 
-          if (!categoriesCondition(AICategories)) return empty
+      if (!categoriesCondition(AICategories)) return null
 
-          const translatedContent = await translateContent(formattedContent)
+      const translatedContent = await translateContent(formattedContent)
 
-          if (!translatedContent) return empty
+      if (!translatedContent) return null
 
-          const resumedContent = await resumeContent(translatedContent)
+      const resumedContent = await resumeContent(translatedContent)
 
-          if (!resumedContent) return empty
+      if (!resumedContent) return null
 
-          const formattedTitle = await translateTitle(item.title)
+      const formattedTitle = await translateTitle(postItem.title)
 
-          return {
-            title: formattedTitle,
-            link: item.link,
-            categories: AICategories,
-            dateISO: item.isoDate,
-            date: new Date(item.isoDate).toLocaleString('pt-BR', {
-              timeZone: 'America/Sao_Paulo',
-              dateStyle: 'medium'
-            }),
-            feedName: feedObj.name,
-            content: resumedContent
-          }
-        })
-      )
-
-      return items.filter(item => item.title && item.link && item.content)
+      return {
+        title: formattedTitle,
+        link: postItem.url,
+        categories: AICategories,
+        dateISO: postItem.isoDate,
+        date: new Date(postItem.isoDate).toLocaleString('pt-BR', {
+          timeZone: 'America/Sao_Paulo',
+          dateStyle: 'medium'
+        }),
+        feedName: postItem.feedName,
+        content: resumedContent
+      }
     })
   )
-
-  const flatOrderedFeeds = feeds.flat().sort((a, b) => {
-    return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
-  })
+    .then(items => items.filter(item => item !== null && item !== undefined))
+    .then(items =>
+      items.sort((a, b) => {
+        return new Date(a.dateISO).getTime() - new Date(b.dateISO).getTime()
+      })
+    )
 
   //post to slack
-  await postToSlack(flatOrderedFeeds)
+  await postToSlack(feeds)
 
   //log to slack
   await triggerLogsSlack()
 
-  return flatOrderedFeeds
+  return feeds
 }
 
 export default newsletter
