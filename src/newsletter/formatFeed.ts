@@ -152,8 +152,7 @@ export async function translateContent(text: string) {
           content: `Traduza o seguinte texto para portugês: ${text}`
         }
       ],
-      temperature: 0,
-      max_tokens: 2 //en ou pt
+      temperature: 0
     })
 
     translation = openaiResponse.data.choices[0].message.content
@@ -181,17 +180,13 @@ export async function detectLanguage(text: string) {
       model: 'gpt-3.5-turbo-16k',
       messages: [
         {
-          role: 'system',
-          content: 'You are a helpful assistant.'
-        },
-        {
           role: 'user',
           content: `Determine o idioma do seguinte conteúdo:\n${text}\n\n
-          A resposta deve estar no formato ISO 639-1`
+          A resposta deve estar no formato ISO 639-1, sem nenhum comentário adicional, apenas o código do idioma. Exemplo: 'en' ou 'pt'`
         }
       ],
       temperature: 0,
-      max_tokens: 5
+      max_tokens: 2 //en ou pt
     })
 
     language = openaiResponse.data.choices[0].message.content
