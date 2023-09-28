@@ -1,6 +1,5 @@
 import { JSDOM } from 'jsdom'
 import { Configuration, OpenAIApi } from 'openai'
-import fetch from 'node-fetch'
 import { Readability } from '@mozilla/readability'
 import { logFunction, logError } from '@/newsletter/logs'
 
