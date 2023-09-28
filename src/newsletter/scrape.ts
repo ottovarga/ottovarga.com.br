@@ -32,7 +32,14 @@ type scrapePostsReturn = {
   feedName: string
 }[]
 
-export async function scrapePosts(postOBJ: Omit<scrapePostsReturn, 'body'>) {
+export type scrapePostsProps = {
+  url: string
+  title: string
+  isoDate: string
+  feedName: string
+}[]
+
+export async function scrapePosts(postOBJ: scrapePostsProps) {
   let htmlItems: scrapePostsReturn
 
   const urlsArr = postOBJ.map(({ url }) => {
