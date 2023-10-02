@@ -96,15 +96,17 @@ export async function scrapePosts(postOBJ: scrapePostsProps) {
     logFunction(
       'scrape',
       { postOBJ },
-      htmlItems.map(item => {
-        return {
-          url: item.url,
-          title: item.title,
-          isoDate: item.isoDate,
-          feedName: item.feedName,
-          body: item.body.substring(0, 200)
-        }
-      })
+      htmlItems
+        ? htmlItems.map(item => {
+            return {
+              url: item.url,
+              title: item.title,
+              isoDate: item.isoDate,
+              feedName: item.feedName,
+              body: item.body.substring(0, 200)
+            }
+          })
+        : null
     )
   }
 
