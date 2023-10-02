@@ -90,7 +90,7 @@ export async function resumeContent(text: string) {
 
   try {
     let openaiResponse = await createChatCompletionWithRateLimit({
-      model: 'gpt-3.5-turbo-16k',
+      model: 'gpt-4-32k',
       messages: [
         {
           role: 'user',
@@ -129,7 +129,7 @@ export async function translateContent(text: string) {
 
   try {
     let openaiResponse = await createChatCompletionWithRateLimit({
-      model: 'gpt-3.5-turbo-16k',
+      model: 'gpt-4-32k',
       messages: [
         {
           role: 'user',
@@ -161,7 +161,7 @@ export async function detectLanguage(text: string) {
 
   try {
     let openaiResponse = await createChatCompletionWithRateLimit({
-      model: 'gpt-3.5-turbo-16k',
+      model: 'gpt-4-32k',
       messages: [
         {
           role: 'user',
@@ -189,7 +189,7 @@ export async function translateTitle(title: string) {
 
   try {
     let openaiResponse = await createChatCompletionWithRateLimit({
-      model: 'gpt-3.5-turbo-16k',
+      model: 'gpt-4-32k',
       messages: [
         {
           role: 'user',
@@ -220,7 +220,7 @@ export async function categorizePosts(postContent: string) {
 
   try {
     let openaiResponse = await createChatCompletionWithRateLimit({
-      model: 'gpt-3.5-turbo-16k',
+      model: 'gpt-4-32k',
       messages: [
         {
           role: 'system',
