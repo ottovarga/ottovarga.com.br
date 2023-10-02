@@ -78,17 +78,21 @@ export async function scrapePosts(postOBJ: scrapePostsProps) {
 
     const scrapeItems: ApifyReturn = await data.json()
 
+    console.log('scrapeItems', scrapeItems)
+
     // match urls returned from apify with urls from feed
     htmlItems = scrapeItems.map(item => {
       const feedItem = postOBJ.find(({ url }) => url === item.url)
 
       return {
         ...item,
-        title: feedItem.title,
-        isoDate: feedItem.isoDate,
-        feedName: feedItem.feedName
+        title: feedItem?.title,
+        isoDate: feedItem?.isoDate,
+        feedName: feedItem?.feedName
       }
     })
+
+    console.log('htmlItems', htmlItems)
   } catch (err) {
     console.log('Erro ao formatar conteúdo: ', postOBJ, err)
     logError('Erro ao formatar conteúdo:', err)
