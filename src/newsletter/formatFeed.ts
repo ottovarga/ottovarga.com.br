@@ -192,7 +192,7 @@ export async function translateTitle(title: string) {
 
   try {
     let openaiResponse = await createChatCompletionWithRateLimit({
-      model: 'gpt-4',
+      model: 'gpt-3.5-turbo',
       messages: [
         {
           role: 'user',

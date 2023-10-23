@@ -30,13 +30,13 @@ const newsletter = async () => {
 
       if (!categoriesCondition(AICategories)) return null
 
-      const resumedContent = await resumeContent(formattedContent)
-
-      if (!resumedContent) return null
-
-      const translatedContent = await translateContent(resumedContent)
+      const translatedContent = await translateContent(formattedContent)
 
       if (!translatedContent) return null
+
+      const resumedContent = await resumeContent(translatedContent)
+
+      if (!resumedContent) return null
 
       const formattedTitle = await translateTitle(postItem.title)
 
@@ -50,7 +50,7 @@ const newsletter = async () => {
           dateStyle: 'medium'
         }),
         feedName: postItem.feedName,
-        content: translatedContent
+        content: resumedContent
       }
     })
   )

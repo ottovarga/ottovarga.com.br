@@ -3,7 +3,7 @@ import RSSParser from 'rss-parser'
 import { FEEDS_URL, scrapePostsProps } from '@/newsletter/scrape'
 import { asyncFilter } from '@/utils/async'
 
-const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 72
+const DAY_IN_MILISECONDS = 1000 * 60 * 60 * 24
 const TODAY_MIDNIGHT = new Date().setHours(0, 0, 0, 0)
 const YESTERDAT_MIDNIGHT = TODAY_MIDNIGHT - DAY_IN_MILISECONDS
 
