@@ -94,7 +94,7 @@ export async function resumeContent(text: string) {
       messages: [
         {
           role: 'user',
-          content: `Resuma o conteúdo considerando as seguintes informações: O conteúdo resumido deverá ter tom jornalístico e propósito informacional e deverá ter no máximo 80 palavras. Conteúdo: ${text}`
+          content: `Resuma e traduza para pt-br (caso não esteja em pt-br) o conteúdo considerando as seguintes informações: O conteúdo resumido deverá ter tom jornalístico e propósito informacional e deverá ter no máximo 80 palavras. Conteúdo: ${text}`
         }
       ],
       temperature: 0.5

@@ -30,11 +30,11 @@ const newsletter = async () => {
 
       if (!categoriesCondition(AICategories)) return null
 
-      const translatedContent = await translateContent(formattedContent)
+      //const translatedContent = await translateContent(formattedContent)
 
-      if (!translatedContent) return null
+      //if (!translatedContent) return null
 
-      const resumedContent = await resumeContent(translatedContent)
+      const resumedContent = await resumeContent(formattedContent)
 
       if (!resumedContent) return null
 
