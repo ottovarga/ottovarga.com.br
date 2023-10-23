@@ -278,7 +278,7 @@ export const formatFeed: (feed: Feed) => string[] = (feed: Feed) => {
     finalStringArr[index] += `*${
       content.title
     }*\nCategorias: ${content.categories.join(', ')}\n\n${content.content}\n\n`
-    finalStringArr[index] += `Via @${content.feedName}\n\n`
+    finalStringArr[index] += `*Via @${content.feedName}*\n\n`
     finalStringArr[
       index
     ] += `Link da notícia completa: ${content.link}\n\n-----------\n\n`
