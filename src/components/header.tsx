@@ -3,6 +3,7 @@ import React from 'react'
 import MenuWrapper from '@/components/shared/menu/menuWrapper'
 import DarkModeButton from '@/components/theme/toggleTheme'
 import SearchLink from '@components/shared/search/searchLink'
+import MetaPixel from '@/utils/metaPixel'
 
 const Header: React.FC = () => {
   return (
