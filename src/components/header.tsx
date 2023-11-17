@@ -10,6 +10,7 @@ const Header: React.FC = () => {
       <div className="container px-4 py-4">
         <div className="flex flex-wrap justify-between items-center">
           <MenuWrapper />
+          <MetaPixel />
           <SearchLink />
           <DarkModeButton />
         </div>
