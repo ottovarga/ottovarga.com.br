@@ -74,7 +74,8 @@ const IndexPage = ({
                   />
                   {index === 3 &&
                     !pageContext.tagSlug &&
-                    pageContext.pageNumber === 0 && (
+                    pageContext.pageNumber === 0 && 
+                    stickyPost && (
                       <Post
                         cardType="featured"
                         title={stickyPost.title}
