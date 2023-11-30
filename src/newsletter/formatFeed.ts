@@ -275,9 +275,10 @@ export const formatFeed: (feed: Feed) => string[] = (feed: Feed) => {
     finalStringArr[index] = ''
     finalStringArr[index] += `Notícia ${index + 1}:\n\n`
     finalStringArr[index] += `Data: ${content.date}\n`
-    finalStringArr[index] += `*${
-      content.title
-    }*\nCategorias: ${content.categories.join(', ')}\n\n${content.content}\n\n`
+    finalStringArr[index] += `*${content.title}\n\n${content.content}\n\n`
+    finalStringArr[index] += `*\nCategorias: ${content.categories.join(
+      ', '
+    )}\n\n`
     finalStringArr[index] += `*Via @${content.feedName}*\n\n`
     finalStringArr[
       index
