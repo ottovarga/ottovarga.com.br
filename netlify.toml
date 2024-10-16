@@ -7,5 +7,23 @@
   status = 301
   force = true
 
+[[redirects]]
+  from = "/9-ferramentas-para-criar-google-web-stories/"
+  to = "/melhores-ferramentas-para-criar-google-web-stories/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resumo-drops-seo-12-11-18-11/"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/resumo-drops-seo-19-11-25-11/"
+  to = "/"
+  status = 301
+  force = true
+
 [functions]
   external_node_modules = ["jsdom", "@mozilla/readability", "rss-parser", "openai"]
