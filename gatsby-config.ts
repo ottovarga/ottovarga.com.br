@@ -5,6 +5,7 @@ require('dotenv').config({
 })
 
 import siteMetadata from './config/metadata'
+import sitemap from './config/sitemap'
 
 module.exports = {
   siteMetadata,
@@ -122,7 +123,10 @@ module.exports = {
       }
     },
     'gatsby-plugin-image',
-    'gatsby-plugin-advanced-sitemap',
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: sitemap
+    },
     'gatsby-plugin-sass',
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-css-modules',

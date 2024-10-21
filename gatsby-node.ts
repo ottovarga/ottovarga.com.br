@@ -132,7 +132,7 @@ const createPages = async ({ graphql, actions }) => {
       items: posts.nodes,
       itemsPerPage: 10,
       pathPrefix: ({ pageNumber }) =>
-        pageNumber === 0 ? `/categoria/${slug}` : `/categoria/${slug}/page`,
+        pageNumber === 0 ? `/categoria/${slug}/` : `/categoria/${slug}/page`,
       component: blogTemplate,
       context: {
         tagSlug: slug,
@@ -146,7 +146,7 @@ const createPages = async ({ graphql, actions }) => {
     items: [...webstories],
     itemsPerPage: 10,
     pathPrefix: ({ pageNumber }) =>
-      pageNumber === 0 ? `/webstories` : `/webstories/page`,
+      pageNumber === 0 ? `/webstories/` : `/webstories/page`,
     component: webStoryTemplate,
     context: {
       id: 'webstories'
