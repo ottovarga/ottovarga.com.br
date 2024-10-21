@@ -11,7 +11,7 @@ interface Props {
   excerpt?: string
   tags?: Tag[]
   readingTime?: number
-  date: string
+  date?: string
   image?: FeaturedImage
   url: string
   cardType: 'long' | 'short' | 'featured'
@@ -81,7 +81,7 @@ const post: React.FC<Props> = ({
         }
         meta={
           <div className="flex justify-between">
-            <PostMeta date={date} />{' '}
+            {date && <PostMeta date={date} />}
             <Link className="font-bold" to={url}>
               Leia mais
             </Link>

@@ -1586,6 +1586,7 @@ type Query = {
   readonly allWpUniformResourceIdentifiable: WpUniformResourceIdentifiableConnection;
   readonly allWpUser: WpUserConnection;
   readonly allWpUserRole: WpUserRoleConnection;
+  readonly allWpWebStory: WpWebStoryConnection;
   readonly directory: Maybe<Directory>;
   readonly file: Maybe<File>;
   readonly imageSharp: Maybe<ImageSharp>;
@@ -1627,6 +1628,7 @@ type Query = {
   readonly wpUniformResourceIdentifiable: Maybe<WpUniformResourceIdentifiable>;
   readonly wpUser: Maybe<WpUser>;
   readonly wpUserRole: Maybe<WpUserRole>;
+  readonly wpWebStory: Maybe<WpWebStory>;
 };
 
 
@@ -1958,6 +1960,14 @@ type Query_allWpUserRoleArgs = {
 };
 
 
+type Query_allWpWebStoryArgs = {
+  filter: InputMaybe<WpWebStoryFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<WpWebStorySortInput>;
+};
+
+
 type Query_directoryArgs = {
   absolutePath: InputMaybe<StringQueryOperatorInput>;
   accessTime: InputMaybe<DateQueryOperatorInput>;
@@ -2156,7 +2166,10 @@ type Query_wpCategoryArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -2189,7 +2202,13 @@ type Query_wpCommentArgs = {
   dateGmt: InputMaybe<DateQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
+  isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
+  isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   karma: InputMaybe<IntQueryOperatorInput>;
+  link: InputMaybe<StringQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
   parentDatabaseId: InputMaybe<IntQueryOperatorInput>;
@@ -2197,6 +2216,7 @@ type Query_wpCommentArgs = {
   replies: InputMaybe<WpCommentToCommentConnectionTypeFilterInput>;
   status: InputMaybe<WpCommentStatusEnumQueryOperatorInput>;
   type: InputMaybe<StringQueryOperatorInput>;
+  uri: InputMaybe<StringQueryOperatorInput>;
   wpParent: InputMaybe<WpCommentToParentCommentConnectionEdgeTypeFilterInput>;
 };
 
@@ -2241,7 +2261,10 @@ type Query_wpContentNodeArgs = {
   guid: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   link: InputMaybe<StringQueryOperatorInput>;
@@ -2272,6 +2295,7 @@ type Query_wpContentTypeArgs = {
   hierarchical: InputMaybe<BooleanQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
   isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
@@ -2310,7 +2334,10 @@ type Query_wpHierarchicalContentNodeArgs = {
   guid: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   link: InputMaybe<StringQueryOperatorInput>;
@@ -2349,7 +2376,10 @@ type Query_wpHierarchicalTermNodeArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -2389,10 +2419,14 @@ type Query_wpMediaItemArgs = {
   filesize: InputMaybe<IntQueryOperatorInput>;
   gatsbyImage: InputMaybe<GatsbyImageDataQueryOperatorInput>;
   guid: InputMaybe<StringQueryOperatorInput>;
+  hasPassword: InputMaybe<BooleanQueryOperatorInput>;
   height: InputMaybe<IntQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   link: InputMaybe<StringQueryOperatorInput>;
@@ -2407,6 +2441,7 @@ type Query_wpMediaItemArgs = {
   parent: InputMaybe<NodeFilterInput>;
   parentDatabaseId: InputMaybe<IntQueryOperatorInput>;
   parentId: InputMaybe<IDQueryOperatorInput>;
+  password: InputMaybe<StringQueryOperatorInput>;
   publicUrl: InputMaybe<StringQueryOperatorInput>;
   resize: InputMaybe<RemoteFileResizeFilterInput>;
   seo: InputMaybe<WpPostTypeSEOFilterInput>;
@@ -2470,7 +2505,10 @@ type Query_wpMenuItemLinkableArgs = {
   databaseId: InputMaybe<IntQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
@@ -2607,8 +2645,10 @@ type Query_wpPageArgs = {
   featuredImageDatabaseId: InputMaybe<IntQueryOperatorInput>;
   featuredImageId: InputMaybe<IDQueryOperatorInput>;
   guid: InputMaybe<StringQueryOperatorInput>;
+  hasPassword: InputMaybe<BooleanQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
   isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
@@ -2624,6 +2664,7 @@ type Query_wpPageArgs = {
   parent: InputMaybe<NodeFilterInput>;
   parentDatabaseId: InputMaybe<IntQueryOperatorInput>;
   parentId: InputMaybe<IDQueryOperatorInput>;
+  password: InputMaybe<StringQueryOperatorInput>;
   seo: InputMaybe<WpPostTypeSEOFilterInput>;
   slug: InputMaybe<StringQueryOperatorInput>;
   status: InputMaybe<StringQueryOperatorInput>;
@@ -2658,9 +2699,13 @@ type Query_wpPostArgs = {
   featuredImageDatabaseId: InputMaybe<IntQueryOperatorInput>;
   featuredImageId: InputMaybe<IDQueryOperatorInput>;
   guid: InputMaybe<StringQueryOperatorInput>;
+  hasPassword: InputMaybe<BooleanQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isRevision: InputMaybe<BooleanQueryOperatorInput>;
   isSticky: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
@@ -2670,6 +2715,7 @@ type Query_wpPostArgs = {
   modifiedGmt: InputMaybe<DateQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
+  password: InputMaybe<StringQueryOperatorInput>;
   pingStatus: InputMaybe<StringQueryOperatorInput>;
   pinged: InputMaybe<StringQueryOperatorInput>;
   postFormats: InputMaybe<WpPostToPostFormatConnectionTypeFilterInput>;
@@ -2693,7 +2739,10 @@ type Query_wpPostFormatArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -2718,7 +2767,10 @@ type Query_wpTagArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -2739,6 +2791,7 @@ type Query_wpTaxonomyArgs = {
   archivePath: InputMaybe<StringQueryOperatorInput>;
   children: InputMaybe<NodeFilterListInput>;
   connectedContentTypes: InputMaybe<WpTaxonomyToContentTypeConnectionTypeFilterInput>;
+  connectedTerms: InputMaybe<WpTaxonomyToTermNodeConnectionTypeFilterInput>;
   description: InputMaybe<StringQueryOperatorInput>;
   graphqlPluralName: InputMaybe<StringQueryOperatorInput>;
   graphqlSingleName: InputMaybe<StringQueryOperatorInput>;
@@ -2770,7 +2823,10 @@ type Query_wpTermNodeArgs = {
   description: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   link: InputMaybe<StringQueryOperatorInput>;
   name: InputMaybe<StringQueryOperatorInput>;
@@ -2788,7 +2844,10 @@ type Query_wpUniformResourceIdentifiableArgs = {
   children: InputMaybe<NodeFilterListInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
@@ -2797,6 +2856,7 @@ type Query_wpUniformResourceIdentifiableArgs = {
 
 
 type Query_wpUserArgs = {
+  allWebStory: InputMaybe<WpUserToWebStoryConnectionTypeFilterInput>;
   avatar: InputMaybe<WpAvatarFilterInput>;
   capKey: InputMaybe<StringQueryOperatorInput>;
   capabilities: InputMaybe<StringQueryOperatorInput>;
@@ -2809,7 +2869,10 @@ type Query_wpUserArgs = {
   firstName: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
   internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
   isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   lastName: InputMaybe<StringQueryOperatorInput>;
   locale: InputMaybe<StringQueryOperatorInput>;
@@ -2840,6 +2903,48 @@ type Query_wpUserRoleArgs = {
   name: InputMaybe<StringQueryOperatorInput>;
   nodeType: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
+};
+
+
+type Query_wpWebStoryArgs = {
+  author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeFilterInput>;
+  authorDatabaseId: InputMaybe<IntQueryOperatorInput>;
+  authorId: InputMaybe<IDQueryOperatorInput>;
+  children: InputMaybe<NodeFilterListInput>;
+  content: InputMaybe<StringQueryOperatorInput>;
+  contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFilterInput>;
+  contentTypeName: InputMaybe<StringQueryOperatorInput>;
+  databaseId: InputMaybe<IntQueryOperatorInput>;
+  date: InputMaybe<DateQueryOperatorInput>;
+  dateGmt: InputMaybe<DateQueryOperatorInput>;
+  desiredSlug: InputMaybe<StringQueryOperatorInput>;
+  enclosure: InputMaybe<StringQueryOperatorInput>;
+  featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFilterInput>;
+  featuredImageDatabaseId: InputMaybe<IntQueryOperatorInput>;
+  featuredImageId: InputMaybe<IDQueryOperatorInput>;
+  guid: InputMaybe<StringQueryOperatorInput>;
+  hasPassword: InputMaybe<BooleanQueryOperatorInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  isComment: InputMaybe<BooleanQueryOperatorInput>;
+  isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
+  isRevision: InputMaybe<BooleanQueryOperatorInput>;
+  isTermNode: InputMaybe<BooleanQueryOperatorInput>;
+  lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
+  link: InputMaybe<StringQueryOperatorInput>;
+  modified: InputMaybe<DateQueryOperatorInput>;
+  modifiedGmt: InputMaybe<DateQueryOperatorInput>;
+  nodeType: InputMaybe<StringQueryOperatorInput>;
+  parent: InputMaybe<NodeFilterInput>;
+  password: InputMaybe<StringQueryOperatorInput>;
+  seo: InputMaybe<WpPostTypeSEOFilterInput>;
+  slug: InputMaybe<StringQueryOperatorInput>;
+  status: InputMaybe<StringQueryOperatorInput>;
+  template: InputMaybe<WpContentTemplateFilterInput>;
+  title: InputMaybe<StringQueryOperatorInput>;
+  uri: InputMaybe<StringQueryOperatorInput>;
 };
 
 type ReadingTime = {
@@ -4254,8 +4359,14 @@ type WpCategory = Node & WpDatabaseIdentifier & WpHierarchicalNode & WpHierarchi
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -4380,7 +4491,10 @@ type WpCategoryFieldsEnum =
   | 'ancestors.nodes.internal.mediaType'
   | 'ancestors.nodes.internal.owner'
   | 'ancestors.nodes.internal.type'
+  | 'ancestors.nodes.isComment'
   | 'ancestors.nodes.isContentNode'
+  | 'ancestors.nodes.isFrontPage'
+  | 'ancestors.nodes.isPostsPage'
   | 'ancestors.nodes.isTermNode'
   | 'ancestors.nodes.link'
   | 'ancestors.nodes.name'
@@ -4484,7 +4598,10 @@ type WpCategoryFieldsEnum =
   | 'contentNodes.nodes.internal.mediaType'
   | 'contentNodes.nodes.internal.owner'
   | 'contentNodes.nodes.internal.type'
+  | 'contentNodes.nodes.isComment'
   | 'contentNodes.nodes.isContentNode'
+  | 'contentNodes.nodes.isFrontPage'
+  | 'contentNodes.nodes.isPostsPage'
   | 'contentNodes.nodes.isTermNode'
   | 'contentNodes.nodes.link'
   | 'contentNodes.nodes.modified'
@@ -4535,7 +4652,10 @@ type WpCategoryFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
   | 'link'
   | 'name'
@@ -4606,6 +4726,7 @@ type WpCategoryFieldsEnum =
   | 'posts.nodes.featuredImageDatabaseId'
   | 'posts.nodes.featuredImageId'
   | 'posts.nodes.guid'
+  | 'posts.nodes.hasPassword'
   | 'posts.nodes.id'
   | 'posts.nodes.internal.content'
   | 'posts.nodes.internal.contentDigest'
@@ -4616,7 +4737,10 @@ type WpCategoryFieldsEnum =
   | 'posts.nodes.internal.mediaType'
   | 'posts.nodes.internal.owner'
   | 'posts.nodes.internal.type'
+  | 'posts.nodes.isComment'
   | 'posts.nodes.isContentNode'
+  | 'posts.nodes.isFrontPage'
+  | 'posts.nodes.isPostsPage'
   | 'posts.nodes.isRevision'
   | 'posts.nodes.isSticky'
   | 'posts.nodes.isTermNode'
@@ -4626,6 +4750,7 @@ type WpCategoryFieldsEnum =
   | 'posts.nodes.nodeType'
   | 'posts.nodes.parent.children'
   | 'posts.nodes.parent.id'
+  | 'posts.nodes.password'
   | 'posts.nodes.pingStatus'
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
@@ -4699,6 +4824,7 @@ type WpCategoryFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -4710,7 +4836,10 @@ type WpCategoryFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -4765,6 +4894,7 @@ type WpCategoryFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -4834,6 +4964,7 @@ type WpCategoryFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -4845,7 +4976,10 @@ type WpCategoryFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -4900,6 +5034,7 @@ type WpCategoryFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -4944,6 +5079,7 @@ type WpCategoryFieldsEnum =
   | 'taxonomy.node.children.children'
   | 'taxonomy.node.children.id'
   | 'taxonomy.node.connectedContentTypes.nodes'
+  | 'taxonomy.node.connectedTerms.nodes'
   | 'taxonomy.node.description'
   | 'taxonomy.node.graphqlPluralName'
   | 'taxonomy.node.graphqlSingleName'
@@ -4996,7 +5132,10 @@ type WpCategoryFieldsEnum =
   | 'wpChildren.nodes.internal.mediaType'
   | 'wpChildren.nodes.internal.owner'
   | 'wpChildren.nodes.internal.type'
+  | 'wpChildren.nodes.isComment'
   | 'wpChildren.nodes.isContentNode'
+  | 'wpChildren.nodes.isFrontPage'
+  | 'wpChildren.nodes.isPostsPage'
   | 'wpChildren.nodes.isTermNode'
   | 'wpChildren.nodes.link'
   | 'wpChildren.nodes.name'
@@ -5055,7 +5194,10 @@ type WpCategoryFieldsEnum =
   | 'wpParent.node.internal.mediaType'
   | 'wpParent.node.internal.owner'
   | 'wpParent.node.internal.type'
+  | 'wpParent.node.isComment'
   | 'wpParent.node.isContentNode'
+  | 'wpParent.node.isFrontPage'
+  | 'wpParent.node.isPostsPage'
   | 'wpParent.node.isTermNode'
   | 'wpParent.node.link'
   | 'wpParent.node.name'
@@ -5102,7 +5244,10 @@ type WpCategoryFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -5333,7 +5478,7 @@ type WpCategoryToTaxonomyConnectionEdgeTypeFilterInput = {
 };
 
 /** A Comment object */
-type WpComment = Node & WpDatabaseIdentifier & WpNode & {
+type WpComment = Node & WpDatabaseIdentifier & WpNode & WpUniformResourceIdentifiable & {
   /** User agent used to post the comment. This field is equivalent to WP_Comment-&gt;comment_agent and the value matching the &quot;comment_agent&quot; column in SQL. */
   readonly agent: Maybe<Scalars['String']>;
   /** The author of the comment */
@@ -5353,8 +5498,20 @@ type WpComment = Node & WpDatabaseIdentifier & WpNode & {
   readonly dateGmt: Maybe<Scalars['Date']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
+  /** Whether the node is a Content Node */
+  readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
+  /** Whether the node is a Term */
+  readonly isTermNode: Scalars['Boolean'];
   /** Karma value for the comment. This field is equivalent to WP_Comment-&gt;comment_karma and the value matching the &quot;comment_karma&quot; column in SQL. */
   readonly karma: Maybe<Scalars['Int']>;
+  /** The permalink of the comment */
+  readonly link: Maybe<Scalars['String']>;
   readonly nodeType: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
   /** The database id of the parent comment node or null if it is the root comment */
@@ -5367,6 +5524,8 @@ type WpComment = Node & WpDatabaseIdentifier & WpNode & {
   readonly status: Maybe<WpCommentStatusEnum>;
   /** Type of comment. This field is equivalent to WP_Comment-&gt;comment_type and the value matching the &quot;comment_type&quot; column in SQL. */
   readonly type: Maybe<Scalars['String']>;
+  /** The unique resource identifier path */
+  readonly uri: Maybe<Scalars['String']>;
   /** Connection between the Comment type and the Comment type */
   readonly wpParent: Maybe<WpCommentToParentCommentConnectionEdgeType>;
 };
@@ -5787,7 +5946,10 @@ type WpCommentFieldsEnum =
   | 'commentedOn.node.internal.mediaType'
   | 'commentedOn.node.internal.owner'
   | 'commentedOn.node.internal.type'
+  | 'commentedOn.node.isComment'
   | 'commentedOn.node.isContentNode'
+  | 'commentedOn.node.isFrontPage'
+  | 'commentedOn.node.isPostsPage'
   | 'commentedOn.node.isTermNode'
   | 'commentedOn.node.link'
   | 'commentedOn.node.modified'
@@ -5835,7 +5997,13 @@ type WpCommentFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
+  | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
+  | 'isTermNode'
   | 'karma'
+  | 'link'
   | 'nodeType'
   | 'parentDatabaseId'
   | 'parentId'
@@ -5900,7 +6068,13 @@ type WpCommentFieldsEnum =
   | 'replies.nodes.internal.mediaType'
   | 'replies.nodes.internal.owner'
   | 'replies.nodes.internal.type'
+  | 'replies.nodes.isComment'
+  | 'replies.nodes.isContentNode'
+  | 'replies.nodes.isFrontPage'
+  | 'replies.nodes.isPostsPage'
+  | 'replies.nodes.isTermNode'
   | 'replies.nodes.karma'
+  | 'replies.nodes.link'
   | 'replies.nodes.nodeType'
   | 'replies.nodes.parentDatabaseId'
   | 'replies.nodes.parentId'
@@ -5909,12 +6083,14 @@ type WpCommentFieldsEnum =
   | 'replies.nodes.replies.nodes'
   | 'replies.nodes.status'
   | 'replies.nodes.type'
+  | 'replies.nodes.uri'
   | 'replies.pageInfo.endCursor'
   | 'replies.pageInfo.hasNextPage'
   | 'replies.pageInfo.hasPreviousPage'
   | 'replies.pageInfo.startCursor'
   | 'status'
   | 'type'
+  | 'uri'
   | 'wpParent.node.agent'
   | 'wpParent.node.authorIp'
   | 'wpParent.node.children'
@@ -5934,7 +6110,13 @@ type WpCommentFieldsEnum =
   | 'wpParent.node.internal.mediaType'
   | 'wpParent.node.internal.owner'
   | 'wpParent.node.internal.type'
+  | 'wpParent.node.isComment'
+  | 'wpParent.node.isContentNode'
+  | 'wpParent.node.isFrontPage'
+  | 'wpParent.node.isPostsPage'
+  | 'wpParent.node.isTermNode'
   | 'wpParent.node.karma'
+  | 'wpParent.node.link'
   | 'wpParent.node.nodeType'
   | 'wpParent.node.parentDatabaseId'
   | 'wpParent.node.parentId'
@@ -5942,7 +6124,8 @@ type WpCommentFieldsEnum =
   | 'wpParent.node.parent.id'
   | 'wpParent.node.replies.nodes'
   | 'wpParent.node.status'
-  | 'wpParent.node.type';
+  | 'wpParent.node.type'
+  | 'wpParent.node.uri';
 
 type WpCommentFilterInput = {
   readonly agent: InputMaybe<StringQueryOperatorInput>;
@@ -5956,7 +6139,13 @@ type WpCommentFilterInput = {
   readonly dateGmt: InputMaybe<DateQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly karma: InputMaybe<IntQueryOperatorInput>;
+  readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly nodeType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly parentDatabaseId: InputMaybe<IntQueryOperatorInput>;
@@ -5964,6 +6153,7 @@ type WpCommentFilterInput = {
   readonly replies: InputMaybe<WpCommentToCommentConnectionTypeFilterInput>;
   readonly status: InputMaybe<WpCommentStatusEnumQueryOperatorInput>;
   readonly type: InputMaybe<StringQueryOperatorInput>;
+  readonly uri: InputMaybe<StringQueryOperatorInput>;
   readonly wpParent: InputMaybe<WpCommentToParentCommentConnectionEdgeTypeFilterInput>;
 };
 
@@ -6399,8 +6589,14 @@ type WpContentNode = {
   readonly guid: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The user that most recently edited the node */
@@ -6595,6 +6791,7 @@ type WpContentNodeFieldsEnum =
   | 'contentType.node.internal.mediaType'
   | 'contentType.node.internal.owner'
   | 'contentType.node.internal.type'
+  | 'contentType.node.isComment'
   | 'contentType.node.isContentNode'
   | 'contentType.node.isFrontPage'
   | 'contentType.node.isPostsPage'
@@ -6658,8 +6855,12 @@ type WpContentNodeFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
+  | 'lastEditedBy.node.allWebStory.nodes'
   | 'lastEditedBy.node.avatar.default'
   | 'lastEditedBy.node.avatar.extraAttr'
   | 'lastEditedBy.node.avatar.forceDefault'
@@ -6691,7 +6892,10 @@ type WpContentNodeFieldsEnum =
   | 'lastEditedBy.node.internal.mediaType'
   | 'lastEditedBy.node.internal.owner'
   | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isComment'
   | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isFrontPage'
+  | 'lastEditedBy.node.isPostsPage'
   | 'lastEditedBy.node.isTermNode'
   | 'lastEditedBy.node.lastName'
   | 'lastEditedBy.node.locale'
@@ -6804,6 +7008,7 @@ type WpContentNodeFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -6815,7 +7020,10 @@ type WpContentNodeFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -6870,6 +7078,7 @@ type WpContentNodeFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -6942,6 +7151,7 @@ type WpContentNodeFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -6953,7 +7163,10 @@ type WpContentNodeFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -7008,6 +7221,7 @@ type WpContentNodeFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -7062,7 +7276,10 @@ type WpContentNodeFilterInput = {
   readonly guid: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
@@ -7191,6 +7408,8 @@ type WpContentType = Node & WpNode & WpUniformResourceIdentifiable & {
   readonly hierarchical: Maybe<Scalars['Boolean']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
   /** Whether this page is set to the static front page. */
@@ -7356,6 +7575,7 @@ type WpContentTypeFieldsEnum =
   | 'connectedTaxonomies.nodes.children.children'
   | 'connectedTaxonomies.nodes.children.id'
   | 'connectedTaxonomies.nodes.connectedContentTypes.nodes'
+  | 'connectedTaxonomies.nodes.connectedTerms.nodes'
   | 'connectedTaxonomies.nodes.description'
   | 'connectedTaxonomies.nodes.graphqlPluralName'
   | 'connectedTaxonomies.nodes.graphqlSingleName'
@@ -7411,7 +7631,10 @@ type WpContentTypeFieldsEnum =
   | 'contentNodes.nodes.internal.mediaType'
   | 'contentNodes.nodes.internal.owner'
   | 'contentNodes.nodes.internal.type'
+  | 'contentNodes.nodes.isComment'
   | 'contentNodes.nodes.isContentNode'
+  | 'contentNodes.nodes.isFrontPage'
+  | 'contentNodes.nodes.isPostsPage'
   | 'contentNodes.nodes.isTermNode'
   | 'contentNodes.nodes.link'
   | 'contentNodes.nodes.modified'
@@ -7466,6 +7689,7 @@ type WpContentTypeFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
   | 'isFrontPage'
   | 'isPostsPage'
@@ -7568,6 +7792,7 @@ type WpContentTypeFilterInput = {
   readonly hierarchical: InputMaybe<BooleanQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
@@ -7901,6 +8126,10 @@ type WpFieldsEnum =
   | 'seo.contentTypes.post.metaRobotsNoindex'
   | 'seo.contentTypes.post.schemaType'
   | 'seo.contentTypes.post.title'
+  | 'seo.contentTypes.webStory.metaDesc'
+  | 'seo.contentTypes.webStory.metaRobotsNoindex'
+  | 'seo.contentTypes.webStory.schemaType'
+  | 'seo.contentTypes.webStory.title'
   | 'seo.meta.author.description'
   | 'seo.meta.author.title'
   | 'seo.meta.config.separator'
@@ -7928,9 +8157,13 @@ type WpFieldsEnum =
   | 'seo.openGraph.defaultImage.filesize'
   | 'seo.openGraph.defaultImage.gatsbyImage'
   | 'seo.openGraph.defaultImage.guid'
+  | 'seo.openGraph.defaultImage.hasPassword'
   | 'seo.openGraph.defaultImage.height'
   | 'seo.openGraph.defaultImage.id'
+  | 'seo.openGraph.defaultImage.isComment'
   | 'seo.openGraph.defaultImage.isContentNode'
+  | 'seo.openGraph.defaultImage.isFrontPage'
+  | 'seo.openGraph.defaultImage.isPostsPage'
   | 'seo.openGraph.defaultImage.isTermNode'
   | 'seo.openGraph.defaultImage.link'
   | 'seo.openGraph.defaultImage.mediaItemUrl'
@@ -7941,6 +8174,7 @@ type WpFieldsEnum =
   | 'seo.openGraph.defaultImage.nodeType'
   | 'seo.openGraph.defaultImage.parentDatabaseId'
   | 'seo.openGraph.defaultImage.parentId'
+  | 'seo.openGraph.defaultImage.password'
   | 'seo.openGraph.defaultImage.publicUrl'
   | 'seo.openGraph.defaultImage.sizes'
   | 'seo.openGraph.defaultImage.slug'
@@ -7976,9 +8210,13 @@ type WpFieldsEnum =
   | 'seo.schema.companyLogo.filesize'
   | 'seo.schema.companyLogo.gatsbyImage'
   | 'seo.schema.companyLogo.guid'
+  | 'seo.schema.companyLogo.hasPassword'
   | 'seo.schema.companyLogo.height'
   | 'seo.schema.companyLogo.id'
+  | 'seo.schema.companyLogo.isComment'
   | 'seo.schema.companyLogo.isContentNode'
+  | 'seo.schema.companyLogo.isFrontPage'
+  | 'seo.schema.companyLogo.isPostsPage'
   | 'seo.schema.companyLogo.isTermNode'
   | 'seo.schema.companyLogo.link'
   | 'seo.schema.companyLogo.mediaItemUrl'
@@ -7989,6 +8227,7 @@ type WpFieldsEnum =
   | 'seo.schema.companyLogo.nodeType'
   | 'seo.schema.companyLogo.parentDatabaseId'
   | 'seo.schema.companyLogo.parentId'
+  | 'seo.schema.companyLogo.password'
   | 'seo.schema.companyLogo.publicUrl'
   | 'seo.schema.companyLogo.sizes'
   | 'seo.schema.companyLogo.slug'
@@ -8021,9 +8260,13 @@ type WpFieldsEnum =
   | 'seo.schema.logo.filesize'
   | 'seo.schema.logo.gatsbyImage'
   | 'seo.schema.logo.guid'
+  | 'seo.schema.logo.hasPassword'
   | 'seo.schema.logo.height'
   | 'seo.schema.logo.id'
+  | 'seo.schema.logo.isComment'
   | 'seo.schema.logo.isContentNode'
+  | 'seo.schema.logo.isFrontPage'
+  | 'seo.schema.logo.isPostsPage'
   | 'seo.schema.logo.isTermNode'
   | 'seo.schema.logo.link'
   | 'seo.schema.logo.mediaItemUrl'
@@ -8034,6 +8277,7 @@ type WpFieldsEnum =
   | 'seo.schema.logo.nodeType'
   | 'seo.schema.logo.parentDatabaseId'
   | 'seo.schema.logo.parentId'
+  | 'seo.schema.logo.password'
   | 'seo.schema.logo.publicUrl'
   | 'seo.schema.logo.sizes'
   | 'seo.schema.logo.slug'
@@ -8062,9 +8306,13 @@ type WpFieldsEnum =
   | 'seo.schema.personLogo.filesize'
   | 'seo.schema.personLogo.gatsbyImage'
   | 'seo.schema.personLogo.guid'
+  | 'seo.schema.personLogo.hasPassword'
   | 'seo.schema.personLogo.height'
   | 'seo.schema.personLogo.id'
+  | 'seo.schema.personLogo.isComment'
   | 'seo.schema.personLogo.isContentNode'
+  | 'seo.schema.personLogo.isFrontPage'
+  | 'seo.schema.personLogo.isPostsPage'
   | 'seo.schema.personLogo.isTermNode'
   | 'seo.schema.personLogo.link'
   | 'seo.schema.personLogo.mediaItemUrl'
@@ -8075,6 +8323,7 @@ type WpFieldsEnum =
   | 'seo.schema.personLogo.nodeType'
   | 'seo.schema.personLogo.parentDatabaseId'
   | 'seo.schema.personLogo.parentId'
+  | 'seo.schema.personLogo.password'
   | 'seo.schema.personLogo.publicUrl'
   | 'seo.schema.personLogo.sizes'
   | 'seo.schema.personLogo.slug'
@@ -8103,6 +8352,41 @@ type WpFieldsEnum =
   | 'seo.webmaster.googleVerify'
   | 'seo.webmaster.msVerify'
   | 'seo.webmaster.yandexVerify'
+  | 'viewer.allWebStory.nodes'
+  | 'viewer.allWebStory.nodes.authorDatabaseId'
+  | 'viewer.allWebStory.nodes.authorId'
+  | 'viewer.allWebStory.nodes.children'
+  | 'viewer.allWebStory.nodes.content'
+  | 'viewer.allWebStory.nodes.contentTypeName'
+  | 'viewer.allWebStory.nodes.databaseId'
+  | 'viewer.allWebStory.nodes.date'
+  | 'viewer.allWebStory.nodes.dateGmt'
+  | 'viewer.allWebStory.nodes.desiredSlug'
+  | 'viewer.allWebStory.nodes.enclosure'
+  | 'viewer.allWebStory.nodes.featuredImageDatabaseId'
+  | 'viewer.allWebStory.nodes.featuredImageId'
+  | 'viewer.allWebStory.nodes.guid'
+  | 'viewer.allWebStory.nodes.hasPassword'
+  | 'viewer.allWebStory.nodes.id'
+  | 'viewer.allWebStory.nodes.isComment'
+  | 'viewer.allWebStory.nodes.isContentNode'
+  | 'viewer.allWebStory.nodes.isFrontPage'
+  | 'viewer.allWebStory.nodes.isPostsPage'
+  | 'viewer.allWebStory.nodes.isRevision'
+  | 'viewer.allWebStory.nodes.isTermNode'
+  | 'viewer.allWebStory.nodes.link'
+  | 'viewer.allWebStory.nodes.modified'
+  | 'viewer.allWebStory.nodes.modifiedGmt'
+  | 'viewer.allWebStory.nodes.nodeType'
+  | 'viewer.allWebStory.nodes.password'
+  | 'viewer.allWebStory.nodes.slug'
+  | 'viewer.allWebStory.nodes.status'
+  | 'viewer.allWebStory.nodes.title'
+  | 'viewer.allWebStory.nodes.uri'
+  | 'viewer.allWebStory.pageInfo.endCursor'
+  | 'viewer.allWebStory.pageInfo.hasNextPage'
+  | 'viewer.allWebStory.pageInfo.hasPreviousPage'
+  | 'viewer.allWebStory.pageInfo.startCursor'
   | 'viewer.avatar.default'
   | 'viewer.avatar.extraAttr'
   | 'viewer.avatar.forceDefault'
@@ -8140,12 +8424,19 @@ type WpFieldsEnum =
   | 'viewer.comments.nodes.date'
   | 'viewer.comments.nodes.dateGmt'
   | 'viewer.comments.nodes.id'
+  | 'viewer.comments.nodes.isComment'
+  | 'viewer.comments.nodes.isContentNode'
+  | 'viewer.comments.nodes.isFrontPage'
+  | 'viewer.comments.nodes.isPostsPage'
+  | 'viewer.comments.nodes.isTermNode'
   | 'viewer.comments.nodes.karma'
+  | 'viewer.comments.nodes.link'
   | 'viewer.comments.nodes.nodeType'
   | 'viewer.comments.nodes.parentDatabaseId'
   | 'viewer.comments.nodes.parentId'
   | 'viewer.comments.nodes.status'
   | 'viewer.comments.nodes.type'
+  | 'viewer.comments.nodes.uri'
   | 'viewer.comments.pageInfo.endCursor'
   | 'viewer.comments.pageInfo.hasNextPage'
   | 'viewer.comments.pageInfo.hasPreviousPage'
@@ -8165,7 +8456,10 @@ type WpFieldsEnum =
   | 'viewer.internal.mediaType'
   | 'viewer.internal.owner'
   | 'viewer.internal.type'
+  | 'viewer.isComment'
   | 'viewer.isContentNode'
+  | 'viewer.isFrontPage'
+  | 'viewer.isPostsPage'
   | 'viewer.isTermNode'
   | 'viewer.lastName'
   | 'viewer.locale'
@@ -8189,7 +8483,9 @@ type WpFieldsEnum =
   | 'viewer.pages.nodes.featuredImageDatabaseId'
   | 'viewer.pages.nodes.featuredImageId'
   | 'viewer.pages.nodes.guid'
+  | 'viewer.pages.nodes.hasPassword'
   | 'viewer.pages.nodes.id'
+  | 'viewer.pages.nodes.isComment'
   | 'viewer.pages.nodes.isContentNode'
   | 'viewer.pages.nodes.isFrontPage'
   | 'viewer.pages.nodes.isPostsPage'
@@ -8203,6 +8499,7 @@ type WpFieldsEnum =
   | 'viewer.pages.nodes.nodeType'
   | 'viewer.pages.nodes.parentDatabaseId'
   | 'viewer.pages.nodes.parentId'
+  | 'viewer.pages.nodes.password'
   | 'viewer.pages.nodes.slug'
   | 'viewer.pages.nodes.status'
   | 'viewer.pages.nodes.title'
@@ -8243,8 +8540,12 @@ type WpFieldsEnum =
   | 'viewer.posts.nodes.featuredImageDatabaseId'
   | 'viewer.posts.nodes.featuredImageId'
   | 'viewer.posts.nodes.guid'
+  | 'viewer.posts.nodes.hasPassword'
   | 'viewer.posts.nodes.id'
+  | 'viewer.posts.nodes.isComment'
   | 'viewer.posts.nodes.isContentNode'
+  | 'viewer.posts.nodes.isFrontPage'
+  | 'viewer.posts.nodes.isPostsPage'
   | 'viewer.posts.nodes.isRevision'
   | 'viewer.posts.nodes.isSticky'
   | 'viewer.posts.nodes.isTermNode'
@@ -8252,6 +8553,7 @@ type WpFieldsEnum =
   | 'viewer.posts.nodes.modified'
   | 'viewer.posts.nodes.modifiedGmt'
   | 'viewer.posts.nodes.nodeType'
+  | 'viewer.posts.nodes.password'
   | 'viewer.posts.nodes.pingStatus'
   | 'viewer.posts.nodes.pinged'
   | 'viewer.posts.nodes.slug'
@@ -8302,9 +8604,13 @@ type WpFieldsEnum =
   | 'viewer.seo.opengraphImage.filesize'
   | 'viewer.seo.opengraphImage.gatsbyImage'
   | 'viewer.seo.opengraphImage.guid'
+  | 'viewer.seo.opengraphImage.hasPassword'
   | 'viewer.seo.opengraphImage.height'
   | 'viewer.seo.opengraphImage.id'
+  | 'viewer.seo.opengraphImage.isComment'
   | 'viewer.seo.opengraphImage.isContentNode'
+  | 'viewer.seo.opengraphImage.isFrontPage'
+  | 'viewer.seo.opengraphImage.isPostsPage'
   | 'viewer.seo.opengraphImage.isTermNode'
   | 'viewer.seo.opengraphImage.link'
   | 'viewer.seo.opengraphImage.mediaItemUrl'
@@ -8315,6 +8621,7 @@ type WpFieldsEnum =
   | 'viewer.seo.opengraphImage.nodeType'
   | 'viewer.seo.opengraphImage.parentDatabaseId'
   | 'viewer.seo.opengraphImage.parentId'
+  | 'viewer.seo.opengraphImage.password'
   | 'viewer.seo.opengraphImage.publicUrl'
   | 'viewer.seo.opengraphImage.sizes'
   | 'viewer.seo.opengraphImage.slug'
@@ -8359,9 +8666,13 @@ type WpFieldsEnum =
   | 'viewer.seo.twitterImage.filesize'
   | 'viewer.seo.twitterImage.gatsbyImage'
   | 'viewer.seo.twitterImage.guid'
+  | 'viewer.seo.twitterImage.hasPassword'
   | 'viewer.seo.twitterImage.height'
   | 'viewer.seo.twitterImage.id'
+  | 'viewer.seo.twitterImage.isComment'
   | 'viewer.seo.twitterImage.isContentNode'
+  | 'viewer.seo.twitterImage.isFrontPage'
+  | 'viewer.seo.twitterImage.isPostsPage'
   | 'viewer.seo.twitterImage.isTermNode'
   | 'viewer.seo.twitterImage.link'
   | 'viewer.seo.twitterImage.mediaItemUrl'
@@ -8372,6 +8683,7 @@ type WpFieldsEnum =
   | 'viewer.seo.twitterImage.nodeType'
   | 'viewer.seo.twitterImage.parentDatabaseId'
   | 'viewer.seo.twitterImage.parentId'
+  | 'viewer.seo.twitterImage.password'
   | 'viewer.seo.twitterImage.publicUrl'
   | 'viewer.seo.twitterImage.sizes'
   | 'viewer.seo.twitterImage.slug'
@@ -8507,8 +8819,14 @@ type WpHierarchicalContentNode = {
   readonly guid: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The user that most recently edited the node */
@@ -8640,7 +8958,10 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'ancestors.nodes.internal.mediaType'
   | 'ancestors.nodes.internal.owner'
   | 'ancestors.nodes.internal.type'
+  | 'ancestors.nodes.isComment'
   | 'ancestors.nodes.isContentNode'
+  | 'ancestors.nodes.isFrontPage'
+  | 'ancestors.nodes.isPostsPage'
   | 'ancestors.nodes.isTermNode'
   | 'ancestors.nodes.link'
   | 'ancestors.nodes.modified'
@@ -8745,6 +9066,7 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'contentType.node.internal.mediaType'
   | 'contentType.node.internal.owner'
   | 'contentType.node.internal.type'
+  | 'contentType.node.isComment'
   | 'contentType.node.isContentNode'
   | 'contentType.node.isFrontPage'
   | 'contentType.node.isPostsPage'
@@ -8808,8 +9130,12 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
+  | 'lastEditedBy.node.allWebStory.nodes'
   | 'lastEditedBy.node.avatar.default'
   | 'lastEditedBy.node.avatar.extraAttr'
   | 'lastEditedBy.node.avatar.forceDefault'
@@ -8841,7 +9167,10 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'lastEditedBy.node.internal.mediaType'
   | 'lastEditedBy.node.internal.owner'
   | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isComment'
   | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isFrontPage'
+  | 'lastEditedBy.node.isPostsPage'
   | 'lastEditedBy.node.isTermNode'
   | 'lastEditedBy.node.lastName'
   | 'lastEditedBy.node.locale'
@@ -8956,6 +9285,7 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -8967,7 +9297,10 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -9022,6 +9355,7 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -9094,6 +9428,7 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -9105,7 +9440,10 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -9160,6 +9498,7 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -9222,7 +9561,10 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'wpChildren.nodes.internal.mediaType'
   | 'wpChildren.nodes.internal.owner'
   | 'wpChildren.nodes.internal.type'
+  | 'wpChildren.nodes.isComment'
   | 'wpChildren.nodes.isContentNode'
+  | 'wpChildren.nodes.isFrontPage'
+  | 'wpChildren.nodes.isPostsPage'
   | 'wpChildren.nodes.isTermNode'
   | 'wpChildren.nodes.link'
   | 'wpChildren.nodes.modified'
@@ -9280,7 +9622,10 @@ type WpHierarchicalContentNodeFieldsEnum =
   | 'wpParent.node.internal.mediaType'
   | 'wpParent.node.internal.owner'
   | 'wpParent.node.internal.type'
+  | 'wpParent.node.isComment'
   | 'wpParent.node.isContentNode'
+  | 'wpParent.node.isFrontPage'
+  | 'wpParent.node.isPostsPage'
   | 'wpParent.node.isTermNode'
   | 'wpParent.node.link'
   | 'wpParent.node.modified'
@@ -9328,7 +9673,10 @@ type WpHierarchicalContentNodeFilterInput = {
   readonly guid: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
@@ -9698,8 +10046,14 @@ type WpHierarchicalTermNode = {
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -9825,7 +10179,10 @@ type WpHierarchicalTermNodeFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
   | 'link'
   | 'name'
@@ -9886,7 +10243,10 @@ type WpHierarchicalTermNodeFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -10014,11 +10374,19 @@ type WpMediaItem = Node & RemoteFile & WpContentNode & WpDatabaseIdentifier & Wp
   readonly gatsbyImage: Maybe<Scalars['GatsbyImageData']>;
   /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
   readonly guid: Maybe<Scalars['String']>;
+  /** Whether the attachment object is password protected. */
+  readonly hasPassword: Maybe<Scalars['Boolean']>;
   readonly height: Maybe<Scalars['Int']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The user that most recently edited the node */
@@ -10043,6 +10411,8 @@ type WpMediaItem = Node & RemoteFile & WpContentNode & WpDatabaseIdentifier & Wp
   readonly parentDatabaseId: Maybe<Scalars['Int']>;
   /** The globally unique identifier of the parent node. */
   readonly parentId: Maybe<Scalars['ID']>;
+  /** The password for the attachment object. */
+  readonly password: Maybe<Scalars['String']>;
   readonly publicUrl: Scalars['String'];
   readonly resize: Maybe<RemoteFileResize>;
   /** The Yoast SEO data of the ContentNode */
@@ -10229,7 +10599,10 @@ type WpMediaItemFieldsEnum =
   | 'ancestors.nodes.internal.mediaType'
   | 'ancestors.nodes.internal.owner'
   | 'ancestors.nodes.internal.type'
+  | 'ancestors.nodes.isComment'
   | 'ancestors.nodes.isContentNode'
+  | 'ancestors.nodes.isFrontPage'
+  | 'ancestors.nodes.isPostsPage'
   | 'ancestors.nodes.isTermNode'
   | 'ancestors.nodes.link'
   | 'ancestors.nodes.modified'
@@ -10269,6 +10642,7 @@ type WpMediaItemFieldsEnum =
   | 'ancestors.pageInfo.startCursor'
   | 'authorDatabaseId'
   | 'authorId'
+  | 'author.node.allWebStory.nodes'
   | 'author.node.avatar.default'
   | 'author.node.avatar.extraAttr'
   | 'author.node.avatar.forceDefault'
@@ -10300,7 +10674,10 @@ type WpMediaItemFieldsEnum =
   | 'author.node.internal.mediaType'
   | 'author.node.internal.owner'
   | 'author.node.internal.type'
+  | 'author.node.isComment'
   | 'author.node.isContentNode'
+  | 'author.node.isFrontPage'
+  | 'author.node.isPostsPage'
   | 'author.node.isTermNode'
   | 'author.node.lastName'
   | 'author.node.locale'
@@ -10397,7 +10774,13 @@ type WpMediaItemFieldsEnum =
   | 'comments.nodes.internal.mediaType'
   | 'comments.nodes.internal.owner'
   | 'comments.nodes.internal.type'
+  | 'comments.nodes.isComment'
+  | 'comments.nodes.isContentNode'
+  | 'comments.nodes.isFrontPage'
+  | 'comments.nodes.isPostsPage'
+  | 'comments.nodes.isTermNode'
   | 'comments.nodes.karma'
+  | 'comments.nodes.link'
   | 'comments.nodes.nodeType'
   | 'comments.nodes.parentDatabaseId'
   | 'comments.nodes.parentId'
@@ -10406,6 +10789,7 @@ type WpMediaItemFieldsEnum =
   | 'comments.nodes.replies.nodes'
   | 'comments.nodes.status'
   | 'comments.nodes.type'
+  | 'comments.nodes.uri'
   | 'comments.pageInfo.endCursor'
   | 'comments.pageInfo.hasNextPage'
   | 'comments.pageInfo.hasPreviousPage'
@@ -10435,6 +10819,7 @@ type WpMediaItemFieldsEnum =
   | 'contentType.node.internal.mediaType'
   | 'contentType.node.internal.owner'
   | 'contentType.node.internal.type'
+  | 'contentType.node.isComment'
   | 'contentType.node.isContentNode'
   | 'contentType.node.isFrontPage'
   | 'contentType.node.isPostsPage'
@@ -10493,6 +10878,7 @@ type WpMediaItemFieldsEnum =
   | 'filesize'
   | 'gatsbyImage'
   | 'guid'
+  | 'hasPassword'
   | 'height'
   | 'id'
   | 'internal.content'
@@ -10504,8 +10890,12 @@ type WpMediaItemFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
+  | 'lastEditedBy.node.allWebStory.nodes'
   | 'lastEditedBy.node.avatar.default'
   | 'lastEditedBy.node.avatar.extraAttr'
   | 'lastEditedBy.node.avatar.forceDefault'
@@ -10537,7 +10927,10 @@ type WpMediaItemFieldsEnum =
   | 'lastEditedBy.node.internal.mediaType'
   | 'lastEditedBy.node.internal.owner'
   | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isComment'
   | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isFrontPage'
+  | 'lastEditedBy.node.isPostsPage'
   | 'lastEditedBy.node.isTermNode'
   | 'lastEditedBy.node.lastName'
   | 'lastEditedBy.node.locale'
@@ -10813,6 +11206,7 @@ type WpMediaItemFieldsEnum =
   | 'parent.parent.internal.type'
   | 'parent.parent.parent.children'
   | 'parent.parent.parent.id'
+  | 'password'
   | 'publicUrl'
   | 'resize.height'
   | 'resize.src'
@@ -10853,6 +11247,7 @@ type WpMediaItemFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -10864,7 +11259,10 @@ type WpMediaItemFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -10919,6 +11317,7 @@ type WpMediaItemFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -10991,6 +11390,7 @@ type WpMediaItemFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -11002,7 +11402,10 @@ type WpMediaItemFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -11057,6 +11460,7 @@ type WpMediaItemFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -11124,7 +11528,10 @@ type WpMediaItemFieldsEnum =
   | 'wpChildren.nodes.internal.mediaType'
   | 'wpChildren.nodes.internal.owner'
   | 'wpChildren.nodes.internal.type'
+  | 'wpChildren.nodes.isComment'
   | 'wpChildren.nodes.isContentNode'
+  | 'wpChildren.nodes.isFrontPage'
+  | 'wpChildren.nodes.isPostsPage'
   | 'wpChildren.nodes.isTermNode'
   | 'wpChildren.nodes.link'
   | 'wpChildren.nodes.modified'
@@ -11182,7 +11589,10 @@ type WpMediaItemFieldsEnum =
   | 'wpParent.node.internal.mediaType'
   | 'wpParent.node.internal.owner'
   | 'wpParent.node.internal.type'
+  | 'wpParent.node.isComment'
   | 'wpParent.node.isContentNode'
+  | 'wpParent.node.isFrontPage'
+  | 'wpParent.node.isPostsPage'
   | 'wpParent.node.isTermNode'
   | 'wpParent.node.link'
   | 'wpParent.node.modified'
@@ -11241,10 +11651,14 @@ type WpMediaItemFilterInput = {
   readonly filesize: InputMaybe<IntQueryOperatorInput>;
   readonly gatsbyImage: InputMaybe<GatsbyImageDataQueryOperatorInput>;
   readonly guid: InputMaybe<StringQueryOperatorInput>;
+  readonly hasPassword: InputMaybe<BooleanQueryOperatorInput>;
   readonly height: InputMaybe<IntQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
@@ -11259,6 +11673,7 @@ type WpMediaItemFilterInput = {
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly parentDatabaseId: InputMaybe<IntQueryOperatorInput>;
   readonly parentId: InputMaybe<IDQueryOperatorInput>;
+  readonly password: InputMaybe<StringQueryOperatorInput>;
   readonly publicUrl: InputMaybe<StringQueryOperatorInput>;
   readonly resize: InputMaybe<RemoteFileResizeFilterInput>;
   readonly seo: InputMaybe<WpPostTypeSEOFilterInput>;
@@ -11920,7 +12335,10 @@ type WpMenuItemFieldsEnum =
   | 'connectedNode.node.internal.mediaType'
   | 'connectedNode.node.internal.owner'
   | 'connectedNode.node.internal.type'
+  | 'connectedNode.node.isComment'
   | 'connectedNode.node.isContentNode'
+  | 'connectedNode.node.isFrontPage'
+  | 'connectedNode.node.isPostsPage'
   | 'connectedNode.node.isTermNode'
   | 'connectedNode.node.nodeType'
   | 'connectedNode.node.parent.children'
@@ -12091,8 +12509,14 @@ type WpMenuItemLinkable = {
   readonly databaseId: Scalars['Int'];
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   readonly nodeType: Maybe<Scalars['String']>;
@@ -12205,7 +12629,10 @@ type WpMenuItemLinkableFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
   | 'nodeType'
   | 'parent.children'
@@ -12256,7 +12683,10 @@ type WpMenuItemLinkableFilterInput = {
   readonly databaseId: InputMaybe<IntQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly nodeType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
@@ -12488,6 +12918,7 @@ type WpNodeWithAuthorEdge = {
 type WpNodeWithAuthorFieldsEnum =
   | 'authorDatabaseId'
   | 'authorId'
+  | 'author.node.allWebStory.nodes'
   | 'author.node.avatar.default'
   | 'author.node.avatar.extraAttr'
   | 'author.node.avatar.forceDefault'
@@ -12519,7 +12950,10 @@ type WpNodeWithAuthorFieldsEnum =
   | 'author.node.internal.mediaType'
   | 'author.node.internal.owner'
   | 'author.node.internal.type'
+  | 'author.node.isComment'
   | 'author.node.isContentNode'
+  | 'author.node.isFrontPage'
+  | 'author.node.isPostsPage'
   | 'author.node.isTermNode'
   | 'author.node.lastName'
   | 'author.node.locale'
@@ -13465,6 +13899,7 @@ type WpNodeWithFeaturedImageFieldsEnum =
   | 'featuredImage.node.filesize'
   | 'featuredImage.node.gatsbyImage'
   | 'featuredImage.node.guid'
+  | 'featuredImage.node.hasPassword'
   | 'featuredImage.node.height'
   | 'featuredImage.node.id'
   | 'featuredImage.node.internal.content'
@@ -13476,7 +13911,10 @@ type WpNodeWithFeaturedImageFieldsEnum =
   | 'featuredImage.node.internal.mediaType'
   | 'featuredImage.node.internal.owner'
   | 'featuredImage.node.internal.type'
+  | 'featuredImage.node.isComment'
   | 'featuredImage.node.isContentNode'
+  | 'featuredImage.node.isFrontPage'
+  | 'featuredImage.node.isPostsPage'
   | 'featuredImage.node.isTermNode'
   | 'featuredImage.node.link'
   | 'featuredImage.node.localFile.absolutePath'
@@ -13531,6 +13969,7 @@ type WpNodeWithFeaturedImageFieldsEnum =
   | 'featuredImage.node.parentId'
   | 'featuredImage.node.parent.children'
   | 'featuredImage.node.parent.id'
+  | 'featuredImage.node.password'
   | 'featuredImage.node.publicUrl'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
@@ -14502,6 +14941,7 @@ type WpNodeWithTitleFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -14513,7 +14953,10 @@ type WpNodeWithTitleFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -14568,6 +15011,7 @@ type WpNodeWithTitleFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -14640,6 +15084,7 @@ type WpNodeWithTitleFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -14651,7 +15096,10 @@ type WpNodeWithTitleFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -14706,6 +15154,7 @@ type WpNodeWithTitleFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -15062,8 +15511,12 @@ type WpPage = Node & WpContentNode & WpDatabaseIdentifier & WpHierarchicalConten
   readonly featuredImageId: Maybe<Scalars['ID']>;
   /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
   readonly guid: Maybe<Scalars['String']>;
+  /** Whether the page object is password protected. */
+  readonly hasPassword: Maybe<Scalars['Boolean']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
   /** Whether this page is set to the static front page. */
@@ -15092,6 +15545,8 @@ type WpPage = Node & WpContentNode & WpDatabaseIdentifier & WpHierarchicalConten
   readonly parentDatabaseId: Maybe<Scalars['Int']>;
   /** The globally unique identifier of the parent node. */
   readonly parentId: Maybe<Scalars['ID']>;
+  /** The password for the page object. */
+  readonly password: Maybe<Scalars['String']>;
   /** The Yoast SEO data of the ContentNode */
   readonly seo: Maybe<WpPostTypeSEO>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
@@ -15238,7 +15693,10 @@ type WpPageFieldsEnum =
   | 'ancestors.nodes.internal.mediaType'
   | 'ancestors.nodes.internal.owner'
   | 'ancestors.nodes.internal.type'
+  | 'ancestors.nodes.isComment'
   | 'ancestors.nodes.isContentNode'
+  | 'ancestors.nodes.isFrontPage'
+  | 'ancestors.nodes.isPostsPage'
   | 'ancestors.nodes.isTermNode'
   | 'ancestors.nodes.link'
   | 'ancestors.nodes.modified'
@@ -15278,6 +15736,7 @@ type WpPageFieldsEnum =
   | 'ancestors.pageInfo.startCursor'
   | 'authorDatabaseId'
   | 'authorId'
+  | 'author.node.allWebStory.nodes'
   | 'author.node.avatar.default'
   | 'author.node.avatar.extraAttr'
   | 'author.node.avatar.forceDefault'
@@ -15309,7 +15768,10 @@ type WpPageFieldsEnum =
   | 'author.node.internal.mediaType'
   | 'author.node.internal.owner'
   | 'author.node.internal.type'
+  | 'author.node.isComment'
   | 'author.node.isContentNode'
+  | 'author.node.isFrontPage'
+  | 'author.node.isPostsPage'
   | 'author.node.isTermNode'
   | 'author.node.lastName'
   | 'author.node.locale'
@@ -15405,7 +15867,13 @@ type WpPageFieldsEnum =
   | 'comments.nodes.internal.mediaType'
   | 'comments.nodes.internal.owner'
   | 'comments.nodes.internal.type'
+  | 'comments.nodes.isComment'
+  | 'comments.nodes.isContentNode'
+  | 'comments.nodes.isFrontPage'
+  | 'comments.nodes.isPostsPage'
+  | 'comments.nodes.isTermNode'
   | 'comments.nodes.karma'
+  | 'comments.nodes.link'
   | 'comments.nodes.nodeType'
   | 'comments.nodes.parentDatabaseId'
   | 'comments.nodes.parentId'
@@ -15414,6 +15882,7 @@ type WpPageFieldsEnum =
   | 'comments.nodes.replies.nodes'
   | 'comments.nodes.status'
   | 'comments.nodes.type'
+  | 'comments.nodes.uri'
   | 'comments.pageInfo.endCursor'
   | 'comments.pageInfo.hasNextPage'
   | 'comments.pageInfo.hasPreviousPage'
@@ -15444,6 +15913,7 @@ type WpPageFieldsEnum =
   | 'contentType.node.internal.mediaType'
   | 'contentType.node.internal.owner'
   | 'contentType.node.internal.type'
+  | 'contentType.node.isComment'
   | 'contentType.node.isContentNode'
   | 'contentType.node.isFrontPage'
   | 'contentType.node.isPostsPage'
@@ -15521,6 +15991,7 @@ type WpPageFieldsEnum =
   | 'featuredImage.node.filesize'
   | 'featuredImage.node.gatsbyImage'
   | 'featuredImage.node.guid'
+  | 'featuredImage.node.hasPassword'
   | 'featuredImage.node.height'
   | 'featuredImage.node.id'
   | 'featuredImage.node.internal.content'
@@ -15532,7 +16003,10 @@ type WpPageFieldsEnum =
   | 'featuredImage.node.internal.mediaType'
   | 'featuredImage.node.internal.owner'
   | 'featuredImage.node.internal.type'
+  | 'featuredImage.node.isComment'
   | 'featuredImage.node.isContentNode'
+  | 'featuredImage.node.isFrontPage'
+  | 'featuredImage.node.isPostsPage'
   | 'featuredImage.node.isTermNode'
   | 'featuredImage.node.link'
   | 'featuredImage.node.localFile.absolutePath'
@@ -15587,6 +16061,7 @@ type WpPageFieldsEnum =
   | 'featuredImage.node.parentId'
   | 'featuredImage.node.parent.children'
   | 'featuredImage.node.parent.id'
+  | 'featuredImage.node.password'
   | 'featuredImage.node.publicUrl'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
@@ -15624,6 +16099,7 @@ type WpPageFieldsEnum =
   | 'featuredImage.node.width'
   | 'featuredImage.node.wpChildren.nodes'
   | 'guid'
+  | 'hasPassword'
   | 'id'
   | 'internal.content'
   | 'internal.contentDigest'
@@ -15634,12 +16110,14 @@ type WpPageFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
   | 'isFrontPage'
   | 'isPostsPage'
   | 'isPrivacyPage'
   | 'isRevision'
   | 'isTermNode'
+  | 'lastEditedBy.node.allWebStory.nodes'
   | 'lastEditedBy.node.avatar.default'
   | 'lastEditedBy.node.avatar.extraAttr'
   | 'lastEditedBy.node.avatar.forceDefault'
@@ -15671,7 +16149,10 @@ type WpPageFieldsEnum =
   | 'lastEditedBy.node.internal.mediaType'
   | 'lastEditedBy.node.internal.owner'
   | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isComment'
   | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isFrontPage'
+  | 'lastEditedBy.node.isPostsPage'
   | 'lastEditedBy.node.isTermNode'
   | 'lastEditedBy.node.lastName'
   | 'lastEditedBy.node.locale'
@@ -15751,6 +16232,7 @@ type WpPageFieldsEnum =
   | 'parent.parent.internal.type'
   | 'parent.parent.parent.children'
   | 'parent.parent.parent.id'
+  | 'password'
   | 'seo.breadcrumbs'
   | 'seo.breadcrumbs.text'
   | 'seo.breadcrumbs.url'
@@ -15787,6 +16269,7 @@ type WpPageFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -15798,7 +16281,10 @@ type WpPageFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -15853,6 +16339,7 @@ type WpPageFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -15925,6 +16412,7 @@ type WpPageFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -15936,7 +16424,10 @@ type WpPageFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -15991,6 +16482,7 @@ type WpPageFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -16054,7 +16546,10 @@ type WpPageFieldsEnum =
   | 'wpChildren.nodes.internal.mediaType'
   | 'wpChildren.nodes.internal.owner'
   | 'wpChildren.nodes.internal.type'
+  | 'wpChildren.nodes.isComment'
   | 'wpChildren.nodes.isContentNode'
+  | 'wpChildren.nodes.isFrontPage'
+  | 'wpChildren.nodes.isPostsPage'
   | 'wpChildren.nodes.isTermNode'
   | 'wpChildren.nodes.link'
   | 'wpChildren.nodes.modified'
@@ -16112,7 +16607,10 @@ type WpPageFieldsEnum =
   | 'wpParent.node.internal.mediaType'
   | 'wpParent.node.internal.owner'
   | 'wpParent.node.internal.type'
+  | 'wpParent.node.isComment'
   | 'wpParent.node.isContentNode'
+  | 'wpParent.node.isFrontPage'
+  | 'wpParent.node.isPostsPage'
   | 'wpParent.node.isTermNode'
   | 'wpParent.node.link'
   | 'wpParent.node.modified'
@@ -16168,8 +16666,10 @@ type WpPageFilterInput = {
   readonly featuredImageDatabaseId: InputMaybe<IntQueryOperatorInput>;
   readonly featuredImageId: InputMaybe<IDQueryOperatorInput>;
   readonly guid: InputMaybe<StringQueryOperatorInput>;
+  readonly hasPassword: InputMaybe<BooleanQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
@@ -16185,6 +16685,7 @@ type WpPageFilterInput = {
   readonly parent: InputMaybe<NodeFilterInput>;
   readonly parentDatabaseId: InputMaybe<IntQueryOperatorInput>;
   readonly parentId: InputMaybe<IDQueryOperatorInput>;
+  readonly password: InputMaybe<StringQueryOperatorInput>;
   readonly seo: InputMaybe<WpPostTypeSEOFilterInput>;
   readonly slug: InputMaybe<StringQueryOperatorInput>;
   readonly status: InputMaybe<StringQueryOperatorInput>;
@@ -16335,10 +16836,18 @@ type WpPost = Node & WpContentNode & WpDatabaseIdentifier & WpMenuItemLinkable &
   readonly featuredImageId: Maybe<Scalars['ID']>;
   /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
   readonly guid: Maybe<Scalars['String']>;
+  /** Whether the post object is password protected. */
+  readonly hasPassword: Maybe<Scalars['Boolean']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** True if the node is a revision of another node */
   readonly isRevision: Maybe<Scalars['Boolean']>;
   /** Whether this page is sticky */
@@ -16355,6 +16864,8 @@ type WpPost = Node & WpContentNode & WpDatabaseIdentifier & WpMenuItemLinkable &
   readonly modifiedGmt: Maybe<Scalars['Date']>;
   readonly nodeType: Maybe<Scalars['String']>;
   readonly parent: Maybe<Node>;
+  /** The password for the post object. */
+  readonly password: Maybe<Scalars['String']>;
   /** Whether the pings are open or closed for this particular post. */
   readonly pingStatus: Maybe<Scalars['String']>;
   /** URLs that have been pinged. */
@@ -16493,6 +17004,7 @@ type WpPostFieldsEnum =
   | 'acfSampleField.test'
   | 'authorDatabaseId'
   | 'authorId'
+  | 'author.node.allWebStory.nodes'
   | 'author.node.avatar.default'
   | 'author.node.avatar.extraAttr'
   | 'author.node.avatar.forceDefault'
@@ -16524,7 +17036,10 @@ type WpPostFieldsEnum =
   | 'author.node.internal.mediaType'
   | 'author.node.internal.owner'
   | 'author.node.internal.type'
+  | 'author.node.isComment'
   | 'author.node.isContentNode'
+  | 'author.node.isFrontPage'
+  | 'author.node.isPostsPage'
   | 'author.node.isTermNode'
   | 'author.node.lastName'
   | 'author.node.locale'
@@ -16575,7 +17090,10 @@ type WpPostFieldsEnum =
   | 'categories.nodes.internal.mediaType'
   | 'categories.nodes.internal.owner'
   | 'categories.nodes.internal.type'
+  | 'categories.nodes.isComment'
   | 'categories.nodes.isContentNode'
+  | 'categories.nodes.isFrontPage'
+  | 'categories.nodes.isPostsPage'
   | 'categories.nodes.isTermNode'
   | 'categories.nodes.link'
   | 'categories.nodes.name'
@@ -16680,7 +17198,13 @@ type WpPostFieldsEnum =
   | 'comments.nodes.internal.mediaType'
   | 'comments.nodes.internal.owner'
   | 'comments.nodes.internal.type'
+  | 'comments.nodes.isComment'
+  | 'comments.nodes.isContentNode'
+  | 'comments.nodes.isFrontPage'
+  | 'comments.nodes.isPostsPage'
+  | 'comments.nodes.isTermNode'
   | 'comments.nodes.karma'
+  | 'comments.nodes.link'
   | 'comments.nodes.nodeType'
   | 'comments.nodes.parentDatabaseId'
   | 'comments.nodes.parentId'
@@ -16689,6 +17213,7 @@ type WpPostFieldsEnum =
   | 'comments.nodes.replies.nodes'
   | 'comments.nodes.status'
   | 'comments.nodes.type'
+  | 'comments.nodes.uri'
   | 'comments.pageInfo.endCursor'
   | 'comments.pageInfo.hasNextPage'
   | 'comments.pageInfo.hasPreviousPage'
@@ -16719,6 +17244,7 @@ type WpPostFieldsEnum =
   | 'contentType.node.internal.mediaType'
   | 'contentType.node.internal.owner'
   | 'contentType.node.internal.type'
+  | 'contentType.node.isComment'
   | 'contentType.node.isContentNode'
   | 'contentType.node.isFrontPage'
   | 'contentType.node.isPostsPage'
@@ -16797,6 +17323,7 @@ type WpPostFieldsEnum =
   | 'featuredImage.node.filesize'
   | 'featuredImage.node.gatsbyImage'
   | 'featuredImage.node.guid'
+  | 'featuredImage.node.hasPassword'
   | 'featuredImage.node.height'
   | 'featuredImage.node.id'
   | 'featuredImage.node.internal.content'
@@ -16808,7 +17335,10 @@ type WpPostFieldsEnum =
   | 'featuredImage.node.internal.mediaType'
   | 'featuredImage.node.internal.owner'
   | 'featuredImage.node.internal.type'
+  | 'featuredImage.node.isComment'
   | 'featuredImage.node.isContentNode'
+  | 'featuredImage.node.isFrontPage'
+  | 'featuredImage.node.isPostsPage'
   | 'featuredImage.node.isTermNode'
   | 'featuredImage.node.link'
   | 'featuredImage.node.localFile.absolutePath'
@@ -16863,6 +17393,7 @@ type WpPostFieldsEnum =
   | 'featuredImage.node.parentId'
   | 'featuredImage.node.parent.children'
   | 'featuredImage.node.parent.id'
+  | 'featuredImage.node.password'
   | 'featuredImage.node.publicUrl'
   | 'featuredImage.node.resize.height'
   | 'featuredImage.node.resize.src'
@@ -16900,6 +17431,7 @@ type WpPostFieldsEnum =
   | 'featuredImage.node.width'
   | 'featuredImage.node.wpChildren.nodes'
   | 'guid'
+  | 'hasPassword'
   | 'id'
   | 'internal.content'
   | 'internal.contentDigest'
@@ -16910,10 +17442,14 @@ type WpPostFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isRevision'
   | 'isSticky'
   | 'isTermNode'
+  | 'lastEditedBy.node.allWebStory.nodes'
   | 'lastEditedBy.node.avatar.default'
   | 'lastEditedBy.node.avatar.extraAttr'
   | 'lastEditedBy.node.avatar.forceDefault'
@@ -16945,7 +17481,10 @@ type WpPostFieldsEnum =
   | 'lastEditedBy.node.internal.mediaType'
   | 'lastEditedBy.node.internal.owner'
   | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isComment'
   | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isFrontPage'
+  | 'lastEditedBy.node.isPostsPage'
   | 'lastEditedBy.node.isTermNode'
   | 'lastEditedBy.node.lastName'
   | 'lastEditedBy.node.locale'
@@ -17022,6 +17561,7 @@ type WpPostFieldsEnum =
   | 'parent.parent.internal.type'
   | 'parent.parent.parent.children'
   | 'parent.parent.parent.id'
+  | 'password'
   | 'pingStatus'
   | 'pinged'
   | 'postFormats.nodes'
@@ -17042,7 +17582,10 @@ type WpPostFieldsEnum =
   | 'postFormats.nodes.internal.mediaType'
   | 'postFormats.nodes.internal.owner'
   | 'postFormats.nodes.internal.type'
+  | 'postFormats.nodes.isComment'
   | 'postFormats.nodes.isContentNode'
+  | 'postFormats.nodes.isFrontPage'
+  | 'postFormats.nodes.isPostsPage'
   | 'postFormats.nodes.isTermNode'
   | 'postFormats.nodes.link'
   | 'postFormats.nodes.name'
@@ -17116,6 +17659,7 @@ type WpPostFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -17127,7 +17671,10 @@ type WpPostFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -17182,6 +17729,7 @@ type WpPostFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -17254,6 +17802,7 @@ type WpPostFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -17265,7 +17814,10 @@ type WpPostFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -17320,6 +17872,7 @@ type WpPostFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -17377,7 +17930,10 @@ type WpPostFieldsEnum =
   | 'tags.nodes.internal.mediaType'
   | 'tags.nodes.internal.owner'
   | 'tags.nodes.internal.type'
+  | 'tags.nodes.isComment'
   | 'tags.nodes.isContentNode'
+  | 'tags.nodes.isFrontPage'
+  | 'tags.nodes.isPostsPage'
   | 'tags.nodes.isTermNode'
   | 'tags.nodes.link'
   | 'tags.nodes.name'
@@ -17433,7 +17989,10 @@ type WpPostFieldsEnum =
   | 'terms.nodes.internal.mediaType'
   | 'terms.nodes.internal.owner'
   | 'terms.nodes.internal.type'
+  | 'terms.nodes.isComment'
   | 'terms.nodes.isContentNode'
+  | 'terms.nodes.isFrontPage'
+  | 'terms.nodes.isPostsPage'
   | 'terms.nodes.isTermNode'
   | 'terms.nodes.link'
   | 'terms.nodes.name'
@@ -17476,9 +18035,13 @@ type WpPostFilterInput = {
   readonly featuredImageDatabaseId: InputMaybe<IntQueryOperatorInput>;
   readonly featuredImageId: InputMaybe<IDQueryOperatorInput>;
   readonly guid: InputMaybe<StringQueryOperatorInput>;
+  readonly hasPassword: InputMaybe<BooleanQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isRevision: InputMaybe<BooleanQueryOperatorInput>;
   readonly isSticky: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
@@ -17488,6 +18051,7 @@ type WpPostFilterInput = {
   readonly modifiedGmt: InputMaybe<DateQueryOperatorInput>;
   readonly nodeType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
+  readonly password: InputMaybe<StringQueryOperatorInput>;
   readonly pingStatus: InputMaybe<StringQueryOperatorInput>;
   readonly pinged: InputMaybe<StringQueryOperatorInput>;
   readonly postFormats: InputMaybe<WpPostToPostFormatConnectionTypeFilterInput>;
@@ -17519,8 +18083,14 @@ type WpPostFormat = Node & WpDatabaseIdentifier & WpMenuItemLinkable & WpNode & 
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -17681,7 +18251,10 @@ type WpPostFormatFieldsEnum =
   | 'contentNodes.nodes.internal.mediaType'
   | 'contentNodes.nodes.internal.owner'
   | 'contentNodes.nodes.internal.type'
+  | 'contentNodes.nodes.isComment'
   | 'contentNodes.nodes.isContentNode'
+  | 'contentNodes.nodes.isFrontPage'
+  | 'contentNodes.nodes.isPostsPage'
   | 'contentNodes.nodes.isTermNode'
   | 'contentNodes.nodes.link'
   | 'contentNodes.nodes.modified'
@@ -17732,7 +18305,10 @@ type WpPostFormatFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
   | 'link'
   | 'name'
@@ -17801,6 +18377,7 @@ type WpPostFormatFieldsEnum =
   | 'posts.nodes.featuredImageDatabaseId'
   | 'posts.nodes.featuredImageId'
   | 'posts.nodes.guid'
+  | 'posts.nodes.hasPassword'
   | 'posts.nodes.id'
   | 'posts.nodes.internal.content'
   | 'posts.nodes.internal.contentDigest'
@@ -17811,7 +18388,10 @@ type WpPostFormatFieldsEnum =
   | 'posts.nodes.internal.mediaType'
   | 'posts.nodes.internal.owner'
   | 'posts.nodes.internal.type'
+  | 'posts.nodes.isComment'
   | 'posts.nodes.isContentNode'
+  | 'posts.nodes.isFrontPage'
+  | 'posts.nodes.isPostsPage'
   | 'posts.nodes.isRevision'
   | 'posts.nodes.isSticky'
   | 'posts.nodes.isTermNode'
@@ -17821,6 +18401,7 @@ type WpPostFormatFieldsEnum =
   | 'posts.nodes.nodeType'
   | 'posts.nodes.parent.children'
   | 'posts.nodes.parent.id'
+  | 'posts.nodes.password'
   | 'posts.nodes.pingStatus'
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
@@ -17894,6 +18475,7 @@ type WpPostFormatFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -17905,7 +18487,10 @@ type WpPostFormatFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -17960,6 +18545,7 @@ type WpPostFormatFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -18029,6 +18615,7 @@ type WpPostFormatFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -18040,7 +18627,10 @@ type WpPostFormatFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -18095,6 +18685,7 @@ type WpPostFormatFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -18139,6 +18730,7 @@ type WpPostFormatFieldsEnum =
   | 'taxonomy.node.children.children'
   | 'taxonomy.node.children.id'
   | 'taxonomy.node.connectedContentTypes.nodes'
+  | 'taxonomy.node.connectedTerms.nodes'
   | 'taxonomy.node.description'
   | 'taxonomy.node.graphqlPluralName'
   | 'taxonomy.node.graphqlSingleName'
@@ -18181,7 +18773,10 @@ type WpPostFormatFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -18828,6 +19423,7 @@ type WpSEOContentTypes = {
   readonly mediaItem: Maybe<WpSEOContentType>;
   readonly page: Maybe<WpSEOContentType>;
   readonly post: Maybe<WpSEOContentType>;
+  readonly webStory: Maybe<WpSEOContentType>;
 };
 
 type WpSEOContentTypesFilterInput = {
@@ -18835,6 +19431,7 @@ type WpSEOContentTypesFilterInput = {
   readonly mediaItem: InputMaybe<WpSEOContentTypeFilterInput>;
   readonly page: InputMaybe<WpSEOContentTypeFilterInput>;
   readonly post: InputMaybe<WpSEOContentTypeFilterInput>;
+  readonly webStory: InputMaybe<WpSEOContentTypeFilterInput>;
 };
 
 /** The Yoast SEO meta data */
@@ -19303,8 +19900,14 @@ type WpTag = Node & WpDatabaseIdentifier & WpMenuItemLinkable & WpNode & WpTermN
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -19465,7 +20068,10 @@ type WpTagFieldsEnum =
   | 'contentNodes.nodes.internal.mediaType'
   | 'contentNodes.nodes.internal.owner'
   | 'contentNodes.nodes.internal.type'
+  | 'contentNodes.nodes.isComment'
   | 'contentNodes.nodes.isContentNode'
+  | 'contentNodes.nodes.isFrontPage'
+  | 'contentNodes.nodes.isPostsPage'
   | 'contentNodes.nodes.isTermNode'
   | 'contentNodes.nodes.link'
   | 'contentNodes.nodes.modified'
@@ -19516,7 +20122,10 @@ type WpTagFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
   | 'link'
   | 'name'
@@ -19585,6 +20194,7 @@ type WpTagFieldsEnum =
   | 'posts.nodes.featuredImageDatabaseId'
   | 'posts.nodes.featuredImageId'
   | 'posts.nodes.guid'
+  | 'posts.nodes.hasPassword'
   | 'posts.nodes.id'
   | 'posts.nodes.internal.content'
   | 'posts.nodes.internal.contentDigest'
@@ -19595,7 +20205,10 @@ type WpTagFieldsEnum =
   | 'posts.nodes.internal.mediaType'
   | 'posts.nodes.internal.owner'
   | 'posts.nodes.internal.type'
+  | 'posts.nodes.isComment'
   | 'posts.nodes.isContentNode'
+  | 'posts.nodes.isFrontPage'
+  | 'posts.nodes.isPostsPage'
   | 'posts.nodes.isRevision'
   | 'posts.nodes.isSticky'
   | 'posts.nodes.isTermNode'
@@ -19605,6 +20218,7 @@ type WpTagFieldsEnum =
   | 'posts.nodes.nodeType'
   | 'posts.nodes.parent.children'
   | 'posts.nodes.parent.id'
+  | 'posts.nodes.password'
   | 'posts.nodes.pingStatus'
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
@@ -19678,6 +20292,7 @@ type WpTagFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -19689,7 +20304,10 @@ type WpTagFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -19744,6 +20362,7 @@ type WpTagFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -19813,6 +20432,7 @@ type WpTagFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -19824,7 +20444,10 @@ type WpTagFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -19879,6 +20502,7 @@ type WpTagFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -19923,6 +20547,7 @@ type WpTagFieldsEnum =
   | 'taxonomy.node.children.children'
   | 'taxonomy.node.children.id'
   | 'taxonomy.node.connectedContentTypes.nodes'
+  | 'taxonomy.node.connectedTerms.nodes'
   | 'taxonomy.node.description'
   | 'taxonomy.node.graphqlPluralName'
   | 'taxonomy.node.graphqlSingleName'
@@ -19965,7 +20590,10 @@ type WpTagFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -20118,6 +20746,8 @@ type WpTaxonomy = Node & WpNode & {
   readonly children: ReadonlyArray<Node>;
   /** List of Content Types associated with the Taxonomy */
   readonly connectedContentTypes: Maybe<WpTaxonomyToContentTypeConnectionType>;
+  /** List of Term Nodes associated with the Taxonomy */
+  readonly connectedTerms: Maybe<WpTaxonomyToTermNodeConnectionType>;
   /** Description of the taxonomy. This field is equivalent to WP_Taxonomy-&gt;description */
   readonly description: Maybe<Scalars['String']>;
   /** The plural name of the post type within the GraphQL Schema. */
@@ -20136,7 +20766,7 @@ type WpTaxonomy = Node & WpNode & {
   readonly parent: Maybe<Node>;
   /** Whether the taxonomy is publicly queryable */
   readonly public: Maybe<Scalars['Boolean']>;
-  /** Name of content type to diplay in REST API &quot;wp/v2&quot; namespace. */
+  /** Name of content type to display in REST API &quot;wp/v2&quot; namespace. */
   readonly restBase: Maybe<Scalars['String']>;
   /** The REST Controller class assigned to handling this content type. */
   readonly restControllerClass: Maybe<Scalars['String']>;
@@ -20297,6 +20927,7 @@ type WpTaxonomyFieldsEnum =
   | 'connectedContentTypes.nodes.internal.mediaType'
   | 'connectedContentTypes.nodes.internal.owner'
   | 'connectedContentTypes.nodes.internal.type'
+  | 'connectedContentTypes.nodes.isComment'
   | 'connectedContentTypes.nodes.isContentNode'
   | 'connectedContentTypes.nodes.isFrontPage'
   | 'connectedContentTypes.nodes.isPostsPage'
@@ -20348,6 +20979,42 @@ type WpTaxonomyFieldsEnum =
   | 'connectedContentTypes.pageInfo.hasNextPage'
   | 'connectedContentTypes.pageInfo.hasPreviousPage'
   | 'connectedContentTypes.pageInfo.startCursor'
+  | 'connectedTerms.nodes'
+  | 'connectedTerms.nodes.children'
+  | 'connectedTerms.nodes.children.children'
+  | 'connectedTerms.nodes.children.id'
+  | 'connectedTerms.nodes.count'
+  | 'connectedTerms.nodes.databaseId'
+  | 'connectedTerms.nodes.description'
+  | 'connectedTerms.nodes.id'
+  | 'connectedTerms.nodes.internal.content'
+  | 'connectedTerms.nodes.internal.contentDigest'
+  | 'connectedTerms.nodes.internal.contentFilePath'
+  | 'connectedTerms.nodes.internal.description'
+  | 'connectedTerms.nodes.internal.fieldOwners'
+  | 'connectedTerms.nodes.internal.ignoreType'
+  | 'connectedTerms.nodes.internal.mediaType'
+  | 'connectedTerms.nodes.internal.owner'
+  | 'connectedTerms.nodes.internal.type'
+  | 'connectedTerms.nodes.isComment'
+  | 'connectedTerms.nodes.isContentNode'
+  | 'connectedTerms.nodes.isFrontPage'
+  | 'connectedTerms.nodes.isPostsPage'
+  | 'connectedTerms.nodes.isTermNode'
+  | 'connectedTerms.nodes.link'
+  | 'connectedTerms.nodes.name'
+  | 'connectedTerms.nodes.nodeType'
+  | 'connectedTerms.nodes.parent.children'
+  | 'connectedTerms.nodes.parent.id'
+  | 'connectedTerms.nodes.slug'
+  | 'connectedTerms.nodes.taxonomyName'
+  | 'connectedTerms.nodes.termGroupId'
+  | 'connectedTerms.nodes.termTaxonomyId'
+  | 'connectedTerms.nodes.uri'
+  | 'connectedTerms.pageInfo.endCursor'
+  | 'connectedTerms.pageInfo.hasNextPage'
+  | 'connectedTerms.pageInfo.hasPreviousPage'
+  | 'connectedTerms.pageInfo.startCursor'
   | 'description'
   | 'graphqlPluralName'
   | 'graphqlSingleName'
@@ -20422,6 +21089,7 @@ type WpTaxonomyFilterInput = {
   readonly archivePath: InputMaybe<StringQueryOperatorInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly connectedContentTypes: InputMaybe<WpTaxonomyToContentTypeConnectionTypeFilterInput>;
+  readonly connectedTerms: InputMaybe<WpTaxonomyToTermNodeConnectionTypeFilterInput>;
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly graphqlPluralName: InputMaybe<StringQueryOperatorInput>;
   readonly graphqlSingleName: InputMaybe<StringQueryOperatorInput>;
@@ -20584,6 +21252,41 @@ type WpTaxonomyToContentTypeConnectionTypeFilterInput = {
   readonly pageInfo: InputMaybe<WpTaxonomyToContentTypeConnectionPageInfoTypeFilterInput>;
 };
 
+/** Page Info on the &quot;TaxonomyToTermNodeConnection&quot; */
+type WpTaxonomyToTermNodeConnectionPageInfoType = WpPageInfoType & WpTermNodeConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpTaxonomyToTermNodeConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
+/** Connection between the Taxonomy type and the TermNode type */
+type WpTaxonomyToTermNodeConnectionType = WpConnectionType & WpTermNodeConnectionType & {
+  /** The nodes of the connection, without the edges */
+  readonly nodes: ReadonlyArray<WpTermNode>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpTaxonomyToTermNodeConnectionPageInfoType;
+};
+
+type WpTaxonomyToTermNodeConnectionTypeFilterInput = {
+  readonly nodes: InputMaybe<WpTermNodeFilterListInput>;
+  readonly pageInfo: InputMaybe<WpTaxonomyToTermNodeConnectionPageInfoTypeFilterInput>;
+};
+
 type WpTermNode = {
   readonly children: ReadonlyArray<Node>;
   /** The number of objects connected to the object */
@@ -20594,8 +21297,14 @@ type WpTermNode = {
   readonly description: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** The link to the term */
@@ -20742,7 +21451,10 @@ type WpTermNodeFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
   | 'link'
   | 'name'
@@ -20801,7 +21513,10 @@ type WpTermNodeFilterInput = {
   readonly description: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly link: InputMaybe<StringQueryOperatorInput>;
   readonly name: InputMaybe<StringQueryOperatorInput>;
@@ -20868,8 +21583,14 @@ type WpUniformResourceIdentifiable = {
   readonly children: ReadonlyArray<Node>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   readonly nodeType: Maybe<Scalars['String']>;
@@ -20976,7 +21697,10 @@ type WpUniformResourceIdentifiableFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
   | 'nodeType'
   | 'parent.children'
@@ -21026,7 +21750,10 @@ type WpUniformResourceIdentifiableFilterInput = {
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly nodeType: InputMaybe<StringQueryOperatorInput>;
   readonly parent: InputMaybe<NodeFilterInput>;
@@ -21081,6 +21808,8 @@ type WpUniformResourceIdentifiableSortInput = {
 
 /** A User object */
 type WpUser = Node & WpCommenter & WpDatabaseIdentifier & WpNode & WpUniformResourceIdentifiable & {
+  /** Connection between the User type and the WebStory type */
+  readonly allWebStory: Maybe<WpUserToWebStoryConnectionType>;
   /** Avatar object for user. The avatar object can be retrieved in different sizes by specifying the size argument. */
   readonly avatar: Maybe<WpAvatar>;
   /** User metadata option name. Usually it will be &quot;wp_capabilities&quot;. */
@@ -21102,15 +21831,21 @@ type WpUser = Node & WpCommenter & WpDatabaseIdentifier & WpNode & WpUniformReso
   readonly firstName: Maybe<Scalars['String']>;
   readonly id: Scalars['ID'];
   readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
   /** Whether the node is a Content Node */
   readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
   /** Whether the node is a Term */
   readonly isTermNode: Scalars['Boolean'];
   /** Last name of the user. This is equivalent to the WP_User-&gt;user_last_name property. */
   readonly lastName: Maybe<Scalars['String']>;
   /** The preferred language locale set for the user. Value derived from get_user_locale(). */
   readonly locale: Maybe<Scalars['String']>;
-  /** Display name of the user. This is equivalent to the WP_User-&gt;dispaly_name property. */
+  /** Display name of the user. This is equivalent to the WP_User-&gt;display_name property. */
   readonly name: Maybe<Scalars['String']>;
   /** The nicename for the user. This field is equivalent to WP_User-&gt;user_nicename */
   readonly nicename: Maybe<Scalars['String']>;
@@ -21211,6 +21946,77 @@ type WpUserEdge = {
 };
 
 type WpUserFieldsEnum =
+  | 'allWebStory.nodes'
+  | 'allWebStory.nodes.authorDatabaseId'
+  | 'allWebStory.nodes.authorId'
+  | 'allWebStory.nodes.children'
+  | 'allWebStory.nodes.children.children'
+  | 'allWebStory.nodes.children.id'
+  | 'allWebStory.nodes.content'
+  | 'allWebStory.nodes.contentTypeName'
+  | 'allWebStory.nodes.databaseId'
+  | 'allWebStory.nodes.date'
+  | 'allWebStory.nodes.dateGmt'
+  | 'allWebStory.nodes.desiredSlug'
+  | 'allWebStory.nodes.enclosure'
+  | 'allWebStory.nodes.featuredImageDatabaseId'
+  | 'allWebStory.nodes.featuredImageId'
+  | 'allWebStory.nodes.guid'
+  | 'allWebStory.nodes.hasPassword'
+  | 'allWebStory.nodes.id'
+  | 'allWebStory.nodes.internal.content'
+  | 'allWebStory.nodes.internal.contentDigest'
+  | 'allWebStory.nodes.internal.contentFilePath'
+  | 'allWebStory.nodes.internal.description'
+  | 'allWebStory.nodes.internal.fieldOwners'
+  | 'allWebStory.nodes.internal.ignoreType'
+  | 'allWebStory.nodes.internal.mediaType'
+  | 'allWebStory.nodes.internal.owner'
+  | 'allWebStory.nodes.internal.type'
+  | 'allWebStory.nodes.isComment'
+  | 'allWebStory.nodes.isContentNode'
+  | 'allWebStory.nodes.isFrontPage'
+  | 'allWebStory.nodes.isPostsPage'
+  | 'allWebStory.nodes.isRevision'
+  | 'allWebStory.nodes.isTermNode'
+  | 'allWebStory.nodes.link'
+  | 'allWebStory.nodes.modified'
+  | 'allWebStory.nodes.modifiedGmt'
+  | 'allWebStory.nodes.nodeType'
+  | 'allWebStory.nodes.parent.children'
+  | 'allWebStory.nodes.parent.id'
+  | 'allWebStory.nodes.password'
+  | 'allWebStory.nodes.seo.breadcrumbs'
+  | 'allWebStory.nodes.seo.canonical'
+  | 'allWebStory.nodes.seo.cornerstone'
+  | 'allWebStory.nodes.seo.focuskw'
+  | 'allWebStory.nodes.seo.fullHead'
+  | 'allWebStory.nodes.seo.metaDesc'
+  | 'allWebStory.nodes.seo.metaKeywords'
+  | 'allWebStory.nodes.seo.metaRobotsNofollow'
+  | 'allWebStory.nodes.seo.metaRobotsNoindex'
+  | 'allWebStory.nodes.seo.opengraphAuthor'
+  | 'allWebStory.nodes.seo.opengraphDescription'
+  | 'allWebStory.nodes.seo.opengraphModifiedTime'
+  | 'allWebStory.nodes.seo.opengraphPublishedTime'
+  | 'allWebStory.nodes.seo.opengraphPublisher'
+  | 'allWebStory.nodes.seo.opengraphSiteName'
+  | 'allWebStory.nodes.seo.opengraphTitle'
+  | 'allWebStory.nodes.seo.opengraphType'
+  | 'allWebStory.nodes.seo.opengraphUrl'
+  | 'allWebStory.nodes.seo.readingTime'
+  | 'allWebStory.nodes.seo.title'
+  | 'allWebStory.nodes.seo.twitterDescription'
+  | 'allWebStory.nodes.seo.twitterTitle'
+  | 'allWebStory.nodes.slug'
+  | 'allWebStory.nodes.status'
+  | 'allWebStory.nodes.template.templateName'
+  | 'allWebStory.nodes.title'
+  | 'allWebStory.nodes.uri'
+  | 'allWebStory.pageInfo.endCursor'
+  | 'allWebStory.pageInfo.hasNextPage'
+  | 'allWebStory.pageInfo.hasPreviousPage'
+  | 'allWebStory.pageInfo.startCursor'
   | 'avatar.default'
   | 'avatar.extraAttr'
   | 'avatar.forceDefault'
@@ -21285,7 +22091,13 @@ type WpUserFieldsEnum =
   | 'comments.nodes.internal.mediaType'
   | 'comments.nodes.internal.owner'
   | 'comments.nodes.internal.type'
+  | 'comments.nodes.isComment'
+  | 'comments.nodes.isContentNode'
+  | 'comments.nodes.isFrontPage'
+  | 'comments.nodes.isPostsPage'
+  | 'comments.nodes.isTermNode'
   | 'comments.nodes.karma'
+  | 'comments.nodes.link'
   | 'comments.nodes.nodeType'
   | 'comments.nodes.parentDatabaseId'
   | 'comments.nodes.parentId'
@@ -21294,6 +22106,7 @@ type WpUserFieldsEnum =
   | 'comments.nodes.replies.nodes'
   | 'comments.nodes.status'
   | 'comments.nodes.type'
+  | 'comments.nodes.uri'
   | 'comments.pageInfo.endCursor'
   | 'comments.pageInfo.hasNextPage'
   | 'comments.pageInfo.hasPreviousPage'
@@ -21313,7 +22126,10 @@ type WpUserFieldsEnum =
   | 'internal.mediaType'
   | 'internal.owner'
   | 'internal.type'
+  | 'isComment'
   | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
   | 'isTermNode'
   | 'lastName'
   | 'locale'
@@ -21341,6 +22157,7 @@ type WpUserFieldsEnum =
   | 'pages.nodes.featuredImageDatabaseId'
   | 'pages.nodes.featuredImageId'
   | 'pages.nodes.guid'
+  | 'pages.nodes.hasPassword'
   | 'pages.nodes.id'
   | 'pages.nodes.internal.content'
   | 'pages.nodes.internal.contentDigest'
@@ -21351,6 +22168,7 @@ type WpUserFieldsEnum =
   | 'pages.nodes.internal.mediaType'
   | 'pages.nodes.internal.owner'
   | 'pages.nodes.internal.type'
+  | 'pages.nodes.isComment'
   | 'pages.nodes.isContentNode'
   | 'pages.nodes.isFrontPage'
   | 'pages.nodes.isPostsPage'
@@ -21366,6 +22184,7 @@ type WpUserFieldsEnum =
   | 'pages.nodes.parentId'
   | 'pages.nodes.parent.children'
   | 'pages.nodes.parent.id'
+  | 'pages.nodes.password'
   | 'pages.nodes.seo.breadcrumbs'
   | 'pages.nodes.seo.canonical'
   | 'pages.nodes.seo.cornerstone'
@@ -21462,6 +22281,7 @@ type WpUserFieldsEnum =
   | 'posts.nodes.featuredImageDatabaseId'
   | 'posts.nodes.featuredImageId'
   | 'posts.nodes.guid'
+  | 'posts.nodes.hasPassword'
   | 'posts.nodes.id'
   | 'posts.nodes.internal.content'
   | 'posts.nodes.internal.contentDigest'
@@ -21472,7 +22292,10 @@ type WpUserFieldsEnum =
   | 'posts.nodes.internal.mediaType'
   | 'posts.nodes.internal.owner'
   | 'posts.nodes.internal.type'
+  | 'posts.nodes.isComment'
   | 'posts.nodes.isContentNode'
+  | 'posts.nodes.isFrontPage'
+  | 'posts.nodes.isPostsPage'
   | 'posts.nodes.isRevision'
   | 'posts.nodes.isSticky'
   | 'posts.nodes.isTermNode'
@@ -21482,6 +22305,7 @@ type WpUserFieldsEnum =
   | 'posts.nodes.nodeType'
   | 'posts.nodes.parent.children'
   | 'posts.nodes.parent.id'
+  | 'posts.nodes.password'
   | 'posts.nodes.pingStatus'
   | 'posts.nodes.pinged'
   | 'posts.nodes.postFormats.nodes'
@@ -21575,6 +22399,7 @@ type WpUserFieldsEnum =
   | 'seo.opengraphImage.filesize'
   | 'seo.opengraphImage.gatsbyImage'
   | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
   | 'seo.opengraphImage.height'
   | 'seo.opengraphImage.id'
   | 'seo.opengraphImage.internal.content'
@@ -21586,7 +22411,10 @@ type WpUserFieldsEnum =
   | 'seo.opengraphImage.internal.mediaType'
   | 'seo.opengraphImage.internal.owner'
   | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
   | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
   | 'seo.opengraphImage.isTermNode'
   | 'seo.opengraphImage.link'
   | 'seo.opengraphImage.localFile.absolutePath'
@@ -21641,6 +22469,7 @@ type WpUserFieldsEnum =
   | 'seo.opengraphImage.parentId'
   | 'seo.opengraphImage.parent.children'
   | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
   | 'seo.opengraphImage.publicUrl'
   | 'seo.opengraphImage.resize.height'
   | 'seo.opengraphImage.resize.src'
@@ -21716,6 +22545,7 @@ type WpUserFieldsEnum =
   | 'seo.twitterImage.filesize'
   | 'seo.twitterImage.gatsbyImage'
   | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
   | 'seo.twitterImage.height'
   | 'seo.twitterImage.id'
   | 'seo.twitterImage.internal.content'
@@ -21727,7 +22557,10 @@ type WpUserFieldsEnum =
   | 'seo.twitterImage.internal.mediaType'
   | 'seo.twitterImage.internal.owner'
   | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
   | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
   | 'seo.twitterImage.isTermNode'
   | 'seo.twitterImage.link'
   | 'seo.twitterImage.localFile.absolutePath'
@@ -21782,6 +22615,7 @@ type WpUserFieldsEnum =
   | 'seo.twitterImage.parentId'
   | 'seo.twitterImage.parent.children'
   | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
   | 'seo.twitterImage.publicUrl'
   | 'seo.twitterImage.resize.height'
   | 'seo.twitterImage.resize.src'
@@ -21826,6 +22660,7 @@ type WpUserFieldsEnum =
   | 'username';
 
 type WpUserFilterInput = {
+  readonly allWebStory: InputMaybe<WpUserToWebStoryConnectionTypeFilterInput>;
   readonly avatar: InputMaybe<WpAvatarFilterInput>;
   readonly capKey: InputMaybe<StringQueryOperatorInput>;
   readonly capabilities: InputMaybe<StringQueryOperatorInput>;
@@ -21838,7 +22673,10 @@ type WpUserFilterInput = {
   readonly firstName: InputMaybe<StringQueryOperatorInput>;
   readonly id: InputMaybe<StringQueryOperatorInput>;
   readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
   readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
   readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
   readonly lastName: InputMaybe<StringQueryOperatorInput>;
   readonly locale: InputMaybe<StringQueryOperatorInput>;
@@ -22290,6 +23128,41 @@ type WpUserToUserRoleConnectionTypeFilterInput = {
   readonly pageInfo: InputMaybe<WpUserToUserRoleConnectionPageInfoTypeFilterInput>;
 };
 
+/** Page Info on the &quot;UserToWebStoryConnection&quot; */
+type WpUserToWebStoryConnectionPageInfoType = WpPageInfoType & WpWebStoryConnectionPageInfoType & {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpUserToWebStoryConnectionPageInfoTypeFilterInput = {
+  readonly endCursor: InputMaybe<StringQueryOperatorInput>;
+  readonly hasNextPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly hasPreviousPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly seo: InputMaybe<WpSEOPostTypePageInfoTypeFilterInput>;
+  readonly startCursor: InputMaybe<StringQueryOperatorInput>;
+};
+
+/** Connection between the User type and the WebStory type */
+type WpUserToWebStoryConnectionType = WpConnectionType & WpWebStoryConnectionType & {
+  /** The nodes of the connection, without the edges */
+  readonly nodes: ReadonlyArray<WpWebStory>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpUserToWebStoryConnectionPageInfoType;
+};
+
+type WpUserToWebStoryConnectionTypeFilterInput = {
+  readonly nodes: InputMaybe<WpWebStoryFilterListInput>;
+  readonly pageInfo: InputMaybe<WpUserToWebStoryConnectionPageInfoTypeFilterInput>;
+};
+
 /** Information needed by gatsby-source-wordpress. */
 type WpWPGatsby = {
   /** Returns wether or not pretty permalinks are enabled. */
@@ -22301,6 +23174,1025 @@ type WpWPGatsby = {
 type WpWPGatsbyFilterInput = {
   readonly arePrettyPermalinksEnabled: InputMaybe<BooleanQueryOperatorInput>;
   readonly isPreviewFrontendOnline: InputMaybe<BooleanQueryOperatorInput>;
+};
+
+/** The WebStory type */
+type WpWebStory = Node & WpContentNode & WpDatabaseIdentifier & WpMenuItemLinkable & WpNode & WpNodeWithAuthor & WpNodeWithContentEditor & WpNodeWithFeaturedImage & WpNodeWithRevisions & WpNodeWithTemplate & WpNodeWithTitle & WpUniformResourceIdentifiable & {
+  /** Connection between the NodeWithAuthor type and the User type */
+  readonly author: Maybe<WpNodeWithAuthorToUserConnectionEdgeType>;
+  /** The database identifier of the author of the node */
+  readonly authorDatabaseId: Maybe<Scalars['Int']>;
+  /** The globally unique identifier of the author of the node */
+  readonly authorId: Maybe<Scalars['ID']>;
+  readonly children: ReadonlyArray<Node>;
+  /** The content of the post. */
+  readonly content: Maybe<Scalars['String']>;
+  /** Connection between the ContentNode type and the ContentType type */
+  readonly contentType: Maybe<WpContentNodeToContentTypeConnectionEdgeType>;
+  /** The name of the Content Type the node belongs to */
+  readonly contentTypeName: Scalars['String'];
+  /** The unique identifier stored in the database */
+  readonly databaseId: Scalars['Int'];
+  /** Post publishing date. */
+  readonly date: Maybe<Scalars['Date']>;
+  /** The publishing date set in GMT. */
+  readonly dateGmt: Maybe<Scalars['Date']>;
+  /** The desired slug of the post */
+  readonly desiredSlug: Maybe<Scalars['String']>;
+  /** The RSS enclosure for the object */
+  readonly enclosure: Maybe<Scalars['String']>;
+  /** Connection between the NodeWithFeaturedImage type and the MediaItem type */
+  readonly featuredImage: Maybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeType>;
+  /** The database identifier for the featured image node assigned to the content node */
+  readonly featuredImageDatabaseId: Maybe<Scalars['Int']>;
+  /** Globally unique ID of the featured image assigned to the node */
+  readonly featuredImageId: Maybe<Scalars['ID']>;
+  /** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+  readonly guid: Maybe<Scalars['String']>;
+  /** Whether the webstory object is password protected. */
+  readonly hasPassword: Maybe<Scalars['Boolean']>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  /** Whether the node is a Comment */
+  readonly isComment: Scalars['Boolean'];
+  /** Whether the node is a Content Node */
+  readonly isContentNode: Scalars['Boolean'];
+  /** Whether the node represents the front page. */
+  readonly isFrontPage: Scalars['Boolean'];
+  /** Whether  the node represents the blog page. */
+  readonly isPostsPage: Scalars['Boolean'];
+  /** True if the node is a revision of another node */
+  readonly isRevision: Maybe<Scalars['Boolean']>;
+  /** Whether the node is a Term */
+  readonly isTermNode: Scalars['Boolean'];
+  /** The user that most recently edited the node */
+  readonly lastEditedBy: Maybe<WpContentNodeToEditLastConnectionEdgeType>;
+  /** The permalink of the post */
+  readonly link: Maybe<Scalars['String']>;
+  /** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
+  readonly modified: Maybe<Scalars['Date']>;
+  /** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
+  readonly modifiedGmt: Maybe<Scalars['Date']>;
+  readonly nodeType: Maybe<Scalars['String']>;
+  readonly parent: Maybe<Node>;
+  /** The password for the webstory object. */
+  readonly password: Maybe<Scalars['String']>;
+  /** The Yoast SEO data of the ContentNode */
+  readonly seo: Maybe<WpPostTypeSEO>;
+  /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+  readonly slug: Maybe<Scalars['String']>;
+  /** The current status of the object */
+  readonly status: Maybe<Scalars['String']>;
+  /** The template assigned to the node */
+  readonly template: Maybe<WpContentTemplate>;
+  /** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+  readonly title: Maybe<Scalars['String']>;
+  /** The unique resource identifier path */
+  readonly uri: Maybe<Scalars['String']>;
+};
+
+
+/** The WebStory type */
+type WpWebStory_dateArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+/** The WebStory type */
+type WpWebStory_dateGmtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+/** The WebStory type */
+type WpWebStory_modifiedArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+
+/** The WebStory type */
+type WpWebStory_modifiedGmtArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
+type WpWebStoryConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<WpWebStoryEdge>;
+  readonly group: ReadonlyArray<WpWebStoryGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<WpWebStory>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type WpWebStoryConnection_distinctArgs = {
+  field: WpWebStoryFieldsEnum;
+};
+
+
+type WpWebStoryConnection_groupArgs = {
+  field: WpWebStoryFieldsEnum;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type WpWebStoryConnection_maxArgs = {
+  field: WpWebStoryFieldsEnum;
+};
+
+
+type WpWebStoryConnection_minArgs = {
+  field: WpWebStoryFieldsEnum;
+};
+
+
+type WpWebStoryConnection_sumArgs = {
+  field: WpWebStoryFieldsEnum;
+};
+
+type WpWebStoryConnectionEdgeType = {
+  /** The connected WebStory Node */
+  readonly node: WpWebStory;
+};
+
+type WpWebStoryConnectionPageInfoType = {
+  /** When paginating forwards, the cursor to continue. */
+  readonly endCursor: Maybe<Scalars['String']>;
+  /** When paginating forwards, are there more items? */
+  readonly hasNextPage: Scalars['Boolean'];
+  /** When paginating backwards, are there more items? */
+  readonly hasPreviousPage: Scalars['Boolean'];
+  /** Raw schema for page */
+  readonly seo: Maybe<WpSEOPostTypePageInfoType>;
+  /** When paginating backwards, the cursor to continue. */
+  readonly startCursor: Maybe<Scalars['String']>;
+};
+
+type WpWebStoryConnectionType = {
+  /** A list of connected WebStory Nodes */
+  readonly nodes: ReadonlyArray<WpWebStory>;
+  /** Information about pagination in a connection. */
+  readonly pageInfo: WpWebStoryConnectionPageInfoType;
+};
+
+type WpWebStoryEdge = {
+  readonly next: Maybe<WpWebStory>;
+  readonly node: WpWebStory;
+  readonly previous: Maybe<WpWebStory>;
+};
+
+type WpWebStoryFieldsEnum =
+  | 'authorDatabaseId'
+  | 'authorId'
+  | 'author.node.allWebStory.nodes'
+  | 'author.node.avatar.default'
+  | 'author.node.avatar.extraAttr'
+  | 'author.node.avatar.forceDefault'
+  | 'author.node.avatar.foundAvatar'
+  | 'author.node.avatar.height'
+  | 'author.node.avatar.rating'
+  | 'author.node.avatar.scheme'
+  | 'author.node.avatar.size'
+  | 'author.node.avatar.url'
+  | 'author.node.avatar.width'
+  | 'author.node.capKey'
+  | 'author.node.capabilities'
+  | 'author.node.children'
+  | 'author.node.children.children'
+  | 'author.node.children.id'
+  | 'author.node.comments.nodes'
+  | 'author.node.databaseId'
+  | 'author.node.description'
+  | 'author.node.email'
+  | 'author.node.extraCapabilities'
+  | 'author.node.firstName'
+  | 'author.node.id'
+  | 'author.node.internal.content'
+  | 'author.node.internal.contentDigest'
+  | 'author.node.internal.contentFilePath'
+  | 'author.node.internal.description'
+  | 'author.node.internal.fieldOwners'
+  | 'author.node.internal.ignoreType'
+  | 'author.node.internal.mediaType'
+  | 'author.node.internal.owner'
+  | 'author.node.internal.type'
+  | 'author.node.isComment'
+  | 'author.node.isContentNode'
+  | 'author.node.isFrontPage'
+  | 'author.node.isPostsPage'
+  | 'author.node.isTermNode'
+  | 'author.node.lastName'
+  | 'author.node.locale'
+  | 'author.node.name'
+  | 'author.node.nicename'
+  | 'author.node.nickname'
+  | 'author.node.nodeType'
+  | 'author.node.pages.nodes'
+  | 'author.node.parent.children'
+  | 'author.node.parent.id'
+  | 'author.node.posts.nodes'
+  | 'author.node.registeredDate'
+  | 'author.node.roles.nodes'
+  | 'author.node.seo.breadcrumbTitle'
+  | 'author.node.seo.canonical'
+  | 'author.node.seo.fullHead'
+  | 'author.node.seo.language'
+  | 'author.node.seo.metaDesc'
+  | 'author.node.seo.metaRobotsNofollow'
+  | 'author.node.seo.metaRobotsNoindex'
+  | 'author.node.seo.opengraphDescription'
+  | 'author.node.seo.opengraphTitle'
+  | 'author.node.seo.region'
+  | 'author.node.seo.title'
+  | 'author.node.seo.twitterDescription'
+  | 'author.node.seo.twitterTitle'
+  | 'author.node.shouldShowAdminToolbar'
+  | 'author.node.slug'
+  | 'author.node.uri'
+  | 'author.node.url'
+  | 'author.node.username'
+  | 'children'
+  | 'children.children'
+  | 'children.children.children'
+  | 'children.children.children.children'
+  | 'children.children.children.id'
+  | 'children.children.id'
+  | 'children.children.internal.content'
+  | 'children.children.internal.contentDigest'
+  | 'children.children.internal.contentFilePath'
+  | 'children.children.internal.description'
+  | 'children.children.internal.fieldOwners'
+  | 'children.children.internal.ignoreType'
+  | 'children.children.internal.mediaType'
+  | 'children.children.internal.owner'
+  | 'children.children.internal.type'
+  | 'children.children.parent.children'
+  | 'children.children.parent.id'
+  | 'children.id'
+  | 'children.internal.content'
+  | 'children.internal.contentDigest'
+  | 'children.internal.contentFilePath'
+  | 'children.internal.description'
+  | 'children.internal.fieldOwners'
+  | 'children.internal.ignoreType'
+  | 'children.internal.mediaType'
+  | 'children.internal.owner'
+  | 'children.internal.type'
+  | 'children.parent.children'
+  | 'children.parent.children.children'
+  | 'children.parent.children.id'
+  | 'children.parent.id'
+  | 'children.parent.internal.content'
+  | 'children.parent.internal.contentDigest'
+  | 'children.parent.internal.contentFilePath'
+  | 'children.parent.internal.description'
+  | 'children.parent.internal.fieldOwners'
+  | 'children.parent.internal.ignoreType'
+  | 'children.parent.internal.mediaType'
+  | 'children.parent.internal.owner'
+  | 'children.parent.internal.type'
+  | 'children.parent.parent.children'
+  | 'children.parent.parent.id'
+  | 'content'
+  | 'contentTypeName'
+  | 'contentType.node.archivePath'
+  | 'contentType.node.canExport'
+  | 'contentType.node.children'
+  | 'contentType.node.children.children'
+  | 'contentType.node.children.id'
+  | 'contentType.node.connectedTaxonomies.nodes'
+  | 'contentType.node.contentNodes.nodes'
+  | 'contentType.node.deleteWithUser'
+  | 'contentType.node.description'
+  | 'contentType.node.excludeFromSearch'
+  | 'contentType.node.graphqlPluralName'
+  | 'contentType.node.graphqlSingleName'
+  | 'contentType.node.hasArchive'
+  | 'contentType.node.hierarchical'
+  | 'contentType.node.id'
+  | 'contentType.node.internal.content'
+  | 'contentType.node.internal.contentDigest'
+  | 'contentType.node.internal.contentFilePath'
+  | 'contentType.node.internal.description'
+  | 'contentType.node.internal.fieldOwners'
+  | 'contentType.node.internal.ignoreType'
+  | 'contentType.node.internal.mediaType'
+  | 'contentType.node.internal.owner'
+  | 'contentType.node.internal.type'
+  | 'contentType.node.isComment'
+  | 'contentType.node.isContentNode'
+  | 'contentType.node.isFrontPage'
+  | 'contentType.node.isPostsPage'
+  | 'contentType.node.isTermNode'
+  | 'contentType.node.label'
+  | 'contentType.node.labels.addNew'
+  | 'contentType.node.labels.addNewItem'
+  | 'contentType.node.labels.allItems'
+  | 'contentType.node.labels.archives'
+  | 'contentType.node.labels.attributes'
+  | 'contentType.node.labels.editItem'
+  | 'contentType.node.labels.featuredImage'
+  | 'contentType.node.labels.filterItemsList'
+  | 'contentType.node.labels.insertIntoItem'
+  | 'contentType.node.labels.itemsList'
+  | 'contentType.node.labels.itemsListNavigation'
+  | 'contentType.node.labels.menuName'
+  | 'contentType.node.labels.name'
+  | 'contentType.node.labels.newItem'
+  | 'contentType.node.labels.notFound'
+  | 'contentType.node.labels.notFoundInTrash'
+  | 'contentType.node.labels.parentItemColon'
+  | 'contentType.node.labels.removeFeaturedImage'
+  | 'contentType.node.labels.searchItems'
+  | 'contentType.node.labels.setFeaturedImage'
+  | 'contentType.node.labels.singularName'
+  | 'contentType.node.labels.uploadedToThisItem'
+  | 'contentType.node.labels.useFeaturedImage'
+  | 'contentType.node.labels.viewItem'
+  | 'contentType.node.labels.viewItems'
+  | 'contentType.node.menuIcon'
+  | 'contentType.node.menuPosition'
+  | 'contentType.node.name'
+  | 'contentType.node.nodeType'
+  | 'contentType.node.parent.children'
+  | 'contentType.node.parent.id'
+  | 'contentType.node.public'
+  | 'contentType.node.publiclyQueryable'
+  | 'contentType.node.restBase'
+  | 'contentType.node.restControllerClass'
+  | 'contentType.node.showInAdminBar'
+  | 'contentType.node.showInGraphql'
+  | 'contentType.node.showInMenu'
+  | 'contentType.node.showInNavMenus'
+  | 'contentType.node.showInRest'
+  | 'contentType.node.showUi'
+  | 'contentType.node.uri'
+  | 'databaseId'
+  | 'date'
+  | 'dateGmt'
+  | 'desiredSlug'
+  | 'enclosure'
+  | 'featuredImageDatabaseId'
+  | 'featuredImageId'
+  | 'featuredImage.node.altText'
+  | 'featuredImage.node.ancestors.nodes'
+  | 'featuredImage.node.authorDatabaseId'
+  | 'featuredImage.node.authorId'
+  | 'featuredImage.node.caption'
+  | 'featuredImage.node.children'
+  | 'featuredImage.node.children.children'
+  | 'featuredImage.node.children.id'
+  | 'featuredImage.node.commentCount'
+  | 'featuredImage.node.commentStatus'
+  | 'featuredImage.node.comments.nodes'
+  | 'featuredImage.node.contentTypeName'
+  | 'featuredImage.node.databaseId'
+  | 'featuredImage.node.date'
+  | 'featuredImage.node.dateGmt'
+  | 'featuredImage.node.description'
+  | 'featuredImage.node.desiredSlug'
+  | 'featuredImage.node.enclosure'
+  | 'featuredImage.node.fileSize'
+  | 'featuredImage.node.filename'
+  | 'featuredImage.node.filesize'
+  | 'featuredImage.node.gatsbyImage'
+  | 'featuredImage.node.guid'
+  | 'featuredImage.node.hasPassword'
+  | 'featuredImage.node.height'
+  | 'featuredImage.node.id'
+  | 'featuredImage.node.internal.content'
+  | 'featuredImage.node.internal.contentDigest'
+  | 'featuredImage.node.internal.contentFilePath'
+  | 'featuredImage.node.internal.description'
+  | 'featuredImage.node.internal.fieldOwners'
+  | 'featuredImage.node.internal.ignoreType'
+  | 'featuredImage.node.internal.mediaType'
+  | 'featuredImage.node.internal.owner'
+  | 'featuredImage.node.internal.type'
+  | 'featuredImage.node.isComment'
+  | 'featuredImage.node.isContentNode'
+  | 'featuredImage.node.isFrontPage'
+  | 'featuredImage.node.isPostsPage'
+  | 'featuredImage.node.isTermNode'
+  | 'featuredImage.node.link'
+  | 'featuredImage.node.localFile.absolutePath'
+  | 'featuredImage.node.localFile.accessTime'
+  | 'featuredImage.node.localFile.atime'
+  | 'featuredImage.node.localFile.atimeMs'
+  | 'featuredImage.node.localFile.base'
+  | 'featuredImage.node.localFile.birthTime'
+  | 'featuredImage.node.localFile.birthtime'
+  | 'featuredImage.node.localFile.birthtimeMs'
+  | 'featuredImage.node.localFile.blksize'
+  | 'featuredImage.node.localFile.blocks'
+  | 'featuredImage.node.localFile.changeTime'
+  | 'featuredImage.node.localFile.children'
+  | 'featuredImage.node.localFile.childrenImageSharp'
+  | 'featuredImage.node.localFile.ctime'
+  | 'featuredImage.node.localFile.ctimeMs'
+  | 'featuredImage.node.localFile.dev'
+  | 'featuredImage.node.localFile.dir'
+  | 'featuredImage.node.localFile.ext'
+  | 'featuredImage.node.localFile.extension'
+  | 'featuredImage.node.localFile.gid'
+  | 'featuredImage.node.localFile.id'
+  | 'featuredImage.node.localFile.ino'
+  | 'featuredImage.node.localFile.mode'
+  | 'featuredImage.node.localFile.modifiedTime'
+  | 'featuredImage.node.localFile.mtime'
+  | 'featuredImage.node.localFile.mtimeMs'
+  | 'featuredImage.node.localFile.name'
+  | 'featuredImage.node.localFile.nlink'
+  | 'featuredImage.node.localFile.prettySize'
+  | 'featuredImage.node.localFile.publicURL'
+  | 'featuredImage.node.localFile.rdev'
+  | 'featuredImage.node.localFile.relativeDirectory'
+  | 'featuredImage.node.localFile.relativePath'
+  | 'featuredImage.node.localFile.root'
+  | 'featuredImage.node.localFile.size'
+  | 'featuredImage.node.localFile.sourceInstanceName'
+  | 'featuredImage.node.localFile.uid'
+  | 'featuredImage.node.localFile.url'
+  | 'featuredImage.node.mediaDetails.file'
+  | 'featuredImage.node.mediaDetails.height'
+  | 'featuredImage.node.mediaDetails.sizes'
+  | 'featuredImage.node.mediaDetails.width'
+  | 'featuredImage.node.mediaItemUrl'
+  | 'featuredImage.node.mediaType'
+  | 'featuredImage.node.mimeType'
+  | 'featuredImage.node.modified'
+  | 'featuredImage.node.modifiedGmt'
+  | 'featuredImage.node.nodeType'
+  | 'featuredImage.node.parentDatabaseId'
+  | 'featuredImage.node.parentId'
+  | 'featuredImage.node.parent.children'
+  | 'featuredImage.node.parent.id'
+  | 'featuredImage.node.password'
+  | 'featuredImage.node.publicUrl'
+  | 'featuredImage.node.resize.height'
+  | 'featuredImage.node.resize.src'
+  | 'featuredImage.node.resize.width'
+  | 'featuredImage.node.seo.breadcrumbs'
+  | 'featuredImage.node.seo.canonical'
+  | 'featuredImage.node.seo.cornerstone'
+  | 'featuredImage.node.seo.focuskw'
+  | 'featuredImage.node.seo.fullHead'
+  | 'featuredImage.node.seo.metaDesc'
+  | 'featuredImage.node.seo.metaKeywords'
+  | 'featuredImage.node.seo.metaRobotsNofollow'
+  | 'featuredImage.node.seo.metaRobotsNoindex'
+  | 'featuredImage.node.seo.opengraphAuthor'
+  | 'featuredImage.node.seo.opengraphDescription'
+  | 'featuredImage.node.seo.opengraphModifiedTime'
+  | 'featuredImage.node.seo.opengraphPublishedTime'
+  | 'featuredImage.node.seo.opengraphPublisher'
+  | 'featuredImage.node.seo.opengraphSiteName'
+  | 'featuredImage.node.seo.opengraphTitle'
+  | 'featuredImage.node.seo.opengraphType'
+  | 'featuredImage.node.seo.opengraphUrl'
+  | 'featuredImage.node.seo.readingTime'
+  | 'featuredImage.node.seo.title'
+  | 'featuredImage.node.seo.twitterDescription'
+  | 'featuredImage.node.seo.twitterTitle'
+  | 'featuredImage.node.sizes'
+  | 'featuredImage.node.slug'
+  | 'featuredImage.node.sourceUrl'
+  | 'featuredImage.node.srcSet'
+  | 'featuredImage.node.status'
+  | 'featuredImage.node.template.templateName'
+  | 'featuredImage.node.title'
+  | 'featuredImage.node.uri'
+  | 'featuredImage.node.width'
+  | 'featuredImage.node.wpChildren.nodes'
+  | 'guid'
+  | 'hasPassword'
+  | 'id'
+  | 'internal.content'
+  | 'internal.contentDigest'
+  | 'internal.contentFilePath'
+  | 'internal.description'
+  | 'internal.fieldOwners'
+  | 'internal.ignoreType'
+  | 'internal.mediaType'
+  | 'internal.owner'
+  | 'internal.type'
+  | 'isComment'
+  | 'isContentNode'
+  | 'isFrontPage'
+  | 'isPostsPage'
+  | 'isRevision'
+  | 'isTermNode'
+  | 'lastEditedBy.node.allWebStory.nodes'
+  | 'lastEditedBy.node.avatar.default'
+  | 'lastEditedBy.node.avatar.extraAttr'
+  | 'lastEditedBy.node.avatar.forceDefault'
+  | 'lastEditedBy.node.avatar.foundAvatar'
+  | 'lastEditedBy.node.avatar.height'
+  | 'lastEditedBy.node.avatar.rating'
+  | 'lastEditedBy.node.avatar.scheme'
+  | 'lastEditedBy.node.avatar.size'
+  | 'lastEditedBy.node.avatar.url'
+  | 'lastEditedBy.node.avatar.width'
+  | 'lastEditedBy.node.capKey'
+  | 'lastEditedBy.node.capabilities'
+  | 'lastEditedBy.node.children'
+  | 'lastEditedBy.node.children.children'
+  | 'lastEditedBy.node.children.id'
+  | 'lastEditedBy.node.comments.nodes'
+  | 'lastEditedBy.node.databaseId'
+  | 'lastEditedBy.node.description'
+  | 'lastEditedBy.node.email'
+  | 'lastEditedBy.node.extraCapabilities'
+  | 'lastEditedBy.node.firstName'
+  | 'lastEditedBy.node.id'
+  | 'lastEditedBy.node.internal.content'
+  | 'lastEditedBy.node.internal.contentDigest'
+  | 'lastEditedBy.node.internal.contentFilePath'
+  | 'lastEditedBy.node.internal.description'
+  | 'lastEditedBy.node.internal.fieldOwners'
+  | 'lastEditedBy.node.internal.ignoreType'
+  | 'lastEditedBy.node.internal.mediaType'
+  | 'lastEditedBy.node.internal.owner'
+  | 'lastEditedBy.node.internal.type'
+  | 'lastEditedBy.node.isComment'
+  | 'lastEditedBy.node.isContentNode'
+  | 'lastEditedBy.node.isFrontPage'
+  | 'lastEditedBy.node.isPostsPage'
+  | 'lastEditedBy.node.isTermNode'
+  | 'lastEditedBy.node.lastName'
+  | 'lastEditedBy.node.locale'
+  | 'lastEditedBy.node.name'
+  | 'lastEditedBy.node.nicename'
+  | 'lastEditedBy.node.nickname'
+  | 'lastEditedBy.node.nodeType'
+  | 'lastEditedBy.node.pages.nodes'
+  | 'lastEditedBy.node.parent.children'
+  | 'lastEditedBy.node.parent.id'
+  | 'lastEditedBy.node.posts.nodes'
+  | 'lastEditedBy.node.registeredDate'
+  | 'lastEditedBy.node.roles.nodes'
+  | 'lastEditedBy.node.seo.breadcrumbTitle'
+  | 'lastEditedBy.node.seo.canonical'
+  | 'lastEditedBy.node.seo.fullHead'
+  | 'lastEditedBy.node.seo.language'
+  | 'lastEditedBy.node.seo.metaDesc'
+  | 'lastEditedBy.node.seo.metaRobotsNofollow'
+  | 'lastEditedBy.node.seo.metaRobotsNoindex'
+  | 'lastEditedBy.node.seo.opengraphDescription'
+  | 'lastEditedBy.node.seo.opengraphTitle'
+  | 'lastEditedBy.node.seo.region'
+  | 'lastEditedBy.node.seo.title'
+  | 'lastEditedBy.node.seo.twitterDescription'
+  | 'lastEditedBy.node.seo.twitterTitle'
+  | 'lastEditedBy.node.shouldShowAdminToolbar'
+  | 'lastEditedBy.node.slug'
+  | 'lastEditedBy.node.uri'
+  | 'lastEditedBy.node.url'
+  | 'lastEditedBy.node.username'
+  | 'link'
+  | 'modified'
+  | 'modifiedGmt'
+  | 'nodeType'
+  | 'parent.children'
+  | 'parent.children.children'
+  | 'parent.children.children.children'
+  | 'parent.children.children.id'
+  | 'parent.children.id'
+  | 'parent.children.internal.content'
+  | 'parent.children.internal.contentDigest'
+  | 'parent.children.internal.contentFilePath'
+  | 'parent.children.internal.description'
+  | 'parent.children.internal.fieldOwners'
+  | 'parent.children.internal.ignoreType'
+  | 'parent.children.internal.mediaType'
+  | 'parent.children.internal.owner'
+  | 'parent.children.internal.type'
+  | 'parent.children.parent.children'
+  | 'parent.children.parent.id'
+  | 'parent.id'
+  | 'parent.internal.content'
+  | 'parent.internal.contentDigest'
+  | 'parent.internal.contentFilePath'
+  | 'parent.internal.description'
+  | 'parent.internal.fieldOwners'
+  | 'parent.internal.ignoreType'
+  | 'parent.internal.mediaType'
+  | 'parent.internal.owner'
+  | 'parent.internal.type'
+  | 'parent.parent.children'
+  | 'parent.parent.children.children'
+  | 'parent.parent.children.id'
+  | 'parent.parent.id'
+  | 'parent.parent.internal.content'
+  | 'parent.parent.internal.contentDigest'
+  | 'parent.parent.internal.contentFilePath'
+  | 'parent.parent.internal.description'
+  | 'parent.parent.internal.fieldOwners'
+  | 'parent.parent.internal.ignoreType'
+  | 'parent.parent.internal.mediaType'
+  | 'parent.parent.internal.owner'
+  | 'parent.parent.internal.type'
+  | 'parent.parent.parent.children'
+  | 'parent.parent.parent.id'
+  | 'password'
+  | 'seo.breadcrumbs'
+  | 'seo.breadcrumbs.text'
+  | 'seo.breadcrumbs.url'
+  | 'seo.canonical'
+  | 'seo.cornerstone'
+  | 'seo.focuskw'
+  | 'seo.fullHead'
+  | 'seo.metaDesc'
+  | 'seo.metaKeywords'
+  | 'seo.metaRobotsNofollow'
+  | 'seo.metaRobotsNoindex'
+  | 'seo.opengraphAuthor'
+  | 'seo.opengraphDescription'
+  | 'seo.opengraphImage.altText'
+  | 'seo.opengraphImage.ancestors.nodes'
+  | 'seo.opengraphImage.authorDatabaseId'
+  | 'seo.opengraphImage.authorId'
+  | 'seo.opengraphImage.caption'
+  | 'seo.opengraphImage.children'
+  | 'seo.opengraphImage.children.children'
+  | 'seo.opengraphImage.children.id'
+  | 'seo.opengraphImage.commentCount'
+  | 'seo.opengraphImage.commentStatus'
+  | 'seo.opengraphImage.comments.nodes'
+  | 'seo.opengraphImage.contentTypeName'
+  | 'seo.opengraphImage.databaseId'
+  | 'seo.opengraphImage.date'
+  | 'seo.opengraphImage.dateGmt'
+  | 'seo.opengraphImage.description'
+  | 'seo.opengraphImage.desiredSlug'
+  | 'seo.opengraphImage.enclosure'
+  | 'seo.opengraphImage.fileSize'
+  | 'seo.opengraphImage.filename'
+  | 'seo.opengraphImage.filesize'
+  | 'seo.opengraphImage.gatsbyImage'
+  | 'seo.opengraphImage.guid'
+  | 'seo.opengraphImage.hasPassword'
+  | 'seo.opengraphImage.height'
+  | 'seo.opengraphImage.id'
+  | 'seo.opengraphImage.internal.content'
+  | 'seo.opengraphImage.internal.contentDigest'
+  | 'seo.opengraphImage.internal.contentFilePath'
+  | 'seo.opengraphImage.internal.description'
+  | 'seo.opengraphImage.internal.fieldOwners'
+  | 'seo.opengraphImage.internal.ignoreType'
+  | 'seo.opengraphImage.internal.mediaType'
+  | 'seo.opengraphImage.internal.owner'
+  | 'seo.opengraphImage.internal.type'
+  | 'seo.opengraphImage.isComment'
+  | 'seo.opengraphImage.isContentNode'
+  | 'seo.opengraphImage.isFrontPage'
+  | 'seo.opengraphImage.isPostsPage'
+  | 'seo.opengraphImage.isTermNode'
+  | 'seo.opengraphImage.link'
+  | 'seo.opengraphImage.localFile.absolutePath'
+  | 'seo.opengraphImage.localFile.accessTime'
+  | 'seo.opengraphImage.localFile.atime'
+  | 'seo.opengraphImage.localFile.atimeMs'
+  | 'seo.opengraphImage.localFile.base'
+  | 'seo.opengraphImage.localFile.birthTime'
+  | 'seo.opengraphImage.localFile.birthtime'
+  | 'seo.opengraphImage.localFile.birthtimeMs'
+  | 'seo.opengraphImage.localFile.blksize'
+  | 'seo.opengraphImage.localFile.blocks'
+  | 'seo.opengraphImage.localFile.changeTime'
+  | 'seo.opengraphImage.localFile.children'
+  | 'seo.opengraphImage.localFile.childrenImageSharp'
+  | 'seo.opengraphImage.localFile.ctime'
+  | 'seo.opengraphImage.localFile.ctimeMs'
+  | 'seo.opengraphImage.localFile.dev'
+  | 'seo.opengraphImage.localFile.dir'
+  | 'seo.opengraphImage.localFile.ext'
+  | 'seo.opengraphImage.localFile.extension'
+  | 'seo.opengraphImage.localFile.gid'
+  | 'seo.opengraphImage.localFile.id'
+  | 'seo.opengraphImage.localFile.ino'
+  | 'seo.opengraphImage.localFile.mode'
+  | 'seo.opengraphImage.localFile.modifiedTime'
+  | 'seo.opengraphImage.localFile.mtime'
+  | 'seo.opengraphImage.localFile.mtimeMs'
+  | 'seo.opengraphImage.localFile.name'
+  | 'seo.opengraphImage.localFile.nlink'
+  | 'seo.opengraphImage.localFile.prettySize'
+  | 'seo.opengraphImage.localFile.publicURL'
+  | 'seo.opengraphImage.localFile.rdev'
+  | 'seo.opengraphImage.localFile.relativeDirectory'
+  | 'seo.opengraphImage.localFile.relativePath'
+  | 'seo.opengraphImage.localFile.root'
+  | 'seo.opengraphImage.localFile.size'
+  | 'seo.opengraphImage.localFile.sourceInstanceName'
+  | 'seo.opengraphImage.localFile.uid'
+  | 'seo.opengraphImage.localFile.url'
+  | 'seo.opengraphImage.mediaDetails.file'
+  | 'seo.opengraphImage.mediaDetails.height'
+  | 'seo.opengraphImage.mediaDetails.sizes'
+  | 'seo.opengraphImage.mediaDetails.width'
+  | 'seo.opengraphImage.mediaItemUrl'
+  | 'seo.opengraphImage.mediaType'
+  | 'seo.opengraphImage.mimeType'
+  | 'seo.opengraphImage.modified'
+  | 'seo.opengraphImage.modifiedGmt'
+  | 'seo.opengraphImage.nodeType'
+  | 'seo.opengraphImage.parentDatabaseId'
+  | 'seo.opengraphImage.parentId'
+  | 'seo.opengraphImage.parent.children'
+  | 'seo.opengraphImage.parent.id'
+  | 'seo.opengraphImage.password'
+  | 'seo.opengraphImage.publicUrl'
+  | 'seo.opengraphImage.resize.height'
+  | 'seo.opengraphImage.resize.src'
+  | 'seo.opengraphImage.resize.width'
+  | 'seo.opengraphImage.seo.breadcrumbs'
+  | 'seo.opengraphImage.seo.canonical'
+  | 'seo.opengraphImage.seo.cornerstone'
+  | 'seo.opengraphImage.seo.focuskw'
+  | 'seo.opengraphImage.seo.fullHead'
+  | 'seo.opengraphImage.seo.metaDesc'
+  | 'seo.opengraphImage.seo.metaKeywords'
+  | 'seo.opengraphImage.seo.metaRobotsNofollow'
+  | 'seo.opengraphImage.seo.metaRobotsNoindex'
+  | 'seo.opengraphImage.seo.opengraphAuthor'
+  | 'seo.opengraphImage.seo.opengraphDescription'
+  | 'seo.opengraphImage.seo.opengraphModifiedTime'
+  | 'seo.opengraphImage.seo.opengraphPublishedTime'
+  | 'seo.opengraphImage.seo.opengraphPublisher'
+  | 'seo.opengraphImage.seo.opengraphSiteName'
+  | 'seo.opengraphImage.seo.opengraphTitle'
+  | 'seo.opengraphImage.seo.opengraphType'
+  | 'seo.opengraphImage.seo.opengraphUrl'
+  | 'seo.opengraphImage.seo.readingTime'
+  | 'seo.opengraphImage.seo.title'
+  | 'seo.opengraphImage.seo.twitterDescription'
+  | 'seo.opengraphImage.seo.twitterTitle'
+  | 'seo.opengraphImage.sizes'
+  | 'seo.opengraphImage.slug'
+  | 'seo.opengraphImage.sourceUrl'
+  | 'seo.opengraphImage.srcSet'
+  | 'seo.opengraphImage.status'
+  | 'seo.opengraphImage.template.templateName'
+  | 'seo.opengraphImage.title'
+  | 'seo.opengraphImage.uri'
+  | 'seo.opengraphImage.width'
+  | 'seo.opengraphImage.wpChildren.nodes'
+  | 'seo.opengraphModifiedTime'
+  | 'seo.opengraphPublishedTime'
+  | 'seo.opengraphPublisher'
+  | 'seo.opengraphSiteName'
+  | 'seo.opengraphTitle'
+  | 'seo.opengraphType'
+  | 'seo.opengraphUrl'
+  | 'seo.readingTime'
+  | 'seo.schema.articleType'
+  | 'seo.schema.pageType'
+  | 'seo.schema.raw'
+  | 'seo.title'
+  | 'seo.twitterDescription'
+  | 'seo.twitterImage.altText'
+  | 'seo.twitterImage.ancestors.nodes'
+  | 'seo.twitterImage.authorDatabaseId'
+  | 'seo.twitterImage.authorId'
+  | 'seo.twitterImage.caption'
+  | 'seo.twitterImage.children'
+  | 'seo.twitterImage.children.children'
+  | 'seo.twitterImage.children.id'
+  | 'seo.twitterImage.commentCount'
+  | 'seo.twitterImage.commentStatus'
+  | 'seo.twitterImage.comments.nodes'
+  | 'seo.twitterImage.contentTypeName'
+  | 'seo.twitterImage.databaseId'
+  | 'seo.twitterImage.date'
+  | 'seo.twitterImage.dateGmt'
+  | 'seo.twitterImage.description'
+  | 'seo.twitterImage.desiredSlug'
+  | 'seo.twitterImage.enclosure'
+  | 'seo.twitterImage.fileSize'
+  | 'seo.twitterImage.filename'
+  | 'seo.twitterImage.filesize'
+  | 'seo.twitterImage.gatsbyImage'
+  | 'seo.twitterImage.guid'
+  | 'seo.twitterImage.hasPassword'
+  | 'seo.twitterImage.height'
+  | 'seo.twitterImage.id'
+  | 'seo.twitterImage.internal.content'
+  | 'seo.twitterImage.internal.contentDigest'
+  | 'seo.twitterImage.internal.contentFilePath'
+  | 'seo.twitterImage.internal.description'
+  | 'seo.twitterImage.internal.fieldOwners'
+  | 'seo.twitterImage.internal.ignoreType'
+  | 'seo.twitterImage.internal.mediaType'
+  | 'seo.twitterImage.internal.owner'
+  | 'seo.twitterImage.internal.type'
+  | 'seo.twitterImage.isComment'
+  | 'seo.twitterImage.isContentNode'
+  | 'seo.twitterImage.isFrontPage'
+  | 'seo.twitterImage.isPostsPage'
+  | 'seo.twitterImage.isTermNode'
+  | 'seo.twitterImage.link'
+  | 'seo.twitterImage.localFile.absolutePath'
+  | 'seo.twitterImage.localFile.accessTime'
+  | 'seo.twitterImage.localFile.atime'
+  | 'seo.twitterImage.localFile.atimeMs'
+  | 'seo.twitterImage.localFile.base'
+  | 'seo.twitterImage.localFile.birthTime'
+  | 'seo.twitterImage.localFile.birthtime'
+  | 'seo.twitterImage.localFile.birthtimeMs'
+  | 'seo.twitterImage.localFile.blksize'
+  | 'seo.twitterImage.localFile.blocks'
+  | 'seo.twitterImage.localFile.changeTime'
+  | 'seo.twitterImage.localFile.children'
+  | 'seo.twitterImage.localFile.childrenImageSharp'
+  | 'seo.twitterImage.localFile.ctime'
+  | 'seo.twitterImage.localFile.ctimeMs'
+  | 'seo.twitterImage.localFile.dev'
+  | 'seo.twitterImage.localFile.dir'
+  | 'seo.twitterImage.localFile.ext'
+  | 'seo.twitterImage.localFile.extension'
+  | 'seo.twitterImage.localFile.gid'
+  | 'seo.twitterImage.localFile.id'
+  | 'seo.twitterImage.localFile.ino'
+  | 'seo.twitterImage.localFile.mode'
+  | 'seo.twitterImage.localFile.modifiedTime'
+  | 'seo.twitterImage.localFile.mtime'
+  | 'seo.twitterImage.localFile.mtimeMs'
+  | 'seo.twitterImage.localFile.name'
+  | 'seo.twitterImage.localFile.nlink'
+  | 'seo.twitterImage.localFile.prettySize'
+  | 'seo.twitterImage.localFile.publicURL'
+  | 'seo.twitterImage.localFile.rdev'
+  | 'seo.twitterImage.localFile.relativeDirectory'
+  | 'seo.twitterImage.localFile.relativePath'
+  | 'seo.twitterImage.localFile.root'
+  | 'seo.twitterImage.localFile.size'
+  | 'seo.twitterImage.localFile.sourceInstanceName'
+  | 'seo.twitterImage.localFile.uid'
+  | 'seo.twitterImage.localFile.url'
+  | 'seo.twitterImage.mediaDetails.file'
+  | 'seo.twitterImage.mediaDetails.height'
+  | 'seo.twitterImage.mediaDetails.sizes'
+  | 'seo.twitterImage.mediaDetails.width'
+  | 'seo.twitterImage.mediaItemUrl'
+  | 'seo.twitterImage.mediaType'
+  | 'seo.twitterImage.mimeType'
+  | 'seo.twitterImage.modified'
+  | 'seo.twitterImage.modifiedGmt'
+  | 'seo.twitterImage.nodeType'
+  | 'seo.twitterImage.parentDatabaseId'
+  | 'seo.twitterImage.parentId'
+  | 'seo.twitterImage.parent.children'
+  | 'seo.twitterImage.parent.id'
+  | 'seo.twitterImage.password'
+  | 'seo.twitterImage.publicUrl'
+  | 'seo.twitterImage.resize.height'
+  | 'seo.twitterImage.resize.src'
+  | 'seo.twitterImage.resize.width'
+  | 'seo.twitterImage.seo.breadcrumbs'
+  | 'seo.twitterImage.seo.canonical'
+  | 'seo.twitterImage.seo.cornerstone'
+  | 'seo.twitterImage.seo.focuskw'
+  | 'seo.twitterImage.seo.fullHead'
+  | 'seo.twitterImage.seo.metaDesc'
+  | 'seo.twitterImage.seo.metaKeywords'
+  | 'seo.twitterImage.seo.metaRobotsNofollow'
+  | 'seo.twitterImage.seo.metaRobotsNoindex'
+  | 'seo.twitterImage.seo.opengraphAuthor'
+  | 'seo.twitterImage.seo.opengraphDescription'
+  | 'seo.twitterImage.seo.opengraphModifiedTime'
+  | 'seo.twitterImage.seo.opengraphPublishedTime'
+  | 'seo.twitterImage.seo.opengraphPublisher'
+  | 'seo.twitterImage.seo.opengraphSiteName'
+  | 'seo.twitterImage.seo.opengraphTitle'
+  | 'seo.twitterImage.seo.opengraphType'
+  | 'seo.twitterImage.seo.opengraphUrl'
+  | 'seo.twitterImage.seo.readingTime'
+  | 'seo.twitterImage.seo.title'
+  | 'seo.twitterImage.seo.twitterDescription'
+  | 'seo.twitterImage.seo.twitterTitle'
+  | 'seo.twitterImage.sizes'
+  | 'seo.twitterImage.slug'
+  | 'seo.twitterImage.sourceUrl'
+  | 'seo.twitterImage.srcSet'
+  | 'seo.twitterImage.status'
+  | 'seo.twitterImage.template.templateName'
+  | 'seo.twitterImage.title'
+  | 'seo.twitterImage.uri'
+  | 'seo.twitterImage.width'
+  | 'seo.twitterImage.wpChildren.nodes'
+  | 'seo.twitterTitle'
+  | 'slug'
+  | 'status'
+  | 'template.templateName'
+  | 'title'
+  | 'uri';
+
+type WpWebStoryFilterInput = {
+  readonly author: InputMaybe<WpNodeWithAuthorToUserConnectionEdgeTypeFilterInput>;
+  readonly authorDatabaseId: InputMaybe<IntQueryOperatorInput>;
+  readonly authorId: InputMaybe<IDQueryOperatorInput>;
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly content: InputMaybe<StringQueryOperatorInput>;
+  readonly contentType: InputMaybe<WpContentNodeToContentTypeConnectionEdgeTypeFilterInput>;
+  readonly contentTypeName: InputMaybe<StringQueryOperatorInput>;
+  readonly databaseId: InputMaybe<IntQueryOperatorInput>;
+  readonly date: InputMaybe<DateQueryOperatorInput>;
+  readonly dateGmt: InputMaybe<DateQueryOperatorInput>;
+  readonly desiredSlug: InputMaybe<StringQueryOperatorInput>;
+  readonly enclosure: InputMaybe<StringQueryOperatorInput>;
+  readonly featuredImage: InputMaybe<WpNodeWithFeaturedImageToMediaItemConnectionEdgeTypeFilterInput>;
+  readonly featuredImageDatabaseId: InputMaybe<IntQueryOperatorInput>;
+  readonly featuredImageId: InputMaybe<IDQueryOperatorInput>;
+  readonly guid: InputMaybe<StringQueryOperatorInput>;
+  readonly hasPassword: InputMaybe<BooleanQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly isComment: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isContentNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isFrontPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isPostsPage: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isRevision: InputMaybe<BooleanQueryOperatorInput>;
+  readonly isTermNode: InputMaybe<BooleanQueryOperatorInput>;
+  readonly lastEditedBy: InputMaybe<WpContentNodeToEditLastConnectionEdgeTypeFilterInput>;
+  readonly link: InputMaybe<StringQueryOperatorInput>;
+  readonly modified: InputMaybe<DateQueryOperatorInput>;
+  readonly modifiedGmt: InputMaybe<DateQueryOperatorInput>;
+  readonly nodeType: InputMaybe<StringQueryOperatorInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+  readonly password: InputMaybe<StringQueryOperatorInput>;
+  readonly seo: InputMaybe<WpPostTypeSEOFilterInput>;
+  readonly slug: InputMaybe<StringQueryOperatorInput>;
+  readonly status: InputMaybe<StringQueryOperatorInput>;
+  readonly template: InputMaybe<WpContentTemplateFilterInput>;
+  readonly title: InputMaybe<StringQueryOperatorInput>;
+  readonly uri: InputMaybe<StringQueryOperatorInput>;
+};
+
+type WpWebStoryFilterListInput = {
+  readonly elemMatch: InputMaybe<WpWebStoryFilterInput>;
+};
+
+type WpWebStoryGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<WpWebStoryEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<WpWebStoryGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<WpWebStory>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type WpWebStoryGroupConnection_distinctArgs = {
+  field: WpWebStoryFieldsEnum;
+};
+
+
+type WpWebStoryGroupConnection_groupArgs = {
+  field: WpWebStoryFieldsEnum;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type WpWebStoryGroupConnection_maxArgs = {
+  field: WpWebStoryFieldsEnum;
+};
+
+
+type WpWebStoryGroupConnection_minArgs = {
+  field: WpWebStoryFieldsEnum;
+};
+
+
+type WpWebStoryGroupConnection_sumArgs = {
+  field: WpWebStoryFieldsEnum;
+};
+
+type WpWebStorySortInput = {
+  readonly fields: InputMaybe<ReadonlyArray<InputMaybe<WpWebStoryFieldsEnum>>>;
+  readonly order: InputMaybe<ReadonlyArray<InputMaybe<SortOrderEnum>>>;
 };
 
 /** The writing setting type */
@@ -22395,10 +24287,18 @@ type SeoPageFragment = { readonly seo: { readonly canonical: string | null, read
 
 type SeoPostFragment = { readonly seo: { readonly canonical: string | null, readonly metaDesc: string | null, readonly title: string | null } | null };
 
+type WebstoriesQueryVariables = Exact<{
+  limit: Scalars['Int'];
+  skip: Scalars['Int'];
+}>;
+
+
+type WebstoriesQuery = { readonly allWpWebStory: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly slug: string | null, readonly title: string | null, readonly nodeType: string | null, readonly featuredImage: { readonly node: { readonly altText: string | null, readonly localFile: { readonly childImageSharp: { readonly thumb: import('gatsby-plugin-image').IGatsbyImageData } | null } | null } } | null } }> } };
+
 type ALL_POSTS_AND_PAGES_AND_CATEGORIESQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-type ALL_POSTS_AND_PAGES_AND_CATEGORIESQuery = { readonly allWpPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly slug: string | null, readonly tags: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null }> } | null } }> }, readonly allWpTag: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null, readonly posts: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly slug: string | null }> } | null }> }, readonly allWpPage: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly slug: string | null, readonly isPostsPage: boolean, readonly isFrontPage: boolean } }> } };
+type ALL_POSTS_AND_PAGES_AND_CATEGORIESQuery = { readonly allWpPost: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly slug: string | null, readonly tags: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null }> } | null } }> }, readonly allWpTag: { readonly nodes: ReadonlyArray<{ readonly name: string | null, readonly slug: string | null, readonly posts: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly slug: string | null }> } | null }> }, readonly allWpPage: { readonly edges: ReadonlyArray<{ readonly node: { readonly id: string, readonly slug: string | null, readonly isPostsPage: boolean, readonly isFrontPage: boolean } }> }, readonly allWpWebStory: { readonly nodes: ReadonlyArray<{ readonly id: string, readonly title: string | null, readonly slug: string | null }> } };
 
 
 }

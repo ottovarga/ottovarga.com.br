@@ -54,6 +54,14 @@ const createPages = async ({ graphql, actions }) => {
           }
         }
       }
+
+      allWpWebStory(limit: 999) {
+        nodes {
+          id
+          title
+          slug
+        }
+      }
     }
   `)
 
@@ -65,10 +73,12 @@ const createPages = async ({ graphql, actions }) => {
   const postTemplate = resolve('./src/templates/single/post.js')
   const blogTemplate = resolve('./src/templates/archive/blog.js')
   const pageTemplate = resolve('./src/templates/single/page.js')
+  const webStoryTemplate = resolve('./src/templates/archive/webstory.js')
 
   // In production builds, filter for only published posts.
   const posts = result.data.allWpPost.edges
   const pages = getOnlySimplePages(result.data.allWpPage.edges)
+  const webstories = result?.data?.allWpWebStory.nodes
 
   // Iterate over the array of posts
   each(posts, ({ node: post }) => {
@@ -129,6 +139,18 @@ const createPages = async ({ graphql, actions }) => {
         tagName: name
       }
     })
+  })
+
+  paginate({
+    createPage,
+    items: [...webstories],
+    itemsPerPage: 10,
+    pathPrefix: ({ pageNumber }) =>
+      pageNumber === 0 ? `/webstories` : `/webstories/page`,
+    component: webStoryTemplate,
+    context: {
+      id: 'webstories'
+    }
   })
 }
 

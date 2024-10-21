@@ -25,5 +25,12 @@
   status = 301
   force = true
 
+[[redirects]]
+  from= "/webstory/*"
+  to="https://admin.ottovarga.com.br/webstory/:splat"
+  status=200
+  force=true
+  headers = {X-From = "Netlify"}
+
 [functions]
   external_node_modules = ["jsdom", "@mozilla/readability", "rss-parser", "openai"]

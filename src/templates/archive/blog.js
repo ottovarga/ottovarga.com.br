@@ -74,7 +74,7 @@ const IndexPage = ({
                   />
                   {index === 3 &&
                     !pageContext.tagSlug &&
-                    pageContext.pageNumber === 0 && 
+                    pageContext.pageNumber === 0 &&
                     stickyPost && (
                       <Post
                         cardType="featured"
@@ -96,7 +96,7 @@ const IndexPage = ({
             )}
         </section>
       </div>
-      <Pagination pageContext={pageContext} />
+      <Pagination pageContext={pageContext} pathPrefix="/" />
     </Layout>
   )
 }
