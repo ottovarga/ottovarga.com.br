@@ -6,6 +6,7 @@ import parse from 'html-react-parser'
 import PostMeta, { Tag } from '@components/post/postMeta'
 import { FeaturedImage } from '@components/post/post'
 import Sharer from '@/components/post/single/sharer'
+import Author from '@components/post/author'
 import PostAside from '@components/post/postAside'
 import parseBlocks from '@components/blocks/parseBlocks'
 
@@ -24,6 +25,10 @@ export interface SinglePostProps {
   author: {
     firstName: string
     lastName: string
+    avatar: {
+      url: string
+    }
+    description: string
   }
 }
 
@@ -129,6 +134,12 @@ const singlePost: React.FC<SinglePostProps> = ({
           size={32}
         />
       </PostAside>
+      <Author
+        firstName={author.firstName}
+        lastName={author.lastName}
+        avatar={author.avatar.url}
+        description={author.description}
+      />
     </>
   )
 }
