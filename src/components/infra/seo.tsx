@@ -128,7 +128,49 @@ const seo: React.FC<Props> = ({
           cardType: 'summary_large_image'
         }}
       />
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Otto Varga",
+  "url": "https://ottovarga.com.br",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://ottovarga.com.br/?s={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Otto Varga",
+  "url": "https://ottovarga.com.br",
+  "image": "https://ottovarga.com.br/sua-foto.jpg",
+  "sameAs": [
+    "https://www.facebook.com/ottovarga.88",
+    "https://www.instagram.com/seo.otto",
+    "https://www.linkedin.com/in/ottovarga"
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://ottovarga.com.br"
+    }
+  ]
+}
+</script>
       <LogoJsonLd
         logo={`${defaults.siteUrl}/logo.png`}
         url={defaults.siteUrl}
