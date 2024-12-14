@@ -101,106 +101,113 @@ const seo: React.FC<Props> = ({
     })
   }
 
-  return (
-    <>
-      <GatsbySeo
-        title={title || `${defaults.title} | ${defaults.siteName}`}
-        description={description || defaults.description}
-        canonical={
+return (
+  <>
+    <GatsbySeo
+      title={title || `${defaults.title} | ${defaults.siteName}`}
+      description={description || defaults.description}
+      canonical={
+        canonical
+          ? `${defaults.siteUrl}${canonical}`
+          : `${defaults.siteUrl}${pathname}`
+      }
+      openGraph={{
+        url: canonical
+          ? `${defaults.siteUrl}${canonical}`
+          : `${defaults.siteUrl}${pathname}`,
+        title: title || `${defaults.title} | ${defaults.siteName}`,
+        description: description || defaults.description,
+        site_name: defaults.siteName,
+        images: images && openGraphImages(images).map(item => item.og)
+      }}
+      twitter={{
+        handle: defaults.twitterUsername,
+        site: canonical
+          ? `${defaults.siteUrl}${canonical}`
+          : `${defaults.siteUrl}${pathname}`,
+        cardType: 'summary_large_image'
+      }}
+    />
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Otto Varga",
+          "url": "https://ottovarga.com.br",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://ottovarga.com.br/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        })
+      }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "Otto Varga",
+          "url": "https://ottovarga.com.br",
+          "image": "https://ottovarga.com.br/sua-foto.jpg",
+          "sameAs": [
+            "https://www.facebook.com/ottovarga.88",
+            "https://www.instagram.com/seo.otto",
+            "https://www.linkedin.com/in/ottovarga"
+          ]
+        })
+      }}
+    />
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": "https://ottovarga.com.br"
+            }
+          ]
+        })
+      }}
+    />
+
+    <LogoJsonLd
+      logo={`${defaults.siteUrl}/logo.png`}
+      url={defaults.siteUrl}
+    />
+
+    {type && type === 'post' && (
+      <ArticleJsonLd
+        url={
           canonical
             ? `${defaults.siteUrl}${canonical}`
             : `${defaults.siteUrl}${pathname}`
         }
-        openGraph={{
-          url: canonical
-            ? `${defaults.siteUrl}${canonical}`
-            : `${defaults.siteUrl}${pathname}`,
-          title: title || `${defaults.title} | ${defaults.siteName}`,
-          description: description || defaults.description,
-          site_name: defaults.siteName,
-          images: images && openGraphImages(images).map(item => item.og)
-        }}
-        twitter={{
-          handle: defaults.twitterUsername,
-          site: canonical
-            ? `${defaults.siteUrl}${canonical}`
-            : `${defaults.siteUrl}${pathname}`,
-          cardType: 'summary_large_image'
-        }}
+        headline={title}
+        images={images && openGraphImages(images).map(item => item.flattened)}
+        datePublished={date && date}
+        dateModified={modified && modified}
+        publisherName={defaults.author}
+        publisherLogo={`${defaults.siteUrl}/logo.png`}
+        authorName={defaults.author}
+        description={description || defaults.description}
       />
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "Otto Varga",
-  "url": "https://ottovarga.com.br",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://ottovarga.com.br/?s={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-}
-</script>
+    )}
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Otto Varga",
-  "url": "https://ottovarga.com.br",
-  "image": "https://ottovarga.com.br/sua-foto.jpg",
-  "sameAs": [
-    "https://www.facebook.com/ottovarga.88",
-    "https://www.instagram.com/seo.otto",
-    "https://www.linkedin.com/in/ottovarga"
-  ]
-}
-</script>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Início",
-      "item": "https://ottovarga.com.br"
-    }
-  ]
-}
-</script>
-      <LogoJsonLd
-        logo={`${defaults.siteUrl}/logo.png`}
-        url={defaults.siteUrl}
-      />
-
-      {type && type === 'post' && (
-        <ArticleJsonLd
-          url={
-            canonical
-              ? `${defaults.siteUrl}${canonical}`
-              : `${defaults.siteUrl}${pathname}`
-          }
-          headline={title}
-          // @ts-ignore
-          images={images && openGraphImages(images).map(item => item.flattened)}
-          // @ts-ignore
-          datePublished={date && date}
-          dateModified={modified && modified}
-          publisherName={defaults.author}
-          publisherLogo={`${defaults.siteUrl}/logo.png`}
-          authorName={defaults.author}
-          description={description || defaults.description}
-        />
-      )}
-
-      {breadcrumbs && breadcrumbs.length > 0 && (
-        <BreadcrumbJsonLd itemListElements={formatBreadcrumbs(breadcrumbs)} />
-      )}
-    </>
-  )
+    {breadcrumbs && breadcrumbs.length > 0 && (
+      <BreadcrumbJsonLd itemListElements={formatBreadcrumbs(breadcrumbs)} />
+    )}
+  </>
+)
 }
 
 export default seo
