@@ -8,6 +8,7 @@ import {
   BreadcrumbJsonLd
 } from 'gatsby-plugin-next-seo'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { Person } from 'schema-dts'
 
 interface Props {
   title?: string
@@ -100,7 +101,17 @@ const seo: React.FC<Props> = ({
       }
     })
   }
+const autorNovo = {
+  '@type': 'Person',
+  name: defaults.author,
+  url: 'https://ottovarga.com.br/sobre-mim/',
+  "image": "https://ottovarga.com.br/Otto-Varga.png",
+          "sameAs": [
+            "https://www.facebook.com/ottovarga.88",
+            "https://www.instagram.com/seo.otto",
+            "https://www.linkedin.com/in/ottovarga"]
 
+} satisfies Person
 return (
   <>
     <GatsbySeo
@@ -152,15 +163,9 @@ return (
       dangerouslySetInnerHTML={{
         __html: JSON.stringify({
           "@context": "https://schema.org",
-          "@type": "Person",
-          "name": "Otto Varga",
-          "url": "https://ottovarga.com.br",
-          "image": "https://ottovarga.com.br/Otto-Varga.png",
-          "sameAs": [
-            "https://www.facebook.com/ottovarga.88",
-            "https://www.instagram.com/seo.otto",
-            "https://www.linkedin.com/in/ottovarga"
-          ]
+    ...autorNovo
+
+
         })
       }}
     />
@@ -183,11 +188,8 @@ return (
         authorName={defaults.author}
         overrides={{
           "@type": 'Article',
-          author: {
-            '@type': 'Person',
-            name: defaults.author,
-            url: 'https://ottovarga.com.br/sobre-mim/'
-          }
+          author: autorNovo,
+          publisher: autorNovo
         }}
         description={description || defaults.description}
       />
