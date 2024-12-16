@@ -166,13 +166,6 @@ return (
     />
 
 
-
-
-    <LogoJsonLd
-      logo={`${defaults.siteUrl}/logo.png`}
-      url={defaults.siteUrl}
-    />
-
     {type && type === 'post' && (
       <ArticleJsonLd
         url={
