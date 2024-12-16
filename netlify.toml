@@ -26,6 +26,12 @@
   force = true
 
 [[redirects]]
+  from = "/search-gpt-tudo-o-que-voce-precisa-saber-para-ranquear-no-buscador-da-openai/"
+  to = "/o-que-e-searchgpt-tudo-para-ranquear-no-buscador-da-openai/"
+  status = 301
+  force = true
+
+[[redirects]]
   from= "/webstory/:slug/"
   to="https://admin.ottovarga.com.br/webstory/:slug/"
   status=200
