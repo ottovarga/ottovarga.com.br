@@ -168,6 +168,7 @@ return (
 
     {type && type === 'post' && (
       <ArticleJsonLd
+
         url={
           canonical
             ? `${defaults.siteUrl}${canonical}`
@@ -175,11 +176,19 @@ return (
         }
         headline={title}
         images={images && openGraphImages(images).map(item => item.flattened)}
-        datePublished={date && date}
-        dateModified={modified && modified}
+        datePublished={date && new Date(date).toISOString()}
+        dateModified={modified && new Date(modified).toISOString()}
         publisherName={defaults.author}
         publisherLogo={`${defaults.siteUrl}/logo.png`}
         authorName={defaults.author}
+        overrides={{
+          "@type": 'Article',
+          author: {
+            '@type': 'Person',
+            name: defaults.author,
+            url: 'https://ottovarga.com.br/sobre-mim/'
+          }
+        }}
         description={description || defaults.description}
       />
     )}
