@@ -101,105 +101,99 @@ const seo: React.FC<Props> = ({
       }
     })
   }
-const autorNovo = {
-  '@type': 'Person',
-  name: defaults.author,
-  url: 'https://ottovarga.com.br/sobre-mim/',
-  "image": "https://ottovarga.com.br/Otto-Varga.png",
-          "sameAs": [
-            "https://www.facebook.com/ottovarga.88",
-            "https://www.instagram.com/seo.otto",
-            "https://www.linkedin.com/in/ottovarga"]
-
-} satisfies Person
-return (
-  <>
-    <GatsbySeo
-      title={title || `${defaults.title} | ${defaults.siteName}`}
-      description={description || defaults.description}
-      canonical={
-        canonical
-          ? `${defaults.siteUrl}${canonical}`
-          : `${defaults.siteUrl}${pathname}`
-      }
-      openGraph={{
-        url: canonical
-          ? `${defaults.siteUrl}${canonical}`
-          : `${defaults.siteUrl}${pathname}`,
-        title: title || `${defaults.title} | ${defaults.siteName}`,
-        description: description || defaults.description,
-        site_name: defaults.siteName,
-        images: images && openGraphImages(images).map(item => item.og)
-      }}
-      twitter={{
-        handle: defaults.twitterUsername,
-        site: canonical
-          ? `${defaults.siteUrl}${canonical}`
-          : `${defaults.siteUrl}${pathname}`,
-        cardType: 'summary_large_image'
-      }}
-    />
-
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "name": "Otto Varga",
-          "url": "https://ottovarga.com.br",
-          "potentialAction": {
-            "@type": "SearchAction",
-            "target": "https://ottovarga.com.br/?s={search_term_string}",
-            "query-input": "required name=search_term_string"
-
-
-          }
-        })
-      }}
-    />
-<script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-    ...autorNovo
-
-
-        })
-      }}
-    />
-
-
-    {type && type === 'post' && (
-      <ArticleJsonLd
-
-        url={
+  const autorNovo = {
+    '@type': 'Person',
+    name: defaults.author,
+    url: 'https://ottovarga.com.br/sobre-mim/',
+    image: 'https://ottovarga.com.br/Otto-Varga.png',
+    sameAs: [
+      'https://www.facebook.com/ottovarga.88',
+      'https://www.instagram.com/seo.otto',
+      'https://www.linkedin.com/in/ottovarga'
+    ]
+  } satisfies Person
+  return (
+    <>
+      <GatsbySeo
+        title={title || `${defaults.title} | ${defaults.siteName}`}
+        description={description || defaults.description}
+        canonical={
           canonical
             ? `${defaults.siteUrl}${canonical}`
             : `${defaults.siteUrl}${pathname}`
         }
-        headline={title}
-        images={images && openGraphImages(images).map(item => item.flattened)}
-        datePublished={date && new Date(date).toISOString()}
-        dateModified={modified && new Date(modified).toISOString()}
-        publisherName={defaults.author}
-        publisherLogo={`${defaults.siteUrl}/logo.png`}
-        authorName={defaults.author}
-        overrides={{
-          "@type": 'Article',
-          author: autorNovo,
-          publisher: autorNovo
+        openGraph={{
+          url: canonical
+            ? `${defaults.siteUrl}${canonical}`
+            : `${defaults.siteUrl}${pathname}`,
+          title: title || `${defaults.title} | ${defaults.siteName}`,
+          description: description || defaults.description,
+          site_name: defaults.siteName,
+          images: images && openGraphImages(images).map(item => item.og)
         }}
-        description={description || defaults.description}
+        twitter={{
+          handle: defaults.twitterUsername,
+          site: canonical
+            ? `${defaults.siteUrl}${canonical}`
+            : `${defaults.siteUrl}${pathname}`,
+          cardType: 'summary_large_image'
+        }}
       />
-    )}
 
-    {breadcrumbs && breadcrumbs.length > 0 && (
-      <BreadcrumbJsonLd itemListElements={formatBreadcrumbs(breadcrumbs)} />
-    )}
-  </>
-)
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Otto Varga',
+            url: 'https://ottovarga.com.br',
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: 'https://ottovarga.com.br/?s={search_term_string}',
+              'query-input': 'required name=search_term_string'
+            }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            ...autorNovo
+          })
+        }}
+      />
+
+      {type && type === 'post' && (
+        <ArticleJsonLd
+          url={
+            canonical
+              ? `${defaults.siteUrl}${canonical}`
+              : `${defaults.siteUrl}${pathname}`
+          }
+          headline={title}
+          images={images && openGraphImages(images).map(item => item.flattened)}
+          datePublished={date && new Date(date).toISOString()}
+          dateModified={modified && new Date(modified).toISOString()}
+          publisherName={defaults.author}
+          publisherLogo={`${defaults.siteUrl}/logo.png`}
+          authorName={defaults.author}
+          overrides={{
+            '@type': 'Article',
+            author: autorNovo,
+            publisher: autorNovo
+          }}
+          description={description || defaults.description}
+        />
+      )}
+
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <BreadcrumbJsonLd itemListElements={formatBreadcrumbs(breadcrumbs)} />
+      )}
+    </>
+  )
 }
 
 export default seo
