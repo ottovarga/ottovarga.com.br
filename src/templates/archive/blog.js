@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '@components/layout'
-import { graphql } from 'gatsby'
+import { graphql, Script } from 'gatsby'
 
 import Headline from '@components/shared/headline'
 import Post from '@components/post/post'
@@ -97,6 +97,32 @@ const IndexPage = ({
         </section>
       </div>
       <Pagination pageContext={pageContext} pathPrefix="/" />
+      <Script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          name: 'Otto Varga Blog',
+          description: 'Blog sobre SEO, marketing digital e e-commerce',
+          url: 'https://ottovarga.com.br',
+          publisher: {
+            '@type': 'Person',
+            name: 'Otto Varga'
+          }
+        })}
+      </Script>
+      <Script type="application/ld+json">
+        {JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Blog',
+          name: 'Otto Varga Blog',
+          description: 'Blog sobre SEO, marketing digital e e-commerce',
+          url: 'https://ottovarga.com.br',
+          publisher: {
+            '@type': 'Person',
+            name: 'Otto Varga'
+          }
+        })}
+      </Script>
     </Layout>
   )
 }

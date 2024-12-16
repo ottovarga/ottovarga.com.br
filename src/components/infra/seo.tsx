@@ -141,11 +141,13 @@ return (
             "@type": "SearchAction",
             "target": "https://ottovarga.com.br/?s={search_term_string}",
             "query-input": "required name=search_term_string"
+
+
           }
         })
       }}
     />
-    <script
+<script
       type="application/ld+json"
       dangerouslySetInnerHTML={{
         __html: JSON.stringify({
@@ -153,7 +155,7 @@ return (
           "@type": "Person",
           "name": "Otto Varga",
           "url": "https://ottovarga.com.br",
-          "image": "https://ottovarga.com.br/sua-foto.jpg",
+          "image": "https://ottovarga.com.br/Otto-Varga.png",
           "sameAs": [
             "https://www.facebook.com/ottovarga.88",
             "https://www.instagram.com/seo.otto",
@@ -162,23 +164,9 @@ return (
         })
       }}
     />
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{
-        __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Início",
-              "item": "https://ottovarga.com.br"
-            }
-          ]
-        })
-      }}
-    />
+
+
+
 
     <LogoJsonLd
       logo={`${defaults.siteUrl}/logo.png`}
