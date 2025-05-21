@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '@components/layout'
-import { graphql } from 'gatsby'
+import { graphql, Script } from 'gatsby'
 
 import Headline from '@components/shared/headline'
 import Post from '@components/post/post'
@@ -16,6 +16,11 @@ const IndexPage = ({
 
   return (
     <Layout>
+      <Script type="application/ld+json">
+        {JSON.stringify({
+          // adicione o conteúdo aqui
+        })}
+      </Script>
       <Seo
         title={
           pageContext.tagName

@@ -5,9 +5,13 @@ import {
   GatsbySeo,
   ArticleJsonLd,
   LogoJsonLd,
-  BreadcrumbJsonLd
-} from 'gatsby-plugin-next-seo'
+  BreadcrumbJsonLd,
+
+} from '@onserp/gatsby-plugin-next-seo'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
+
+
+import { Person } from 'schema-dts';
 
 interface Props {
   title?: string
@@ -101,6 +105,12 @@ const seo: React.FC<Props> = ({
     })
   }
 
+  const author = {
+    '@type': 'Person',
+    name: defaults.author,
+    url: 'https://ottovarga.com.br/sobre-mim/'
+  } satisfies Person
+
   return (
     <>
       <GatsbySeo
@@ -129,11 +139,6 @@ const seo: React.FC<Props> = ({
         }}
       />
 
-      <LogoJsonLd
-        logo={`${defaults.siteUrl}/logo.png`}
-        url={defaults.siteUrl}
-      />
-
       {type && type === 'post' && (
         <ArticleJsonLd
           url={
@@ -149,8 +154,13 @@ const seo: React.FC<Props> = ({
           dateModified={modified && modified}
           publisherName={defaults.author}
           publisherLogo={`${defaults.siteUrl}/logo.png`}
+          authorType={'Person'}
           authorName={defaults.author}
           description={description || defaults.description}
+          overrides={{
+            "@type": 'Article',
+            author: author
+          }}
         />
       )}
 
