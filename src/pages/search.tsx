@@ -10,7 +10,7 @@ import Seo from '@components/infra/seo'
 const search: React.FC = () => {
   return (
     <Layout>
-      <Seo title="Buscar | SEO Otto Varga" />
+      <Seo title="Buscar | SEO Otto Varga" type="search" />
       <div className="container">
         <div className="flex justify-center py-16 px-4">
           <div className="xl:w-4/5">

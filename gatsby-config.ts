@@ -108,7 +108,7 @@ module.exports = {
         ]
       }
     },
-    'gatsby-plugin-next-seo',
+    '@onserp/gatsby-plugin-next-seo',
     'gatsby-transformer-sharp',
 
     {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import algoliasearch from 'algoliasearch/lite'
 import {
   InstantSearch,
@@ -18,6 +18,18 @@ const searchClient = algoliasearch(
 )
 
 const searchField = () => {
+  const [query, setQuery] = useState('')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search)
+
+      if (params.get('q')) {
+        setQuery(params.get('q'))
+      }
+    }
+  }, [])
+
   return (
     <InstantSearch searchClient={searchClient} indexName="Blog Otto">
       <SearchBox
@@ -29,6 +41,7 @@ const searchField = () => {
           resetTitle: 'Clear your search query.',
           placeholder: 'Buscar'
         }}
+        defaultRefinement={query}
         reset={<span></span>}
       />
       <div className="flex justify-between text-xs text-gray-500 my-4 items-center">

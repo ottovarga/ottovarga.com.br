@@ -1,18 +1,15 @@
 import React from 'react'
 import { useLocation } from '@reach/router'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Script } from 'gatsby'
 import {
   GatsbySeo,
   ArticleJsonLd,
   LogoJsonLd,
   BreadcrumbJsonLd,
-
+  SitelinksSearchBoxJsonLd
 } from '@onserp/gatsby-plugin-next-seo'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { Person } from 'schema-dts'
-
-
-import { Person } from 'schema-dts';
 
 interface Props {
   title?: string
@@ -105,27 +102,19 @@ const seo: React.FC<Props> = ({
       }
     })
   }
-<<<<<<< HEAD
 
   const author = {
     '@type': 'Person',
     name: defaults.author,
-    url: 'https://ottovarga.com.br/sobre-mim/'
-  } satisfies Person
-
-=======
-  const autorNovo = {
-    '@type': 'Person',
-    name: defaults.author,
-    url: 'https://ottovarga.com.br/sobre-mim/',
-    image: 'https://ottovarga.com.br/Otto-Varga.png',
+    url: '${defaults.siteUrl}/sobre-mim/',
+    image: '${defaults.siteUrl}/Otto-Varga.png',
     sameAs: [
       'https://www.facebook.com/ottovarga.88',
       'https://www.instagram.com/seo.otto',
       'https://www.linkedin.com/in/ottovarga'
     ]
-  } satisfies Person
->>>>>>> 1b54efff172286925b0e21a3dc26dbe0e15db58d
+  }
+
   return (
     <>
       <GatsbySeo
@@ -154,35 +143,28 @@ const seo: React.FC<Props> = ({
         }}
       />
 
-<<<<<<< HEAD
-=======
-      <script
+      <LogoJsonLd
+        url={defaults.siteUrl}
+        logo={`${defaults.siteUrl}/logo.png`}
+      />
+
+      <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'WebSite',
             name: 'Otto Varga',
-            url: 'https://ottovarga.com.br',
+            url: defaults.siteUrl,
             potentialAction: {
               '@type': 'SearchAction',
-              target: 'https://ottovarga.com.br/?s={search_term_string}',
+              target: `${defaults.siteUrl}/search/?q={search_term_string}`,
               'query-input': 'required name=search_term_string'
             }
           })
         }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            ...autorNovo
-          })
-        }}
-      />
 
->>>>>>> 1b54efff172286925b0e21a3dc26dbe0e15db58d
       {type && type === 'post' && (
         <ArticleJsonLd
           url={
@@ -200,19 +182,30 @@ const seo: React.FC<Props> = ({
           authorName={defaults.author}
           overrides={{
             '@type': 'Article',
-            author: autorNovo,
-            publisher: autorNovo
+            author: author as Person
           }}
           description={description || defaults.description}
-          overrides={{
-            "@type": 'Article',
-            author: author
-          }}
+        />
+      )}
+
+      {type && type === 'search' && (
+        <SitelinksSearchBoxJsonLd
+          searchHandlerQueryStringUrl={`${defaults.siteUrl}/search/?q=`}
+          url={defaults.siteUrl}
         />
       )}
 
       {breadcrumbs && breadcrumbs.length > 0 && (
         <BreadcrumbJsonLd itemListElements={formatBreadcrumbs(breadcrumbs)} />
+      )}
+
+      {schema && (
+        <Script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema)
+          }}
+        />
       )}
     </>
   )
