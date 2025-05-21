@@ -9,6 +9,7 @@ import {
 
 } from '@onserp/gatsby-plugin-next-seo'
 import { IGatsbyImageData } from 'gatsby-plugin-image'
+import { Person } from 'schema-dts'
 
 
 import { Person } from 'schema-dts';
@@ -104,6 +105,7 @@ const seo: React.FC<Props> = ({
       }
     })
   }
+<<<<<<< HEAD
 
   const author = {
     '@type': 'Person',
@@ -111,6 +113,19 @@ const seo: React.FC<Props> = ({
     url: 'https://ottovarga.com.br/sobre-mim/'
   } satisfies Person
 
+=======
+  const autorNovo = {
+    '@type': 'Person',
+    name: defaults.author,
+    url: 'https://ottovarga.com.br/sobre-mim/',
+    image: 'https://ottovarga.com.br/Otto-Varga.png',
+    sameAs: [
+      'https://www.facebook.com/ottovarga.88',
+      'https://www.instagram.com/seo.otto',
+      'https://www.linkedin.com/in/ottovarga'
+    ]
+  } satisfies Person
+>>>>>>> 1b54efff172286925b0e21a3dc26dbe0e15db58d
   return (
     <>
       <GatsbySeo
@@ -139,6 +154,35 @@ const seo: React.FC<Props> = ({
         }}
       />
 
+<<<<<<< HEAD
+=======
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: 'Otto Varga',
+            url: 'https://ottovarga.com.br',
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: 'https://ottovarga.com.br/?s={search_term_string}',
+              'query-input': 'required name=search_term_string'
+            }
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            ...autorNovo
+          })
+        }}
+      />
+
+>>>>>>> 1b54efff172286925b0e21a3dc26dbe0e15db58d
       {type && type === 'post' && (
         <ArticleJsonLd
           url={
@@ -147,15 +191,18 @@ const seo: React.FC<Props> = ({
               : `${defaults.siteUrl}${pathname}`
           }
           headline={title}
-          // @ts-ignore
           images={images && openGraphImages(images).map(item => item.flattened)}
-          // @ts-ignore
-          datePublished={date && date}
-          dateModified={modified && modified}
+          datePublished={date && new Date(date).toISOString()}
+          dateModified={modified && new Date(modified).toISOString()}
           publisherName={defaults.author}
           publisherLogo={`${defaults.siteUrl}/logo.png`}
           authorType={'Person'}
           authorName={defaults.author}
+          overrides={{
+            '@type': 'Article',
+            author: autorNovo,
+            publisher: autorNovo
+          }}
           description={description || defaults.description}
           overrides={{
             "@type": 'Article',
