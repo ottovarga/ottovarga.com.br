@@ -1,4 +1,5 @@
 import path from 'path'
+import adapter from 'gatsby-adapter-netlify'
 
 require('dotenv').config({
   path: '.env'
@@ -10,6 +11,7 @@ import sitemap from './config/sitemap'
 module.exports = {
   siteMetadata,
   graphqlTypegen: true,
+  adapter: adapter(),
   partytownProxiedURLs: [
     `https://www.googletagmanager.com/gtm.js?id=${process.env.GATSBY_GTM}`
   ],

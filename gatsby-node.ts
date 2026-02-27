@@ -155,16 +155,5 @@ const createPages = async ({ graphql, actions }) => {
 }
 
 module.exports = {
-  createPages,
-  onCreateNode({ node, actions }) {
-    const { deleteNode } = actions
-    // HEIC/HEIF images crash libvips on Netlify — delete their nodes early
-    if (
-      node.internal.type === 'WpMediaItem' &&
-      node.mimeType &&
-      (node.mimeType === 'image/heic' || node.mimeType === 'image/heif')
-    ) {
-      deleteNode(node)
-    }
-  }
+  createPages
 }

@@ -18,6 +18,7 @@
     "dotenv": "^8.2.0",
     "formik": "^2.2.6",
     "gatsby": "^5.11.0",
+    "gatsby-adapter-netlify": "^1.1.7",
     "gatsby-awesome-pagination": "^0.3.8",
     "gatsby-plugin-algolia": "^0.16.2",
     "gatsby-plugin-breadcrumb": "^12.3.2",
