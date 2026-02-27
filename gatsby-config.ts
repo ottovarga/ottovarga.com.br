@@ -70,6 +70,10 @@ module.exports = {
           requestConcurrency: 10,
           previewRequestConcurrency: 10
         },
+        html: {
+          // AVIF uses HEIF container — libvips on Netlify lacks AV1 codec support
+          generateAvifImages: false
+        },
         type: {
           Post: {
             limit:
@@ -77,12 +81,6 @@ module.exports = {
               process.env.SITE_DEBUG === 'true'
                 ? 50
                 : 100000
-          },
-          MediaItem: {
-            localFile: {
-              // Exclude HEIC/HEIF images — libvips on Netlify doesn't support them
-              excludeByMimeTypes: ['image/heic', 'image/heif']
-            }
           }
         }
       }
@@ -122,7 +120,7 @@ module.exports = {
       options: {
         failOn: 'none',
         defaults: {
-          formats: ['auto', 'webp', 'avif'],
+          formats: ['auto', 'webp'],
           placeholder: 'dominantColor',
           quality: 100
         }
