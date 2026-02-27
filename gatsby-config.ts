@@ -77,6 +77,28 @@ module.exports = {
               process.env.SITE_DEBUG === 'true'
                 ? 50
                 : 100000
+          },
+          MediaItem: {
+            beforeChangeNode: async ({
+              remoteNode,
+              actionType
+            }: {
+              remoteNode: any
+              actionType: string
+            }) => {
+              // Skip HEIC/HEIF images — libvips on Netlify doesn't support them
+              if (
+                actionType === 'CREATE' &&
+                remoteNode?.mimeType &&
+                (remoteNode.mimeType === 'image/heic' ||
+                  remoteNode.mimeType === 'image/heif')
+              ) {
+                return {
+                  remoteNode: null
+                }
+              }
+              return { remoteNode }
+            }
           }
         }
       }
@@ -116,7 +138,7 @@ module.exports = {
       options: {
         failOn: 'none',
         defaults: {
-          formats: ['auto', 'webp'],
+          formats: ['auto', 'webp', 'avif'],
           placeholder: 'dominantColor',
           quality: 100
         }
