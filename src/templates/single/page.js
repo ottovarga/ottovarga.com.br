@@ -14,7 +14,7 @@ import TagList from '@components/shared/widgets/tagList' */
 
 import parseBlocks from '@components/blocks/parseBlocks'
 
-import '@styles/gutenberg.scss'
+import '../../styles/gutenberg.css'
 
 const page = ({ data, pageContext, location }) => {
   const { content, title, dateGmt, modifiedGmt, seo, featuredImage } = data.page

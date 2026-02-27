@@ -1,17 +1,5 @@
-@import '~@wordpress/base-styles/colors';
-@import '~@wordpress/base-styles/variables';
-@import '~@wordpress/base-styles/mixins';
-@import '~@wordpress/base-styles/breakpoints';
-@import '~@wordpress/base-styles/animations';
-@import '~@wordpress/base-styles/z-index';
-
-@import '~@wordpress/block-library/src/style.scss';
-@import '~@wordpress/block-library/src/theme.scss';
-
-$font-sizes: ('extra-small', theme('fontSize.xs')),
-  ('small', theme('fontSize.sm')), ('normal', theme('fontSize.base')),
-  ('large', theme('fontSize.xl')), ('extra-large', theme('fontSize.3xl')),
-  ('huge', theme('fontSize.5xl')), ('gigantic', theme('fontSize.8xl'));
+@import '../../node_modules/@wordpress/block-library/build-style/style.css';
+@import '../../node_modules/@wordpress/block-library/build-style/theme.css';
 
 :root {
   --global--spacing-unit: 1rem;
@@ -31,8 +19,10 @@ $font-sizes: ('extra-small', theme('fontSize.xs')),
   --responsive--alignfull-width: 100%;
   --responsive--alignright-margin: var(--global--spacing-horizontal);
   --responsive--alignleft-margin: var(--global--spacing-horizontal);
+}
 
-  @screen sm {
+@screen sm {
+  :root {
     --responsive--aligndefault-width: min(
       calc(100vw - 4 * var(--global--spacing-horizontal)),
       610px
@@ -47,8 +37,10 @@ $font-sizes: ('extra-small', theme('fontSize.xs')),
       0.5 * (100vw - var(--responsive--aligndefault-width))
     );
   }
+}
 
-  @screen lg {
+@screen lg {
+  :root {
     --responsive--aligndefault-width: min(
       calc(100vw - 8 * var(--global--spacing-horizontal)),
       900px
@@ -65,18 +57,14 @@ $font-sizes: ('extra-small', theme('fontSize.xs')),
 
   & > *,
   .wp-block-column > p {
-    @apply text-base text-gray-600 leading-relaxed my-8;
+    @apply text-base lg:text-lg text-gray-600 leading-relaxed my-8;
 
     &:first-child {
-      @apply mt-0 #{!important};
+      @apply !mt-0;
     }
 
     &:last-child {
-      @apply mb-0 #{!important};
-    }
-
-    @screen lg {
-      @apply text-lg;
+      @apply !mb-0;
     }
 
     &:not(.alignwide):not(.alignfull):not(.alignleft):not(.alignright):not(.wp-block-separator):not(.woocommerce),
@@ -114,16 +102,38 @@ $font-sizes: ('extra-small', theme('fontSize.xs')),
     &.alignwide,
     &.alignfull {
       .gatsby-image-wrapper {
-        @apply w-full #{!important};
+        @apply !w-full;
       }
     }
   }
 
-  // font sizes
-  @each $name, $size in $font-sizes {
-    .has-#{$name}-font-size {
-      font-size: $size !important;
-    }
+  /* font sizes */
+  .has-extra-small-font-size {
+    font-size: theme('fontSize.xs') !important;
+  }
+
+  .has-small-font-size {
+    font-size: theme('fontSize.sm') !important;
+  }
+
+  .has-normal-font-size {
+    font-size: theme('fontSize.base') !important;
+  }
+
+  .has-large-font-size {
+    font-size: theme('fontSize.xl') !important;
+  }
+
+  .has-extra-large-font-size {
+    font-size: theme('fontSize.3xl') !important;
+  }
+
+  .has-huge-font-size {
+    font-size: theme('fontSize.5xl') !important;
+  }
+
+  .has-gigantic-font-size {
+    font-size: theme('fontSize.8xl') !important;
   }
 }
 

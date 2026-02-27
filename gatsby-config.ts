@@ -127,7 +127,6 @@ module.exports = {
       resolve: 'gatsby-plugin-sitemap',
       options: sitemap
     },
-    'gatsby-plugin-sass',
     'gatsby-plugin-postcss',
     'gatsby-plugin-react-css-modules',
     'gatsby-plugin-netlify',
