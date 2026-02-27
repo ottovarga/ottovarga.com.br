@@ -1,39 +1,47 @@
-[[redirects]]
-  from = "/o-que-e-seo/"
-  to = "/"
-  status = 301
-  force = true
+[[plugins]]
+package = "@netlify/plugin-gatsby"
 
 [[redirects]]
-  from = "/9-ferramentas-para-criar-google-web-stories/"
-  to = "/melhores-ferramentas-para-criar-google-web-stories/"
-  status = 301
-  force = true
+from = "/o-que-e-seo/"
+to = "/"
+status = 301
+force = true
 
 [[redirects]]
-  from = "/resumo-drops-seo-12-11-18-11/"
-  to = "/"
-  status = 301
-  force = true
+from = "/9-ferramentas-para-criar-google-web-stories/"
+to = "/melhores-ferramentas-para-criar-google-web-stories/"
+status = 301
+force = true
 
 [[redirects]]
-  from = "/resumo-drops-seo-19-11-25-11/"
-  to = "/"
-  status = 301
-  force = true
+from = "/resumo-drops-seo-12-11-18-11/"
+to = "/"
+status = 301
+force = true
 
 [[redirects]]
-  from = "/o-que-e-searchgpt-tudo-para-ranquear-no-buscador-da-openai/"
-  to = "/search-gpt-tudo-o-que-voce-precisa-saber-para-ranquear-no-buscador-da-openai/"
-  status = 301
-  force = true
+from = "/resumo-drops-seo-19-11-25-11/"
+to = "/"
+status = 301
+force = true
 
 [[redirects]]
-  from= "/webstory/:slug/"
-  to="https://admin.ottovarga.com.br/webstory/:slug/"
-  status=200
-  force=true
-  headers = {X-From = "Netlify"}
+from = "/o-que-e-searchgpt-tudo-para-ranquear-no-buscador-da-openai/"
+to = "/search-gpt-tudo-o-que-voce-precisa-saber-para-ranquear-no-buscador-da-openai/"
+status = 301
+force = true
+
+[[redirects]]
+from = "/webstory/:slug/"
+to = "https://admin.ottovarga.com.br/webstory/:slug/"
+status = 200
+force = true
+headers = { X-From = "Netlify" }
 
 [functions]
-  external_node_modules = ["jsdom", "@mozilla/readability", "rss-parser", "openai"]
+external_node_modules = [
+  "jsdom",
+  "@mozilla/readability",
+  "rss-parser",
+  "openai",
+]
