@@ -83,6 +83,12 @@ module.exports = {
               process.env.SITE_DEBUG === 'true'
                 ? 50
                 : 100000
+          },
+          MediaItem: {
+            localFile: {
+              // Exclude HEIC/HEIF/AVIF images — libvips on Netlify doesn't support them
+              excludeByMimeTypes: ['image/heic', 'image/heif', 'image/avif']
+            }
           }
         }
       }
