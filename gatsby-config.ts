@@ -116,7 +116,7 @@ module.exports = {
       options: {
         failOn: 'none',
         defaults: {
-          formats: ['auto', 'webp', 'avif'],
+          formats: ['auto', 'webp'],
           placeholder: 'dominantColor',
           quality: 100
         }
