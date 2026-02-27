@@ -79,25 +79,9 @@ module.exports = {
                 : 100000
           },
           MediaItem: {
-            beforeChangeNode: async ({
-              remoteNode,
-              actionType
-            }: {
-              remoteNode: any
-              actionType: string
-            }) => {
-              // Skip HEIC/HEIF images — libvips on Netlify doesn't support them
-              if (
-                actionType === 'CREATE' &&
-                remoteNode?.mimeType &&
-                (remoteNode.mimeType === 'image/heic' ||
-                  remoteNode.mimeType === 'image/heif')
-              ) {
-                return {
-                  remoteNode: null
-                }
-              }
-              return { remoteNode }
+            localFile: {
+              // Exclude HEIC/HEIF images — libvips on Netlify doesn't support them
+              excludeByMimeTypes: ['image/heic', 'image/heif']
             }
           }
         }
